@@ -11,7 +11,7 @@ function getApiHeaders() {
 
   if (!serviceId || !apiKey) {
     throw new Error(
-      "microCMS の接続には MICROCMS_SERVICE_ID と MICROCMS_API_KEY の両方が必要です。"
+      "microCMS を利用するために MICROCMS_SERVICE_ID と MICROCMS_API_KEY を設定してください"
     );
   }
 
