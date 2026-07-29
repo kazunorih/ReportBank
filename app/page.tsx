@@ -18,11 +18,11 @@ export default async function Home() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-12">
         <section>
           <h1 className="text-4xl font-semibold tracking-tight text-slate-950">
-            microCMS で公開された記事一覧
+            レポートバンク　記事一覧
           </h1>
 
           <p className="mt-4 max-w-2xl leading-7 text-slate-600">
-            初期サイトです。コンテンツ以外はアップデート予定です。
+            ※初期テスト版です。サイトデザインはアップデート予定です。
           </p>
         </section>
 
@@ -30,7 +30,7 @@ export default async function Home() {
           {articles.length === 0 ? (
             <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
               <p className="text-slate-600">
-                記事が見つかりませんでした。microCMS の設定を確認してください。
+                工事中です。
               </p>
             </div>
           ) : (
