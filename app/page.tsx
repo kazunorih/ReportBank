@@ -20,16 +20,18 @@ export default async function Home() {
           <h1 className="text-4xl font-semibold tracking-tight text-slate-950">
             microCMS で公開された記事一覧
           </h1>
+
           <p className="mt-4 max-w-2xl leading-7 text-slate-600">
-            GitHub と AWS Amplify で公開する Next.js サイトです。microCMS の記事を読み取り、ページに表示します。
-            記事タイトルをクリックすると、microCMS から取得した記事の個別ページを表示します。
+            初期サイトです。コンテンツ以外はアップデート予定です。
           </p>
         </section>
 
         <section className="grid gap-6">
           {articles.length === 0 ? (
             <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
-              <p className="text-slate-600">記事が見つかりませんでした。microCMS の設定を確認してください。</p>
+              <p className="text-slate-600">
+                記事が見つかりませんでした。microCMS の設定を確認してください。
+              </p>
             </div>
           ) : (
             articles.map((article: MicroCmsArticle) => (
@@ -45,18 +47,24 @@ export default async function Home() {
                     >
                       {article.title}
                     </Link>
+
                     {article.publishedAt ? (
                       <p className="mt-2 text-sm text-slate-500">
-                        公開日: {new Date(article.publishedAt).toLocaleDateString("ja-JP")}
+                        公開日:{" "}
+                        {new Date(article.publishedAt).toLocaleDateString(
+                          "ja-JP"
+                        )}
                       </p>
                     ) : null}
                   </div>
+
                   <p className="leading-7 text-slate-700">
-                    {article.body ? article.body.slice(0, 180) + (article.body.length > 180 ? "…" : "") : "本文はありません。"}
+                    記事の詳細は「記事を読む」からご覧ください。
                   </p>
+
                   <div>
                     <Link
-                      href={`/articles/${article.id}`}
+                      href={`/blogs/${article.id}`}
                       className="inline-flex rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
                     >
                       記事を読む
@@ -70,10 +78,17 @@ export default async function Home() {
 
         {errorMessage ? (
           <section className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
-            <h2 className="text-2xl font-semibold text-slate-950">サーバーエラー</h2>
-            <p className="mt-4 text-slate-600">{errorMessage}</p>
+            <h2 className="text-2xl font-semibold text-slate-950">
+              サーバーエラー
+            </h2>
+
+            <p className="mt-4 whitespace-pre-wrap text-slate-600">
+              {errorMessage}
+            </p>
+
             <p className="mt-4 text-slate-500">
-              環境変数 <code>MICROCMS_SERVICE_ID</code> または <code>MICROCMS_API_KEY</code> が設定されているか、デプロイ設定を確認してください。
+              環境変数 <code>MICROCMS_SERVICE_ID</code> または{" "}
+              <code>MICROCMS_API_KEY</code> が設定されているか、デプロイ設定を確認してください。
             </p>
           </section>
         ) : null}

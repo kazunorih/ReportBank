@@ -1,7 +1,7 @@
 export type MicroCmsArticle = {
   id: string;
   title: string;
-  body?: string;
+  content?: string;
   publishedAt?: string;
 };
 
@@ -28,7 +28,7 @@ export async function getArticles(): Promise<MicroCmsArticle[]> {
   const { serviceId, headers } = getApiHeaders();
 
   const response = await fetch(
-    `https://${serviceId}.microcms.io/api/v1/articles?limit=50`,
+    `https://${serviceId}.microcms.io/api/v1/blogs?limit=50`,
     {
       headers,
       next: {
@@ -39,20 +39,24 @@ export async function getArticles(): Promise<MicroCmsArticle[]> {
 
   if (!response.ok) {
     const text = await response.text();
+
     throw new Error(
       `microCMS API の取得に失敗しました: ${response.status} ${response.statusText}\n${text}`
     );
   }
 
   const json = await response.json();
+
   return Array.isArray(json.contents) ? json.contents : [];
 }
 
-export async function getArticle(id: string): Promise<MicroCmsArticle | null> {
+export async function getArticle(
+  id: string
+): Promise<MicroCmsArticle | null> {
   const { serviceId, headers } = getApiHeaders();
 
   const response = await fetch(
-    `https://${serviceId}.microcms.io/api/v1/articles/${id}`,
+    `https://${serviceId}.microcms.io/api/v1/blogs/${id}`,
     {
       headers,
       next: {
@@ -67,6 +71,7 @@ export async function getArticle(id: string): Promise<MicroCmsArticle | null> {
 
   if (!response.ok) {
     const text = await response.text();
+
     throw new Error(
       `microCMS API の取得に失敗しました: ${response.status} ${response.statusText}\n${text}`
     );
