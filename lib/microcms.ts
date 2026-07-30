@@ -1,81 +1,80 @@
+import "server-only";
+
+import {
+  createClient,
+  type MicroCMSContentId,
+  type MicroCMSDate,
+  type MicroCMSQueries,
+} from "microcms-js-sdk";
+
+const serviceDomain = process.env.MICROCMS_SERVICE_ID?.trim();
+const apiKey = process.env.MICROCMS_API_KEY?.trim();
+
+/**
+ * microCMS管理画面に表示されている
+ * 「APIのエンドポイント」と一致させてください。
+ *
+ * APIエンドポイントが blogs の場合は、
+ * "articles" を "blogs" に変更します。
+ */
+const ARTICLE_ENDPOINT = "articles";
+
 export type MicroCmsArticle = {
-  id: string;
   title: string;
   content?: string;
-  publishedAt?: string;
-};
+  description?: string;
+} & MicroCMSContentId &
+  MicroCMSDate;
 
-function getApiHeaders() {
-  const serviceId = process.env.MICROCMS_SERVICE_ID;
-  const apiKey = process.env.MICROCMS_API_KEY;
-
-  if (!serviceId || !apiKey) {
+function getMicroCmsClient() {
+  if (!serviceDomain) {
     throw new Error(
-      "microCMS を利用するために MICROCMS_SERVICE_ID と MICROCMS_API_KEY を設定してください"
+      "MICROCMS_SERVICE_IDが設定されていません。環境変数を確認してください。",
     );
   }
 
-  return {
-    serviceId,
-    headers: {
-      "X-API-KEY": apiKey,
-      "Content-Type": "application/json",
-    },
-  };
+  if (!apiKey) {
+    throw new Error(
+      "MICROCMS_API_KEYが設定されていません。環境変数を確認してください。",
+    );
+  }
+
+  return createClient({
+    serviceDomain,
+    apiKey,
+  });
 }
 
-export async function getArticles(): Promise<MicroCmsArticle[]> {
-  const { serviceId, headers } = getApiHeaders();
+export async function getArticles(
+  queries?: MicroCMSQueries,
+): Promise<MicroCmsArticle[]> {
+  const client = getMicroCmsClient();
 
-  const response = await fetch(
-    `https://${serviceId}.microcms.io/api/v1/blogs?limit=50`,
-    {
-      headers,
-      next: {
-        revalidate: 60,
-      },
-    }
-  );
+  const response = await client.getList<MicroCmsArticle>({
+    endpoint: ARTICLE_ENDPOINT,
+    queries: {
+      limit: 100,
+      orders: "-publishedAt",
+      ...queries,
+    },
+  });
 
-  if (!response.ok) {
-    const text = await response.text();
-
-    throw new Error(
-      `microCMS API の取得に失敗しました: ${response.status} ${response.statusText}\n${text}`
-    );
-  }
-
-  const json = await response.json();
-
-  return Array.isArray(json.contents) ? json.contents : [];
+  return response.contents;
 }
 
 export async function getArticle(
-  id: string
-): Promise<MicroCmsArticle | null> {
-  const { serviceId, headers } = getApiHeaders();
-
-  const response = await fetch(
-    `https://${serviceId}.microcms.io/api/v1/blogs/${id}`,
-    {
-      headers,
-      next: {
-        revalidate: 60,
-      },
-    }
-  );
-
-  if (response.status === 404) {
-    return null;
+  contentId: string,
+  queries?: MicroCMSQueries,
+): Promise<MicroCmsArticle> {
+  if (!contentId) {
+    throw new Error("記事IDが指定されていません。");
   }
 
-  if (!response.ok) {
-    const text = await response.text();
+  const client = getMicroCmsClient();
 
-    throw new Error(
-      `microCMS API の取得に失敗しました: ${response.status} ${response.statusText}\n${text}`
-    );
-  }
-
-  return response.json();
+  return client.getListDetail<MicroCmsArticle>({
+    endpoint: ARTICLE_ENDPOINT,
+    contentId,
+    queries,
+  });
 }
