@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "microCMS Articles",
-  description: "microCMS の記事を表示する Next.js サイト",
+  title: "ReportBank",
+  description: "仕事・産業・企業に関する記事を掲載するメディア",
 };
+
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export default function RootLayout({
   children,
@@ -27,7 +30,11 @@ export default function RootLayout({
       lang="ja"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-slate-50 font-sans text-slate-900">{children}</body>
+      <body className="min-h-full bg-slate-50 font-sans text-slate-900">
+        {children}
+      </body>
+
+      {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
     </html>
   );
 }
