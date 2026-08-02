@@ -58,9 +58,7 @@ export default async function Home() {
                     ) : null}
                   </div>
 
-                  <p className="leading-7 text-slate-700">
-                    記事の詳細は「記事を読む」からご覧ください。
-                  </p>
+
 
                   <div>
                     <Link
