@@ -17,13 +17,11 @@ export default async function Home() {
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-12">
         <section>
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-950">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-950">
             レポートバンク　記事一覧
           </h1>
 
-          <p className="mt-4 max-w-2xl leading-7 text-slate-600">
-            ※初期テスト版です。サイトデザインはアップデート予定です。
-          </p>
+          
         </section>
 
         <section className="grid gap-6">
