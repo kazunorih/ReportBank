@@ -18,10 +18,10 @@ export default async function Home() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-12">
         <section>
           <h1 className="text-3xl font-semibold tracking-tight text-slate-950">
-            レポートバンク　記事一覧
+            レポートバンク
+            <br className="md:hidden" />
+            記事一覧
           </h1>
-
-          
         </section>
 
         <section className="grid gap-6">
