@@ -16,12 +16,26 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-12">
+        <nav aria-label="パンくずリスト" className="text-sm text-slate-500">
+          <ol>
+            <li aria-current="page">ホーム</li>
+          </ol>
+        </nav>
+
         <section>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-950">
-            レポートバンク
-            <br className="md:hidden" />
-            記事一覧
-          </h1>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <h1 className="text-3xl font-semibold tracking-tight text-slate-950">
+              レポートバンク
+              <br className="md:hidden" />
+              記事一覧
+            </h1>
+            <Link
+              href="/site-info"
+              className="text-sm font-semibold text-sky-700 transition hover:text-sky-900 hover:underline"
+            >
+              サイト情報を見る →
+            </Link>
+          </div>
         </section>
 
         <section className="grid gap-6">
