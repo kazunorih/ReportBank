@@ -50,9 +50,6 @@ export default async function SiteInfoPage() {
           <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">
             サイト情報
           </h1>
-          <p className="mt-3 text-slate-600">
-            Google Analytics 4で計測した日別のページビュー（PV）です。
-          </p>
         </header>
 
         <section className="rounded-3xl bg-sky-700 p-6 text-white shadow-sm sm:p-8">
@@ -63,15 +60,22 @@ export default async function SiteInfoPage() {
                 広告記事の新規申し込み、申込記事の掲載状況・支払状況の確認、
                 掲載解除申請を行えます。
               </p>
+              <p className="mt-3 font-semibold text-white">
+                準備中です。まだ申し込み出来ません
+              </p>
             </div>
-            <Link
-              href="/advertise"
-              className="inline-flex shrink-0 items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-sky-700 transition hover:bg-sky-50"
+            <span
+              aria-disabled="true"
+              className="inline-flex shrink-0 cursor-not-allowed items-center justify-center rounded-full bg-sky-200 px-6 py-3 font-semibold text-sky-700 opacity-80"
             >
-              広告掲載申し込み・管理へ
-            </Link>
+              現在準備中
+            </span>
           </div>
         </section>
+
+        <p className="text-slate-600">
+          Google Analytics 4で計測した日別のページビュー（PV）です。
+        </p>
 
         {errorMessage ? (
           <section
