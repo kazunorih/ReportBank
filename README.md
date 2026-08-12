@@ -54,3 +54,30 @@ npm run dev
 - `.env.example` - 必要な環境変数の例
 - `.github/workflows/amplify-deploy.yml` - GitHub Actions デプロイ設定
 - `amplify.yml` - Amplify ビルド設定
+
+## 広告主機能
+
+- Amazon Cognito: 広告主の登録・メール確認・ログイン
+- DynamoDB: 原稿、契約、支払い状態、Webhook処理履歴
+- Stripe Checkout: 月額継続課金（カード番号はReportBankで保持しません）
+- SQS FIFO + Lambda: Stripe Webhookの非同期・重複排除処理
+- microCMS `articles`: 初回決済成功後に下書きを作成
+
+料金は先着5契約が月額5,000円（税込）、以降は月額50,000円（税込）です。Stripeには同一商品の月額Priceを2つ作成し、`.env.example` のPrice IDへ設定してください。
+
+AWSリソースの雛形は `infra/template.yaml` にあります。東京リージョンは `ap-northeast-1` を使用します。Workerは次のコマンドでバンドルします。
+
+```bash
+npm run build:worker
+```
+
+Stripe Webhook URLは `https://<本番ドメイン>/api/stripe/webhook` です。最低限、次のイベントを送信してください。
+
+- `checkout.session.completed`
+- `checkout.session.expired`
+- `invoice.paid`
+- `invoice.payment_failed`
+- `customer.subscription.updated`
+- `customer.subscription.deleted`
+
+Amplify SSR Compute Roleには、広告DynamoDBテーブルへのアクセスとStripeイベントSQSへの `sqs:SendMessage` のみを付与してください。秘密鍵とAPIキーはリポジトリへコミットしないでください。

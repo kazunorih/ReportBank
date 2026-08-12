@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function CheckoutSuccessPage() { return <main className="min-h-screen bg-slate-50 px-6 py-12"><section className="mx-auto max-w-xl rounded-3xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-200"><h1 className="text-3xl font-semibold">お申し込みを受け付けました</h1><p className="mt-4 text-slate-600">支払い結果はStripe Webhookで確認します。反映まで少し時間がかかる場合があります。画面を閉じても処理は継続します。</p><Link href="/advertiser" className="mt-8 inline-flex rounded-full bg-sky-700 px-6 py-3 font-semibold text-white">マイページで確認</Link></section></main>; }
