@@ -29,14 +29,12 @@ export default async function Home() {
               <br className="md:hidden" />
               記事一覧
             </h1>
-            <div className="flex flex-wrap gap-4 text-sm font-semibold text-sky-700">
-              <Link href="/advertise" className="transition hover:text-sky-900 hover:underline">
-                広告掲載のお申し込み →
-              </Link>
-              <Link href="/site-info" className="transition hover:text-sky-900 hover:underline">
-                サイト情報を見る →
-              </Link>
-            </div>
+            <Link
+              href="/site-info"
+              className="text-sm font-semibold text-sky-700 transition hover:text-sky-900 hover:underline"
+            >
+              サイト情報を見る →
+            </Link>
           </div>
         </section>
 

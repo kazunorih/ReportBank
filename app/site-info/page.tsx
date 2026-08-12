@@ -55,6 +55,24 @@ export default async function SiteInfoPage() {
           </p>
         </header>
 
+        <section className="rounded-3xl bg-sky-700 p-6 text-white shadow-sm sm:p-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold">広告掲載申し込み・管理</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-sky-100">
+                広告記事の新規申し込み、申込記事の掲載状況・支払状況の確認、
+                掲載解除申請を行えます。
+              </p>
+            </div>
+            <Link
+              href="/advertise"
+              className="inline-flex shrink-0 items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-sky-700 transition hover:bg-sky-50"
+            >
+              広告掲載申し込み・管理へ
+            </Link>
+          </div>
+        </section>
+
         {errorMessage ? (
           <section
             className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-rose-200"
