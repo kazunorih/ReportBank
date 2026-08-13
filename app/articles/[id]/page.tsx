@@ -51,7 +51,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
         {article.content ? (
           <div
-            className="prose prose-slate max-w-none"
+            className="article-content"
             dangerouslySetInnerHTML={{
               __html: article.content,
             }}

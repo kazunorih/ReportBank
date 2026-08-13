@@ -24,3 +24,73 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* microCMS rich editor content */
+.article-content {
+  color: #334155;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.article-content > * + * {
+  margin-top: 1.25rem;
+}
+
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  color: #0f172a;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.article-content h2 {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.article-content h3 {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+}
+
+.article-content a {
+  color: #0369a1;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.article-content a:hover {
+  color: #0c4a6e;
+}
+
+.article-content ul,
+.article-content ol {
+  padding-left: 1.5rem;
+}
+
+.article-content ul {
+  list-style: disc;
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content blockquote {
+  border-left: 4px solid #cbd5e1;
+  padding-left: 1rem;
+  color: #475569;
+}
+
+.article-content img,
+.article-content iframe {
+  max-width: 100%;
+}
+
+.article-content img {
+  height: auto;
+  border-radius: 0.75rem;
+}
