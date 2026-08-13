@@ -16,7 +16,7 @@ export type CurrentUser = {
 };
 
 function cognitoConfig() {
-  const region = process.env.AWS_REGION?.trim() || "ap-northeast-1";
+  const region = process.env.COGNITO_AWS_REGION?.trim() || "ap-northeast-1";
   const userPoolId = process.env.COGNITO_USER_POOL_ID?.trim();
   const clientId = process.env.NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID?.trim();
   if (!userPoolId || !clientId) throw new Error("Cognitoの環境変数が設定されていません。");
