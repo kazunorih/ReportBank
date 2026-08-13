@@ -59,7 +59,7 @@ export default async function SiteInfoPage() {
               <p className="mt-2 max-w-2xl text-sm leading-6 text-sky-100">
                 広告記事の新規申し込み、申込記事の掲載状況・支払状況の確認、掲載解除申請を行えます。
               </p>
-              <p className="mt-3 font-semibold text-white">サービスを開始しました。以下から申し込み・管理ページへ進んでください。</p>
+              <p className="mt-3 font-semibold text-white">ただいま準備中です。完了次第当サイトでご案内いたします。</p>
             </div>
             <div className="flex gap-3">
               <Link
