@@ -74,7 +74,7 @@ export default async function Home() {
 
                   <div>
                     <Link
-                      href={`/blogs/${article.id}`}
+                      href={`/articles/${article.id}`}
                       className="inline-flex rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
                     >
                       記事を読む

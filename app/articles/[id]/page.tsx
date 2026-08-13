@@ -6,13 +6,13 @@ import { getArticle, type MicroCmsArticle } from "@/lib/microcms";
 export const dynamic = "force-dynamic";
 
 type ArticlePageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const id = String(params.id);
+  const { id } = await params;
 
   let article: MicroCmsArticle | null = null;
 
