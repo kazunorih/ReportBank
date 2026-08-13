@@ -57,19 +57,24 @@ export default async function SiteInfoPage() {
             <div>
               <h2 className="text-2xl font-semibold">広告掲載申し込み・管理</h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-sky-100">
-                広告記事の新規申し込み、申込記事の掲載状況・支払状況の確認、
-                掲載解除申請を行えます。
+                広告記事の新規申し込み、申込記事の掲載状況・支払状況の確認、掲載解除申請を行えます。
               </p>
-              <p className="mt-3 font-semibold text-white">
-                準備中です。まだ申し込み出来ません
-              </p>
+              <p className="mt-3 font-semibold text-white">サービスを開始しました。以下から申し込み・管理ページへ進んでください。</p>
             </div>
-            <span
-              aria-disabled="true"
-              className="inline-flex shrink-0 cursor-not-allowed items-center justify-center rounded-full bg-sky-200 px-6 py-3 font-semibold text-sky-700 opacity-80"
-            >
-              現在準備中
-            </span>
+            <div className="flex gap-3">
+              <Link
+                href="/advertiser"
+                className="inline-flex items-center rounded-full bg-white px-6 py-3 font-semibold text-sky-700 hover:bg-sky-50"
+              >
+                管理ページへ
+              </Link>
+              <Link
+                href="/advertiser/ads/new"
+                className="inline-flex items-center rounded-full bg-sky-200 px-6 py-3 font-semibold text-sky-700"
+              >
+                広告を申し込む
+              </Link>
+            </div>
           </div>
         </section>
 
