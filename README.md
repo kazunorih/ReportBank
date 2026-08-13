@@ -42,7 +42,7 @@ npm run dev
 2. GitHub Secrets に以下を追加します。
    - `AWS_ACCESS_KEY_ID`
    - `AWS_SECRET_ACCESS_KEY`
-   - `COGNITO_AWS_REGION`
+   - `AWS_REGION`
    - `AMPLIFY_APP_ID`
    - `AMPLIFY_BRANCH_NAME`
 3. GitHub の `main` ブランチにプッシュすると、`Deploy to AWS Amplify` ワークフローが起動します。
