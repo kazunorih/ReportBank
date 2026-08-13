@@ -1,29 +1,30 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getArticle } from "@/lib/microcms";
+import { getArticle, type MicroCmsArticle } from "@/lib/microcms";
 
 export const dynamic = "force-dynamic";
 
 type ArticlePageProps = {
-  params: Promise<{
+  params: {
     id: string;
-  }>;
+  };
 };
 
-export default async function ArticlePage({
-  params,
-}: ArticlePageProps) {
-  const { id } = await params;
+export default async function ArticlePage({ params }: ArticlePageProps) {
+  const id = String(params.id);
 
-  let article;
+  let article: MicroCmsArticle | null = null;
 
   try {
     article = await getArticle(id);
   } catch (error) {
     console.error(`記事ID「${id}」の取得に失敗しました。`, error);
+    // notFound will render Next.js 404
     notFound();
   }
+
+  if (!article) notFound();
 
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-12 text-slate-900">
