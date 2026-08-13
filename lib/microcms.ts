@@ -27,6 +27,16 @@ export type MicroCmsArticle = {
   MicroCMSDate;
 
 function getMicroCmsClient() {
+  // Log presence of env vars (do NOT log their values) to help debugging in CI/runtime logs
+  try {
+    // eslint-disable-next-line no-console
+    console.error("microCMS env presence: MICROCMS_SERVICE_ID=", Boolean(process.env.MICROCMS_SERVICE_ID));
+    // eslint-disable-next-line no-console
+    console.error("microCMS env presence: MICROCMS_API_KEY=", Boolean(process.env.MICROCMS_API_KEY));
+  } catch (e) {
+    // ignore logging errors
+  }
+
   if (!serviceDomain) {
     throw new Error(
       "MICROCMS_SERVICE_IDが設定されていません。環境変数を確認してください。",
