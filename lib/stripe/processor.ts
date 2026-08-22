@@ -53,9 +53,27 @@ export async function processStripeEvent(event: Stripe.Event) {
     }
     if (event.type === "customer.subscription.updated") {
       const subscription = event.data.object; const metadata = subscription.metadata as Metadata;
-      if (metadata.advertiserId && metadata.adId && subscription.cancel_at_period_end) {
+      if (metadata.advertiserId && metadata.adId) {
+        const ad = await getAd(metadata.advertiserId, metadata.adId);
         const periodEnd = subscription.items.data[0]?.current_period_end;
-        await updateAdStatus(metadata.advertiserId, metadata.adId, "cancellation_scheduled", "cancellation_scheduled", { cancelAtPeriodEnd: true, currentPeriodEnd: periodEnd ? new Date(periodEnd * 1000).toISOString() : undefined });
+        if (subscription.cancel_at_period_end) {
+          await updateAdStatus(metadata.advertiserId, metadata.adId, "cancellation_scheduled", "cancellation_scheduled", {
+            cancelAtPeriodEnd: true,
+            cancellationRequestedAt: new Date().toISOString(),
+            currentPeriodEnd: periodEnd ? new Date(periodEnd * 1000).toISOString() : undefined,
+          });
+        } else if (ad?.status === "cancellation_scheduled") {
+          await updateAdStatus(
+            metadata.advertiserId,
+            metadata.adId,
+            ad.publishedAt ? "published" : "under_review",
+            "paid",
+            {
+              cancelAtPeriodEnd: false,
+              currentPeriodEnd: periodEnd ? new Date(periodEnd * 1000).toISOString() : undefined,
+            },
+          );
+        }
       }
     }
     if (event.type === "customer.subscription.deleted") {

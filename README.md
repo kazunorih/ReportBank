@@ -60,6 +60,7 @@ npm run dev
 - Amazon Cognito: 広告主の登録・メール確認・ログイン
 - DynamoDB: 原稿、契約、支払い状態、Webhook処理履歴
 - Stripe Checkout: 月額継続課金（カード番号はReportBankで保持しません）
+- Stripe Customer Portal: 広告記事ごとの契約を期間終了時に解約
 - SQS FIFO + Lambda: Stripe Webhookの非同期・重複排除処理
 - microCMS `articles`: 初回決済成功後に下書きを作成
 
@@ -79,5 +80,7 @@ Stripe Webhook URLは `https://<本番ドメイン>/api/stripe/webhook` です�
 - `invoice.payment_failed`
 - `customer.subscription.updated`
 - `customer.subscription.deleted`
+
+Stripe Customer Portalでは、サブスクリプションのキャンセルを有効にし、キャンセル時期を「請求期間の終了時」に設定してください。ReportBankは広告記事ごとに1つのStripe Subscriptionを作成し、DynamoDBに広告IDとSubscription IDの対応を保存します。
 
 Amplify SSR Compute Roleには、広告DynamoDBテーブルへのアクセスとStripeイベントSQSへの `sqs:SendMessage` のみを付与してください。秘密鍵とAPIキーはリポジトリへコミットしないでください。

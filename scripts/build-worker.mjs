@@ -6,7 +6,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 
 await build({
   absWorkingDir: projectRoot,
-  entryPoints: ["workers/stripe-webhook/index.ts"],
+  entryPoints: [path.join(projectRoot, "workers/stripe-webhook/index.ts")],
   outfile: path.join(projectRoot, "dist/stripe-webhook-worker/index.js"),
   bundle: true,
   platform: "node",

@@ -52,26 +52,67 @@ export default async function SiteInfoPage() {
           </h1>
         </header>
 
-        <section className="rounded-3xl bg-sky-700 p-6 text-white shadow-sm sm:p-8">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <section
+          aria-labelledby="advertising-heading"
+          className="overflow-hidden rounded-3xl bg-sky-700 text-white shadow-sm"
+        >
+          <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
-              <h2 className="text-2xl font-semibold">広告掲載申し込み・管理</h2>
-              
-              <p className="mt-3 font-semibold text-white">ただいま準備中です。完了次第当サイトでご案内いたします。</p>
+              <p className="text-sm font-semibold tracking-wide text-sky-100">
+                ADVERTISING
+              </p>
+              <h2 id="advertising-heading" className="mt-2 text-2xl font-semibold">
+                ReportBankに広告記事を掲載しませんか
+              </h2>
+              <p className="mt-4 inline-flex rounded-full bg-amber-300 px-4 py-2 text-sm font-semibold text-amber-950">
+                現在、広告機能は準備中です
+              </p>
+              <p className="mt-4 max-w-2xl leading-7 text-sky-50">
+                3,000字以内の広告記事をお申し込みいただけます。カード情報は
+                Stripeが安全に取り扱い、ReportBankには保存されません。
+              </p>
+
+              <ol className="mt-6 grid gap-2 text-sm text-sky-50 sm:grid-cols-3">
+                <li className="rounded-2xl bg-white/10 p-3">1. アカウント登録</li>
+                <li className="rounded-2xl bg-white/10 p-3">2. 原稿を入力</li>
+                <li className="rounded-2xl bg-white/10 p-3">3. Stripeで決済</li>
+              </ol>
             </div>
-            <div className="flex gap-3">
-              <Link
-                href="/advertiser"
-                className="inline-flex items-center rounded-full bg-white px-6 py-3 font-semibold text-sky-700 hover:bg-sky-50"
-              >
-                管理ページへ
-              </Link>
-              <Link
-                href="/advertiser/ads/new"
-                className="inline-flex items-center rounded-full bg-sky-200 px-6 py-3 font-semibold text-sky-700"
-              >
-                広告を申し込む
-              </Link>
+
+            <div className="rounded-2xl bg-white p-6 text-slate-900">
+              <p className="text-sm font-semibold text-sky-700">先着5件限定</p>
+              <p className="mt-2 text-3xl font-semibold">
+                5,000円
+                <span className="text-base font-normal text-slate-600">
+                  ／月（税込）
+                </span>
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                先着枠終了後は月額50,000円（税込）です。
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                <Link
+                  href="/auth/register"
+                  className="inline-flex justify-center rounded-full bg-sky-700 px-6 py-3 font-semibold text-white transition hover:bg-sky-800"
+                >
+                  準備中の申込画面を確認する
+                </Link>
+                <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+                  <Link
+                    href="/auth/login"
+                    className="font-semibold text-sky-700 hover:underline"
+                  >
+                    登録済みの方はこちら
+                  </Link>
+                  <Link
+                    href="/advertise"
+                    className="text-slate-600 hover:text-sky-700 hover:underline"
+                  >
+                    掲載条件を詳しく見る
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>

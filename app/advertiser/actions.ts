@@ -1,7 +1,6 @@
 "use server";
 
 import { randomUUID } from "node:crypto";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { adInputSchema, sanitizeAdBody } from "@/lib/ads/validation";
@@ -53,14 +52,48 @@ export async function startCheckoutAction(formData: FormData) {
   redirect(session.url);
 }
 
-export async function requestCancellationAction(formData: FormData) {
+export async function openCancellationPortalAction(formData: FormData) {
   const user = await requireUser();
   const adId = String(formData.get("adId") ?? "");
   const ad = await getAd(user.id, adId);
-  if (!ad?.stripeSubscriptionId || !["under_review", "published", "payment_failed"].includes(ad.status)) throw new Error("解約対象の契約が見つかりません。");
-  const subscription = await getStripe().subscriptions.update(ad.stripeSubscriptionId, { cancel_at_period_end: true }, { idempotencyKey: `cancel-${adId}` });
-  const periodEnd = subscription.items.data[0]?.current_period_end;
-  await updateAdStatus(user.id, adId, "cancellation_scheduled", "cancellation_scheduled", { cancelAtPeriodEnd: true, cancellationRequestedAt: new Date().toISOString(), currentPeriodEnd: periodEnd ? new Date(periodEnd * 1000).toISOString() : ad.currentPeriodEnd });
-  revalidatePath("/advertiser");
-  revalidatePath(`/advertiser/ads/${adId}`);
+  if (
+    !ad?.stripeCustomerId ||
+    !ad.stripeSubscriptionId ||
+    !["under_review", "published", "payment_failed"].includes(ad.status)
+  ) {
+    throw new Error("解約対象の契約が見つかりません。");
+  }
+
+  // URLのadIdだけでは操作せず、Stripe上でもこの広告に紐づく契約か検証する。
+  const subscription = await getStripe().subscriptions.retrieve(ad.stripeSubscriptionId);
+  const customerId =
+    typeof subscription.customer === "string"
+      ? subscription.customer
+      : subscription.customer.id;
+  if (
+    customerId !== ad.stripeCustomerId ||
+    subscription.metadata.advertiserId !== user.id ||
+    subscription.metadata.adId !== ad.adId
+  ) {
+    throw new Error("契約情報を確認できませんでした。");
+  }
+
+  const appUrl =
+    process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ||
+    "http://localhost:3000";
+  const returnUrl = `${appUrl}/advertiser/ads/${ad.adId}`;
+  const portal = await getStripe().billingPortal.sessions.create({
+    customer: ad.stripeCustomerId,
+    return_url: returnUrl,
+    flow_data: {
+      type: "subscription_cancel",
+      subscription_cancel: { subscription: ad.stripeSubscriptionId },
+      after_completion: {
+        type: "redirect",
+        redirect: { return_url: returnUrl },
+      },
+    },
+  });
+
+  redirect(portal.url);
 }
