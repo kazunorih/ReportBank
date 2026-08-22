@@ -24,7 +24,7 @@ export default async function Home() {
 
         <section>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <h1 className="text-3xl font-semibold tracking-tight text-slate-950">
+            <h1 className="text-2xl font-semibold tracking-tight text-slate-950">
               レポートバンク
               <br className="md:hidden" />
               記事一覧
@@ -55,7 +55,7 @@ export default async function Home() {
                   <div>
                     <Link
                       href={`/articles/${article.id}`}
-                      className="text-2xl font-semibold text-slate-950 hover:text-sky-700"
+                      className="text-xl font-semibold text-slate-950 hover:text-sky-700"
                     >
                       {article.title}
                     </Link>
