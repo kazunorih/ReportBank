@@ -62,7 +62,7 @@ export default async function SiteInfoPage() {
                 ADVERTISING
               </p>
               <h2 id="advertising-heading" className="mt-2 text-2xl font-semibold">
-                ReportBankに広告記事を掲載しませんか
+                当サイトの記事の一つとして広告記事を掲載することが出来ます
               </h2>
               <p className="mt-4 inline-flex rounded-full bg-amber-300 px-4 py-2 text-sm font-semibold text-amber-950">
                 現在、広告機能は準備中です
@@ -80,7 +80,7 @@ export default async function SiteInfoPage() {
             </div>
 
             <div className="rounded-2xl bg-white p-6 text-slate-900">
-              <p className="text-sm font-semibold text-sky-700">先着5件限定</p>
+            
               <p className="mt-2 text-3xl font-semibold">
                 5,000円
                 <span className="text-base font-normal text-slate-600">
