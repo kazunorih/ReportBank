@@ -12,7 +12,7 @@ export function cognitoErrorMessage(
     return "このメールアドレスは登録済みです。ログインするか、未確認の場合は確認コードを入力してください。";
   }
   if (error.name === "InvalidPasswordException") {
-    return "パスワードがCognitoのパスワード条件を満たしていません。文字数や必要な文字種を確認してください。";
+    return "パスワードがCognitoのパスワード条件を満たしていません。英小文字と数字を含む8文字以上で作成してください。";
   }
   if (error.name === "CodeMismatchException") {
     return "確認コードが違います。";
