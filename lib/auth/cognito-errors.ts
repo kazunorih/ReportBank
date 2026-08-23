@@ -20,6 +20,9 @@ export function cognitoErrorMessage(
   if (error.name === "ExpiredCodeException") {
     return "確認コードの有効期限が切れています。新しい確認コードを取得してください。";
   }
+  if (error.name === "UserNotConfirmedException") {
+    return "メールアドレスの確認が完了していません。確認コードを入力してください。";
+  }
   if (error.name === "LimitExceededException" || error.name === "TooManyRequestsException") {
     return "Cognitoの送信または操作回数の上限に達しました。時間を空けてもう一度お試しください。";
   }

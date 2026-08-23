@@ -33,4 +33,12 @@ describe("Cognitoエラー表示", () => {
     expect(cognitoErrorMessage(error, "login")).toContain("パスワード");
     expect(cognitoErrorMessage(error, "register")).not.toContain("パスワードが違う");
   });
+
+  it("未確認ユーザーを未登録扱いにしない", () => {
+    const error = cognitoError(
+      "UserNotConfirmedException",
+      "User is not confirmed.",
+    );
+    expect(cognitoErrorMessage(error, "login")).toContain("確認が完了していません");
+  });
 });

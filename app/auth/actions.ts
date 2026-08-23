@@ -3,6 +3,7 @@
 import {
   ConfirmSignUpCommand,
   InitiateAuthCommand,
+  ResendConfirmationCodeCommand,
   SignUpCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { cookies } from "next/headers";
@@ -36,13 +37,7 @@ function authFailure(error: unknown, operation: CognitoOperation): AuthState {
   return { error: cognitoErrorMessage(error, operation) };
 }
 
-export async function registerAction(_state: AuthState, formData: FormData): Promise<AuthState> {
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const password = String(formData.get("password") ?? "");
-  if (!email || password.length < 8) return { error: "メールアドレスと8文字以上のパスワードを入力してください。" };
-  try {
-    await cognitoClient.send(new SignUpCommand({ ClientId: clientId(), Username: email, Password: password, UserAttributes: [{ Name: "email", Value: email }] }));
-  } catch (error) { return authFailure(error, "register"); }
+async function rememberPendingEmail(email: string) {
   (await cookies()).set(PENDING_EMAIL_COOKIE, email, {
     httpOnly: true,
     sameSite: "lax",
@@ -50,6 +45,41 @@ export async function registerAction(_state: AuthState, formData: FormData): Pro
     path: "/auth",
     maxAge: 30 * 60,
   });
+}
+
+async function resendConfirmationCode(email: string) {
+  await cognitoClient.send(new ResendConfirmationCodeCommand({
+    ClientId: clientId(),
+    Username: email,
+  }));
+  await rememberPendingEmail(email);
+}
+
+export async function registerAction(_state: AuthState, formData: FormData): Promise<AuthState> {
+  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  const password = String(formData.get("password") ?? "");
+  if (!email || password.length < 8) return { error: "メールアドレスと8文字以上のパスワードを入力してください。" };
+  try {
+    await cognitoClient.send(new SignUpCommand({ ClientId: clientId(), Username: email, Password: password, UserAttributes: [{ Name: "email", Value: email }] }));
+  } catch (error) {
+    if (error instanceof Error && error.name === "UsernameExistsException") {
+      try {
+        await resendConfirmationCode(email);
+      } catch (resendError) {
+        if (
+          resendError instanceof Error &&
+          resendError.name === "InvalidParameterException" &&
+          resendError.message.toLowerCase().includes("confirmed")
+        ) {
+          return { error: "このメールアドレスは確認済みです。登録時のパスワードでログインしてください。" };
+        }
+        return authFailure(resendError, "register");
+      }
+      redirect("/auth/confirm");
+    }
+    return authFailure(error, "register");
+  }
+  await rememberPendingEmail(email);
   redirect("/auth/confirm");
 }
 
@@ -73,7 +103,17 @@ export async function loginAction(_state: AuthState, formData: FormData): Promis
     const result = await cognitoClient.send(new InitiateAuthCommand({ AuthFlow: "USER_PASSWORD_AUTH", ClientId: clientId(), AuthParameters: { USERNAME: email, PASSWORD: password } }));
     if (!result.AuthenticationResult?.IdToken) return { error: "追加の認証操作が必要です。" };
     await setAuthCookies({ idToken: result.AuthenticationResult.IdToken, accessToken: result.AuthenticationResult.AccessToken, refreshToken: result.AuthenticationResult.RefreshToken });
-  } catch (error) { return authFailure(error, "login"); }
+  } catch (error) {
+    if (error instanceof Error && error.name === "UserNotConfirmedException") {
+      try {
+        await resendConfirmationCode(email);
+      } catch (resendError) {
+        return authFailure(resendError, "login");
+      }
+      redirect("/auth/confirm");
+    }
+    return authFailure(error, "login");
+  }
   redirect("/advertiser");
 }
 
