@@ -1,4 +1,9 @@
-export type CognitoOperation = "register" | "confirm" | "login";
+export type CognitoOperation =
+  | "register"
+  | "confirm"
+  | "login"
+  | "forgot-password"
+  | "reset-password";
 
 export function cognitoErrorMessage(
   error: unknown,
@@ -12,7 +17,7 @@ export function cognitoErrorMessage(
     return "このメールアドレスは登録済みです。ログインするか、未確認の場合は確認コードを入力してください。";
   }
   if (error.name === "InvalidPasswordException") {
-    return "パスワードがCognitoのパスワード条件を満たしていません。英小文字と数字を含む8文字以上で作成してください。";
+    return "パスワード条件を満たしていません。8文字以上で、大文字・小文字・数字・記号をそれぞれ含めてください。";
   }
   if (error.name === "CodeMismatchException") {
     return "確認コードが違います。";
@@ -48,6 +53,9 @@ export function cognitoErrorMessage(
     return "Cognitoがこの操作を許可していません。ユーザープールとアプリクライアントの設定を確認してください。";
   }
   if (error.name === "InvalidParameterException") {
+    if (operation === "forgot-password" || operation === "reset-password") {
+      return "このアカウントではパスワードを再設定できません。メール確認が完了しているか確認してください。";
+    }
     return "登録情報またはCognitoの必須属性設定が正しくありません。";
   }
 

@@ -41,4 +41,13 @@ describe("Cognitoエラー表示", () => {
     );
     expect(cognitoErrorMessage(error, "login")).toContain("確認が完了していません");
   });
+
+  it("再設定時のパスワード条件を具体的に案内する", () => {
+    const error = cognitoError(
+      "InvalidPasswordException",
+      "Password did not conform with policy",
+    );
+    expect(cognitoErrorMessage(error, "reset-password")).toContain("大文字");
+    expect(cognitoErrorMessage(error, "reset-password")).toContain("記号");
+  });
 });

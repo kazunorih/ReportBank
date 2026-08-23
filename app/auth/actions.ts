@@ -1,7 +1,9 @@
 "use server";
 
 import {
+  ConfirmForgotPasswordCommand,
   ConfirmSignUpCommand,
+  ForgotPasswordCommand,
   InitiateAuthCommand,
   ResendConfirmationCodeCommand,
   SignUpCommand,
@@ -19,6 +21,7 @@ import { clearAuthCookies, setAuthCookies } from "@/lib/auth/session";
 export type AuthState = { error?: string };
 
 const PENDING_EMAIL_COOKIE = "reportbank_pending_email";
+const RESET_EMAIL_COOKIE = "reportbank_reset_email";
 
 function clientId() {
   const value = process.env.NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID?.trim();
@@ -115,6 +118,70 @@ export async function loginAction(_state: AuthState, formData: FormData): Promis
     return authFailure(error, "login");
   }
   redirect("/advertiser");
+}
+
+export async function forgotPasswordAction(
+  _state: AuthState,
+  formData: FormData,
+): Promise<AuthState> {
+  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  if (!email) return { error: "メールアドレスを入力してください。" };
+
+  try {
+    await cognitoClient.send(new ForgotPasswordCommand({
+      ClientId: clientId(),
+      Username: email,
+    }));
+  } catch (error) {
+    // ユーザーの存在を推測できる応答は避けつつ、設定・送信障害は表示する。
+    if (
+      !(error instanceof Error) ||
+      (error.name !== "UserNotFoundException" &&
+        error.name !== "NotAuthorizedException")
+    ) {
+      return authFailure(error, "forgot-password");
+    }
+  }
+
+  (await cookies()).set(RESET_EMAIL_COOKIE, email, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/auth",
+    maxAge: 30 * 60,
+  });
+  redirect("/auth/reset-password");
+}
+
+export async function resetPasswordAction(
+  _state: AuthState,
+  formData: FormData,
+): Promise<AuthState> {
+  const cookieStore = await cookies();
+  const email = cookieStore.get(RESET_EMAIL_COOKIE)?.value?.trim().toLowerCase() ?? "";
+  const code = String(formData.get("code") ?? "").trim();
+  const password = String(formData.get("password") ?? "");
+
+  if (!email) {
+    return { error: "再設定情報の有効期限が切れました。最初からやり直してください。" };
+  }
+  if (!code || password.length < 8) {
+    return { error: "確認コードと条件を満たす新しいパスワードを入力してください。" };
+  }
+
+  try {
+    await cognitoClient.send(new ConfirmForgotPasswordCommand({
+      ClientId: clientId(),
+      Username: email,
+      ConfirmationCode: code,
+      Password: password,
+    }));
+  } catch (error) {
+    return authFailure(error, "reset-password");
+  }
+
+  cookieStore.delete(RESET_EMAIL_COOKIE);
+  redirect("/auth/login?reset=1");
 }
 
 export async function logoutAction() {
