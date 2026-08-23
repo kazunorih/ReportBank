@@ -96,7 +96,7 @@ export default async function SiteInfoPage() {
                   href="/auth/register"
                   className="inline-flex justify-center rounded-full bg-sky-700 px-6 py-3 font-semibold text-white transition hover:bg-sky-800"
                 >
-                  準備中の申込画面を確認する
+                  準備中です
                 </Link>
                 <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
                   <Link
