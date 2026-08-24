@@ -82,13 +82,13 @@ export default async function SiteInfoPage() {
             <div className="rounded-2xl bg-white p-6 text-slate-900">
             
               <p className="mt-2 text-3xl font-semibold">
-                5,000円
+                （準備中です）
                 <span className="text-base font-normal text-slate-600">
                   ／月（税込）
                 </span>
               </p>
               <p className="mt-2 text-sm text-slate-600">
-                先着枠終了後は月額50,000円（税込）です。
+                
               </p>
 
               <div className="mt-6 grid gap-3">
@@ -99,12 +99,7 @@ export default async function SiteInfoPage() {
                   準備中です
                 </Link>
                 <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
-                  <Link
-                    href="/auth/login"
-                    className="font-semibold text-sky-700 hover:underline"
-                  >
-                    登録済みの方はこちら
-                  </Link>
+                 
                   <Link
                     href="/advertise"
                     className="text-slate-600 hover:text-sky-700 hover:underline"
