@@ -100,12 +100,7 @@ export default async function SiteInfoPage() {
                 </Link>
                 <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
                  
-                  <Link
-                    href="/advertise"
-                    className="text-slate-600 hover:text-sky-700 hover:underline"
-                  >
-                    掲載条件を詳しく見る
-                  </Link>
+                 
                 </div>
               </div>
             </div>

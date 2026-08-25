@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ReportBankWebsite",
-  description: "産業・企業・歴史、PEファンド投資や投資先経営支援に関する記事を掲載するメディア",
+  description: "産業や企業の歴史、金融業界からの企業支援に関するメディア",
 };
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;

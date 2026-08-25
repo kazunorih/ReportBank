@@ -52,9 +52,7 @@ export default async function Home({ searchParams }: HomeProps) {
               <br className="md:hidden" />
               記事一覧
               </h1>
-              <p className="mt-3 max-w-2xl leading-7 text-slate-600">
-                産業・企業・歴史から、事業機会を読み解くレポートを掲載しています。
-              </p>
+             
             </div>
             <Link
               href="/site-info"

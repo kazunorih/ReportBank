@@ -48,7 +48,7 @@ export default function PasswordResetForm({ action, mode }: Props) {
               className="rounded-xl border border-slate-300 px-4 py-3"
             />
             <span className="font-normal text-slate-500">
-              8文字以上で、大文字・小文字・数字・記号を含めてください。
+              8文字以上で、小文字・数字を含めてください。
             </span>
           </label>
         </>
