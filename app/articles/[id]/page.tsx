@@ -27,26 +27,27 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   if (!article) notFound();
 
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-12 text-slate-900">
-      <article className="mx-auto max-w-3xl rounded-2xl bg-white p-8 shadow-sm">
+    <main className="min-h-screen bg-[#f5f5f7] px-4 py-6 text-slate-950 sm:px-6 sm:py-12">
+      <div className="mx-auto max-w-3xl">
         <Link
           href="/"
-          className="mb-8 inline-block text-sm font-medium text-blue-700 hover:underline"
+          className="mb-4 inline-flex min-h-11 items-center gap-2 rounded-full px-2 text-sm font-semibold text-sky-700 transition hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
         >
-          ← 記事一覧へ戻る
+          <span aria-hidden="true">←</span> 記事一覧
         </Link>
 
-        <header className="mb-8 border-b border-slate-200 pb-6">
+        <article className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5 sm:p-10">
+        <header className="mb-8 border-b border-slate-200 pb-8">
           {article.category ? (
             <Link
               href={`/?category=${encodeURIComponent(article.category.id)}`}
-              className="mb-4 inline-flex rounded-full bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700 transition hover:bg-sky-100"
+              className="mb-5 inline-flex min-h-11 items-center rounded-full bg-sky-50 px-4 text-sm font-semibold text-sky-700 transition hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               {article.category.name}
             </Link>
           ) : null}
 
-          <h1 className="text-3xl font-bold leading-tight">
+          <h1 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
             {article.title}
           </h1>
 
@@ -70,7 +71,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             この記事には本文が登録されていません。
           </p>
         )}
-      </article>
+        </article>
+      </div>
     </main>
   );
 }

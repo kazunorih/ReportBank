@@ -33,88 +33,102 @@ export default async function Home({ searchParams }: HomeProps) {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-12">
+    <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
         <nav aria-label="パンくずリスト" className="text-sm text-slate-500">
           <ol>
             <li aria-current="page">ホーム</li>
           </ol>
         </nav>
 
-        <section>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <h1 className="text-2xl font-semibold tracking-tight text-slate-950">
+        <section className="border-b border-slate-200 pb-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-2 text-sm font-semibold tracking-wide text-sky-700">
+                REPORTBANK
+              </p>
+              <h1 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
               レポートバンク
               <br className="md:hidden" />
               記事一覧
-            </h1>
+              </h1>
+              <p className="mt-3 max-w-2xl leading-7 text-slate-600">
+                産業・企業・歴史から、事業機会を読み解くレポートを掲載しています。
+              </p>
+            </div>
             <Link
               href="/site-info"
-              className="text-sm font-semibold text-sky-700 transition hover:text-sky-900 hover:underline"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-sky-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
-              サイト情報を見る →
+              サイト情報
             </Link>
           </div>
         </section>
 
-        <nav aria-label="記事カテゴリ" className="flex flex-wrap gap-2">
-          <Link
-            href="/"
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-              !selectedCategory
-                ? "bg-sky-700 text-white"
-                : "bg-white text-slate-700 ring-1 ring-slate-300 hover:text-sky-700"
-            }`}
-          >
-            すべて
-          </Link>
-          {categories.map((category) => (
+        <nav aria-label="記事カテゴリ" className="overflow-x-auto pb-1">
+          <div className="flex w-max min-w-full gap-1 rounded-2xl bg-slate-200/70 p-1.5">
             <Link
-              key={category.id}
-              href={`/?category=${encodeURIComponent(category.id)}`}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                selectedCategory?.id === category.id
-                  ? "bg-sky-700 text-white"
-                  : "bg-white text-slate-700 ring-1 ring-slate-300 hover:text-sky-700"
+              href="/"
+              aria-current={!selectedCategory ? "page" : undefined}
+              className={`inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                !selectedCategory
+                  ? "bg-white text-slate-950 shadow-sm"
+                  : "text-slate-600 hover:bg-white/60 hover:text-slate-950"
               }`}
             >
-              {category.name}
+              すべて
             </Link>
-          ))}
+            {categories.map((category) => (
+              <Link
+                key={category.id}
+                href={`/?category=${encodeURIComponent(category.id)}`}
+                aria-current={selectedCategory?.id === category.id ? "page" : undefined}
+                className={`inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                  selectedCategory?.id === category.id
+                    ? "bg-white text-slate-950 shadow-sm"
+                    : "text-slate-600 hover:bg-white/60 hover:text-slate-950"
+                }`}
+              >
+                {category.name}
+              </Link>
+            ))}
+          </div>
         </nav>
 
-        <h2 className="text-xl font-semibold text-slate-950">
-          {selectedCategory
-            ? `${selectedCategory.name}の記事`
-            : "すべての記事"}
-        </h2>
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">
+            {selectedCategory ? selectedCategory.name : "すべての記事"}
+          </h2>
+          <p className="shrink-0 text-sm text-slate-500">{articles.length}件</p>
+        </div>
 
         <section className="grid gap-6">
           {articles.length === 0 ? (
-            <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
-              <p className="text-slate-600">
-                工事中です。
+            <div className="rounded-3xl bg-white p-8 text-center shadow-sm ring-1 ring-black/5">
+              <p className="font-semibold text-slate-900">準備中です</p>
+              <p className="mt-2 text-sm text-slate-500">
+                このカテゴリの記事は、公開までしばらくお待ちください。
               </p>
             </div>
           ) : (
             articles.map((article: MicroCmsArticle) => (
               <article
                 key={article.id}
-                className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200"
+                className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-8"
               >
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-5">
                   <div>
                     {article.category ? (
                       <Link
                         href={`/?category=${encodeURIComponent(article.category.id)}`}
-                        className="mb-3 inline-flex rounded-full bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700 transition hover:bg-sky-100"
+                        className="mb-3 inline-flex min-h-11 items-center rounded-full bg-sky-50 px-4 text-sm font-semibold text-sky-700 transition hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                       >
                         {article.category.name}
                       </Link>
                     ) : null}
                     <Link
                       href={`/articles/${article.id}`}
-                      className="text-xl font-semibold text-slate-950 hover:text-sky-700"
+                      className="block text-xl font-semibold leading-8 tracking-tight text-slate-950 transition hover:text-sky-700 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-600 sm:text-2xl"
                     >
                       {article.title}
                     </Link>
@@ -131,12 +145,12 @@ export default async function Home({ searchParams }: HomeProps) {
 
 
 
-                  <div>
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-4">
                     <Link
                       href={`/articles/${article.id}`}
-                      className="inline-flex rounded-full bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-700"
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full px-1 text-sm font-semibold text-sky-700 transition hover:text-sky-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                     >
-                      記事を読む
+                      記事を読む <span aria-hidden="true">→</span>
                     </Link>
                   </div>
                 </div>
