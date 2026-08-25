@@ -1,14 +1,33 @@
 import Link from "next/link";
-import { getArticles, MicroCmsArticle } from "@/lib/microcms";
+import {
+  getArticlesByCategory,
+  getCategories,
+  MicroCmsArticle,
+  MicroCmsCategory,
+} from "@/lib/microcms";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
+type HomeProps = {
+  searchParams: Promise<{ category?: string | string[] }>;
+};
+
+export default async function Home({ searchParams }: HomeProps) {
+  const query = await searchParams;
+  const requestedCategory = Array.isArray(query.category)
+    ? query.category[0]
+    : query.category;
   let articles: MicroCmsArticle[] = [];
+  let categories: MicroCmsCategory[] = [];
+  let selectedCategory: MicroCmsCategory | undefined;
   let errorMessage = "";
 
   try {
-    articles = await getArticles();
+    categories = await getCategories();
+    selectedCategory = categories.find(
+      (category) => category.id === requestedCategory,
+    );
+    articles = await getArticlesByCategory(selectedCategory?.id);
   } catch (error) {
     errorMessage = error instanceof Error ? error.message : String(error);
   }
@@ -38,6 +57,38 @@ export default async function Home() {
           </div>
         </section>
 
+        <nav aria-label="記事カテゴリ" className="flex flex-wrap gap-2">
+          <Link
+            href="/"
+            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              !selectedCategory
+                ? "bg-sky-700 text-white"
+                : "bg-white text-slate-700 ring-1 ring-slate-300 hover:text-sky-700"
+            }`}
+          >
+            すべて
+          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category.id}
+              href={`/?category=${encodeURIComponent(category.id)}`}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                selectedCategory?.id === category.id
+                  ? "bg-sky-700 text-white"
+                  : "bg-white text-slate-700 ring-1 ring-slate-300 hover:text-sky-700"
+              }`}
+            >
+              {category.name}
+            </Link>
+          ))}
+        </nav>
+
+        <h2 className="text-xl font-semibold text-slate-950">
+          {selectedCategory
+            ? `${selectedCategory.name}の記事`
+            : "すべての記事"}
+        </h2>
+
         <section className="grid gap-6">
           {articles.length === 0 ? (
             <div className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
@@ -53,6 +104,14 @@ export default async function Home() {
               >
                 <div className="flex flex-col gap-4">
                   <div>
+                    {article.category ? (
+                      <Link
+                        href={`/?category=${encodeURIComponent(article.category.id)}`}
+                        className="mb-3 inline-flex rounded-full bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700 transition hover:bg-sky-100"
+                      >
+                        {article.category.name}
+                      </Link>
+                    ) : null}
                     <Link
                       href={`/articles/${article.id}`}
                       className="text-xl font-semibold text-slate-950 hover:text-sky-700"

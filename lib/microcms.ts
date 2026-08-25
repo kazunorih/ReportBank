@@ -18,11 +18,18 @@ const apiKey = process.env.MICROCMS_API_KEY?.trim();
  * "articles" を "blogs" に変更します。
  */
 const ARTICLE_ENDPOINT = "articles";
+const CATEGORY_ENDPOINT = "categories";
+
+export type MicroCmsCategory = {
+  name: string;
+} & MicroCMSContentId &
+  MicroCMSDate;
 
 export type MicroCmsArticle = {
   title: string;
   content?: string;
   description?: string;
+  category?: MicroCmsCategory;
 } & MicroCMSContentId &
   MicroCMSDate;
 
@@ -70,6 +77,29 @@ export async function getArticles(
   });
 
   return response.contents;
+}
+
+export async function getCategories(): Promise<MicroCmsCategory[]> {
+  const client = getMicroCmsClient();
+
+  const response = await client.getList<MicroCmsCategory>({
+    endpoint: CATEGORY_ENDPOINT,
+    queries: {
+      limit: 100,
+      orders: "createdAt",
+    },
+  });
+
+  return response.contents;
+}
+
+export async function getArticlesByCategory(
+  categoryId?: string,
+): Promise<MicroCmsArticle[]> {
+  return getArticles({
+    depth: 1,
+    filters: categoryId ? `category[equals]${categoryId}` : undefined,
+  });
 }
 
 export async function getArticle(

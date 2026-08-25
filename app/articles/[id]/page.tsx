@@ -37,6 +37,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </Link>
 
         <header className="mb-8 border-b border-slate-200 pb-6">
+          {article.category ? (
+            <Link
+              href={`/?category=${encodeURIComponent(article.category.id)}`}
+              className="mb-4 inline-flex rounded-full bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700 transition hover:bg-sky-100"
+            >
+              {article.category.name}
+            </Link>
+          ) : null}
+
           <h1 className="text-3xl font-bold leading-tight">
             {article.title}
           </h1>
