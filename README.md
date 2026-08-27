@@ -64,7 +64,7 @@ npm run dev
 - SQS FIFO + Lambda: Stripe Webhookの非同期・重複排除処理
 - microCMS `articles`: 初回決済成功後に下書きを作成
 
-料金は先着5契約が月額5,000円（税込）、以降は月額50,000円（税込）です。Stripeには同一商品の月額Priceを2つ作成し、`.env.example` のPrice IDへ設定してください。
+料金は月額50,000円（税込）です。Stripeに月額Priceを作成し、`.env.example` のPrice IDへ設定してください。
 
 AWSリソースの雛形は `infra/template.yaml` にあります。東京リージョンは `ap-northeast-1` を使用します。Workerは次のコマンドでバンドルします。
 

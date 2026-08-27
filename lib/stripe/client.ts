@@ -8,9 +8,8 @@ export function getStripe() {
   return stripeClient;
 }
 
-export function stripePrice(tier: "early" | "standard") {
-  const name = tier === "early" ? "STRIPE_EARLY_PRICE_ID" : "STRIPE_STANDARD_PRICE_ID";
-  const value = process.env[name]?.trim();
-  if (!value) throw new Error(`${name}が設定されていません。`);
+export function stripePrice() {
+  const value = process.env.STRIPE_STANDARD_PRICE_ID?.trim();
+  if (!value) throw new Error("STRIPE_STANDARD_PRICE_IDが設定されていません。");
   return value;
 }

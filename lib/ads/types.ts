@@ -23,8 +23,7 @@ export type AdContract = {
   companyName: string;
   status: AdStatus;
   paymentStatus: PaymentStatus;
-  monthlyAmount: 5000 | 50000;
-  priceTier: "early" | "standard";
+  monthlyAmount: 50000;
   stripeCheckoutSessionId?: string;
   stripeCustomerId?: string;
   stripeSubscriptionId?: string;

@@ -1,9 +1,9 @@
 import type Stripe from "stripe";
-import { completeEarlyReservation, completeStripeEvent, getAd, recordStripeEvent, releaseEarlyReservation, updateAdStatus } from "@/lib/db/ads";
+import { completeStripeEvent, getAd, recordStripeEvent, updateAdStatus } from "@/lib/db/ads";
 import { changeMicroCmsStatus, upsertMicroCmsDraft } from "@/lib/microcms-ads";
 import { getStripe } from "@/lib/stripe/client";
 
-type Metadata = { advertiserId?: string; adId?: string; reservationId?: string; priceTier?: string };
+type Metadata = { advertiserId?: string; adId?: string };
 
 async function subscriptionFromInvoice(invoice: Stripe.Invoice) {
   const parent = invoice.parent as { subscription_details?: { subscription?: string | Stripe.Subscription } } | null;
@@ -27,16 +27,11 @@ async function paid(subscription: Stripe.Subscription, invoiceId?: string) {
     cancelAtPeriodEnd: subscription.cancel_at_period_end,
     lastPaidInvoiceId: invoiceId,
   });
-  if (metadata.reservationId && metadata.priceTier === "early") await completeEarlyReservation(metadata.reservationId);
 }
 
 export async function processStripeEvent(event: Stripe.Event) {
   if (!(await recordStripeEvent(event.id, event.type))) return;
   try {
-    if (event.type === "checkout.session.expired") {
-      const metadata = event.data.object.metadata as Metadata | null;
-      if (metadata?.reservationId && metadata.priceTier === "early") await releaseEarlyReservation(metadata.reservationId);
-    }
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const metadata = session.metadata as Metadata | null;
