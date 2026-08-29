@@ -36,8 +36,24 @@ export default async function Home({ searchParams }: HomeProps) {
     <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
         <nav aria-label="パンくずリスト" className="text-sm text-slate-500">
-          <ol>
-            <li aria-current="page">ホーム</li>
+          <ol className="flex items-center gap-2">
+            <li aria-current="page">
+              <Link
+                href="/"
+                className="rounded transition hover:text-sky-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+              >
+                ホーム
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <Link
+                href="/site-info"
+                className="rounded transition hover:text-sky-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+              >
+                サイト情報
+              </Link>
+            </li>
           </ol>
         </nav>
 
@@ -103,7 +119,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <section className="grid gap-6">
           {articles.length === 0 ? (
             <div className="rounded-3xl bg-white p-8 text-center shadow-sm ring-1 ring-black/5">
-              <p className="font-semibold text-slate-900">準備中です</p>
+              <p className="font-semibold text-slate-900">記事はまだありません</p>
               <p className="mt-2 text-sm text-slate-500">
                 このカテゴリの記事は、公開までしばらくお待ちください。
               </p>

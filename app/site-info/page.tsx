@@ -64,9 +64,6 @@ export default async function SiteInfoPage() {
               <h2 id="advertising-heading" className="mt-2 text-2xl font-semibold">
                 当サイトの記事の一つとして広告記事を掲載することが出来ます
               </h2>
-              <p className="mt-4 inline-flex rounded-full bg-amber-300 px-4 py-2 text-sm font-semibold text-amber-950">
-                現在、広告機能は準備中です
-              </p>
               <p className="mt-4 max-w-2xl leading-7 text-sky-50">
                 3,000字以内の広告記事をお申し込みいただけます。カード情報は
                 Stripeが安全に取り扱い、ReportBankには保存されません。
@@ -80,28 +77,17 @@ export default async function SiteInfoPage() {
             </div>
 
             <div className="rounded-2xl bg-white p-6 text-slate-900">
-            
-              <p className="mt-2 text-3xl font-semibold">
-                （準備中です）
-                <span className="text-base font-normal text-slate-600">
-                  ／月（税込）
-                </span>
+              <p className="text-xl font-semibold">広告掲載をご検討の方へ</p>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                掲載条件やお申し込みの流れは、広告掲載ページでご確認いただけます。
               </p>
-              <p className="mt-2 text-sm text-slate-600">
-                
-              </p>
-
               <div className="mt-6 grid gap-3">
                 <Link
-                  href="/auth/register"
+                  href="/advertise"
                   className="inline-flex justify-center rounded-full bg-sky-700 px-6 py-3 font-semibold text-white transition hover:bg-sky-800"
                 >
-                  準備中です
+                  広告掲載の詳細を見る
                 </Link>
-                <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
-                 
-                 
-                </div>
               </div>
             </div>
           </div>
