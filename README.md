@@ -62,6 +62,7 @@ npm run dev
 - Stripe Checkout: 月額継続課金（カード番号はReportBankで保持しません）
 - Stripe Customer Portal: 広告記事ごとの契約を期間終了時に解約
 - SQS FIFO + Lambda: Stripe Webhookの非同期・重複排除処理
+- Amazon SNS: 支払い完了後、審査待ちになった広告記事を管理者へメール通知
 - microCMS `articles`: 初回決済成功後に下書きを作成
 
 料金は月額50,000円（税込）です。Stripeに月額Priceを作成し、`.env.example` のPrice IDへ設定してください。
@@ -84,3 +85,5 @@ Stripe Webhook URLは `https://<本番ドメイン>/api/stripe/webhook` です�
 Stripe Customer Portalでは、サブスクリプションのキャンセルを有効にし、キャンセル時期を「請求期間の終了時」に設定してください。ReportBankは広告記事ごとに1つのStripe Subscriptionを作成し、DynamoDBに広告IDとSubscription IDの対応を保存します。
 
 Amplify SSR Compute Roleには、広告DynamoDBテーブルへのアクセスとStripeイベントSQSへの `sqs:SendMessage` のみを付与してください。秘密鍵とAPIキーはリポジトリへコミットしないでください。
+
+SAMデプロイ時は `AdminNotificationEmail` に管理者のメールアドレス、`AppUrl` に本番サイトのオリジン（例: `https://reportbankwebsite.com`）を指定してください。初回デプロイ後にAmazon SNSから購読確認メールが届くため、メール内のリンクで購読を承認すると審査通知が有効になります。

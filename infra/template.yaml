@@ -9,6 +9,9 @@ Parameters:
   CognitoCallbackUrl:
     Type: String
     Default: http://localhost:3000/advertiser
+  AppUrl:
+    Type: String
+    Description: Public site origin used in administrator review links
   StripeSecretKey:
     Type: String
     NoEcho: true
@@ -20,6 +23,9 @@ Parameters:
   MicroCmsManagementApiKey:
     Type: String
     NoEcho: true
+  AdminNotificationEmail:
+    Type: String
+    Description: Email address that receives new advertisement review notifications
 
 Resources:
   AdvertiserUserPool:
@@ -106,6 +112,14 @@ Resources:
         deadLetterTargetArn: !GetAtt StripeEventsDeadLetterQueue.Arn
         maxReceiveCount: 5
 
+  AdminNotificationTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: !Sub "${AppName}-admin-notifications"
+      Subscription:
+        - Protocol: email
+          Endpoint: !Ref AdminNotificationEmail
+
   StripeWebhookWorker:
     Type: AWS::Serverless::Function
     Properties:
@@ -123,11 +137,17 @@ Resources:
           MICROCMS_SERVICE_ID: !Ref MicroCmsServiceId
           MICROCMS_ADS_WRITE_API_KEY: !Ref MicroCmsAdsWriteApiKey
           MICROCMS_MANAGEMENT_API_KEY: !Ref MicroCmsManagementApiKey
+          ADMIN_NOTIFICATION_TOPIC_ARN: !Ref AdminNotificationTopic
+          NEXT_PUBLIC_APP_URL: !Ref AppUrl
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref AdsTable
         - SQSPollerPolicy:
             QueueName: !GetAtt StripeEventsQueue.QueueName
+        - Statement:
+            - Effect: Allow
+              Action: sns:Publish
+              Resource: !Ref AdminNotificationTopic
       Events:
         StripeEvents:
           Type: SQS
@@ -146,3 +166,5 @@ Outputs:
     Value: !Ref AdvertiserUserPool
   CognitoUserPoolClientId:
     Value: !Ref AdvertiserUserPoolClient
+  AdminNotificationTopicArn:
+    Value: !Ref AdminNotificationTopic

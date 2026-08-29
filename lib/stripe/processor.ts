@@ -1,6 +1,7 @@
 import type Stripe from "stripe";
 import { completeStripeEvent, getAd, recordStripeEvent, updateAdStatus } from "@/lib/db/ads";
 import { changeMicroCmsStatus, upsertMicroCmsDraft } from "@/lib/microcms-ads";
+import { notifyAdminOfReview } from "@/lib/notifications/admin";
 import { getStripe } from "@/lib/stripe/client";
 
 type Metadata = { advertiserId?: string; adId?: string };
@@ -27,6 +28,7 @@ async function paid(subscription: Stripe.Subscription, invoiceId?: string) {
     cancelAtPeriodEnd: subscription.cancel_at_period_end,
     lastPaidInvoiceId: invoiceId,
   });
+  if (ad.status !== "published") await notifyAdminOfReview(ad);
 }
 
 export async function processStripeEvent(event: Stripe.Event) {
