@@ -56,7 +56,7 @@ export default async function Home({ searchParams }: HomeProps) {
             </div>
             <Link
               href="/site-info"
-              className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-sky-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+              className="inline-flex min-h-11 w-1/3 shrink-0 self-end items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-sky-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 sm:w-auto sm:self-auto"
             >
               サイト情報
             </Link>
