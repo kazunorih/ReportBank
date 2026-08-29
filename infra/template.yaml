@@ -6,9 +6,10 @@ Parameters:
   AppName:
     Type: String
     Default: reportbank
-  CognitoCallbackUrl:
+  AdsTableName:
     Type: String
-    Default: http://localhost:3000/advertiser
+    Default: reportbank-ads
+    Description: Name of the existing DynamoDB table used for advertisements
   AppUrl:
     Type: String
     Description: Public site origin used in administrator review links
@@ -23,77 +24,11 @@ Parameters:
   MicroCmsManagementApiKey:
     Type: String
     NoEcho: true
-  AdminNotificationEmail:
+  AdminNotificationTopicArn:
     Type: String
-    Description: Email address that receives new advertisement review notifications
+    Description: ARN of the existing SNS topic that receives administrator review notifications
 
 Resources:
-  AdvertiserUserPool:
-    Type: AWS::Cognito::UserPool
-    Properties:
-      UserPoolName: !Sub "${AppName}-advertisers"
-      UsernameAttributes:
-        - email
-      AutoVerifiedAttributes:
-        - email
-      AdminCreateUserConfig:
-        AllowAdminCreateUserOnly: false
-      Policies:
-        PasswordPolicy:
-          MinimumLength: 8
-
-  AdvertiserUserPoolClient:
-    Type: AWS::Cognito::UserPoolClient
-    Properties:
-      ClientName: !Sub "${AppName}-web"
-      UserPoolId: !Ref AdvertiserUserPool
-      GenerateSecret: false
-      ExplicitAuthFlows:
-        - ALLOW_USER_PASSWORD_AUTH
-        - ALLOW_REFRESH_TOKEN_AUTH
-      PreventUserExistenceErrors: ENABLED
-
-  AdminGroup:
-    Type: AWS::Cognito::UserPoolGroup
-    Properties:
-      GroupName: admin
-      UserPoolId: !Ref AdvertiserUserPool
-  AdsTable:
-    Type: AWS::DynamoDB::Table
-    DeletionPolicy: Retain
-    UpdateReplacePolicy: Retain
-    Properties:
-      TableName: !Sub "${AppName}-ads"
-      BillingMode: PAY_PER_REQUEST
-      PointInTimeRecoverySpecification:
-        PointInTimeRecoveryEnabled: true
-      AttributeDefinitions:
-        - AttributeName: PK
-          AttributeType: S
-        - AttributeName: SK
-          AttributeType: S
-        - AttributeName: GSI1PK
-          AttributeType: S
-        - AttributeName: GSI1SK
-          AttributeType: S
-      KeySchema:
-        - AttributeName: PK
-          KeyType: HASH
-        - AttributeName: SK
-          KeyType: RANGE
-      GlobalSecondaryIndexes:
-        - IndexName: GSI1
-          KeySchema:
-            - AttributeName: GSI1PK
-              KeyType: HASH
-            - AttributeName: GSI1SK
-              KeyType: RANGE
-          Projection:
-            ProjectionType: ALL
-      TimeToLiveSpecification:
-        AttributeName: expiresAt
-        Enabled: true
-
   StripeEventsDeadLetterQueue:
     Type: AWS::SQS::Queue
     Properties:
@@ -112,14 +47,6 @@ Resources:
         deadLetterTargetArn: !GetAtt StripeEventsDeadLetterQueue.Arn
         maxReceiveCount: 5
 
-  AdminNotificationTopic:
-    Type: AWS::SNS::Topic
-    Properties:
-      TopicName: !Sub "${AppName}-admin-notifications"
-      Subscription:
-        - Protocol: email
-          Endpoint: !Ref AdminNotificationEmail
-
   StripeWebhookWorker:
     Type: AWS::Serverless::Function
     Properties:
@@ -131,23 +58,23 @@ Resources:
       MemorySize: 256
       Environment:
         Variables:
-          ADS_TABLE_NAME: !Ref AdsTable
+          ADS_TABLE_NAME: !Ref AdsTableName
           MICROCMS_ADS_ENDPOINT: articles
           STRIPE_SECRET_KEY: !Ref StripeSecretKey
           MICROCMS_SERVICE_ID: !Ref MicroCmsServiceId
           MICROCMS_ADS_WRITE_API_KEY: !Ref MicroCmsAdsWriteApiKey
           MICROCMS_MANAGEMENT_API_KEY: !Ref MicroCmsManagementApiKey
-          ADMIN_NOTIFICATION_TOPIC_ARN: !Ref AdminNotificationTopic
+          ADMIN_NOTIFICATION_TOPIC_ARN: !Ref AdminNotificationTopicArn
           NEXT_PUBLIC_APP_URL: !Ref AppUrl
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref AdsTable
+            TableName: !Ref AdsTableName
         - SQSPollerPolicy:
             QueueName: !GetAtt StripeEventsQueue.QueueName
         - Statement:
             - Effect: Allow
               Action: sns:Publish
-              Resource: !Ref AdminNotificationTopic
+              Resource: !Ref AdminNotificationTopicArn
       Events:
         StripeEvents:
           Type: SQS
@@ -159,12 +86,8 @@ Resources:
 
 Outputs:
   AdsTableName:
-    Value: !Ref AdsTable
+    Value: !Ref AdsTableName
   StripeEventsQueueUrl:
     Value: !Ref StripeEventsQueue
-  CognitoUserPoolId:
-    Value: !Ref AdvertiserUserPool
-  CognitoUserPoolClientId:
-    Value: !Ref AdvertiserUserPoolClient
   AdminNotificationTopicArn:
-    Value: !Ref AdminNotificationTopic
+    Value: !Ref AdminNotificationTopicArn

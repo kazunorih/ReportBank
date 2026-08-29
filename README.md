@@ -67,7 +67,7 @@ npm run dev
 
 料金は月額50,000円（税込）です。Stripeに月額Priceを作成し、`.env.example` のPrice IDへ設定してください。
 
-AWSリソースの雛形は `infra/template.yaml` にあります。東京リージョンは `ap-northeast-1` を使用します。Workerは次のコマンドでバンドルします。
+Stripe Webhook用のAWSリソースは `infra/template.yaml` にあります。既存のCognito、DynamoDB、SNSトピックは作成せず、`AdsTableName` で指定した既存テーブルと `AdminNotificationTopicArn` で指定した既存SNSトピックを参照しながら、SQSとLambda Workerを作成します。東京リージョンは `ap-northeast-1` を使用します。Workerは次のコマンドでバンドルします。
 
 ```bash
 npm run build:worker
@@ -86,4 +86,4 @@ Stripe Customer Portalでは、サブスクリプションのキャンセルを�
 
 Amplify SSR Compute Roleには、広告DynamoDBテーブルへのアクセスとStripeイベントSQSへの `sqs:SendMessage` のみを付与してください。秘密鍵とAPIキーはリポジトリへコミットしないでください。
 
-SAMデプロイ時は `AdminNotificationEmail` に管理者のメールアドレス、`AppUrl` に本番サイトのオリジン（例: `https://reportbankwebsite.com`）を指定してください。初回デプロイ後にAmazon SNSから購読確認メールが届くため、メール内のリンクで購読を承認すると審査通知が有効になります。
+SAMデプロイ時は `AdminNotificationTopicArn` に購読確認済みの既存SNSトピックARN、`AppUrl` に本番サイトのオリジン（例: `https://reportbankwebsite.com`）を指定してください。SAMはSNSトピックや購読を新規作成せず、Lambda Workerに既存トピックへの通知権限を付与します。
