@@ -63,7 +63,9 @@ npm run dev
 - Stripe Customer Portal: 広告記事ごとの契約を期間終了時に解約
 - SQS FIFO + Lambda: Stripe Webhookの非同期・重複排除処理
 - Amazon SNS: 支払い完了後、審査待ちになった広告記事を管理者へメール通知
-- microCMS `articles`: 初回決済成功後に下書きを作成
+- microCMS `articles`: 初回決済成功後に下書きを作成し、広告主の修正版は公開内容を維持したまま下書きとして保存
+
+`MICROCMS_ADS_WRITE_API_KEY` には、初回原稿作成用のPUT権限と修正版更新用のPATCH権限が必要です。
 
 料金は月額50,000円（税込）です。Stripeに月額Priceを作成し、`.env.example` のPrice IDへ設定してください。
 

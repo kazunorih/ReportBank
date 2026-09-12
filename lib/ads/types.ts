@@ -32,6 +32,7 @@ export type AdContract = {
   currentPeriodEnd?: string;
   cancelAtPeriodEnd?: boolean;
   cancellationRequestedAt?: string;
+  revisionSubmittedAt?: string;
   publishedAt?: string;
   endedAt?: string;
   createdAt: string;

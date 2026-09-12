@@ -1,15 +1,140 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import { PAYMENT_LABELS, STATUS_LABELS } from "@/lib/ads/types";
 import { requireUser } from "@/lib/auth/session";
 import { getAd } from "@/lib/db/ads";
-import { openCancellationPortalAction, startCheckoutAction } from "../../actions";
 
-export default async function AdPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ checkout?: string }> }) {
-  const user = await requireUser(); const { id } = await params; const ad = await getAd(user.id, id); if (!ad) notFound(); const query = await searchParams;
-  return <main className="mx-auto max-w-3xl px-6 py-12"><Link href="/advertiser" className="text-sm text-sky-700">← マイページ</Link>{query.checkout === "cancelled" ? <p className="mt-5 rounded-xl bg-amber-50 p-4 text-amber-900">決済は完了していません。原稿は保存されています。</p> : null}<section className="mt-6 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200"><h1 className="text-3xl font-semibold">{ad.title}</h1><p className="mt-2 text-slate-500">{ad.companyName}</p><dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 border-y border-slate-200 py-6"><dt className="text-slate-500">掲載状況</dt><dd>{STATUS_LABELS[ad.status]}</dd><dt className="text-slate-500">支払状況</dt><dd>{PAYMENT_LABELS[ad.paymentStatus]}</dd><dt className="text-slate-500">月額料金</dt><dd>{ad.monthlyAmount.toLocaleString("ja-JP")}円（税込）</dd>{ad.currentPeriodEnd ? <><dt className="text-slate-500">現在の期間終了</dt><dd>{new Date(ad.currentPeriodEnd).toLocaleDateString("ja-JP")}</dd></> : null}</dl><div className="mt-8 whitespace-pre-wrap leading-8">{ad.body}</div>
-  {ad.status === "draft" ? <div className="mt-8"><p className="mb-4 text-sm text-slate-600">Stripe Checkoutでカード情報を入力します。1つの広告記事につき1つの月額契約を作成します。ReportBankはカード番号を保存しません。</p><form action={startCheckoutAction}><input type="hidden" name="adId" value={ad.adId} /><button className="rounded-full bg-sky-700 px-6 py-3 font-semibold text-white">この広告記事の月額課金を申し込む</button></form></div> : null}
-  {ad.status === "published" && ad.microCmsContentId ? <div className="mt-8"><Link href={`/articles/${ad.microCmsContentId}`} className="font-semibold text-sky-700 hover:underline">公開中の記事を見る →</Link></div> : null}
-  {["under_review", "published", "payment_failed"].includes(ad.status) && ad.stripeSubscriptionId ? <form action={openCancellationPortalAction} className="mt-8 border-t border-slate-200 pt-6"><input type="hidden" name="adId" value={ad.adId} /><p className="mb-4 text-sm leading-6 text-slate-600">この広告記事の契約だけをStripe公式画面で解約できます。解約しても現在の支払期間の終了日までは掲載を継続し、次回請求は行いません。</p><button className="rounded-full border border-rose-300 px-5 py-2 font-semibold text-rose-700 hover:bg-rose-50">Stripeでこの契約を解約する</button></form> : null}
-  {ad.status === "cancellation_scheduled" ? <div className="mt-8 rounded-2xl bg-amber-50 p-5 text-sm text-amber-900"><p className="font-semibold">契約終了を予約済みです</p><p className="mt-2">{ad.currentPeriodEnd ? `${new Date(ad.currentPeriodEnd).toLocaleDateString("ja-JP")}をもって課金と掲載を終了します。` : "現在の支払期間終了時に課金と掲載を終了します。"}</p></div> : null}</section></main>;
+import { openCancellationPortalAction, startCheckoutAction } from "../../actions";
+import RevisionForm from "../../revision-form";
+
+type AdPageProps = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{
+    checkout?: string;
+    revision?: string;
+  }>;
+};
+
+export default async function AdPage({ params, searchParams }: AdPageProps) {
+  const user = await requireUser();
+  const { id } = await params;
+  const ad = await getAd(user.id, id);
+  if (!ad) notFound();
+  const query = await searchParams;
+  const canSubmitRevision =
+    ["under_review", "published"].includes(ad.status) &&
+    ad.paymentStatus === "paid" &&
+    Boolean(ad.microCmsContentId);
+
+  return (
+    <main className="mx-auto max-w-3xl px-6 py-12">
+      <Link href="/advertiser" className="text-sm text-sky-700">
+        ← マイページ
+      </Link>
+
+      {query.checkout === "cancelled" ? (
+        <p className="mt-5 rounded-xl bg-amber-50 p-4 text-amber-900">
+          決済は完了していません。原稿は保存されています。
+        </p>
+      ) : null}
+      {query.revision === "submitted" ? (
+        <p
+          className="mt-5 rounded-xl bg-emerald-50 p-4 text-emerald-900"
+          role="status"
+        >
+          修正版を提出しました。管理者の審査完了までお待ちください。
+        </p>
+      ) : null}
+
+      <section className="mt-6 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+        <h1 className="text-3xl font-semibold">{ad.title}</h1>
+        <p className="mt-2 text-slate-500">{ad.companyName}</p>
+        <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 border-y border-slate-200 py-6">
+          <dt className="text-slate-500">掲載状況</dt>
+          <dd>{STATUS_LABELS[ad.status]}</dd>
+          <dt className="text-slate-500">支払状況</dt>
+          <dd>{PAYMENT_LABELS[ad.paymentStatus]}</dd>
+          <dt className="text-slate-500">月額料金</dt>
+          <dd>{ad.monthlyAmount.toLocaleString("ja-JP")}円（税込）</dd>
+          {ad.currentPeriodEnd ? (
+            <>
+              <dt className="text-slate-500">現在の期間終了</dt>
+              <dd>{new Date(ad.currentPeriodEnd).toLocaleDateString("ja-JP")}</dd>
+            </>
+          ) : null}
+        </dl>
+        <div className="mt-8 whitespace-pre-wrap leading-8">{ad.body}</div>
+
+        {ad.status === "draft" ? (
+          <div className="mt-8">
+            <p className="mb-4 text-sm text-slate-600">
+              Stripe Checkoutでカード情報を入力します。1つの広告記事につき1つの月額契約を作成します。ReportBankはカード番号を保存しません。
+            </p>
+            <form action={startCheckoutAction}>
+              <input type="hidden" name="adId" value={ad.adId} />
+              <button className="rounded-full bg-sky-700 px-6 py-3 font-semibold text-white">
+                この広告記事の月額課金を申し込む
+              </button>
+            </form>
+          </div>
+        ) : null}
+
+        {ad.publishedAt && ad.microCmsContentId ? (
+          <div className="mt-8">
+            <Link
+              href={`/articles/${ad.microCmsContentId}`}
+              className="font-semibold text-sky-700 hover:underline"
+            >
+              公開中の記事を見る →
+            </Link>
+          </div>
+        ) : null}
+      </section>
+
+      {canSubmitRevision ? (
+        <section className="mt-8 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+          <h2 className="text-2xl font-semibold">修正版を提出</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-600">
+            修正版は管理者の審査後に反映されます。掲載中の記事は、審査が完了するまで現在の内容で公開を続けます。
+          </p>
+          <div className="mt-6">
+            <RevisionForm
+              adId={ad.adId}
+              initialCompanyName={ad.companyName}
+              initialTitle={ad.title}
+              initialBody={ad.body}
+            />
+          </div>
+        </section>
+      ) : null}
+
+      {["under_review", "published", "payment_failed"].includes(ad.status) &&
+      ad.stripeSubscriptionId ? (
+        <form
+          action={openCancellationPortalAction}
+          className="mt-8 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200"
+        >
+          <input type="hidden" name="adId" value={ad.adId} />
+          <p className="mb-4 text-sm leading-6 text-slate-600">
+            この広告記事の契約だけをStripe公式画面で解約できます。解約しても現在の支払期間の終了日までは掲載を継続し、次回請求は行いません。
+          </p>
+          <button className="rounded-full border border-rose-300 px-5 py-2 font-semibold text-rose-700 hover:bg-rose-50">
+            Stripeでこの契約を解約する
+          </button>
+        </form>
+      ) : null}
+
+      {ad.status === "cancellation_scheduled" ? (
+        <div className="mt-8 rounded-2xl bg-amber-50 p-5 text-sm text-amber-900">
+          <p className="font-semibold">契約終了を予約済みです</p>
+          <p className="mt-2">
+            {ad.currentPeriodEnd
+              ? `${new Date(ad.currentPeriodEnd).toLocaleDateString("ja-JP")}をもって課金と掲載を終了します。`
+              : "現在の支払期間終了時に課金と掲載を終了します。"}
+          </p>
+        </div>
+      ) : null}
+    </main>
+  );
 }

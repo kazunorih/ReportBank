@@ -21,6 +21,38 @@ export async function upsertMicroCmsDraft(ad: AdContract) {
   return ad.adId;
 }
 
+async function patchMicroCmsContent(ad: AdContract, asDraft: boolean) {
+  const { serviceId, writeKey, endpoint } = config();
+  const draftQuery = asDraft ? "?status=draft" : "";
+  const response = await fetch(
+    `https://${serviceId}.microcms.io/api/v1/${endpoint}/${ad.microCmsContentId ?? ad.adId}${draftQuery}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "X-MICROCMS-API-KEY": writeKey,
+      },
+      body: JSON.stringify({
+        title: ad.title,
+        content: ad.body.replace(/\n/g, "<br>"),
+      }),
+    },
+  );
+  if (!response.ok) {
+    throw new Error(
+      `microCMSコンテンツ更新に失敗しました (${response.status})`,
+    );
+  }
+}
+
+export async function updateMicroCmsDraft(ad: AdContract) {
+  await patchMicroCmsContent(ad, true);
+}
+
+export async function publishMicroCmsRevision(ad: AdContract) {
+  await patchMicroCmsContent(ad, false);
+}
+
 export async function changeMicroCmsStatus(contentId: string, status: "PUBLISH" | "DRAFT") {
   const { serviceId, managementKey, endpoint } = config();
   if (!managementKey) throw new Error("MICROCMS_MANAGEMENT_API_KEYが設定されていません。");

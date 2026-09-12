@@ -1,14 +1,18 @@
 "use server";
 
 import { randomUUID } from "node:crypto";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { adInputSchema, sanitizeAdBody } from "@/lib/ads/validation";
 import { requireUser } from "@/lib/auth/session";
-import { createDraft, getAd, updateAdStatus } from "@/lib/db/ads";
+import { createDraft, getAd, submitAdRevision, updateAdStatus } from "@/lib/db/ads";
+import { updateMicroCmsDraft } from "@/lib/microcms-ads";
 import { getStripe, stripePrice } from "@/lib/stripe/client";
 
 export type AdFormState = { error?: string };
+
+export type AdRevisionFormState = { error?: string };
 
 export async function createAdAction(_state: AdFormState, formData: FormData): Promise<AdFormState> {
   const user = await requireUser();
@@ -17,6 +21,59 @@ export async function createAdAction(_state: AdFormState, formData: FormData): P
   const adId = randomUUID();
   await createDraft({ advertiserId: user.id, adId, title: parsed.data.title, companyName: parsed.data.companyName, body: sanitizeAdBody(parsed.data.body) });
   redirect(`/advertiser/ads/${adId}`);
+}
+
+export async function submitAdRevisionAction(
+  _state: AdRevisionFormState,
+  formData: FormData,
+): Promise<AdRevisionFormState> {
+  const user = await requireUser();
+  const adId = String(formData.get("adId") ?? "");
+  const parsed = adInputSchema.safeParse({
+    title: formData.get("title"),
+    companyName: formData.get("companyName"),
+    body: formData.get("body"),
+  });
+
+  if (!parsed.success) {
+    return {
+      error: parsed.error.issues[0]?.message ?? "入力内容を確認してください。",
+    };
+  }
+
+  // 広告主IDをフォームから受け取らず、ログイン中の所有者IDで取得する。
+  const ad = await getAd(user.id, adId);
+  if (
+    !ad ||
+    !["under_review", "published"].includes(ad.status) ||
+    ad.paymentStatus !== "paid" ||
+    !ad.microCmsContentId
+  ) {
+    return { error: "修正版を提出できる広告記事が見つかりません。" };
+  }
+
+  const revision = {
+    title: parsed.data.title,
+    companyName: parsed.data.companyName,
+    body: sanitizeAdBody(parsed.data.body),
+  };
+
+  try {
+    // 公開中コンテンツは維持し、修正版をmicroCMSの下書きとして保存する。
+    await updateMicroCmsDraft({ ...ad, ...revision });
+    await submitAdRevision(user.id, ad.adId, revision);
+  } catch (error) {
+    console.error("広告記事の修正版を提出できませんでした。", error);
+    return {
+      error: "修正版を提出できませんでした。しばらくしてからもう一度お試しください。",
+    };
+  }
+
+  revalidatePath("/advertiser");
+  revalidatePath(`/advertiser/ads/${ad.adId}`);
+  revalidatePath("/admin/ads");
+  revalidatePath(`/admin/ads/${ad.adId}`);
+  redirect(`/advertiser/ads/${ad.adId}?revision=submitted`);
 }
 
 export async function startCheckoutAction(formData: FormData) {

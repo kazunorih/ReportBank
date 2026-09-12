@@ -64,10 +64,51 @@ export async function updateAdStatus(advertiserId: string, adId: string, status:
   const names: Record<string, string> = { "#status": "status", "#payment": "paymentStatus" };
   const attributes: Record<string, unknown> = { ":status": status, ":payment": paymentStatus, ":updated": now, ":gsi": `STATUS#${status}`, ":gsk": `${now}#${adId}` };
   const sets = ["#status = :status", "#payment = :payment", "updatedAt = :updated", "GSI1PK = :gsi", "GSI1SK = :gsk"];
+  const removes: string[] = [];
   Object.entries(values).forEach(([key, value], index) => {
-    names[`#v${index}`] = key; attributes[`:v${index}`] = value; sets.push(`#v${index} = :v${index}`);
+    names[`#v${index}`] = key;
+    if (value === undefined) {
+      removes.push(`#v${index}`);
+    } else {
+      attributes[`:v${index}`] = value;
+      sets.push(`#v${index} = :v${index}`);
+    }
   });
-  await dynamoClient.send(new UpdateCommand({ TableName: tableName(), Key: adKey(advertiserId, adId), UpdateExpression: `SET ${sets.join(", ")}`, ExpressionAttributeNames: names, ExpressionAttributeValues: attributes, ConditionExpression: "attribute_exists(PK)" }));
+  const removeExpression = removes.length ? ` REMOVE ${removes.join(", ")}` : "";
+  await dynamoClient.send(new UpdateCommand({ TableName: tableName(), Key: adKey(advertiserId, adId), UpdateExpression: `SET ${sets.join(", ")}${removeExpression}`, ExpressionAttributeNames: names, ExpressionAttributeValues: attributes, ConditionExpression: "attribute_exists(PK)" }));
+}
+
+export async function submitAdRevision(
+  advertiserId: string,
+  adId: string,
+  input: Pick<AdContract, "title" | "body" | "companyName">,
+) {
+  const now = new Date().toISOString();
+  await dynamoClient.send(
+    new UpdateCommand({
+      TableName: tableName(),
+      Key: adKey(advertiserId, adId),
+      UpdateExpression:
+        "SET title = :title, body = :body, companyName = :company, #status = :review, updatedAt = :updated, revisionSubmittedAt = :updated, GSI1PK = :gsi, GSI1SK = :gsk",
+      ExpressionAttributeNames: {
+        "#status": "status",
+        "#payment": "paymentStatus",
+      },
+      ExpressionAttributeValues: {
+        ":title": input.title,
+        ":body": input.body,
+        ":company": input.companyName,
+        ":review": "under_review",
+        ":published": "published",
+        ":paid": "paid",
+        ":updated": now,
+        ":gsi": "STATUS#under_review",
+        ":gsk": `${now}#${adId}`,
+      },
+      ConditionExpression:
+        "attribute_exists(PK) AND (#status = :review OR #status = :published) AND #payment = :paid",
+    }),
+  );
 }
 
 export async function recordStripeEvent(eventId: string, eventType: string) {
