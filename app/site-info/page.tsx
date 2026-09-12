@@ -52,6 +52,43 @@ export default async function SiteInfoPage() {
           </h1>
         </header>
 
+        <p className="text-slate-600">
+          Google Analytics 4で計測した日別のページビュー（PV）です。
+        </p>
+
+        {errorMessage ? (
+          <section
+            className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-rose-200"
+            role="alert"
+          >
+            <h2 className="text-xl font-semibold text-slate-950">アクセス統計</h2>
+            <p className="mt-3 text-slate-600">{errorMessage}</p>
+          </section>
+        ) : (
+          <div className="grid gap-8">
+            {periods.map((period) => (
+              <section
+                key={period.key}
+                className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8"
+              >
+                <div className="mb-6 flex items-baseline justify-between gap-4">
+                  <h2 className="text-xl font-semibold text-slate-950">
+                    {period.label}
+                  </h2>
+                  <p className="text-right text-sm text-slate-500">
+                    合計{" "}
+                    <strong className="ml-1 text-3xl font-semibold tabular-nums text-sky-700">
+                      {period.total.toLocaleString("ja-JP")}
+                    </strong>{" "}
+                    PV
+                  </p>
+                </div>
+                <PageViewsChart data={period.points} label={period.label} />
+              </section>
+            ))}
+          </div>
+        )}
+
         <section
           aria-labelledby="advertising-heading"
           className="overflow-hidden rounded-3xl bg-sky-700 text-white shadow-sm"
@@ -92,43 +129,6 @@ export default async function SiteInfoPage() {
             </div>
           </div>
         </section>
-
-        <p className="text-slate-600">
-          Google Analytics 4で計測した日別のページビュー（PV）です。
-        </p>
-
-        {errorMessage ? (
-          <section
-            className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-rose-200"
-            role="alert"
-          >
-            <h2 className="text-xl font-semibold text-slate-950">アクセス統計</h2>
-            <p className="mt-3 text-slate-600">{errorMessage}</p>
-          </section>
-        ) : (
-          <div className="grid gap-8">
-            {periods.map((period) => (
-              <section
-                key={period.key}
-                className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8"
-              >
-                <div className="mb-6 flex items-baseline justify-between gap-4">
-                  <h2 className="text-xl font-semibold text-slate-950">
-                    {period.label}
-                  </h2>
-                  <p className="text-right text-sm text-slate-500">
-                    合計{" "}
-                    <strong className="ml-1 text-3xl font-semibold tabular-nums text-sky-700">
-                      {period.total.toLocaleString("ja-JP")}
-                    </strong>{" "}
-                    PV
-                  </p>
-                </div>
-                <PageViewsChart data={period.points} label={period.label} />
-              </section>
-            ))}
-          </div>
-        )}
       </div>
     </main>
   );
