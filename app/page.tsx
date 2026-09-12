@@ -147,13 +147,25 @@ export default async function Home({ searchParams }: HomeProps) {
                       {article.title}
                     </Link>
 
-                    {article.publishedAt ? (
-                      <p className="mt-2 text-sm text-slate-500">
-                        公開日:{" "}
-                        {new Date(article.publishedAt).toLocaleDateString(
-                          "ja-JP"
-                        )}
-                      </p>
+                    {article.publishedAt || article.revisedAt ? (
+                      <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-slate-500">
+                        {article.publishedAt ? (
+                          <p>
+                            公開日:{" "}
+                            {new Date(article.publishedAt).toLocaleDateString(
+                              "ja-JP",
+                            )}
+                          </p>
+                        ) : null}
+                        {article.revisedAt ? (
+                          <p>
+                            最終更新日:{" "}
+                            {new Date(article.revisedAt).toLocaleDateString(
+                              "ja-JP",
+                            )}
+                          </p>
+                        ) : null}
+                      </div>
                     ) : null}
                   </div>
 
