@@ -84,7 +84,8 @@ export async function getCategories(): Promise<MicroCmsCategory[]> {
     endpoint: CATEGORY_ENDPOINT,
     queries: {
       limit: 100,
-      orders: "createdAt",
+      // Follow the content order configured in the microCMS admin screen.
+      orders: "system:default",
     },
   });
 
