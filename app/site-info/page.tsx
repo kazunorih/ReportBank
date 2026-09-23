@@ -102,7 +102,7 @@ export default async function SiteInfoPage() {
                 当サイトの記事の一つとして広告記事を掲載することが出来ます
               </h2>
               <p className="mt-4 max-w-2xl leading-7 text-sky-50">
-                3,000字以内の広告記事をお申し込みいただけます。カード情報は
+                4,000字以内の広告記事をお申し込みいただけます。カード情報は
                 Stripeが安全に取り扱い、ReportBankには保存されません。
               </p>
 

@@ -56,14 +56,14 @@ export default function RevisionForm({
         <textarea
           name="body"
           defaultValue={initialBody}
-          maxLength={3000}
+          maxLength={4000}
           required
           rows={16}
           onChange={(event) => setLength(event.target.value.length)}
           className="rounded-xl border border-slate-300 px-4 py-3"
         />
         <span className="text-right text-sm text-slate-500">
-          {length.toLocaleString("ja-JP")} / 3,000字
+          {length.toLocaleString("ja-JP")} / 4,000字
         </span>
       </label>
       {state.error ? (
