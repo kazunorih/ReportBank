@@ -1,5 +1,7 @@
 # microCMS + Next.js + AWS Amplify
 
+週次マクロ金融レポートの構成・データ定義・AWS導入手順は [docs/weekly-reports.md](docs/weekly-reports.md) を参照してください。
+
 このプロジェクトは、microCMS の記事を取得して表示する Next.js アプリです。
 
 ## セットアップ

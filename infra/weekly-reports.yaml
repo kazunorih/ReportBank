@@ -1,0 +1,339 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: ReportBank weekly macro report - managed collection, generation and publication
+
+Parameters:
+  AppName:
+    Type: String
+    Default: reportbank
+  OpenAISecretArn:
+    Type: String
+    Description: Existing Secrets Manager secret ARN containing JSON {"apiKey":"..."}
+    AllowedPattern: 'arn:aws:secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:.+'
+  AlertEmail:
+    Type: String
+    Default: ''
+    Description: Optional email subscription; confirm it before relying on alerts
+  ScheduleState:
+    Type: String
+    Default: DISABLED
+    AllowedValues: [ENABLED, DISABLED]
+    Description: Enable after importing the required numeric histories and a successful manual run
+
+Conditions:
+  HasAlertEmail: !Not [!Equals [!Ref AlertEmail, '']]
+
+Resources:
+  ReportBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireOldObjectVersions
+            Status: Enabled
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 365
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 7
+
+  ReportBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ReportBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Deny
+            Principal: '*'
+            Action: 's3:*'
+            Resource: [!GetAtt ReportBucket.Arn, !Sub '${ReportBucket.Arn}/*']
+            Condition:
+              Bool:
+                aws:SecureTransport: 'false'
+
+  ReportsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      SSESpecification:
+        SSEEnabled: true
+
+  Alerts:
+    Type: AWS::SNS::Topic
+
+  EmailSubscription:
+    Type: AWS::SNS::Subscription
+    Condition: HasAlertEmail
+    Properties:
+      TopicArn: !Ref Alerts
+      Protocol: email
+      Endpoint: !Ref AlertEmail
+
+  Worker:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: python3.13
+      Handler: index.handler
+      CodeUri: ../workers/weekly-report/
+      Timeout: 900
+      MemorySize: 1024
+      ReservedConcurrentExecutions: 2
+      Environment:
+        Variables:
+          REPORT_BUCKET: !Ref ReportBucket
+          REPORT_TABLE: !Ref ReportsTable
+          OPENAI_SECRET_ARN: !Ref OpenAISecretArn
+          OPENAI_MODEL: gpt-5.6-luna
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: s3:ListBucket
+              Resource: !GetAtt ReportBucket.Arn
+            - Effect: Allow
+              Action: s3:GetObject
+              Resource: [!Sub '${ReportBucket.Arn}/imports/*', !Sub '${ReportBucket.Arn}/runs/*']
+            - Effect: Allow
+              Action: s3:PutObject
+              Resource: !Sub '${ReportBucket.Arn}/runs/*'
+            - Effect: Allow
+              Action: [dynamodb:GetItem, dynamodb:PutItem]
+              Resource: !GetAtt ReportsTable.Arn
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Ref OpenAISecretArn
+
+  WorkerLog:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${Worker}'
+      RetentionInDays: 90
+
+  Workflow:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      Type: STANDARD
+      DefinitionSubstitutions:
+        WorkerArn: !GetAtt Worker.Arn
+        AlertsArn: !Ref Alerts
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref Worker
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt Alerts.TopicName
+      Definition:
+        Comment: Collect official evidence, validate, generate, then publish atomically
+        StartAt: Collect
+        TimeoutSeconds: 3600
+        States:
+          Collect:
+            Type: Task
+            Resource: '${WorkerArn}'
+            Parameters:
+              action: collect
+              scheduledTime.$: $.scheduledTime
+              executionId.$: $$.Execution.Id
+            ResultPath: $.run
+            Retry:
+              - ErrorEquals: [States.TaskFailed]
+                IntervalSeconds: 60
+                MaxAttempts: 2
+                BackoffRate: 2
+            Catch:
+              - ErrorEquals: [States.ALL]
+                ResultPath: $.failure
+                Next: NotifyFailure
+            Next: AlreadyPublished
+          AlreadyPublished:
+            Type: Choice
+            Choices:
+              - Variable: $.run.skipped
+                BooleanEquals: true
+                Next: Done
+            Default: Generate
+          Generate:
+            Type: Task
+            Resource: '${WorkerArn}'
+            Parameters:
+              action: generate
+              run.$: $.run
+            ResultPath: $.run
+            Retry:
+              - ErrorEquals: [States.TaskFailed]
+                IntervalSeconds: 60
+                MaxAttempts: 2
+                BackoffRate: 2
+            Catch:
+              - ErrorEquals: [States.ALL]
+                ResultPath: $.failure
+                Next: NotifyFailure
+            Next: Publish
+          Publish:
+            Type: Task
+            Resource: '${WorkerArn}'
+            Parameters:
+              action: publish
+              run.$: $.run
+            ResultPath: $.publication
+            Retry:
+              - ErrorEquals: [States.TaskFailed]
+                IntervalSeconds: 10
+                MaxAttempts: 2
+                BackoffRate: 2
+            Catch:
+              - ErrorEquals: [States.ALL]
+                ResultPath: $.failure
+                Next: NotifyFailure
+            Next: Done
+          NotifyFailure:
+            Type: Task
+            Resource: arn:aws:states:::sns:publish
+            Parameters:
+              TopicArn: '${AlertsArn}'
+              Subject: ReportBank weekly report failed
+              Message.$: States.JsonToString($.failure)
+            Next: Failed
+          Failed:
+            Type: Fail
+            Error: WeeklyReportFailed
+          Done:
+            Type: Succeed
+
+  ScheduleDeadLetterQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      MessageRetentionPeriod: 1209600
+      SqsManagedSseEnabled: true
+
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: scheduler.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+      Policies:
+        - PolicyName: StartWeeklyWorkflow
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: states:StartExecution
+                Resource: !Ref Workflow
+              - Effect: Allow
+                Action: sqs:SendMessage
+                Resource: !GetAtt ScheduleDeadLetterQueue.Arn
+
+  WeeklySchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Description: Every Friday at 23:00 Japan time
+      ScheduleExpression: cron(0 23 ? * FRI *)
+      ScheduleExpressionTimezone: Asia/Tokyo
+      FlexibleTimeWindow:
+        Mode: 'OFF'
+      State: !Ref ScheduleState
+      Target:
+        Arn: !Ref Workflow
+        RoleArn: !GetAtt SchedulerRole.Arn
+        Input: '{"scheduledTime":"<aws.scheduler.scheduled-time>"}'
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 3600
+          MaximumRetryAttempts: 2
+        DeadLetterConfig:
+          Arn: !GetAtt ScheduleDeadLetterQueue.Arn
+
+  WorkflowFailureAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Weekly generation failed or timed out
+      Namespace: AWS/States
+      MetricName: ExecutionsFailed
+      Dimensions:
+        - Name: StateMachineArn
+          Value: !Ref Workflow
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref Alerts]
+
+  ScheduleDeliveryAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      Namespace: AWS/SQS
+      MetricName: ApproximateNumberOfMessagesVisible
+      Dimensions:
+        - Name: QueueName
+          Value: !GetAtt ScheduleDeadLetterQueue.QueueName
+      Statistic: Maximum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref Alerts]
+
+  WorkflowTimeoutAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      Namespace: AWS/States
+      MetricName: ExecutionsTimedOut
+      Dimensions:
+        - Name: StateMachineArn
+          Value: !Ref Workflow
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+      AlarmActions: [!Ref Alerts]
+
+Outputs:
+  ReportsTableName:
+    Value: !Ref ReportsTable
+  ReportsTableArn:
+    Value: !GetAtt ReportsTable.Arn
+  DataBucket:
+    Value: !Ref ReportBucket
+  WorkflowArn:
+    Value: !Ref Workflow
+  ScheduleName:
+    Value: !Ref WeeklySchedule
+  AlertsTopicArn:
+    Value: !Ref Alerts

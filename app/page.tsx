@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteNav from "@/app/components/site-nav";
 import {
   getArticlesByCategory,
   getCategories,
@@ -35,27 +36,7 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
-        <nav aria-label="パンくずリスト" className="text-sm text-slate-500">
-          <ol className="flex items-center gap-2">
-            <li aria-current="page">
-              <Link
-                href="/"
-                className="rounded transition hover:text-sky-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-              >
-                ホーム
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link
-                href="/site-info"
-                className="rounded transition hover:text-sky-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
-              >
-                サイト情報
-              </Link>
-            </li>
-          </ol>
-        </nav>
+        <SiteNav current="home" />
 
         <section className="border-b border-slate-200 pb-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

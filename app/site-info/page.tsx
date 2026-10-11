@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteNav from "@/app/components/site-nav";
 import { connection } from "next/server";
 
 import {
@@ -31,19 +32,7 @@ export default async function SiteInfoPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-12">
-        <nav aria-label="パンくずリスト" className="text-sm text-slate-500">
-          <ol className="flex items-center gap-2">
-            <li>
-              <Link href="/" className="hover:text-sky-700 hover:underline">
-                ホーム
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-slate-700">
-              サイト情報
-            </li>
-          </ol>
-        </nav>
+        <SiteNav current="info" />
 
         <header>
           <p className="text-sm font-semibold text-sky-700">SITE INFORMATION</p>

@@ -1,0 +1,74 @@
+"use client";
+
+import { useState } from "react";
+import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { chartGroups, seriesCatalog, type SeriesId } from "@/lib/reports/catalog";
+import type { WeeklyReport } from "@/lib/reports/schema";
+
+const colors = ["#0284c7", "#0f766e", "#7c3aed", "#d97706", "#be123c"];
+export default function ReportCharts({ report }: { report: WeeklyReport }) {
+  const [years, setYears] = useState(30);
+  const data = report.periods.map((period, index): { period: string } & Record<SeriesId, number | null> => ({
+    period,
+    ...Object.fromEntries(report.series.map((series) => [series.id, series.values[index]])) as Record<SeriesId, number | null>,
+  })).slice(-years * 2);
+  return (
+    <section aria-label="統計図表" className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold">30年の資金循環を読む</h2>
+        <label className="text-sm text-slate-600">表示期間
+          <select value={years} onChange={(event) => setYears(Number(event.target.value))} className="ml-3 rounded-lg border border-slate-300 bg-white p-2">
+            {[30, 10, 5].map((value) => <option key={value} value={value}>{value}年</option>)}
+          </select>
+        </label>
+      </div>
+      {chartGroups.map((group, groupIndex) => {
+        const series = seriesCatalog.filter((item) => item.group === group.id);
+        const available = series.filter((item) => data.some((row) => row[item.id] != null));
+        return (
+          <section key={group.id} className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
+            <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(groupIndex + 1).padStart(2, "0")}</p>
+            <h3 className="mt-2 text-xl font-semibold">{group.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500">{group.description}</p>
+            {available.length ? (
+              <div className="mt-6 h-80 w-full" role="img" aria-label={`${group.title}。半年ごとの推移。数値は下のデータ表でも確認できます。`}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={data} margin={{ top: 12, right: 8, bottom: 12, left: 0 }} accessibilityLayer>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+                    <XAxis dataKey="period" minTickGap={36} tickFormatter={(value: string) => value.slice(0, 7)} tick={{ fontSize: 11 }} />
+                    <YAxis yAxisId="amount" width={65} tick={{ fontSize: 11 }} tickFormatter={(value: number) => value.toLocaleString("ja-JP")}
+                      label={{ value: group.id === "markets" ? "円" : "兆円", position: "insideTopLeft", offset: -10 }} />
+                    {group.id === "markets" && <YAxis yAxisId="rate" orientation="right" width={45} tick={{ fontSize: 11 }} unit="%" domain={["auto", "auto"]} />}
+                    <Tooltip labelFormatter={(value) => `${value} 半期末`}
+                      formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 3 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
+                    <Legend wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
+                    {available.map((item, index) => group.id === "lending" || group.id === "construction"
+                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} fill={colors[index]} maxBarSize={18} isAnimationActive={false} />
+                      : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={false} isAnimationActive={false} />)}
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
+            ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}
+            <ul className="mt-4 space-y-2 text-xs leading-5 text-slate-500">
+              {series.map((item) => {
+                const stored = report.series.find((s) => s.id === item.id)!;
+                return <li key={item.id}><strong>{item.label}</strong>：{stored.note}（最新観測日：{stored.latestDate || "未取得"}）</li>;
+              })}
+            </ul>
+            <details className="mt-5 border-t border-slate-100 pt-4 text-sm">
+              <summary className="cursor-pointer font-medium text-sky-700">数値・出典を確認する</summary>
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full border-collapse text-right text-xs tabular-nums">
+                  <caption className="sr-only">{group.title}の半年ごとの数値。—は欠測。</caption>
+                  <thead><tr><th scope="col" className="p-2 text-left">半期末</th>{series.map((item) => <th scope="col" key={item.id} className="min-w-28 p-2">{item.label}（{item.unit}）</th>)}</tr></thead>
+                  <tbody>{data.map((row) => <tr key={row.period} className="border-t border-slate-100"><th scope="row" className="whitespace-nowrap p-2 text-left font-normal">{row.period}</th>{series.map((item) => <td className="p-2" key={item.id}>{row[item.id] == null ? "—" : Number(row[item.id]).toLocaleString("ja-JP", { maximumFractionDigits: 3 })}</td>)}</tr>)}</tbody>
+                </table>
+              </div>
+              <ul className="mt-4 space-y-2">{report.sources.filter((source) => report.series.some((s) => series.some((item) => item.id === s.id) && s.sourceIds.includes(source.id))).map((source) => <li key={source.id}><a className="text-sky-700 underline" href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a></li>)}</ul>
+            </details>
+          </section>
+        );
+      })}
+    </section>
+  );
+}
