@@ -30,7 +30,7 @@ AWS側はすべてフルマネージドです。モデルはOpenAI APIの `gpt-5
 | --- | --- | --- |
 | 国債3・10・30年 | 財務省 `data/jgbcm_all.csv` と当月 `jgbcm.csv` | 30年金利は1999年9月以降。負の金利を保持 |
 | フラット35 | 公式の当月金利表を自動取得。過去分は出典付きCSV | 21～35年・融資率9割以下の最低金利。2017年10月以降は新機構団信付き。2003年10月以前は掲載しない。公表PDFの線を数値と見なして自動変換しない |
-| 日経平均株価 | 出典付きCSVの取り込み | 半期末の終値、円。公式無料配布先の取得制限があり、長期データの提供経路・利用条件の確認が必要 |
+| TOPIX | 出典付きCSVの取り込み | 半期末の配当なし指数の終値、ポイント。出典付きの実測値を使用 |
 | 時価総額 | JPXの長期Excelを毎回リンク探索 | 東証内国株式の全市場合計。全国取引所合計ではない。2022年市場再編以前のシートも取得 |
 | 建設受注 | e-Statの受注高時系列Excelをリンク探索 | 全国・全業者、元請と下請を含む総受注高。大手50社や前年比表とは区別。古い月は初期CSVで補う |
 | 企業向け貸出 | 日銀 FF `FOF_FFALA00A411` | 預金取扱機関 → 民間非金融法人 |
@@ -45,7 +45,7 @@ AWS側はすべてフルマネージドです。モデルはOpenAI APIの `gpt-5
 
 ## 初期データを準備する
 
-**初回公開には `flat35.csv` と `nikkei225.csv` が必要です。** 建設受注はe-Statから取得・検証した2005年4月～2026年7月の256か月分を `workers/weekly-report/data/construction.csv` に同梱しています。1996年～2005年前半は未収録です。ダミーの数値・AI本文は同梱していません。
+**初回公開には `flat35.csv` と `topix.csv` が必要です。** 建設受注はe-Statから取得・検証した2005年4月～2026年7月の256か月分を `workers/weekly-report/data/construction.csv` に同梱しています。1996年～2005年前半は未収録です。ダミーの数値・AI本文は同梱していません。
 
 UTF-8 CSVの必須列は次のとおりです。
 
@@ -55,7 +55,7 @@ date,value,unit,source_name,source_url
 
 - `date`: `YYYY-MM-DD`。株価は月末最終営業日、金利は観測日または適用日、建設受注は月末。未公表・将来の日付は使用しない。
 - `value`: 実測数値。欠測をゼロにしない。
-- `unit`: フラット35は `%`、日経平均は `円`、建設受注は `兆円`。
+- `unit`: フラット35は `%`、TOPIXは `ポイント`、建設受注は `兆円`。
 - `source_name`, `source_url`: 各行の資料名と公式HTTPS URL。出典はホスト許可リストで検証する。
 - フラット35の開始前の値や異なる返済期間・融資率の金利を混ぜない。CSVの数値・定義・利用条件は投入前に確認する。
 - 認可済みの別のデータ提供会社を使用する場合は、そのURL・形式・認証方法に合わせたアダプターを追加する。任意URLの無制限取得はしない。
@@ -71,14 +71,14 @@ python scripts/backfill-construction.py --as-of 2026-10-11 --output construction
 
 S3配置先は `imports/<seriesId>.csv` です。既存の全13系列に対応しているので、確認済みの旧公表値も同じ方式で追加できます。毎週、前回までの観測履歴→CSV→最新公表値の順で統合します。最新公表値が重なる月は最新公表値を優先します。原本と実行時の入力CSVもS3に保存します。
 
-日経平均は、提供元の更新に合わせてS3上のCSVも更新する運用が必要です。フラット35は過去分のCSVが必要ですが、運用開始後の当月分は公式金利表から自動取得し、次の実行へ引き継ぎます。CSVのアップロード自体を毎週自動収集したことにはしません。日経平均の取得先が決まればそのアダプターを追加できます。
+TOPIXは、提供元の更新に合わせてS3上のCSVも更新する運用が必要です。フラット35は過去分のCSVが必要ですが、運用開始後の当月分は公式金利表から自動取得し、次の実行へ引き継ぎます。CSVのアップロード自体を毎週自動収集したことにはしません。TOPIXの取得先が決まればそのアダプターを追加できます。
 
 ### アップロード前のCSV検証
 
 次のコマンドで、ネットワーク接続やAWSへの書き込みを行わずに、列・単位・出典URL・重複日・未来日・鮮度を検証できます。半期データが一つもない場合もエラーになります。
 
 ```sh
-python scripts/check-report-import.py nikkei225 nikkei225.csv
+python scripts/check-report-import.py topix topix.csv
 python scripts/check-report-import.py flat35 flat35.csv
 ```
 
@@ -100,7 +100,7 @@ sam deploy --guided --template-file .aws-sam/weekly-build/template.yaml
 
 ```sh
 aws s3 cp flat35.csv s3://BUCKET/imports/flat35.csv
-aws s3 cp nikkei225.csv s3://BUCKET/imports/nikkei225.csv
+aws s3 cp topix.csv s3://BUCKET/imports/topix.csv
 ```
 
 同梱分より長い・新しい建設受注履歴を用意した場合は、同様に `imports/construction.csv` へ配置してください。

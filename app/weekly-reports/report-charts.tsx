@@ -37,7 +37,7 @@ export default function ReportCharts({ report }: { report: WeeklyReport }) {
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                     <XAxis dataKey="period" minTickGap={36} tickFormatter={(value: string) => value.slice(0, 7)} tick={{ fontSize: 11 }} />
                     <YAxis yAxisId="amount" width={65} tick={{ fontSize: 11 }} tickFormatter={(value: number) => value.toLocaleString("ja-JP")}
-                      label={{ value: group.id === "markets" ? "円" : "兆円", position: "insideTopLeft", offset: -10 }} />
+                      label={{ value: group.id === "markets" ? "ポイント" : "兆円", position: "insideTopLeft", offset: -10 }} />
                     {group.id === "markets" && <YAxis yAxisId="rate" orientation="right" width={45} tick={{ fontSize: 11 }} unit="%" domain={["auto", "auto"]} />}
                     <Tooltip labelFormatter={(value) => `${value} 半期末`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 3 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />

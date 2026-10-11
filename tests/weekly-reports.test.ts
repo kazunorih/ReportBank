@@ -21,6 +21,13 @@ function reportFixture() {
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); vi.useRealTimers(); });
 
 describe("weekly reports", () => {
+  it("rejects an old Nikkei report instead of relabelling its values as TOPIX", () => {
+    const report = reportFixture();
+    expect(reportSchema.safeParse(report).success).toBe(true);
+    const oldSeries = report.series.map((series) => series.id === "topix" ? { ...series, id: "nikkei225" } : series);
+    expect(reportSchema.safeParse({ ...report, series: oldSeries }).success).toBe(false);
+  });
+
   it("rejects duplicate series, invalid model, overlong text and unsafe source URLs", () => {
     const report = reportFixture();
     expect(reportSchema.safeParse(report).success).toBe(true);

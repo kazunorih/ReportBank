@@ -68,8 +68,8 @@ def collect(event):
     previous = table().get_item(Key={"pk": "REPORT", "sk": "LATEST"}, ConsistentRead=True).get("Item")
     if previous and previous.get("collectionKey"):
         saved = read_json(previous["collectionKey"])
-        datasets.update(saved["datasets"])
-        retained_ids = {sid for data in saved["datasets"].values() for sid in data["sourceIds"]}
+        datasets.update({key: value for key, value in saved["datasets"].items() if key in SERIES})
+        retained_ids = {sid for key, data in saved["datasets"].items() if key in SERIES for sid in data["sourceIds"]}
         fetcher.sources.extend(source for source in saved["sources"] if source["id"] in retained_ids)
     fresh = {}
     for collector in (collect_mof, collect_boj, collect_jpx, collect_mlit, collect_flat35):
@@ -80,7 +80,7 @@ def collect(event):
             failures.append(f"{collector.__name__}: {type(error).__name__}")
             print(json.dumps({"event": "source_failed", "source": collector.__name__, "errorType": type(error).__name__}))
 
-    # Imports provide licensed Nikkei data, verified Flat35 numeric history, and older
+    # Imports provide TOPIX data, verified Flat35 numeric history, and older
     # MLIT history. Automatic observations win on overlapping dates (revisions).
     for series_id in SERIES:
         try:

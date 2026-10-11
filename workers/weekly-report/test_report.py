@@ -8,6 +8,17 @@ import index as worker
 
 
 class AggregationTests(unittest.TestCase):
+    def test_topix_uses_points_and_half_year_closing_value(self):
+        # Synthetic input verifies units and aggregation, not market history.
+        header = "date,value,unit,source_name,source_url\n"
+        body = "2026-06-29,2800,ポイント,TOPIX,https://www.jpx.co.jp/\n2026-06-30,2810,ポイント,TOPIX,https://www.jpx.co.jp/\n"
+        rows, sources = parse_import((header + body).encode(), "topix")
+        self.assertEqual(SERIES["topix"][0], "ポイント")
+        self.assertEqual(aggregate(rows, ["2026-06-30"], SERIES["topix"][1]), [2810])
+        self.assertEqual(len(sources), 1)
+        with self.assertRaises(ValueError):
+            parse_import((header + body.replace("ポイント", "円")).encode(), "topix")
+
     def test_completed_half_years_and_japan_boundary(self):
         periods = half_years("2026-10-11")
         self.assertEqual((len(periods), periods[0], periods[-1]), (60, "1996-12-31", "2026-06-30"))

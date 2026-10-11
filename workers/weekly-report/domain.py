@@ -9,15 +9,15 @@ from datetime import date, datetime, timedelta, timezone
 JST = timezone(timedelta(hours=9))
 MODEL = "gpt-5.6-luna"
 LABELS = dict(zip(
-    ("jgb3", "jgb10", "jgb30", "flat35", "nikkei225", "marketCap", "construction", "corporateLoans", "householdLoans", "bankJgb", "publicLoans", "bojAssets", "bojJgb"),
-    ("国債3年", "国債10年", "国債30年", "フラット35", "日経平均株価", "東証時価総額", "建設工事受注高", "企業向け貸出", "家計向け貸出", "国債・財投債保有", "地方公共団体向け貸出", "日本銀行総資産", "日本銀行国債保有"),
+    ("jgb3", "jgb10", "jgb30", "flat35", "topix", "marketCap", "construction", "corporateLoans", "householdLoans", "bankJgb", "publicLoans", "bojAssets", "bojJgb"),
+    ("国債3年", "国債10年", "国債30年", "フラット35", "TOPIX", "東証時価総額", "建設工事受注高", "企業向け貸出", "家計向け貸出", "国債・財投債保有", "地方公共団体向け貸出", "日本銀行総資産", "日本銀行国債保有"),
 ))
 SERIES = {
     "jgb3": ("%", "last", "財務省のコンスタント・マチュリティー金利、3年。"),
     "jgb10": ("%", "last", "財務省のコンスタント・マチュリティー金利、10年。"),
     "jgb30": ("%", "last", "財務省のコンスタント・マチュリティー金利、30年。公表開始前は欠測。"),
     "flat35": ("%", "last", "返済期間21～35年、融資率9割以下の最低金利。2017年10月以降は新機構団信付き。制度開始（2003年10月）前は欠測。"),
-    "nikkei225": ("円", "last", "日経平均株価の月末終値。"),
+    "topix": ("ポイント", "last", "TOPIX（東証株価指数・配当なし）の月末終値。各半期末の値を採用。"),
     "marketCap": ("兆円", "last", "東証・内国株式の月末時価総額。市場再編による対象変更を含む。"),
     "construction": ("兆円", "sum", "建設工事受注動態統計・受注高合計。6か月すべて揃った半期のみ集計。改定値を優先。"),
     "corporateLoans": ("兆円", "last", "預金取扱機関の民間非金融法人向け貸出。金融法人は含まない。1997年末から。"),
