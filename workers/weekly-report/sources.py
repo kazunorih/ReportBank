@@ -193,7 +193,8 @@ def parse_flat35(html):
 def collect_flat35(fetcher, as_of):
     url = "https://www.simulation.jhf.go.jp/flat35/kinri/index.php/rates/top"
     raw, source_id = fetcher.get(url, "住宅金融支援機構・新機構団信付きフラット35の借入金利水準")
-    rows = [row for row in parse_flat35(raw.decode("utf-8-sig")) if row["date"] <= as_of]
+    # This official endpoint declares EUC-JP in its HTTP Content-Type.
+    rows = [row for row in parse_flat35(raw.decode("euc_jp")) if row["date"] <= as_of]
     if not rows:
         raise ValueError("Flat35 rate applies to a future month")
     return with_provenance({"flat35": rows}, [source_id])

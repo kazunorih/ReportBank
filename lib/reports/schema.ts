@@ -38,3 +38,21 @@ export const reportSchema = summarySchema.extend({
 });
 export type WeeklyReport = z.infer<typeof reportSchema>;
 export type ReportSummary = z.infer<typeof summarySchema>;
+
+export const marketChartSchema = z.object({
+  asOf: date,
+  periods: reportSchema.shape.periods,
+  series: z.array(reportSchema.shape.series.element).length(5),
+  sources: reportSchema.shape.sources,
+  warnings: reportSchema.shape.warnings,
+}).superRefine((chart, ctx) => {
+  const required = ["jgb3", "jgb10", "jgb30", "flat35", "topix"];
+  const ids = new Set(chart.series.map((item) => item.id));
+  const sources = new Set(chart.sources.map((item) => item.id));
+  if (!required.every((id) => ids.has(id as (typeof chart.series)[number]["id"])) ||
+      chart.series.some((item) => item.sourceIds.some((id) => !sources.has(id))) ||
+      chart.periods.some((period, index) => !/(?:06-30|12-31)$/.test(period) || period > chart.asOf || (index > 0 && period <= chart.periods[index - 1]))) {
+    ctx.addIssue({ code: "custom", message: "Invalid market chart" });
+  }
+});
+export type MarketChart = z.infer<typeof marketChartSchema>;

@@ -5,6 +5,7 @@ import { reportSchema, summarySchema } from "@/lib/reports/schema";
 const { send } = vi.hoisted(() => ({ send: vi.fn() }));
 vi.mock("@/lib/aws/clients", () => ({ dynamoClient: { send } }));
 import { getWeeklyReports } from "@/lib/reports/store";
+import { getMarketChart } from "@/lib/reports/markets";
 
 function reportFixture() {
   // Synthetic values exclusively for validation tests; never imported by the app.
@@ -21,6 +22,22 @@ function reportFixture() {
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); vi.useRealTimers(); });
 
 describe("weekly reports", () => {
+  it("serves the sourced first-chart snapshot without AWS or an AI summary", async () => {
+    vi.stubEnv("WEEKLY_REPORTS_TABLE_NAME", "");
+    const chart = await getMarketChart();
+    expect(chart.series).toHaveLength(5);
+    expect(chart.series.find((item) => item.id === "topix")?.values.some((value) => value !== null && value > 0)).toBe(true);
+    expect(chart.sources.some((source) => /03_sisu\d{4}\.pdf$/.test(source.url))).toBe(true);
+    expect(send).not.toHaveBeenCalled();
+  });
+
+  it("reads the independently published chart and does not mask AWS errors", async () => {
+    vi.stubEnv("WEEKLY_REPORTS_TABLE_NAME", "reports");
+    send.mockRejectedValueOnce(new Error("unavailable"));
+    await expect(getMarketChart()).rejects.toThrow("unavailable");
+    expect(send.mock.calls[0][0].input).toMatchObject({ Key: { pk: "CHART", sk: "MARKETS" }, ConsistentRead: true });
+  });
+
   it("rejects an old Nikkei report instead of relabelling its values as TOPIX", () => {
     const report = reportFixture();
     expect(reportSchema.safeParse(report).success).toBe(true);

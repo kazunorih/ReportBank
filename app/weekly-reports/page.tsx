@@ -5,6 +5,7 @@ import SiteNav from "@/app/components/site-nav";
 import { chartGroups } from "@/lib/reports/catalog";
 import { getWeeklyReports } from "@/lib/reports/store";
 import ReportCharts from "./report-charts";
+import { getMarketChart } from "@/lib/reports/markets";
 
 export const metadata: Metadata = {
   title: "日本のマクロ金融環境 | 週次レポート | ReportBank",
@@ -21,6 +22,11 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
   catch (error) { console.error("Weekly report read failed", error); failed = true; }
   const report = result?.report;
   const stale = result?.stale;
+  let marketChart: Awaited<ReturnType<typeof getMarketChart>> | undefined;
+  if (!report) {
+    try { marketChart = await getMarketChart(); }
+    catch (error) { console.error("Market chart read failed", error); }
+  }
 
   return (
     <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
@@ -53,6 +59,11 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
             <p className="mt-2 text-sm text-slate-500">集計・生成に使用した資料と取得日時を掲載しています。</p>
             <ul className="mt-5 divide-y divide-slate-100">{report.sources.map((source) => <li key={source.id} className="py-3"><a className="text-sm font-medium text-sky-700 underline underline-offset-4" href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a><p className="mt-1 text-xs text-slate-500">取得：{formatTime(source.retrievedAt)}</p></li>)}</ul>
           </section>
+        </> : marketChart ? <>
+          <p className="text-sm leading-7 text-slate-600">最初の図表を先行掲載しています。収集基準日：{marketChart.asOf}。各半期末の公表値を表示し、未取得の値は補間しません。</p>
+          <ul className="list-disc space-y-2 rounded-2xl bg-amber-50 p-6 pl-10 text-sm text-amber-950">{marketChart.warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
+          <ReportCharts report={marketChart} />
+          <section className="rounded-2xl bg-white p-6"><h2 className="text-xl font-semibold">出典・取得日時</h2><ul className="mt-4 space-y-3">{marketChart.sources.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-700 underline">{source.name}</a><p className="text-xs text-slate-500">取得：{formatTime(source.retrievedAt)}</p></li>)}</ul></section>
         </> : <section className="grid gap-4 sm:grid-cols-2" aria-label="掲載予定の統計">{chartGroups.map((group) => <div key={group.id} className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="font-semibold">{group.title}</h2><p className="mt-3 text-sm leading-6 text-slate-500">{group.description}</p><p className="mt-4 text-xs text-sky-700">データ公開準備中</p></div>)}</section>}
         <section className="border-t border-slate-200 pt-8">
           <h2 className="text-2xl font-semibold">過去の400字整理</h2>

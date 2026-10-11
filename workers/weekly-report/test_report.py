@@ -4,10 +4,21 @@ from unittest.mock import patch
 from domain import (SERIES, aggregate, half_years, parse_boj, parse_mof, report_date,
                     validate_observations, validate_summary)
 from sources import parse_flat35, parse_import, safe_url
+from topix import parse_topix_text
+from markets import build_markets
 import index as worker
 
 
 class AggregationTests(unittest.TestCase):
+    def test_topix_months_exclude_daily_and_dividend_included_columns(self):
+        header = "Stock Price Index & Stock Price Average(End of Year/Month/Daily) TOPIX\n"
+        rows = "30 (2018) 1 1,001.00 2,001.00\n" + "\n".join(f"{m} {1000+m}.00 {2000+m}.00" for m in range(2, 13))
+        data = parse_topix_text(header + rows + "\n12.1 9999.00 8888.00\n2 9998.00 8887.00\n")
+        self.assertEqual(len(data), 12)
+        self.assertEqual(data[5], {"date": "2018-06-30", "value": 1006.0})
+        with self.assertRaises(ValueError):
+            parse_topix_text(header + "2026 1 1,000.00 2,000.00\n")
+
     def test_topix_uses_points_and_half_year_closing_value(self):
         # Synthetic input verifies units and aggregation, not market history.
         header = "date,value,unit,source_name,source_url\n"
@@ -110,6 +121,15 @@ def fixture_payload():
 
 
 class PublicationTests(unittest.TestCase):
+    def test_first_chart_does_not_require_other_statistics_or_ai(self):
+        payload = fixture_payload()
+        payload["datasets"] = {key: value for key, value in payload["datasets"].items() if key in ("jgb3", "jgb10", "jgb30", "flat35", "topix")}
+        payload["datasets"]["flat35"]["observations"] = [{"date": "2026-07-01", "value": 3.0}]
+        chart = build_markets(payload)
+        self.assertEqual(len(chart["series"]), 5)
+        self.assertNotIn("summary", chart)
+        self.assertTrue(all(v is None for v in chart["series"][3]["values"]))
+
     def test_missing_series_stops_publication(self):
         payload = fixture_payload()
         del payload["datasets"]["flat35"]

@@ -6,7 +6,7 @@ import { chartGroups, seriesCatalog, type SeriesId } from "@/lib/reports/catalog
 import type { WeeklyReport } from "@/lib/reports/schema";
 
 const colors = ["#0284c7", "#0f766e", "#7c3aed", "#d97706", "#be123c"];
-export default function ReportCharts({ report }: { report: WeeklyReport }) {
+export default function ReportCharts({ report }: { report: Pick<WeeklyReport, "periods" | "series" | "sources"> }) {
   const [years, setYears] = useState(30);
   const data = report.periods.map((period, index): { period: string } & Record<SeriesId, number | null> => ({
     period,
@@ -22,7 +22,7 @@ export default function ReportCharts({ report }: { report: WeeklyReport }) {
           </select>
         </label>
       </div>
-      {chartGroups.map((group, groupIndex) => {
+      {chartGroups.filter((group) => seriesCatalog.some((item) => item.group === group.id && report.series.some((stored) => stored.id === item.id))).map((group, groupIndex) => {
         const series = seriesCatalog.filter((item) => item.group === group.id);
         const available = series.filter((item) => data.some((row) => row[item.id] != null));
         return (

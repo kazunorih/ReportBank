@@ -8,8 +8,14 @@ Parameters:
     Default: reportbank
   OpenAISecretArn:
     Type: String
+    Default: ''
     Description: Existing Secrets Manager secret ARN containing JSON {"apiKey":"..."}
-    AllowedPattern: 'arn:aws:secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:.+'
+    AllowedPattern: '^$|arn:aws:secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:.+'
+  ReportScope:
+    Type: String
+    Default: markets
+    AllowedValues: [markets, full]
+    Description: First chart only (no AI key required), or full report
   AlertEmail:
     Type: String
     Default: ''
@@ -22,6 +28,7 @@ Parameters:
 
 Conditions:
   HasAlertEmail: !Not [!Equals [!Ref AlertEmail, '']]
+  HasOpenAISecret: !Not [!Equals [!Ref OpenAISecretArn, '']]
 
 Resources:
   ReportBucket:
@@ -109,6 +116,7 @@ Resources:
         Variables:
           REPORT_BUCKET: !Ref ReportBucket
           REPORT_TABLE: !Ref ReportsTable
+          REPORT_SCOPE: !Ref ReportScope
           OPENAI_SECRET_ARN: !Ref OpenAISecretArn
           OPENAI_MODEL: gpt-5.6-luna
       Policies:
@@ -125,9 +133,12 @@ Resources:
             - Effect: Allow
               Action: [dynamodb:GetItem, dynamodb:PutItem]
               Resource: !GetAtt ReportsTable.Arn
-            - Effect: Allow
-              Action: secretsmanager:GetSecretValue
-              Resource: !Ref OpenAISecretArn
+            - !If
+              - HasOpenAISecret
+              - Effect: Allow
+                Action: secretsmanager:GetSecretValue
+                Resource: !Ref OpenAISecretArn
+              - !Ref AWS::NoValue
 
   WorkerLog:
     Type: AWS::Logs::LogGroup

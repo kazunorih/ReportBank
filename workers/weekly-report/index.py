@@ -14,6 +14,8 @@ from boto3.dynamodb.types import TypeSerializer
 from domain import LABELS, MODEL, SERIES, aggregate, half_years, report_date, validate_observations, validate_summary
 from sources import (Fetcher, collect_boj, collect_context, collect_flat35, collect_jpx, collect_mlit,
                      collect_mof, parse_import)
+from topix import collect_topix
+from markets import build_markets
 
 
 def now():
@@ -45,6 +47,8 @@ def collect(event):
     as_of = report_date(event["scheduledTime"])
     execution_id = hashlib.sha256(event["executionId"].encode()).hexdigest()[:24]
     prefix = f"runs/{as_of}/{execution_id}"
+    if os.environ.get("REPORT_SCOPE") == "markets":
+        return collect_markets(as_of, prefix)
     if table().get_item(Key={"pk": "HISTORY", "sk": as_of}, ConsistentRead=True).get("Item"):
         return {"skipped": True, "asOf": as_of, "prefix": prefix}
 
@@ -72,7 +76,7 @@ def collect(event):
         retained_ids = {sid for key, data in saved["datasets"].items() if key in SERIES for sid in data["sourceIds"]}
         fetcher.sources.extend(source for source in saved["sources"] if source["id"] in retained_ids)
     fresh = {}
-    for collector in (collect_mof, collect_boj, collect_jpx, collect_mlit, collect_flat35):
+    for collector in (collect_mof, collect_boj, collect_jpx, collect_mlit, collect_flat35, collect_topix):
         try:
             fresh.update(collector(fetcher, as_of))
         except Exception as error:
@@ -114,6 +118,57 @@ def collect(event):
                "documents": documents, "contextWarnings": context_failures, "collectionFailures": failures}
     write_json(f"{prefix}/collected.json", payload)
     return {"skipped": False, "asOf": as_of, "prefix": prefix}
+
+
+def collect_markets(as_of, prefix):
+    def archive(source_id, raw, metadata):
+        s3().put_object(Bucket=os.environ["REPORT_BUCKET"], Key=f"{prefix}/raw/{source_id}",
+                        Body=raw, ServerSideEncryption="AES256")
+        write_json(f"{prefix}/raw/{source_id}.json", metadata)
+
+    fetcher = Fetcher(archive)
+    seed = json.loads((Path(__file__).parent / "data" / "topix.json").read_text(encoding="utf-8"))
+    datasets = seed["datasets"]
+    fetcher.sources.extend(seed["sources"])
+    previous = table().get_item(Key={"pk": "CHART", "sk": "MARKETS"}, ConsistentRead=True).get("Item")
+    if previous and previous.get("collectionKey"):
+        saved = read_json(previous["collectionKey"])
+        datasets.update(saved["datasets"])
+        fetcher.sources.extend(saved["sources"])
+    # Optional verified historical Flat35 observations. Current month still comes from JHF.
+    try:
+        response = s3().get_object(Bucket=os.environ["REPORT_BUCKET"], Key="imports/flat35.csv")
+        raw = response["Body"].read(15 * 1024 * 1024 + 1)
+        if len(raw) > 15 * 1024 * 1024:
+            raise ValueError("Flat35 import exceeds size limit")
+        rows, sources = parse_import(raw, "flat35")
+        archive("import-flat35", raw, {"sources": sources, "versionId": response.get("VersionId")})
+        fetcher.sources.extend(sources)
+        old = datasets.get("flat35", {"observations": [], "sourceIds": []})
+        merged = {row["date"]: row for row in old["observations"]}
+        merged.update({row["date"]: row for row in rows})
+        datasets["flat35"] = {"observations": list(merged.values()), "sourceIds": list(dict.fromkeys(old["sourceIds"] + [s["id"] for s in sources]))}
+    except ClientError as error:
+        if error.response["Error"]["Code"] not in ("NoSuchKey", "404"):
+            raise
+    for collector in (collect_mof, collect_flat35, collect_topix):
+        for key, fresh in collector(fetcher, as_of).items():
+            old = datasets.get(key, {"observations": [], "sourceIds": []})
+            months = {row["date"][:7] for row in fresh["observations"]}
+            merged = {row["date"]: row for row in old["observations"] if row["date"][:7] not in months}
+            merged.update({row["date"]: row for row in fresh["observations"]})
+            datasets[key] = {"observations": list(merged.values()), "sourceIds": list(dict.fromkeys(old["sourceIds"] + fresh["sourceIds"]))}
+    payload = {"asOf": as_of, "datasets": datasets,
+               "sources": list({source["id"]: source for source in fetcher.sources}.values())}
+    chart = build_markets(payload)
+    write_json(f"{prefix}/markets-collected.json", payload)
+    write_json(f"{prefix}/markets.json", chart)
+    table().put_item(Item=json.loads(json.dumps({"pk": "CHART", "sk": "MARKETS", "asOf": as_of,
+                                               "chart": chart, "collectionKey": f"{prefix}/markets-collected.json"}), parse_float=Decimal),
+                     ConditionExpression="attribute_not_exists(pk) OR asOf <= :asOf",
+                     ExpressionAttributeValues={":asOf": as_of})
+    # Existing workflow finishes here; AI generation is outside this first-chart scope.
+    return {"skipped": True, "asOf": as_of, "prefix": prefix, "status": "markets-published"}
 
 
 def build_report(payload):
