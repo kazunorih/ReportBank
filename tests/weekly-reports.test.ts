@@ -25,7 +25,10 @@ describe("weekly reports", () => {
   it("serves the sourced first-chart snapshot without AWS or an AI summary", async () => {
     vi.stubEnv("WEEKLY_REPORTS_TABLE_NAME", "");
     const chart = await getMarketChart();
-    expect(chart.series).toHaveLength(5);
+    expect(chart.series).toHaveLength(4);
+    expect(chart.series.some((item) => item.id === "jgb3")).toBe(false);
+    expect(chart.insight?.summary.length).toBeGreaterThan(0);
+    expect([...(chart.insight?.summary || "")].length).toBeLessThanOrEqual(400);
     expect(chart.series.find((item) => item.id === "topix")?.values.some((value) => value !== null && value > 0)).toBe(true);
     expect(chart.sources.some((source) => /03_sisu\d{4}\.pdf$/.test(source.url))).toBe(true);
     expect(send).not.toHaveBeenCalled();

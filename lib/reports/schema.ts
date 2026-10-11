@@ -42,11 +42,16 @@ export type ReportSummary = z.infer<typeof summarySchema>;
 export const marketChartSchema = z.object({
   asOf: date,
   periods: reportSchema.shape.periods,
-  series: z.array(reportSchema.shape.series.element).length(5),
+  series: z.array(reportSchema.shape.series.element).transform((items) => items.filter((item) => item.id !== "jgb3")).pipe(z.array(reportSchema.shape.series.element).length(4)),
   sources: reportSchema.shape.sources,
   warnings: reportSchema.shape.warnings,
+  insight: z.object({
+    summary: summarySchema.shape.summary,
+    generatedAt: summarySchema.shape.generatedAt,
+    model: z.enum(["initial", "gpt-5.6-luna"]),
+  }).optional(),
 }).superRefine((chart, ctx) => {
-  const required = ["jgb3", "jgb10", "jgb30", "flat35", "topix"];
+  const required = ["jgb10", "jgb30", "flat35", "topix"];
   const ids = new Set(chart.series.map((item) => item.id));
   const sources = new Set(chart.sources.map((item) => item.id));
   if (!required.every((id) => ids.has(id as (typeof chart.series)[number]["id"])) ||

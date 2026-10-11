@@ -1,7 +1,7 @@
-"""Independent first chart; no AI summary or other chart datasets required."""
+"""Independent first chart, with only its displayed series as summary evidence."""
 from domain import SERIES, LABELS, aggregate, half_years, validate_observations
 
-MARKET_IDS = ("jgb3", "jgb10", "jgb30", "flat35", "topix")
+MARKET_IDS = ("jgb10", "jgb30", "flat35", "topix")
 
 
 def build_markets(payload):

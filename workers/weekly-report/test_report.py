@@ -126,9 +126,29 @@ class PublicationTests(unittest.TestCase):
         payload["datasets"] = {key: value for key, value in payload["datasets"].items() if key in ("jgb3", "jgb10", "jgb30", "flat35", "topix")}
         payload["datasets"]["flat35"]["observations"] = [{"date": "2026-07-01", "value": 3.0}]
         chart = build_markets(payload)
-        self.assertEqual(len(chart["series"]), 5)
+        self.assertEqual(len(chart["series"]), 4)
         self.assertNotIn("summary", chart)
-        self.assertTrue(all(v is None for v in chart["series"][3]["values"]))
+        self.assertTrue(all(v is None for v in next(s for s in chart["series"] if s["id"] == "flat35")["values"]))
+
+    @patch.dict("os.environ", {"OPENAI_SECRET_ARN": "test-secret", "OPENAI_MODEL": "gpt-5.6-luna"})
+    @patch.object(worker, "write_json")
+    @patch.object(worker, "urlopen")
+    @patch.object(worker.boto3, "client")
+    def test_market_summary_uses_only_displayed_chart_data(self, client, urlopen, write_json):
+        import io
+        import json
+        client.return_value.get_secret_value.return_value = {"SecretString": '{"apiKey":"test-key"}'}
+        response = {"status": "completed", "output": [{"type": "message", "content": [{"type": "output_text", "text": json.dumps({"summary": "図表に基づくテスト本文", "sourceIds": ["source"]})}]}]}
+        urlopen.return_value.__enter__.return_value = io.StringIO(json.dumps(response))
+        chart = build_markets(fixture_payload())
+        insight = worker.generate({"prefix": "runs/test"}, chart=chart)
+        request = json.loads(urlopen.call_args.args[0].data)
+        evidence = json.loads(request["input"])
+        self.assertEqual({s["id"] for s in evidence["series"]}, {"jgb10", "jgb30", "flat35", "topix"})
+        self.assertNotIn("latestObservations", evidence)
+        self.assertNotIn("referenceDocuments", evidence)
+        self.assertEqual(insight["model"], "gpt-5.6-luna")
+        self.assertNotIn("insight", chart)
 
     def test_missing_series_stops_publication(self):
         payload = fixture_payload()

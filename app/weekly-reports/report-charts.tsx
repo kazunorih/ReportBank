@@ -23,7 +23,7 @@ export default function ReportCharts({ report }: { report: Pick<WeeklyReport, "p
         </label>
       </div>
       {chartGroups.filter((group) => seriesCatalog.some((item) => item.group === group.id && report.series.some((stored) => stored.id === item.id))).map((group, groupIndex) => {
-        const series = seriesCatalog.filter((item) => item.group === group.id);
+        const series = seriesCatalog.filter((item) => item.group === group.id && item.id !== "jgb3");
         const available = series.filter((item) => data.some((row) => row[item.id] != null));
         return (
           <section key={group.id} className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
@@ -42,8 +42,8 @@ export default function ReportCharts({ report }: { report: Pick<WeeklyReport, "p
                     <Tooltip labelFormatter={(value) => `${value} 半期末`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 3 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     <Legend wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
-                    {available.map((item, index) => group.id === "lending" || group.id === "construction"
-                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} fill={colors[index]} maxBarSize={18} isAnimationActive={false} />
+                    {available.map((item, index) => group.id === "lending" || group.id === "construction" || item.id === "topix"
+                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} fill={item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : 1} maxBarSize={18} isAnimationActive={false} />
                       : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={false} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>
