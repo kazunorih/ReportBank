@@ -3,13 +3,32 @@ from unittest.mock import patch
 
 from domain import (SERIES, aggregate, half_years, parse_boj, parse_mof, report_date,
                     validate_observations, validate_summary)
-from sources import parse_flat35, parse_import, safe_url
+from sources import parse_flat35, parse_flat35_bank, collect_flat35, parse_import, safe_url
 from topix import parse_topix_text
 from markets import build_markets
 import index as worker
 
 
 class AggregationTests(unittest.TestCase):
+    def test_flat35_bank_selects_fixed_21_to_35_years_column(self):
+        html = '<table><tr><th>適用期間</th><th>20年以下</th><th>21年以上～35年以下</th></tr><tr><td>2026年6月</td><td>2.89%</td><td>3.21%</td></tr></table>'
+        other = '<table><tr><th>適用期間</th><th>35年以下</th></tr><tr><td>2026年6月</td><td>9.99%</td></tr></table>'
+        self.assertEqual(parse_flat35_bank(html + other), [{"date": "2026-06-30", "value": 3.21}])
+        with self.assertRaises(ValueError):
+            parse_flat35_bank(html.replace("3.21%", "未公表"))
+        with self.assertRaises(ValueError):
+            parse_flat35_bank(html + html)
+
+    def test_flat35_bank_separates_old_and_new_insurance(self):
+        from unittest.mock import Mock
+        def page(value):
+            return ('<table><tr><th>適用期間</th><th>21年以上～35年以下</th></tr>' +
+                    ''.join(f'<tr><td>{year}年{month}月</td><td>{value}%</td></tr>' for year, month in [(2017, 6), (2017, 12), (2026, 12)]) + '</table>').encode()
+        fetcher = Mock()
+        fetcher.get.side_effect = [(page('2.00'), 'new'), (page('1.00'), 'old')]
+        data = collect_flat35(fetcher, '2026-10-12')['flat35']
+        self.assertEqual(data['observations'], [{'date': '2017-06-30', 'value': 1.0}, {'date': '2017-12-31', 'value': 2.0}])
+
     def test_topix_months_exclude_daily_and_dividend_included_columns(self):
         header = "Stock Price Index & Stock Price Average(End of Year/Month/Daily) TOPIX\n"
         rows = "30 (2018) 1 1,001.00 2,001.00\n" + "\n".join(f"{m} {1000+m}.00 {2000+m}.00" for m in range(2, 13))

@@ -31,6 +31,10 @@ describe("weekly reports", () => {
     expect([...(chart.insight?.summary || "")].length).toBeLessThanOrEqual(400);
     expect(chart.series.find((item) => item.id === "topix")?.values.some((value) => value !== null && value > 0)).toBe(true);
     expect(chart.sources.some((source) => /03_sisu\d{4}\.pdf$/.test(source.url))).toBe(true);
+    const flat35 = chart.series.find((item) => item.id === "flat35")!;
+    expect(flat35.values.filter((value) => value !== null).length).toBeGreaterThan(1);
+    expect(flat35.note).toContain("楽天銀行");
+    expect(chart.sources.filter((source) => flat35.sourceIds.includes(source.id)).every((source) => new URL(source.url).hostname === "www.rakuten-bank.co.jp")).toBe(true);
     expect(send).not.toHaveBeenCalled();
   });
 

@@ -107,6 +107,8 @@ def collect(event):
                                "sourceIds": list(dict.fromkeys(existing["sourceIds"] + [s["id"] for s in sources]))}
     for series_id, dataset in fresh.items():
         existing = datasets.get(series_id, {"observations": [], "sourceIds": []})
+        if series_id == "flat35":
+            existing = {"observations": [], "sourceIds": []}  # Do not mix the previous JHF minimum series.
         fresh_months = {row["date"][:7] for row in dataset["observations"]}
         merged = {row["date"]: row for row in existing["observations"] if row["date"][:7] not in fresh_months and row["date"] <= as_of}
         merged.update({row["date"]: row for row in dataset["observations"]})
@@ -135,22 +137,9 @@ def collect_markets(as_of, prefix):
         saved = read_json(previous["collectionKey"])
         datasets.update(saved["datasets"])
         fetcher.sources.extend(saved["sources"])
-    # Optional verified historical Flat35 observations. Current month still comes from JHF.
-    try:
-        response = s3().get_object(Bucket=os.environ["REPORT_BUCKET"], Key="imports/flat35.csv")
-        raw = response["Body"].read(15 * 1024 * 1024 + 1)
-        if len(raw) > 15 * 1024 * 1024:
-            raise ValueError("Flat35 import exceeds size limit")
-        rows, sources = parse_import(raw, "flat35")
-        archive("import-flat35", raw, {"sources": sources, "versionId": response.get("VersionId")})
-        fetcher.sources.extend(sources)
-        old = datasets.get("flat35", {"observations": [], "sourceIds": []})
-        merged = {row["date"]: row for row in old["observations"]}
-        merged.update({row["date"]: row for row in rows})
-        datasets["flat35"] = {"observations": list(merged.values()), "sourceIds": list(dict.fromkeys(old["sourceIds"] + [s["id"] for s in sources]))}
-    except ClientError as error:
-        if error.response["Error"]["Code"] not in ("NoSuchKey", "404"):
-            raise
+    # Rebuild this series from the bank's complete numeric tables; previous JHF
+    # minimum rates and arbitrary imported histories have a different definition.
+    datasets.pop("flat35", None)
     for collector in (collect_mof, collect_flat35, collect_topix):
         for key, fresh in collector(fetcher, as_of).items():
             old = datasets.get(key, {"observations": [], "sourceIds": []})

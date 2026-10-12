@@ -18,6 +18,7 @@ ALLOWED_HOSTS = {
     "www.flat35.com", "www.jhf.go.jp", "www.simulation.jhf.go.jp",
     "indexes.nikkei.co.jp", "www.zenginkyo.or.jp", "www.jsda.or.jp",
     "www.peajapan.org", "www.jri.co.jp", "www.jcer.or.jp",
+    "www.rakuten-bank.co.jp",
 }
 
 CONTEXT_SOURCES = [
@@ -190,7 +191,7 @@ def parse_flat35(html):
     return [{"date": stamp, "value": low}]
 
 
-def collect_flat35(fetcher, as_of):
+def collect_flat35_current_jhf(fetcher, as_of):
     url = "https://www.simulation.jhf.go.jp/flat35/kinri/index.php/rates/top"
     raw, source_id = fetcher.get(url, "住宅金融支援機構・新機構団信付きフラット35の借入金利水準")
     # This official endpoint declares EUC-JP in its HTTP Content-Type.
@@ -198,6 +199,49 @@ def collect_flat35(fetcher, as_of):
     if not rows:
         raise ValueError("Flat35 rate applies to a future month")
     return with_provenance({"flat35": rows}, [source_id])
+
+
+def parse_flat35_bank(html):
+    """Only the 21-35 year column; exclude Flat20 and variable-rate tables."""
+    result = {}
+    for table in re.findall(r"<table\b[^>]*>(.*?)</table>", html, re.S | re.I):
+        rows = re.findall(r"<tr\b[^>]*>(.*?)</tr>", table, re.S | re.I)
+        if not rows:
+            continue
+        def cells(row):
+            return [re.sub(r"\s+", "", unicodedata.normalize("NFKC", "".join(Html(cell).text)))
+                    for cell in re.findall(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", row, re.S | re.I)]
+        header = cells(rows[0])
+        columns = [i for i, label in enumerate(header) if "21年以上" in label and "35年以下" in label]
+        if len(columns) != 1 or not header or header[0] != "適用期間":
+            continue
+        for row in rows[1:]:
+            values = cells(row)
+            if len(values) != len(header):
+                raise ValueError("Flat35 bank table column count changed")
+            stamp = re.fullmatch(r"(\d{4})年(\d{1,2})月", values[0])
+            rate = re.fullmatch(r"(\d+\.\d+)%", values[columns[0]])
+            if not stamp or not rate or not 0 < float(rate[1]) < 30:
+                raise ValueError("Invalid Flat35 bank observation")
+            day = month_end(int(stamp[1]), int(stamp[2]))
+            if day in result:
+                raise ValueError("Duplicate Flat35 bank observation")
+            result[day] = {"date": day, "value": float(rate[1])}
+    if not result:
+        raise ValueError("Flat35 bank 21-35 year table not found")
+    return list(result.values())
+
+
+def collect_flat35(fetcher, as_of):
+    rows, ids = [], []
+    for old, path in ((False, "rate_trend.html"), (True, "rate_trend2.html")):
+        raw, source_id = fetcher.get("https://www.rakuten-bank.co.jp/home-loan/rate/" + path,
+                                    "楽天銀行・フラット35金利推移（" + ("旧団信制度" if old else "新機構団信付き") + "）")
+        ids.append(source_id)
+        for row in parse_flat35_bank(raw.decode("utf-8-sig")):
+            if (row["date"] < "2017-10-01") == old and row["date"] <= as_of:
+                rows.append(row)
+    return with_provenance({"flat35": sorted(rows, key=lambda row: row["date"])}, ids)
 
 
 def parse_mlit(raw):
