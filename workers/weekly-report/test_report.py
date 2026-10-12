@@ -175,13 +175,17 @@ class PublicationTests(unittest.TestCase):
         client.return_value.get_secret_value.return_value = {"SecretString": '{"apiKey":"test-key"}'}
         response = {"status": "completed", "output": [{"type": "message", "content": [{"type": "output_text", "text": json.dumps({"summary": "図表に基づくテスト本文", "sourceIds": ["source"]})}]}]}
         urlopen.return_value.__enter__.return_value = io.StringIO(json.dumps(response))
-        chart = build_markets(fixture_payload())
+        chart = worker.integrate(build_markets(fixture_payload()))
         insight = worker.generate({"prefix": "runs/test"}, chart=chart)
         request = json.loads(urlopen.call_args.args[0].data)
         evidence = json.loads(request["input"])
         self.assertEqual({s["id"] for s in evidence["series"]}, {"jgb10", "jgb30", "flat35", "topix"})
         self.assertNotIn("latestObservations", evidence)
         self.assertNotIn("referenceDocuments", evidence)
+        self.assertEqual(evidence["figure02"], chart["lending"])
+        self.assertEqual(evidence["figure03"], chart["bojFinancials"])
+        self.assertIn("政府債務全体ではありません", request["instructions"])
+        self.assertIn("分からない", request["instructions"])
         self.assertEqual(insight["model"], "gpt-5.6-luna")
         self.assertNotIn("insight", chart)
 

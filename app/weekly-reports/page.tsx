@@ -6,7 +6,7 @@ import { chartGroups } from "@/lib/reports/catalog";
 import { getWeeklyReports } from "@/lib/reports/store";
 import ReportCharts from "./report-charts";
 import { getMarketChart } from "@/lib/reports/markets";
-import { withLendingChart } from "@/lib/reports/lending";
+import { withReportFigures } from "@/lib/reports/boj";
 
 export const metadata: Metadata = {
   title: "日本のマクロ金融環境 | 週次レポート | ReportBank",
@@ -25,7 +25,7 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
   try { marketChart = await getMarketChart(); }
   catch (error) { console.error("Market chart read failed", error); failed = true; }
   const insight = marketChart?.insight;
-  const chartData = marketChart ? withLendingChart(marketChart) : undefined;
+  const chartData = marketChart ? withReportFigures(marketChart) : undefined;
 
   return (
     <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
@@ -34,7 +34,7 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
         <header className="border-b border-slate-200 pb-8">
           <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / WEEKLY REPORT</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">日本のマクロ金融環境</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">国債金利とTOPIXの推移から、日本の金融環境を定点観測します。</p>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">金利・TOPIX、国内銀行の貸出、日本銀行の資産の推移から、日本の金融環境を定点観測します。</p>
           <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-600">
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">毎週金曜 23:00（日本時間）生成開始</span>
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">生成・検証完了後に更新</span>
@@ -43,13 +43,13 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
         </header>
         <section className="max-w-3xl text-sm leading-7 text-slate-600">
           <p>WEEKLY INSIGHT</p>
-          <h2 className="mt-2">金利とTOPIXの400字整理</h2>
+          <h2 className="mt-2">3つの図表を統合した400字整理</h2>
           <p className="mt-3">AIによる推論です。公表機関の見解とは異なります。統計の時点・集計範囲を踏まえた考察としてお読みください。</p>
           <p className="mt-5 whitespace-pre-wrap">{insight?.summary || (failed ? "レポートを取得できませんでした。時間をおいて再度お試しください。" : "この図表のデータに基づく400字以内の整理を準備しています。")}</p>
           {insight && <p className="mt-4">{[...insight.summary].length}字 / {insight.model === "initial" ? "初回掲載文（AI作成）" : "GPT-5.6-luna"} / 収集基準日 {marketChart?.asOf}</p>}
         </section>
         {marketChart && chartData ? <>
-          <p className="text-sm leading-7 text-slate-600">金利・TOPIX・貸出残高の推移を掲載しています。金利・TOPIXの収集基準日：{marketChart.asOf}。貸出残高は日本銀行の提供CSVを使用しています（最新観測日：{chartData.series.find((series) => series.id === "otherLoans")?.latestDate}）。</p>
+          <p className="text-sm leading-7 text-slate-600">収集基準日：{marketChart.asOf}。貸出残高は日本銀行の提供CSVを使用（最新観測日：{chartData.series.find((series) => series.id === "otherLoans")?.latestDate}）。日本銀行の資産は財務諸表を使用（最新決算日：{chartData.series.find((series) => series.id === "bojStatementJgb")?.latestDate}）。</p>
           <ReportCharts report={chartData} />
           <section className="rounded-2xl bg-white p-6"><h2 className="text-xl font-semibold">出典・取得日時</h2><ul className="mt-4 space-y-3">{chartData.sources.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-700 underline">{source.name}</a><p className="text-xs text-slate-500">取得：{formatTime(source.retrievedAt)}</p></li>)}</ul></section>
         </> : <section className="grid gap-4 sm:grid-cols-2" aria-label="掲載予定の統計">{chartGroups.filter((group) => group.id === "markets").map((group) => <div key={group.id} className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="font-semibold">{group.title}</h2><p className="mt-3 text-sm leading-6 text-slate-500">{group.description}</p><p className="mt-4 text-xs text-sky-700">データ公開準備中</p></div>)}</section>}

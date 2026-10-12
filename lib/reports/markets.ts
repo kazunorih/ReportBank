@@ -10,7 +10,7 @@ export async function getMarketChart() {
       TableName, Key: { pk: "CHART", sk: "MARKETS" }, ConsistentRead: true,
     }));
     // A stored bank/minimum-rate chart must not acquire the new midpoint label.
-    if (result.Item?.chart?.flat35Method === "range-midpoint-v1" && result.Item.chart.topixMethod === "annual-close-v1") return marketChartSchema.parse(result.Item.chart);
+    if (result.Item?.chart?.summaryScope === "three-figures-v1" && result.Item.chart.flat35Method === "range-midpoint-v1" && result.Item.chart.topixMethod === "annual-close-v1") return marketChartSchema.parse(result.Item.chart);
   }
   return marketChartSchema.parse(snapshot);
 }

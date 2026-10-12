@@ -40,6 +40,19 @@ export type WeeklyReport = z.infer<typeof reportSchema>;
 export type ReportSummary = z.infer<typeof summarySchema>;
 
 export const marketChartSchema = z.object({
+  summaryScope: z.literal("three-figures-v1").optional(),
+  lending: z.object({
+    observations: z.array(z.object({ date, domesticBankLoans: z.number().finite().nonnegative().nullable(), housingLoans: z.number().finite().nonnegative().nullable() })),
+    source: reportSchema.shape.sources.element,
+  }).optional(),
+  bojFinancials: z.object({
+    observations: z.array(z.object({
+      date: z.string().regex(/^\d{4}-(03-31|09-30)$/),
+      assets: z.number().finite().nonnegative(), jgb: z.number().finite().nonnegative(), other: z.number().finite().nonnegative(),
+      sourceIds: z.array(z.string()), basis: z.literal("financial-statements"),
+    }).refine(row => Math.abs(row.assets - row.jgb - row.other) < 0.00001)),
+    sources: reportSchema.shape.sources,
+  }).optional(),
   topixMethod: z.literal("annual-close-v1"),
   flat35Method: z.literal("range-midpoint-v1"),
   asOf: date,
@@ -53,6 +66,17 @@ export const marketChartSchema = z.object({
     model: z.enum(["initial", "gpt-5.6-luna"]),
   }).optional(),
 }).superRefine((chart, ctx) => {
+  if (chart.summaryScope === "three-figures-v1") {
+    const financials = chart.bojFinancials;
+    const sources = new Set(chart.sources.map(source => source.id));
+    if (!financials || !chart.lending || financials.observations.length === 0 ||
+        financials.observations.some((row, index) => row.date > chart.asOf ||
+          (index > 0 && row.date <= financials.observations[index - 1].date) || row.sourceIds.some(id => !sources.has(id))) ||
+        !sources.has(chart.lending.source.id) || chart.lending.observations.some(row =>
+          row.date > chart.asOf || (row.housingLoans !== null && row.domesticBankLoans !== null && row.housingLoans > row.domesticBankLoans))) {
+      ctx.addIssue({ code: "custom", message: "Invalid integrated figure evidence" });
+    }
+  }
   const required = ["jgb10", "jgb30", "flat35", "topix"];
   const ids = new Set(chart.series.map((item) => item.id));
   const sources = new Set(chart.sources.map((item) => item.id));

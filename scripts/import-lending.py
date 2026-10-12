@@ -22,4 +22,10 @@ data = {"unit": "兆円", "originalUnit": "億円", "seriesCodes": CODES,
                    "retrievedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")}}
 (ROOT / "workers/weekly-report/data/lending-la01.csv").write_bytes(raw)
 (ROOT / "lib/reports/data/lending.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+(ROOT / "workers/weekly-report/data/lending.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+from integrated import integrate
+chart_path = ROOT / "lib/reports/data/markets.json"
+chart = integrate(json.loads(chart_path.read_text(encoding="utf-8")))
+chart.pop("insight", None)
+chart_path.write_text(json.dumps(chart, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(json.dumps({"quarters": len(data["observations"]), "first": data["observations"][0], "last": data["observations"][-1]}))

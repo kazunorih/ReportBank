@@ -1,0 +1,238 @@
+{
+  "observations": [
+    {
+      "date": "2019-09-30",
+      "assets": 569.8026,
+      "jgb": 479.681,
+      "other": 90.1216,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "fa3a8a013b364ebe"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2020-03-31",
+      "assets": 604.4846,
+      "jgb": 485.9181,
+      "other": 118.5665,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "2dc6fcca391da8a1"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2020-09-30",
+      "assets": 690.0269,
+      "jgb": 529.9563,
+      "other": 160.0706,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "8a5f571d0badbf62"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2021-03-31",
+      "assets": 714.5566,
+      "jgb": 532.1652,
+      "other": 182.3914,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "776146edf557caac"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2021-09-30",
+      "assets": 724.0579,
+      "jgb": 528.0295,
+      "other": 196.0284,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "894a60afc1915910"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2022-03-31",
+      "assets": 736.2535,
+      "jgb": 526.1736,
+      "other": 210.0799,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "b46233efa2f71524"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2022-09-30",
+      "assets": 685.7902,
+      "jgb": 545.5211,
+      "other": 140.2691,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "fe90f1c2434f54dc"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2023-03-31",
+      "assets": 735.1165,
+      "jgb": 581.7206,
+      "other": 153.3959,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "70f85fb54107d40a"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2023-09-30",
+      "assets": 741.491,
+      "jgb": 586.8781,
+      "other": 154.6129,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "084b1e99ac454764"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2024-03-31",
+      "assets": 756.4231,
+      "jgb": 589.6634,
+      "other": 166.7597,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "7d05763562ce029e"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2024-09-30",
+      "assets": 753.2992,
+      "jgb": 585.4538,
+      "other": 167.8454,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "51da2e0fba6fb371"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2025-03-31",
+      "assets": 729.7669,
+      "jgb": 575.9308,
+      "other": 153.8361,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "bd3a6d86c6fbdd0e"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2025-09-30",
+      "assets": 695.7819,
+      "jgb": 556.7576,
+      "other": 139.0243,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "51da2e0fba6fb371"
+      ],
+      "basis": "financial-statements"
+    },
+    {
+      "date": "2026-03-31",
+      "assets": 663.025,
+      "jgb": 530.8695,
+      "other": 132.1555,
+      "sourceIds": [
+        "061666982fbc3cf2",
+        "bd3a6d86c6fbdd0e"
+      ],
+      "basis": "financial-statements"
+    }
+  ],
+  "sources": [
+    {
+      "id": "061666982fbc3cf2",
+      "name": "日本銀行・会計・決算（財務諸表）",
+      "url": "https://www.boj.or.jp/about/account/index.htm",
+      "retrievedAt": "2026-10-12T13:11:30.986021Z"
+    },
+    {
+      "id": "bd3a6d86c6fbdd0e",
+      "name": "日本銀行・2026年3月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2605a.htm",
+      "retrievedAt": "2026-10-12T13:11:31.154999Z"
+    },
+    {
+      "id": "51da2e0fba6fb371",
+      "name": "日本銀行・2025年9月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2511a.htm",
+      "retrievedAt": "2026-10-12T13:11:31.261683Z"
+    },
+    {
+      "id": "7d05763562ce029e",
+      "name": "日本銀行・2025年3月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2505a.htm",
+      "retrievedAt": "2026-10-12T13:11:31.449942Z"
+    },
+    {
+      "id": "084b1e99ac454764",
+      "name": "日本銀行・2024年9月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2411a.htm",
+      "retrievedAt": "2026-10-12T13:11:31.701734Z"
+    },
+    {
+      "id": "70f85fb54107d40a",
+      "name": "日本銀行・2024年3月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2405a.htm",
+      "retrievedAt": "2026-10-12T13:11:31.861996Z"
+    },
+    {
+      "id": "fe90f1c2434f54dc",
+      "name": "日本銀行・2023年9月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2311a.htm",
+      "retrievedAt": "2026-10-12T13:11:32.052074Z"
+    },
+    {
+      "id": "b46233efa2f71524",
+      "name": "日本銀行・2023年3月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2305a.htm",
+      "retrievedAt": "2026-10-12T13:11:32.223668Z"
+    },
+    {
+      "id": "894a60afc1915910",
+      "name": "日本銀行・2022年9月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2211a.htm",
+      "retrievedAt": "2026-10-12T13:11:32.350021Z"
+    },
+    {
+      "id": "776146edf557caac",
+      "name": "日本銀行・2022年3月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2205a.htm",
+      "retrievedAt": "2026-10-12T13:11:32.484522Z"
+    },
+    {
+      "id": "8a5f571d0badbf62",
+      "name": "日本銀行・2021年9月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2111a.htm",
+      "retrievedAt": "2026-10-12T13:11:32.790071Z"
+    },
+    {
+      "id": "2dc6fcca391da8a1",
+      "name": "日本銀行・2021年3月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2105a.htm",
+      "retrievedAt": "2026-10-12T13:11:33.023751Z"
+    },
+    {
+      "id": "fa3a8a013b364ebe",
+      "name": "日本銀行・2020年9月末の財務諸表・決算概要",
+      "url": "https://www.boj.or.jp/about/account/zai2011a.htm",
+      "retrievedAt": "2026-10-12T13:11:33.278955Z"
+    }
+  ]
+}

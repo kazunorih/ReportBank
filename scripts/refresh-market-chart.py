@@ -14,6 +14,7 @@ from domain import JST
 from sources import Fetcher, collect_mof, collect_flat35
 from topix import collect_topix
 from markets import build_markets
+from integrated import integrate
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--as-of", default=datetime.now(JST).date().isoformat())
@@ -23,7 +24,7 @@ datasets = collect_mof(fetcher, args.as_of)
 datasets.update(collect_flat35(fetcher, args.as_of))
 datasets.update(collect_topix(fetcher, args.as_of, backfill=True))
 payload = {"asOf": args.as_of, "datasets": datasets, "sources": fetcher.sources}
-chart = build_markets(payload)
+chart = integrate(build_markets(payload), fetcher)
 target = ROOT / "lib" / "reports" / "data"
 target.mkdir(parents=True, exist_ok=True)
 (target / "markets.json").write_text(json.dumps(chart, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

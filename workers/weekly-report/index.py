@@ -16,6 +16,7 @@ from sources import (Fetcher, collect_boj, collect_context, collect_flat35, coll
                      collect_mof, parse_import)
 from topix import collect_topix
 from markets import build_markets
+from integrated import integrate
 
 
 def now():
@@ -153,7 +154,7 @@ def collect_markets(as_of, prefix):
                              **({"method": fresh["method"]} if "method" in fresh else {})}
     payload = {"asOf": as_of, "datasets": datasets,
                "sources": list({source["id"]: source for source in fetcher.sources}.values())}
-    chart = build_markets(payload)
+    chart = integrate(build_markets(payload), fetcher, previous.get("chart", {}).get("bojFinancials") if previous else None)
     if os.environ.get("OPENAI_SECRET_ARN", "").strip():
         chart["insight"] = generate({"prefix": prefix}, chart=chart)
     write_json(f"{prefix}/markets-collected.json", payload)
@@ -162,7 +163,7 @@ def collect_markets(as_of, prefix):
                                                "chart": chart, "collectionKey": f"{prefix}/markets-collected.json"}), parse_float=Decimal),
                      ConditionExpression="attribute_not_exists(pk) OR asOf <= :asOf",
                      ExpressionAttributeValues={":asOf": as_of})
-    # Existing workflow finishes here; AI generation is outside this first-chart scope.
+    # All three figures and their generated summary are published together.
     return {"skipped": True, "asOf": as_of, "prefix": prefix, "status": "markets-published"}
 
 
@@ -215,7 +216,11 @@ def generate(event, chart=None):
 参考資料の索引やリンクのタイトルだけでは記事本文の主張を推定しないでください。
 summaryと、その本文が参照した既存sourceIdの配列sourceIdsを返してください。"""
     if chart is not None:
-        instructions += "\n対象は『金利とTOPIX』の図表だけです。国債10年・30年、フラット35、TOPIXの表示値のみを根拠にしてください。国債3年や他の図表、外部のニュースは使わないでください。株価指数の上昇を資金流入額と同一視せず、フラット35が欠測なら住宅ローン金利の推移を推測しないでください。"
+        if chart.get("summaryScope") != "three-figures-v1":
+            raise ValueError("Integrated summary requires all three figures")
+        evidence["figure02"] = chart["lending"]
+        evidence["figure03"] = chart["bojFinancials"]
+        instructions += "\nFIGURE01（金利・TOPIX）、FIGURE02（国内銀行の住宅資金と総貸出－住宅資金）、FIGURE03（日銀の国債と資産合計－国債）の3図を統合してください。民間債務と政府債務のバランス、および金融政策が経済に与えていそうな影響をAIの推論と明記して論じてください。ただし国内銀行の総貸出は民間債務全体ではなく、日銀の国債保有は政府債務全体ではありません。この3図では両債務の総額比率や政策の因果的効果は分からないと明記してください。貸出・資産の単位は兆円。日銀財務諸表は3月末・9月末、金利は6月末・12月末であり同一時点と扱わないでください。その他資産は資産合計から国債を引いたものです。未取得期間を補間せず、TOPIX上昇を資金流入額と同一視しないでください。対象外の図表やニュースを使わないでください。"
     request_body = {
         "model": MODEL, "store": False, "instructions": instructions,
         "input": json.dumps(evidence, ensure_ascii=False), "max_output_tokens": 5000,

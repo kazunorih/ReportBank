@@ -2,18 +2,19 @@
 
 import { useState } from "react";
 import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { chartGroups, seriesCatalog, lendingSeriesCatalog, type SeriesId } from "@/lib/reports/catalog";
+import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/catalog";
 import type { WeeklyReport } from "@/lib/reports/schema";
+import { bojSeriesCatalog } from "@/lib/reports/boj";
 
 const colors = ["#0284c7", "#0f766e", "#7c3aed", "#d97706", "#be123c"];
-const displayCatalog = [...seriesCatalog, ...lendingSeriesCatalog];
-type ChartSeriesId = SeriesId | (typeof lendingSeriesCatalog)[number]["id"];
+const displayCatalog = [...seriesCatalog, ...lendingSeriesCatalog, ...bojSeriesCatalog];
+type ChartSeriesId = (typeof displayCatalog)[number]["id"];
 type ChartReport = Pick<WeeklyReport, "periods" | "sources"> & {
-  series: (Omit<WeeklyReport["series"][number], "id"> & { id: ChartSeriesId })[];
+  series: (Omit<WeeklyReport["series"][number], "id"> & { id: ChartSeriesId; observations?: { date: string; value: number }[] })[];
 };
 export default function ReportCharts({ report }: { report: ChartReport }) {
   const [years, setYears] = useState(30);
-  const data = report.periods.map((period, index): { period: string } & Record<ChartSeriesId, number | null> => ({
+  const halfYearData = report.periods.map((period, index): { period: string } & Record<ChartSeriesId, number | null> => ({
     period,
     ...Object.fromEntries(report.series.map((series) => [series.id, series.values[index]])) as Record<ChartSeriesId, number | null>,
   })).slice(-years * 2);
@@ -28,9 +29,15 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         </label>
       </div>
       {chartGroups.filter((group) => displayCatalog.some((item) => item.group === group.id && report.series.some((stored) => stored.id === item.id))).map((group, groupIndex) => {
+        const data = group.id === "bojComparison" ? report.periods.slice(-years * 2).flatMap(period => {
+          const quarter = period.slice(0, 4) + (period.endsWith("06-30") ? "-03-31" : "-09-30");
+          return [quarter, period].map(date => ({ period: date, ...Object.fromEntries(report.series.map(stored => [stored.id,
+            stored.observations ? stored.observations.find(row => row.date === date)?.value ?? null : halfYearData.find(row => row.period === date)?.[stored.id] ?? null,
+          ])) as Record<ChartSeriesId, number | null> }));
+        }) : halfYearData;
         const series = displayCatalog.filter((item) => item.id !== "jgb3" && report.series.some((stored) => stored.id === item.id) &&
-          (item.group === group.id || (group.id === "loanComparison" && item.unit === "%")));
-        const hasRates = group.id === "markets" || group.id === "loanComparison";
+          (item.group === group.id || ((group.id === "loanComparison" || group.id === "bojComparison") && item.unit === "%")));
+        const hasRates = group.id === "markets" || group.id === "loanComparison" || group.id === "bojComparison";
         const available = series.filter((item) => data.some((row) => row[item.id] != null));
         return (
           <section key={group.id} className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
@@ -53,12 +60,12 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                       tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} tick={{ fontSize: 11 }} />
                     <YAxis yAxisId="amount" width={65} tick={{ fontSize: 11 }} tickFormatter={(value: number) => value.toLocaleString("ja-JP")} />
                     {hasRates && <YAxis yAxisId="rate" orientation="right" width={45} tick={{ fontSize: 11 }} unit="%" domain={["auto", "auto"]} />}
-                    <Tooltip labelFormatter={(value) => `${value} 半期末`}
+                    <Tooltip labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     <Legend wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
-                    {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "construction" || item.id === "topix")
-                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" ? "loans" : undefined} fill={item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : 1} maxBarSize={18} isAnimationActive={false} />
-                      : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={false} isAnimationActive={false} />)}
+                    {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
+                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : 1} maxBarSize={18} isAnimationActive={false} />
+                      : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={group.id === "bojComparison"} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>
                 </div>

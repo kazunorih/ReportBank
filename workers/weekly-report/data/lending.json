@@ -1,0 +1,648 @@
+{
+  "unit": "兆円",
+  "originalUnit": "億円",
+  "seriesCodes": [
+    "LA01'DLLILKG90_DLLI5DS2T",
+    "LA01'DLHLLKG71_DLHL2DSSL"
+  ],
+  "observations": [
+    {
+      "date": "1995-03-31",
+      "domesticBankLoans": 506.0794,
+      "housingLoans": 45.7416
+    },
+    {
+      "date": "1995-06-30",
+      "domesticBankLoans": 498.1256,
+      "housingLoans": 46.1541
+    },
+    {
+      "date": "1995-09-30",
+      "domesticBankLoans": 507.7251,
+      "housingLoans": 48.4821
+    },
+    {
+      "date": "1995-12-31",
+      "domesticBankLoans": 512.7471,
+      "housingLoans": 51.1386
+    },
+    {
+      "date": "1996-03-31",
+      "domesticBankLoans": 509.0445,
+      "housingLoans": 52.5257
+    },
+    {
+      "date": "1996-06-30",
+      "domesticBankLoans": 503.4993,
+      "housingLoans": 53.2904
+    },
+    {
+      "date": "1996-09-30",
+      "domesticBankLoans": 502.0776,
+      "housingLoans": 54.1644
+    },
+    {
+      "date": "1996-12-31",
+      "domesticBankLoans": 512.0603,
+      "housingLoans": 55.2039
+    },
+    {
+      "date": "1997-03-31",
+      "domesticBankLoans": 505.2681,
+      "housingLoans": 56.5199
+    },
+    {
+      "date": "1997-06-30",
+      "domesticBankLoans": 500.0878,
+      "housingLoans": 57.3806
+    },
+    {
+      "date": "1997-09-30",
+      "domesticBankLoans": 499.429,
+      "housingLoans": 58.0744
+    },
+    {
+      "date": "1997-12-31",
+      "domesticBankLoans": 513.748,
+      "housingLoans": 59.1799
+    },
+    {
+      "date": "1998-03-31",
+      "domesticBankLoans": 498.1719,
+      "housingLoans": 60.1508
+    },
+    {
+      "date": "1998-06-30",
+      "domesticBankLoans": 499.1167,
+      "housingLoans": 60.789
+    },
+    {
+      "date": "1998-09-30",
+      "domesticBankLoans": 495.5891,
+      "housingLoans": 61.7521
+    },
+    {
+      "date": "1998-12-31",
+      "domesticBankLoans": 502.9021,
+      "housingLoans": 62.5548
+    },
+    {
+      "date": "1999-03-31",
+      "domesticBankLoans": 486.4024,
+      "housingLoans": 63.3841
+    },
+    {
+      "date": "1999-06-30",
+      "domesticBankLoans": 495.4413,
+      "housingLoans": 65.7728
+    },
+    {
+      "date": "1999-09-30",
+      "domesticBankLoans": 490.7045,
+      "housingLoans": 66.8069
+    },
+    {
+      "date": "1999-12-31",
+      "domesticBankLoans": 493.0348,
+      "housingLoans": 67.392
+    },
+    {
+      "date": "2000-03-31",
+      "domesticBankLoans": 485.0958,
+      "housingLoans": 68.6296
+    },
+    {
+      "date": "2000-06-30",
+      "domesticBankLoans": 472.638,
+      "housingLoans": 67.5948
+    },
+    {
+      "date": "2000-09-30",
+      "domesticBankLoans": 474.3492,
+      "housingLoans": 69.7219
+    },
+    {
+      "date": "2000-12-31",
+      "domesticBankLoans": 475.2649,
+      "housingLoans": 70.8338
+    },
+    {
+      "date": "2001-03-31",
+      "domesticBankLoans": 469.2408,
+      "housingLoans": 71.5747
+    },
+    {
+      "date": "2001-06-30",
+      "domesticBankLoans": 456.0398,
+      "housingLoans": 72.5717
+    },
+    {
+      "date": "2001-09-30",
+      "domesticBankLoans": 455.881,
+      "housingLoans": 73.6461
+    },
+    {
+      "date": "2001-12-31",
+      "domesticBankLoans": 454.0201,
+      "housingLoans": 74.8301
+    },
+    {
+      "date": "2002-03-31",
+      "domesticBankLoans": 446.4123,
+      "housingLoans": 76.0259
+    },
+    {
+      "date": "2002-06-30",
+      "domesticBankLoans": 435.0924,
+      "housingLoans": 77.1023
+    },
+    {
+      "date": "2002-09-30",
+      "domesticBankLoans": 428.6507,
+      "housingLoans": 77.5144
+    },
+    {
+      "date": "2002-12-31",
+      "domesticBankLoans": 432.3264,
+      "housingLoans": 78.9361
+    },
+    {
+      "date": "2003-03-31",
+      "domesticBankLoans": 424.7689,
+      "housingLoans": 80.5016
+    },
+    {
+      "date": "2003-06-30",
+      "domesticBankLoans": 414.1191,
+      "housingLoans": 81.6376
+    },
+    {
+      "date": "2003-09-30",
+      "domesticBankLoans": 411.3229,
+      "housingLoans": 83.8159
+    },
+    {
+      "date": "2003-12-31",
+      "domesticBankLoans": 409.8746,
+      "housingLoans": 85.718
+    },
+    {
+      "date": "2004-03-31",
+      "domesticBankLoans": 408.6249,
+      "housingLoans": 85.3061
+    },
+    {
+      "date": "2004-06-30",
+      "domesticBankLoans": 397.5285,
+      "housingLoans": 85.817
+    },
+    {
+      "date": "2004-09-30",
+      "domesticBankLoans": 398.8052,
+      "housingLoans": 86.848
+    },
+    {
+      "date": "2004-12-31",
+      "domesticBankLoans": 398.5306,
+      "housingLoans": 88.4043
+    },
+    {
+      "date": "2005-03-31",
+      "domesticBankLoans": 395.9934,
+      "housingLoans": 89.4219
+    },
+    {
+      "date": "2005-06-30",
+      "domesticBankLoans": 387.7502,
+      "housingLoans": 90.1941
+    },
+    {
+      "date": "2005-09-30",
+      "domesticBankLoans": 394.7533,
+      "housingLoans": 91.5575
+    },
+    {
+      "date": "2005-12-31",
+      "domesticBankLoans": 398.9315,
+      "housingLoans": 93.498
+    },
+    {
+      "date": "2006-03-31",
+      "domesticBankLoans": 401.4521,
+      "housingLoans": 94.7869
+    },
+    {
+      "date": "2006-06-30",
+      "domesticBankLoans": 398.9896,
+      "housingLoans": 95.3171
+    },
+    {
+      "date": "2006-09-30",
+      "domesticBankLoans": 401.7422,
+      "housingLoans": 91.8515
+    },
+    {
+      "date": "2006-12-31",
+      "domesticBankLoans": 406.9765,
+      "housingLoans": 92.8509
+    },
+    {
+      "date": "2007-03-31",
+      "domesticBankLoans": 405.481,
+      "housingLoans": 93.7368
+    },
+    {
+      "date": "2007-06-30",
+      "domesticBankLoans": 402.6061,
+      "housingLoans": 94.2368
+    },
+    {
+      "date": "2007-09-30",
+      "domesticBankLoans": 405.4484,
+      "housingLoans": 94.8405
+    },
+    {
+      "date": "2007-12-31",
+      "domesticBankLoans": 410.6863,
+      "housingLoans": 95.8108
+    },
+    {
+      "date": "2008-03-31",
+      "domesticBankLoans": 411.118,
+      "housingLoans": 97.1935
+    },
+    {
+      "date": "2008-06-30",
+      "domesticBankLoans": 410.5118,
+      "housingLoans": 97.9792
+    },
+    {
+      "date": "2008-09-30",
+      "domesticBankLoans": 412.0944,
+      "housingLoans": 98.515
+    },
+    {
+      "date": "2008-12-31",
+      "domesticBankLoans": 427.1603,
+      "housingLoans": 98.8413
+    },
+    {
+      "date": "2009-03-31",
+      "domesticBankLoans": 427.7448,
+      "housingLoans": 100.4766
+    },
+    {
+      "date": "2009-06-30",
+      "domesticBankLoans": 420.9931,
+      "housingLoans": 97.9392
+    },
+    {
+      "date": "2009-09-30",
+      "domesticBankLoans": 421.6443,
+      "housingLoans": 98.7553
+    },
+    {
+      "date": "2009-12-31",
+      "domesticBankLoans": 421.494,
+      "housingLoans": 99.8308
+    },
+    {
+      "date": "2010-03-31",
+      "domesticBankLoans": 420.5719,
+      "housingLoans": 101.012
+    },
+    {
+      "date": "2010-06-30",
+      "domesticBankLoans": 413.6338,
+      "housingLoans": 101.407
+    },
+    {
+      "date": "2010-09-30",
+      "domesticBankLoans": 414.5954,
+      "housingLoans": 102.313
+    },
+    {
+      "date": "2010-12-31",
+      "domesticBankLoans": 413.2021,
+      "housingLoans": 103.077
+    },
+    {
+      "date": "2011-03-31",
+      "domesticBankLoans": 417.528,
+      "housingLoans": 103.7522
+    },
+    {
+      "date": "2011-06-30",
+      "domesticBankLoans": 411.4411,
+      "housingLoans": 103.7938
+    },
+    {
+      "date": "2011-09-30",
+      "domesticBankLoans": 415.3694,
+      "housingLoans": 104.3672
+    },
+    {
+      "date": "2011-12-31",
+      "domesticBankLoans": 416.1807,
+      "housingLoans": 105.2487
+    },
+    {
+      "date": "2012-03-31",
+      "domesticBankLoans": 419.8186,
+      "housingLoans": 106.2015
+    },
+    {
+      "date": "2012-06-30",
+      "domesticBankLoans": 416.2911,
+      "housingLoans": 106.5657
+    },
+    {
+      "date": "2012-09-30",
+      "domesticBankLoans": 420.8658,
+      "housingLoans": 107.3992
+    },
+    {
+      "date": "2012-12-31",
+      "domesticBankLoans": 423.944,
+      "housingLoans": 108.4299
+    },
+    {
+      "date": "2013-03-31",
+      "domesticBankLoans": 429.2521,
+      "housingLoans": 109.5171
+    },
+    {
+      "date": "2013-06-30",
+      "domesticBankLoans": 426.7424,
+      "housingLoans": 109.8129
+    },
+    {
+      "date": "2013-09-30",
+      "domesticBankLoans": 431.8284,
+      "housingLoans": 110.5251
+    },
+    {
+      "date": "2013-12-31",
+      "domesticBankLoans": 435.9278,
+      "housingLoans": 111.4429
+    },
+    {
+      "date": "2014-03-31",
+      "domesticBankLoans": 440.1237,
+      "housingLoans": 112.654
+    },
+    {
+      "date": "2014-06-30",
+      "domesticBankLoans": 438.5224,
+      "housingLoans": 112.7708
+    },
+    {
+      "date": "2014-09-30",
+      "domesticBankLoans": 443.7939,
+      "housingLoans": 113.5533
+    },
+    {
+      "date": "2014-12-31",
+      "domesticBankLoans": 450.0921,
+      "housingLoans": 114.1645
+    },
+    {
+      "date": "2015-03-31",
+      "domesticBankLoans": 455.2043,
+      "housingLoans": 115.4096
+    },
+    {
+      "date": "2015-06-30",
+      "domesticBankLoans": 453.512,
+      "housingLoans": 115.4089
+    },
+    {
+      "date": "2015-09-30",
+      "domesticBankLoans": 459.5237,
+      "housingLoans": 115.5456
+    },
+    {
+      "date": "2015-12-31",
+      "domesticBankLoans": 465.0058,
+      "housingLoans": 115.9895
+    },
+    {
+      "date": "2016-03-31",
+      "domesticBankLoans": 468.4286,
+      "housingLoans": 116.9598
+    },
+    {
+      "date": "2016-06-30",
+      "domesticBankLoans": 464.5597,
+      "housingLoans": 117.4721
+    },
+    {
+      "date": "2016-09-30",
+      "domesticBankLoans": 469.6152,
+      "housingLoans": 118.5847
+    },
+    {
+      "date": "2016-12-31",
+      "domesticBankLoans": 477.6143,
+      "housingLoans": 119.4652
+    },
+    {
+      "date": "2017-03-31",
+      "domesticBankLoans": 482.8115,
+      "housingLoans": 120.8154
+    },
+    {
+      "date": "2017-06-30",
+      "domesticBankLoans": 481.1997,
+      "housingLoans": 121.308
+    },
+    {
+      "date": "2017-09-30",
+      "domesticBankLoans": 485.1428,
+      "housingLoans": 122.0198
+    },
+    {
+      "date": "2017-12-31",
+      "domesticBankLoans": 490.1852,
+      "housingLoans": 122.7958
+    },
+    {
+      "date": "2018-03-31",
+      "domesticBankLoans": 493.8663,
+      "housingLoans": 123.181
+    },
+    {
+      "date": "2018-06-30",
+      "domesticBankLoans": 495.4296,
+      "housingLoans": 123.6462
+    },
+    {
+      "date": "2018-09-30",
+      "domesticBankLoans": 499.7328,
+      "housingLoans": 124.2024
+    },
+    {
+      "date": "2018-12-31",
+      "domesticBankLoans": 504.3968,
+      "housingLoans": 124.8368
+    },
+    {
+      "date": "2019-03-31",
+      "domesticBankLoans": 508.232,
+      "housingLoans": 126.0369
+    },
+    {
+      "date": "2019-06-30",
+      "domesticBankLoans": 507.2322,
+      "housingLoans": 126.5871
+    },
+    {
+      "date": "2019-09-30",
+      "domesticBankLoans": 509.4671,
+      "housingLoans": 127.5364
+    },
+    {
+      "date": "2019-12-31",
+      "domesticBankLoans": 513.7127,
+      "housingLoans": 128.0311
+    },
+    {
+      "date": "2020-03-31",
+      "domesticBankLoans": 518.9574,
+      "housingLoans": 128.9487
+    },
+    {
+      "date": "2020-06-30",
+      "domesticBankLoans": 538.0806,
+      "housingLoans": 129.6419
+    },
+    {
+      "date": "2020-09-30",
+      "domesticBankLoans": 536.9716,
+      "housingLoans": 130.4784
+    },
+    {
+      "date": "2020-12-31",
+      "domesticBankLoans": 541.0234,
+      "housingLoans": 132.0065
+    },
+    {
+      "date": "2021-03-31",
+      "domesticBankLoans": 543.8519,
+      "housingLoans": 133.3113
+    },
+    {
+      "date": "2021-06-30",
+      "domesticBankLoans": 541.343,
+      "housingLoans": 134.3198
+    },
+    {
+      "date": "2021-09-30",
+      "domesticBankLoans": 542.6581,
+      "housingLoans": 135.373
+    },
+    {
+      "date": "2021-12-31",
+      "domesticBankLoans": 547.9176,
+      "housingLoans": 136.8623
+    },
+    {
+      "date": "2022-03-31",
+      "domesticBankLoans": 554.4025,
+      "housingLoans": 137.7964
+    },
+    {
+      "date": "2022-06-30",
+      "domesticBankLoans": 557.7878,
+      "housingLoans": 138.9221
+    },
+    {
+      "date": "2022-09-30",
+      "domesticBankLoans": 565.0658,
+      "housingLoans": 139.8169
+    },
+    {
+      "date": "2022-12-31",
+      "domesticBankLoans": 572.26,
+      "housingLoans": 140.9624
+    },
+    {
+      "date": "2023-03-31",
+      "domesticBankLoans": 577.147,
+      "housingLoans": 141.9084
+    },
+    {
+      "date": "2023-06-30",
+      "domesticBankLoans": 580.3709,
+      "housingLoans": 142.8123
+    },
+    {
+      "date": "2023-09-30",
+      "domesticBankLoans": 587.1065,
+      "housingLoans": 143.8774
+    },
+    {
+      "date": "2023-12-31",
+      "domesticBankLoans": 596.0202,
+      "housingLoans": 145.4573
+    },
+    {
+      "date": "2024-03-31",
+      "domesticBankLoans": 604.6694,
+      "housingLoans": 147.0409
+    },
+    {
+      "date": "2024-06-30",
+      "domesticBankLoans": 609.1873,
+      "housingLoans": 148.5527
+    },
+    {
+      "date": "2024-09-30",
+      "domesticBankLoans": 608.2288,
+      "housingLoans": 149.9605
+    },
+    {
+      "date": "2024-12-31",
+      "domesticBankLoans": 621.5797,
+      "housingLoans": 151.4665
+    },
+    {
+      "date": "2025-03-31",
+      "domesticBankLoans": 625.3766,
+      "housingLoans": 152.8128
+    },
+    {
+      "date": "2025-06-30",
+      "domesticBankLoans": 632.8893,
+      "housingLoans": 153.9708
+    },
+    {
+      "date": "2025-09-30",
+      "domesticBankLoans": 640.2908,
+      "housingLoans": 155.1517
+    },
+    {
+      "date": "2025-12-31",
+      "domesticBankLoans": 655.6537,
+      "housingLoans": 156.8394
+    },
+    {
+      "date": "2026-03-31",
+      "domesticBankLoans": 666.3897,
+      "housingLoans": 158.5562
+    },
+    {
+      "date": "2026-06-30",
+      "domesticBankLoans": 675.0336,
+      "housingLoans": 159.7284
+    }
+  ],
+  "originalFile": "nme_R031.3231299.20261012152254.02.csv",
+  "sha256": "e79fa3d35d8e21e6a2ad45ea335c4fe443a4b1c0590dbc2834cee5bd5b7275a6",
+  "source": {
+    "id": "boj-la01-lending",
+    "name": "日本銀行時系列統計データ検索サイト・貸出先別貸出金（LA01）",
+    "url": "https://www.stat-search.boj.or.jp/ssi/cgi-bin/famecgi2?cgi=$nme_a000&lstSelection=LA01",
+    "retrievedAt": "2026-10-12T06:26:22.883521Z"
+  }
+}
