@@ -6,6 +6,7 @@ import { chartGroups } from "@/lib/reports/catalog";
 import { getWeeklyReports } from "@/lib/reports/store";
 import ReportCharts from "./report-charts";
 import { getMarketChart } from "@/lib/reports/markets";
+import { withLendingChart } from "@/lib/reports/lending";
 
 export const metadata: Metadata = {
   title: "日本のマクロ金融環境 | 週次レポート | ReportBank",
@@ -24,6 +25,7 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
   try { marketChart = await getMarketChart(); }
   catch (error) { console.error("Market chart read failed", error); failed = true; }
   const insight = marketChart?.insight;
+  const chartData = marketChart ? withLendingChart(marketChart) : undefined;
 
   return (
     <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
@@ -46,10 +48,10 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
           <p className="mt-5 whitespace-pre-wrap">{insight?.summary || (failed ? "レポートを取得できませんでした。時間をおいて再度お試しください。" : "この図表のデータに基づく400字以内の整理を準備しています。")}</p>
           {insight && <p className="mt-4">{[...insight.summary].length}字 / {insight.model === "initial" ? "初回掲載文（AI作成）" : "GPT-5.6-luna"} / 収集基準日 {marketChart?.asOf}</p>}
         </section>
-        {marketChart ? <>
-          <p className="text-sm leading-7 text-slate-600">最初の図表を先行掲載しています。収集基準日：{marketChart.asOf}。各半期末の公表値を表示し、未取得の値は補間しません。</p>
-          <ReportCharts report={marketChart} />
-          <section className="rounded-2xl bg-white p-6"><h2 className="text-xl font-semibold">出典・取得日時</h2><ul className="mt-4 space-y-3">{marketChart.sources.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-700 underline">{source.name}</a><p className="text-xs text-slate-500">取得：{formatTime(source.retrievedAt)}</p></li>)}</ul></section>
+        {marketChart && chartData ? <>
+          <p className="text-sm leading-7 text-slate-600">金利・TOPIX・貸出残高の推移を掲載しています。金利・TOPIXの収集基準日：{marketChart.asOf}。貸出残高は日本銀行の提供CSVを使用しています（最新観測日：{chartData.series.find((series) => series.id === "otherLoans")?.latestDate}）。</p>
+          <ReportCharts report={chartData} />
+          <section className="rounded-2xl bg-white p-6"><h2 className="text-xl font-semibold">出典・取得日時</h2><ul className="mt-4 space-y-3">{chartData.sources.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-700 underline">{source.name}</a><p className="text-xs text-slate-500">取得：{formatTime(source.retrievedAt)}</p></li>)}</ul></section>
         </> : <section className="grid gap-4 sm:grid-cols-2" aria-label="掲載予定の統計">{chartGroups.filter((group) => group.id === "markets").map((group) => <div key={group.id} className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="font-semibold">{group.title}</h2><p className="mt-3 text-sm leading-6 text-slate-500">{group.description}</p><p className="mt-4 text-xs text-sky-700">データ公開準備中</p></div>)}</section>}
         <section className="border-t border-slate-200 pt-8">
           <h2 className="text-2xl font-semibold">過去の400字整理</h2>
