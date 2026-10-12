@@ -39,16 +39,15 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
             {insight && <span className="px-1 py-2">本文作成：{formatTime(insight.generatedAt)}</span>}
           </div>
         </header>
-        <section className="rounded-3xl bg-slate-900 p-6 text-white sm:p-8">
-          <p className="text-xs font-semibold tracking-widest text-sky-300">WEEKLY INSIGHT</p>
-          <h2 className="mt-2 text-xl font-semibold">金利とTOPIXの400字整理</h2>
-          <p className="mt-3 text-xs leading-6 text-slate-300">AIによる推論です。公表機関の見解とは異なります。統計の時点・集計範囲を踏まえた考察としてお読みください。</p>
-          <p className="mt-5 whitespace-pre-wrap text-base leading-8 sm:text-lg">{insight?.summary || (failed ? "レポートを取得できませんでした。時間をおいて再度お試しください。" : "この図表のデータに基づく400字以内の整理を準備しています。")}</p>
-          {insight && <p className="mt-4 text-xs text-slate-400">{[...insight.summary].length}字 / {insight.model === "initial" ? "初回掲載文（AI作成）" : "GPT-5.6-luna"} / 収集基準日 {marketChart?.asOf}</p>}
+        <section className="max-w-3xl text-sm leading-7 text-slate-600">
+          <p>WEEKLY INSIGHT</p>
+          <h2 className="mt-2">金利とTOPIXの400字整理</h2>
+          <p className="mt-3">AIによる推論です。公表機関の見解とは異なります。統計の時点・集計範囲を踏まえた考察としてお読みください。</p>
+          <p className="mt-5 whitespace-pre-wrap">{insight?.summary || (failed ? "レポートを取得できませんでした。時間をおいて再度お試しください。" : "この図表のデータに基づく400字以内の整理を準備しています。")}</p>
+          {insight && <p className="mt-4">{[...insight.summary].length}字 / {insight.model === "initial" ? "初回掲載文（AI作成）" : "GPT-5.6-luna"} / 収集基準日 {marketChart?.asOf}</p>}
         </section>
         {marketChart ? <>
           <p className="text-sm leading-7 text-slate-600">最初の図表を先行掲載しています。収集基準日：{marketChart.asOf}。各半期末の公表値を表示し、未取得の値は補間しません。</p>
-          <ul className="list-disc space-y-2 rounded-2xl bg-amber-50 p-6 pl-10 text-sm text-amber-950">{marketChart.warnings.map((warning) => <li key={warning}>{warning}</li>)}</ul>
           <ReportCharts report={marketChart} />
           <section className="rounded-2xl bg-white p-6"><h2 className="text-xl font-semibold">出典・取得日時</h2><ul className="mt-4 space-y-3">{marketChart.sources.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-sky-700 underline">{source.name}</a><p className="text-xs text-slate-500">取得：{formatTime(source.retrievedAt)}</p></li>)}</ul></section>
         </> : <section className="grid gap-4 sm:grid-cols-2" aria-label="掲載予定の統計">{chartGroups.filter((group) => group.id === "markets").map((group) => <div key={group.id} className="rounded-2xl border border-slate-200 bg-white p-6"><h2 className="font-semibold">{group.title}</h2><p className="mt-3 text-sm leading-6 text-slate-500">{group.description}</p><p className="mt-4 text-xs text-sky-700">データ公開準備中</p></div>)}</section>}
