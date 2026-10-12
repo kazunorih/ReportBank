@@ -5,6 +5,8 @@ import io
 import json
 import re
 import unicodedata
+from decimal import Decimal
+from pathlib import Path
 from datetime import date, datetime, timezone
 from html.parser import HTMLParser
 from urllib.parse import parse_qs, urlencode, urljoin, urlparse
@@ -18,7 +20,6 @@ ALLOWED_HOSTS = {
     "www.flat35.com", "www.jhf.go.jp", "www.simulation.jhf.go.jp",
     "indexes.nikkei.co.jp", "www.zenginkyo.or.jp", "www.jsda.or.jp",
     "www.peajapan.org", "www.jri.co.jp", "www.jcer.or.jp",
-    "www.rakuten-bank.co.jp",
 }
 
 CONTEXT_SOURCES = [
@@ -172,7 +173,7 @@ def collect_jpx(fetcher, as_of):
 
 
 def parse_flat35(html):
-    """Read the published minimum, not the modal rate or a Flat20/Flat50 rate."""
+    """Midpoint of the published range, excluding modal/Flat20/Flat50 rates."""
     text = unicodedata.normalize("NFKC", "".join(Html(html).text))
     text = re.sub(r"\s+", "", text)
     dated = re.search(r"金利水準[（(](\d{4})年(\d{1,2})月[)）]", text)
@@ -188,7 +189,8 @@ def parse_flat35(html):
     if not 0 < low <= high < 30:
         raise ValueError("Flat35 rate range is invalid")
     stamp = date(int(dated[1]), int(dated[2]), 1).isoformat()
-    return [{"date": stamp, "value": low}]
+    return [{"date": stamp, "value": float((Decimal(rates[1]) + Decimal(rates[2])) / 2),
+             "minimum": low, "maximum": high}]
 
 
 def collect_flat35_current_jhf(fetcher, as_of):
@@ -201,47 +203,42 @@ def collect_flat35_current_jhf(fetcher, as_of):
     return with_provenance({"flat35": rows}, [source_id])
 
 
-def parse_flat35_bank(html):
-    """Only the 21-35 year column; exclude Flat20 and variable-rate tables."""
-    result = {}
-    for table in re.findall(r"<table\b[^>]*>(.*?)</table>", html, re.S | re.I):
-        rows = re.findall(r"<tr\b[^>]*>(.*?)</tr>", table, re.S | re.I)
-        if not rows:
-            continue
-        def cells(row):
-            return [re.sub(r"\s+", "", unicodedata.normalize("NFKC", "".join(Html(cell).text)))
-                    for cell in re.findall(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", row, re.S | re.I)]
-        header = cells(rows[0])
-        columns = [i for i, label in enumerate(header) if "21年以上" in label and "35年以下" in label]
-        if len(columns) != 1 or not header or header[0] != "適用期間":
-            continue
-        for row in rows[1:]:
-            values = cells(row)
-            if len(values) != len(header):
-                raise ValueError("Flat35 bank table column count changed")
-            stamp = re.fullmatch(r"(\d{4})年(\d{1,2})月", values[0])
-            rate = re.fullmatch(r"(\d+\.\d+)%", values[columns[0]])
-            if not stamp or not rate or not 0 < float(rate[1]) < 30:
-                raise ValueError("Invalid Flat35 bank observation")
-            day = month_end(int(stamp[1]), int(stamp[2]))
-            if day in result:
-                raise ValueError("Duplicate Flat35 bank observation")
-            result[day] = {"date": day, "value": float(rate[1])}
-    if not result:
-        raise ValueError("Flat35 bank 21-35 year table not found")
-    return list(result.values())
-
-
 def collect_flat35(fetcher, as_of):
-    rows, ids = [], []
-    for old, path in ((False, "rate_trend.html"), (True, "rate_trend2.html")):
-        raw, source_id = fetcher.get("https://www.rakuten-bank.co.jp/home-loan/rate/" + path,
-                                    "楽天銀行・フラット35金利推移（" + ("旧団信制度" if old else "新機構団信付き") + "）")
-        ids.append(source_id)
-        for row in parse_flat35_bank(raw.decode("utf-8-sig")):
-            if (row["date"] < "2017-10-01") == old and row["date"] <= as_of:
-                rows.append(row)
-    return with_provenance({"flat35": sorted(rows, key=lambda row: row["date"])}, ids)
+    raw = (Path(__file__).parent / "data" / "flat35-range.csv").read_bytes()
+    rows, sources = parse_flat35_history(raw.decode("utf-8-sig"))
+    fetcher.sources.extend(sources)
+    if fetcher.archive:
+        fetcher.archive("flat35-range-seed", raw, {"sources": sources})
+    current = collect_flat35_current_jhf(fetcher, as_of)["flat35"]
+    months = {row["date"][:7] for row in current["observations"]}
+    rows = [row for row in rows if row["date"] <= as_of and row["date"][:7] not in months]
+    return {"flat35": {"observations": rows + current["observations"],
+                       "sourceIds": [s["id"] for s in sources] + current["sourceIds"],
+                       "method": "range-midpoint-v1"}}
+
+
+def parse_flat35_history(content):
+    """Verified printed PDF labels, not estimates from chart coordinates."""
+    rows, sources, dates = [], {}, set()
+    for row in csv.DictReader(io.StringIO(content)):
+        stamp = date.fromisoformat(row["date"]).isoformat()
+        low, high = Decimal(row["minimum"]), Decimal(row["maximum"])
+        if (stamp in dates or not stamp.endswith(("06-30", "12-31")) or
+                not low.is_finite() or not high.is_finite() or not 0 < low <= high < 30):
+            raise ValueError("Invalid Flat35 historical range")
+        url = safe_url(row["source_url"])
+        if urlparse(url).hostname != "www.flat35.com":
+            raise ValueError("Flat35 history must reference JHF")
+        source_id = hashlib.sha256(url.encode()).hexdigest()[:16]
+        sources[source_id] = {"id": source_id, "url": url,
+                              "name": "住宅金融支援機構・フラット35借入金利の推移（最高・最低）",
+                              "retrievedAt": row["retrieved_at"]}
+        dates.add(stamp)
+        rows.append({"date": stamp, "value": float((low + high) / 2),
+                     "minimum": float(low), "maximum": float(high)})
+    if not rows:
+        raise ValueError("Empty Flat35 history")
+    return sorted(rows, key=lambda row: row["date"]), list(sources.values())
 
 
 def parse_mlit(raw):

@@ -3,31 +3,33 @@ from unittest.mock import patch
 
 from domain import (SERIES, aggregate, half_years, parse_boj, parse_mof, report_date,
                     validate_observations, validate_summary)
-from sources import parse_flat35, parse_flat35_bank, collect_flat35, parse_import, safe_url
+from sources import parse_flat35, parse_flat35_history, collect_flat35, parse_import, safe_url
 from topix import parse_topix_text
 from markets import build_markets
 import index as worker
 
 
 class AggregationTests(unittest.TestCase):
-    def test_flat35_bank_selects_fixed_21_to_35_years_column(self):
-        html = '<table><tr><th>適用期間</th><th>20年以下</th><th>21年以上～35年以下</th></tr><tr><td>2026年6月</td><td>2.89%</td><td>3.21%</td></tr></table>'
-        other = '<table><tr><th>適用期間</th><th>35年以下</th></tr><tr><td>2026年6月</td><td>9.99%</td></tr></table>'
-        self.assertEqual(parse_flat35_bank(html + other), [{"date": "2026-06-30", "value": 3.21}])
-        with self.assertRaises(ValueError):
-            parse_flat35_bank(html.replace("3.21%", "未公表"))
-        with self.assertRaises(ValueError):
-            parse_flat35_bank(html + html)
+    def test_flat35_history_midpoint_preserves_precision_and_provenance(self):
+        from pathlib import Path
+        content = (Path(__file__).parent / 'data' / 'flat35-range.csv').read_text(encoding='utf-8')
+        rows, sources = parse_flat35_history(content)
+        self.assertEqual(len(rows), 46)
+        self.assertEqual(len(sources), 8)
+        self.assertEqual(next(r['value'] for r in rows if r['date'] == '2005-12-31'), 2.9705)
+        self.assertEqual(rows[-1]['value'], 4.345)
+        for invalid in (content + content.splitlines()[1] + '\n', content.replace('2.890,3.950', '4.000,3.950'), content.replace('2.890,3.950', 'NaN,3.950')):
+            with self.assertRaises(ValueError):
+                parse_flat35_history(invalid)
 
-    def test_flat35_bank_separates_old_and_new_insurance(self):
-        from unittest.mock import Mock
-        def page(value):
-            return ('<table><tr><th>適用期間</th><th>21年以上～35年以下</th></tr>' +
-                    ''.join(f'<tr><td>{year}年{month}月</td><td>{value}%</td></tr>' for year, month in [(2017, 6), (2017, 12), (2026, 12)]) + '</table>').encode()
-        fetcher = Mock()
-        fetcher.get.side_effect = [(page('2.00'), 'new'), (page('1.00'), 'old')]
-        data = collect_flat35(fetcher, '2026-10-12')['flat35']
-        self.assertEqual(data['observations'], [{'date': '2017-06-30', 'value': 1.0}, {'date': '2017-12-31', 'value': 2.0}])
+    @patch('sources.collect_flat35_current_jhf')
+    def test_flat35_current_month_overrides_seed_and_excludes_future(self, current):
+        from sources import Fetcher
+        current.return_value = {'flat35': {'observations': [{'date': '2026-06-01', 'value': 4.5}], 'sourceIds': ['current']}}
+        data = collect_flat35(Fetcher(), '2026-06-15')['flat35']
+        self.assertEqual(data['method'], 'range-midpoint-v1')
+        self.assertEqual([r for r in data['observations'] if r['date'].startswith('2026-06')], [{'date': '2026-06-01', 'value': 4.5}])
+        self.assertTrue(all(r['date'] <= '2026-06-15' for r in data['observations']))
 
     def test_topix_months_exclude_daily_and_dividend_included_columns(self):
         header = "Stock Price Index & Stock Price Average(End of Year/Month/Daily) TOPIX\n"
@@ -105,7 +107,7 @@ class ImportTests(unittest.TestCase):
         <table><tr><td>９割以下</td><td>年1.230％～年4.560％</td><td>年2.000％</td></tr>
         <tr><td>９割超</td><td>年3.000％～年5.000％</td></tr></table>
         <h3>【フラット２０】借入期間：20年以下</h3><p>９割以下 年0.900％～年3.000％</p>"""
-        self.assertEqual(parse_flat35(html), [{"date": "2026-10-01", "value": 1.23}])
+        self.assertEqual(parse_flat35(html), [{"date": "2026-10-01", "value": 2.895, "minimum": 1.23, "maximum": 4.56}])
         with self.assertRaises(ValueError):
             parse_flat35(html.replace("21年以上35年以下", "20年以下"))
         with self.assertRaises(ValueError):
@@ -135,6 +137,8 @@ def fixture_payload():
         if key == "construction":
             rows = [{"date": f"2026-{m:02}-01", "value": 1} for m in range(1, 7)]
         datasets[key] = {"observations": rows, "sourceIds": ["source"]}
+        if key == "flat35":
+            datasets[key]["method"] = "range-midpoint-v1"
     return {"asOf": "2026-07-01", "datasets": datasets, "contextWarnings": [],
             "sources": [{"id": "source", "name": "Test source", "url": "https://www.boj.or.jp/", "retrievedAt": "2026-07-01T00:00:00Z"}]}
 

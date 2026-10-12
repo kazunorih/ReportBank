@@ -40,6 +40,7 @@ export type WeeklyReport = z.infer<typeof reportSchema>;
 export type ReportSummary = z.infer<typeof summarySchema>;
 
 export const marketChartSchema = z.object({
+  flat35Method: z.literal("range-midpoint-v1"),
   asOf: date,
   periods: reportSchema.shape.periods,
   series: z.array(reportSchema.shape.series.element).transform((items) => items.filter((item) => item.id !== "jgb3")).pipe(z.array(reportSchema.shape.series.element).length(4)),

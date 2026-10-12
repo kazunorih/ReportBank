@@ -31,22 +31,31 @@ export default function ReportCharts({ report }: { report: Pick<WeeklyReport, "p
             <h3 className="mt-2 text-xl font-semibold">{group.title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-500">{group.description}</p>
             {available.length ? (
-              <div className="mt-6 h-80 w-full" role="img" aria-label={`${group.title}。半年ごとの推移。数値は下のデータ表でも確認できます。`}>
+              <div className="mt-6 w-full overflow-x-auto" role="img" aria-label={`${group.title}。半年ごとの推移。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
+                <div style={{ minWidth: Math.max(600, years * 36 + 110) }}>
+                <div className="mb-2 flex justify-between pl-4 pr-2 text-xs text-slate-500">
+                  <span>{group.id === "markets" ? "ポイント" : "兆円"}</span>
+                  {group.id === "markets" && <span>金利（%）</span>}
+                </div>
+                <div className="h-96">
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={data} margin={{ top: 12, right: 8, bottom: 12, left: 0 }} accessibilityLayer>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                    <XAxis dataKey="period" minTickGap={36} tickFormatter={(value: string) => value.slice(0, 7)} tick={{ fontSize: 11 }} />
-                    <YAxis yAxisId="amount" width={65} tick={{ fontSize: 11 }} tickFormatter={(value: number) => value.toLocaleString("ja-JP")}
-                      label={{ value: group.id === "markets" ? "ポイント" : "兆円", position: "insideTopLeft", offset: -10 }} />
+                    <XAxis dataKey="period" ticks={data.filter((row) => row.period.endsWith("-12-31")).map((row) => row.period)} interval={0}
+                      angle={-55} textAnchor="end" height={65} tickMargin={8}
+                      tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} tick={{ fontSize: 11 }} />
+                    <YAxis yAxisId="amount" width={65} tick={{ fontSize: 11 }} tickFormatter={(value: number) => value.toLocaleString("ja-JP")} />
                     {group.id === "markets" && <YAxis yAxisId="rate" orientation="right" width={45} tick={{ fontSize: 11 }} unit="%" domain={["auto", "auto"]} />}
                     <Tooltip labelFormatter={(value) => `${value} 半期末`}
-                      formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 3 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
+                      formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     <Legend wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
                     {available.map((item, index) => group.id === "lending" || group.id === "construction" || item.id === "topix"
                       ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} fill={item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : 1} maxBarSize={18} isAnimationActive={false} />
                       : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={false} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>
+                </div>
+                </div>
               </div>
             ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}
             <ul className="mt-4 space-y-2 text-xs leading-5 text-slate-500">
@@ -61,7 +70,7 @@ export default function ReportCharts({ report }: { report: Pick<WeeklyReport, "p
                 <table className="w-full border-collapse text-right text-xs tabular-nums">
                   <caption className="sr-only">{group.title}の半年ごとの数値。—は欠測。</caption>
                   <thead><tr><th scope="col" className="p-2 text-left">半期末</th>{series.map((item) => <th scope="col" key={item.id} className="min-w-28 p-2">{item.label}（{item.unit}）</th>)}</tr></thead>
-                  <tbody>{data.map((row) => <tr key={row.period} className="border-t border-slate-100"><th scope="row" className="whitespace-nowrap p-2 text-left font-normal">{row.period}</th>{series.map((item) => <td className="p-2" key={item.id}>{row[item.id] == null ? "—" : Number(row[item.id]).toLocaleString("ja-JP", { maximumFractionDigits: 3 })}</td>)}</tr>)}</tbody>
+                  <tbody>{data.map((row) => <tr key={row.period} className="border-t border-slate-100"><th scope="row" className="whitespace-nowrap p-2 text-left font-normal">{row.period}</th>{series.map((item) => <td className="p-2" key={item.id}>{row[item.id] == null ? "—" : Number(row[item.id]).toLocaleString("ja-JP", { maximumFractionDigits: 4 })}</td>)}</tr>)}</tbody>
                 </table>
               </div>
               <ul className="mt-4 space-y-2">{report.sources.filter((source) => report.series.some((s) => series.some((item) => item.id === s.id) && s.sourceIds.includes(source.id))).map((source) => <li key={source.id}><a className="text-sky-700 underline" href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a></li>)}</ul>

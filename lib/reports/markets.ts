@@ -9,7 +9,8 @@ export async function getMarketChart() {
     const result = await dynamoClient.send(new GetCommand({
       TableName, Key: { pk: "CHART", sk: "MARKETS" }, ConsistentRead: true,
     }));
-    if (result.Item) return marketChartSchema.parse(result.Item.chart);
+    // A stored bank/minimum-rate chart must not acquire the new midpoint label.
+    if (result.Item?.chart?.flat35Method === "range-midpoint-v1") return marketChartSchema.parse(result.Item.chart);
   }
   return marketChartSchema.parse(snapshot);
 }

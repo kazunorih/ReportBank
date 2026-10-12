@@ -107,13 +107,14 @@ def collect(event):
                                "sourceIds": list(dict.fromkeys(existing["sourceIds"] + [s["id"] for s in sources]))}
     for series_id, dataset in fresh.items():
         existing = datasets.get(series_id, {"observations": [], "sourceIds": []})
-        if series_id == "flat35":
-            existing = {"observations": [], "sourceIds": []}  # Do not mix the previous JHF minimum series.
+        if series_id == "flat35" and existing.get("method") != "range-midpoint-v1":
+            existing = {"observations": [], "sourceIds": []}  # Exclude bank/minimum-rate history.
         fresh_months = {row["date"][:7] for row in dataset["observations"]}
         merged = {row["date"]: row for row in existing["observations"] if row["date"][:7] not in fresh_months and row["date"] <= as_of}
         merged.update({row["date"]: row for row in dataset["observations"]})
         datasets[series_id] = {"observations": list(merged.values()),
-                               "sourceIds": list(dict.fromkeys(dataset["sourceIds"] + existing["sourceIds"]))}
+                               "sourceIds": list(dict.fromkeys(dataset["sourceIds"] + existing["sourceIds"])),
+                               **({"method": dataset["method"]} if "method" in dataset else {})}
     documents, context_failures = collect_context(fetcher)
     payload = {"asOf": as_of, "datasets": datasets,
                "sources": list({source["id"]: source for source in fetcher.sources}.values()),
@@ -137,16 +138,17 @@ def collect_markets(as_of, prefix):
         saved = read_json(previous["collectionKey"])
         datasets.update(saved["datasets"])
         fetcher.sources.extend(saved["sources"])
-    # Rebuild this series from the bank's complete numeric tables; previous JHF
-    # minimum rates and arbitrary imported histories have a different definition.
-    datasets.pop("flat35", None)
+    # Preserve reviewed midpoint observations, never mix the old bank/minimum series.
+    if datasets.get("flat35", {}).get("method") != "range-midpoint-v1":
+        datasets.pop("flat35", None)
     for collector in (collect_mof, collect_flat35, collect_topix):
         for key, fresh in collector(fetcher, as_of).items():
             old = datasets.get(key, {"observations": [], "sourceIds": []})
             months = {row["date"][:7] for row in fresh["observations"]}
             merged = {row["date"]: row for row in old["observations"] if row["date"][:7] not in months}
             merged.update({row["date"]: row for row in fresh["observations"]})
-            datasets[key] = {"observations": list(merged.values()), "sourceIds": list(dict.fromkeys(old["sourceIds"] + fresh["sourceIds"]))}
+            datasets[key] = {"observations": list(merged.values()), "sourceIds": list(dict.fromkeys(old["sourceIds"] + fresh["sourceIds"])),
+                             **({"method": fresh["method"]} if "method" in fresh else {})}
     payload = {"asOf": as_of, "datasets": datasets,
                "sources": list({source["id"]: source for source in fetcher.sources}.values())}
     chart = build_markets(payload)

@@ -2,7 +2,7 @@ export const seriesCatalog = [
   { id: "jgb3", label: "国債3年", unit: "%", group: "markets" },
   { id: "jgb10", label: "国債10年", unit: "%", group: "markets" },
   { id: "jgb30", label: "国債30年", unit: "%", group: "markets" },
-  { id: "flat35", label: "フラット35（楽天銀行）", unit: "%", group: "markets" },
+  { id: "flat35", label: "フラット35（中間値）", unit: "%", group: "markets" },
   { id: "topix", label: "TOPIX", unit: "ポイント", group: "markets" },
   { id: "marketCap", label: "内国株式時価総額（東証）", unit: "兆円", group: "equities" },
   { id: "construction", label: "建設工事受注高", unit: "兆円", group: "construction" },

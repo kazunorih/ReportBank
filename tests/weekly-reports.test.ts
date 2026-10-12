@@ -33,8 +33,9 @@ describe("weekly reports", () => {
     expect(chart.sources.some((source) => /03_sisu\d{4}\.pdf$/.test(source.url))).toBe(true);
     const flat35 = chart.series.find((item) => item.id === "flat35")!;
     expect(flat35.values.filter((value) => value !== null).length).toBeGreaterThan(1);
-    expect(flat35.note).toContain("楽天銀行");
-    expect(chart.sources.filter((source) => flat35.sourceIds.includes(source.id)).every((source) => new URL(source.url).hostname === "www.rakuten-bank.co.jp")).toBe(true);
+    expect(flat35.note).toContain("（最高＋最低）÷2");
+    expect(flat35.values[chart.periods.indexOf("2026-06-30")]).toBe(4.345);
+    expect(chart.sources.filter((source) => flat35.sourceIds.includes(source.id)).every((source) => ["www.flat35.com", "www.simulation.jhf.go.jp"].includes(new URL(source.url).hostname))).toBe(true);
     expect(send).not.toHaveBeenCalled();
   });
 
@@ -43,6 +44,14 @@ describe("weekly reports", () => {
     send.mockRejectedValueOnce(new Error("unavailable"));
     await expect(getMarketChart()).rejects.toThrow("unavailable");
     expect(send.mock.calls[0][0].input).toMatchObject({ Key: { pk: "CHART", sk: "MARKETS" }, ConsistentRead: true });
+  });
+
+  it("does not relabel the previously stored bank rates as JHF midpoints", async () => {
+    vi.stubEnv("WEEKLY_REPORTS_TABLE_NAME", "reports");
+    send.mockResolvedValueOnce({ Item: { chart: { series: [{ id: "flat35", values: [1.23] }] } } });
+    const chart = await getMarketChart();
+    expect(chart.flat35Method).toBe("range-midpoint-v1");
+    expect(chart.series.find((item) => item.id === "flat35")?.values.at(-1)).toBe(4.345);
   });
 
   it("rejects an old Nikkei report instead of relabelling its values as TOPIX", () => {

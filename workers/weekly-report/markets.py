@@ -5,6 +5,8 @@ MARKET_IDS = ("jgb10", "jgb30", "flat35", "topix")
 
 
 def build_markets(payload):
+    if payload["datasets"].get("flat35", {}).get("method") != "range-midpoint-v1":
+        raise ValueError("flat35: verified range midpoint data required")
     periods = half_years(payload["asOf"])
     series, warnings = [], []
     for key in MARKET_IDS:
@@ -21,5 +23,5 @@ def build_markets(payload):
         series.append({"id": key, "values": values, "sourceIds": data["sourceIds"],
                        "latestDate": latest, "note": SERIES[key][2]})
     used = {sid for item in series for sid in item["sourceIds"]}
-    return {"asOf": payload["asOf"], "periods": periods, "series": series,
+    return {"asOf": payload["asOf"], "flat35Method": "range-midpoint-v1", "periods": periods, "series": series,
             "sources": [source for source in payload["sources"] if source["id"] in used], "warnings": warnings}
