@@ -27,7 +27,7 @@ chart = build_markets(payload)
 target = ROOT / "lib" / "reports" / "data"
 target.mkdir(parents=True, exist_ok=True)
 (target / "markets.json").write_text(json.dumps(chart, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-# Seed observations preserve historical TOPIX values when old bulletins roll off JPX.
+# Keep the validated annual workbook observations as the deployment seed.
 seed = {"datasets": {"topix": datasets["topix"]},
         "sources": [s for s in fetcher.sources if s["id"] in datasets["topix"]["sourceIds"]]}
 (ROOT / "workers" / "weekly-report" / "data" / "topix.json").write_text(json.dumps(seed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

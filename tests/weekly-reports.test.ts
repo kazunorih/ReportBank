@@ -30,7 +30,12 @@ describe("weekly reports", () => {
     expect(chart.insight?.summary.length).toBeGreaterThan(0);
     expect([...(chart.insight?.summary || "")].length).toBeLessThanOrEqual(400);
     expect(chart.series.find((item) => item.id === "topix")?.values.some((value) => value !== null && value > 0)).toBe(true);
-    expect(chart.sources.some((source) => /03_sisu\d{4}\.pdf$/.test(source.url))).toBe(true);
+    expect(chart.sources.some((source) => source.url === "https://www.jpx.co.jp/markets/indices/topix/" && source.name.includes("指数値の推移"))).toBe(true);
+    const topix = chart.series.find((item) => item.id === "topix")!;
+    expect(topix.values.filter((value) => value !== null)).toHaveLength(30);
+    expect(topix.values[chart.periods.indexOf("2025-12-31")]).toBe(3408.97);
+    expect(topix.values.every((value, i) => value === null || chart.periods[i].endsWith("-12-31"))).toBe(true);
+    expect(topix.values.at(-1)).toBeNull();
     const flat35 = chart.series.find((item) => item.id === "flat35")!;
     expect(flat35.values.filter((value) => value !== null).length).toBeGreaterThan(1);
     expect(flat35.note).toContain("（最高＋最低）÷2");
@@ -52,6 +57,12 @@ describe("weekly reports", () => {
     const chart = await getMarketChart();
     expect(chart.flat35Method).toBe("range-midpoint-v1");
     expect(chart.series.find((item) => item.id === "flat35")?.values.at(-1)).toBe(4.345);
+  });
+
+  it("replaces cached monthly TOPIX with the annual workbook definition", async () => {
+    vi.stubEnv("WEEKLY_REPORTS_TABLE_NAME", "reports");
+    send.mockResolvedValueOnce({ Item: { chart: { flat35Method: "range-midpoint-v1" } } });
+    expect((await getMarketChart()).topixMethod).toBe("annual-close-v1");
   });
 
   it("rejects an old Nikkei report instead of relabelling its values as TOPIX", () => {

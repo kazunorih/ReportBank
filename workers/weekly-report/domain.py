@@ -17,7 +17,7 @@ SERIES = {
     "jgb10": ("%", "last", "財務省のコンスタント・マチュリティー金利、10年。"),
     "jgb30": ("%", "last", "財務省のコンスタント・マチュリティー金利、30年。公表開始前は欠測。"),
     "flat35": ("%", "last", "住宅金融支援機構公表の最高金利と最低金利の中間値（最高＋最低）÷2。実際の借入金利の平均ではありません。2007年10月以降は返済期間21～35年、2010年4月以降は融資率9割以下、2017年10月以降は新機構団信付き。以前とは条件が異なります。各年6月・12月の公表値を使用し、未取得期間は欠測。"),
-    "topix": ("ポイント", "last", "TOPIX（東証株価指数・配当なし）の月末終値。各半期末の値を採用。"),
+    "topix": ("ポイント", "last", "JPX『指数値の推移』のTOPIX年間四本値（topixyear_j.xls）の「年（月）末」列を使用。年末終値を12月に表示し、6月や未収録年は補間しません。単位はポイント。"),
     "marketCap": ("兆円", "last", "東証・内国株式の月末時価総額。市場再編による対象変更を含む。"),
     "construction": ("兆円", "sum", "建設工事受注動態統計・受注高合計。6か月すべて揃った半期のみ集計。改定値を優先。"),
     "corporateLoans": ("兆円", "last", "預金取扱機関の民間非金融法人向け貸出。金融法人は含まない。1997年末から。"),
@@ -146,6 +146,8 @@ def validate_observations(series_id, observations, as_of):
         if series_id == "flat35" and day < date(2003, 10, 1):
             raise ValueError("Flat35 did not exist before October 2003")
     max_age = 220 if series_id in ("corporateLoans", "householdLoans", "bankJgb", "publicLoans") else 120
+    if series_id == "topix":
+        max_age = 400  # Annual workbook, with a short publication grace period.
     if (cutoff - date.fromisoformat(latest)).days > max_age:
         raise ValueError(f"{series_id}: stale data (latest {latest})")
     return latest

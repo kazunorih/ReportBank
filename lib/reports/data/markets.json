@@ -286,82 +286,73 @@
     {
       "id": "topix",
       "values": [
+        1470.94,
         null,
+        1175.03,
         null,
+        1086.99,
         null,
+        1722.2,
         null,
+        1283.67,
         null,
+        1032.14,
         null,
+        843.29,
         null,
+        1043.69,
         null,
+        1149.63,
         null,
+        1649.76,
         null,
+        1681.07,
         null,
+        1475.68,
         null,
+        859.24,
         null,
+        907.59,
         null,
+        898.8,
         null,
+        728.61,
         null,
+        859.8,
         null,
+        1302.29,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        1407.51,
         null,
         1547.3,
-        1245.82,
+        null,
         1518.61,
-        1611.9,
+        null,
         1817.56,
-        1730.89,
+        null,
         1494.09,
-        1551.14,
+        null,
         1721.36,
-        1558.77,
+        null,
         1804.68,
-        1943.57,
+        null,
         1992.33,
-        1870.82,
+        null,
         1891.71,
-        2288.6,
+        null,
         2366.39,
-        2809.63,
+        null,
         2784.92,
-        2852.84,
+        null,
         3408.97,
-        3994.76
+        null
       ],
       "sourceIds": [
-        "c73200178e9cd79c",
-        "25d3f35d10b60f49",
-        "f0c5884d46b6dac0",
-        "ee90ffdfe1a4d7e4",
-        "c5f3d99ccb3a1b78",
-        "b384b0656cb5447c",
-        "aa99f311f8ab9adb",
-        "4fb12394d6cb3722",
-        "fb84c73c08887515",
-        "ae0b6039b2a95e23",
-        "6993e3f0a48e3aa1"
+        "e52c3b43f2113164",
+        "af0c6128de232760"
       ],
-      "latestDate": "2026-08-31",
-      "note": "TOPIX（東証株価指数・配当なし）の月末終値。各半期末の値を採用。"
+      "latestDate": "2025-12-31",
+      "note": "JPX『指数値の推移』のTOPIX年間四本値（topixyear_j.xls）の「年（月）末」列を使用。年末終値を12月に表示し、6月や未収録年は補間しません。単位はポイント。"
     }
   ],
   "sources": [
@@ -376,72 +367,6 @@
       "name": "財務省・国債金利情報",
       "url": "https://www.mof.go.jp/jgbs/reference/interest_rate/jgbcm.csv",
       "retrievedAt": "2026-10-11T16:35:44.137519Z"
-    },
-    {
-      "id": "c73200178e9cd79c",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/t13vrt000001ypy8-att/03_sisu2608.pdf",
-      "retrievedAt": "2026-10-11T16:35:46.838897Z"
-    },
-    {
-      "id": "25d3f35d10b60f49",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/t13vrt000000h2iz-att/03_sisu2512.pdf",
-      "retrievedAt": "2026-10-11T16:35:47.118275Z"
-    },
-    {
-      "id": "f0c5884d46b6dac0",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/mklp77000000qb2z-att/03_sisu2412.pdf",
-      "retrievedAt": "2026-10-11T16:35:47.417952Z"
-    },
-    {
-      "id": "ee90ffdfe1a4d7e4",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/skc8fn0000000lj9-att/03_sisu2312.pdf",
-      "retrievedAt": "2026-10-11T16:35:47.658632Z"
-    },
-    {
-      "id": "c5f3d99ccb3a1b78",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/co3pgt0000006bvf-att/03_sisu2212.pdf",
-      "retrievedAt": "2026-10-11T16:35:47.905324Z"
-    },
-    {
-      "id": "b384b0656cb5447c",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/nlsgeu0000064mm8-att/03_sisu2112.pdf",
-      "retrievedAt": "2026-10-11T16:35:48.169186Z"
-    },
-    {
-      "id": "aa99f311f8ab9adb",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/nlsgeu0000059gjy-att/03_sisu2012.pdf",
-      "retrievedAt": "2026-10-11T16:35:48.385841Z"
-    },
-    {
-      "id": "4fb12394d6cb3722",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/nlsgeu000004idv9-att/03_sisu1912.pdf",
-      "retrievedAt": "2026-10-11T16:35:48.602586Z"
-    },
-    {
-      "id": "fb84c73c08887515",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/nlsgeu000003s0x8-att/03_sisu1812.pdf",
-      "retrievedAt": "2026-10-11T16:35:48.871234Z"
-    },
-    {
-      "id": "ae0b6039b2a95e23",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/nlsgeu000002wamb-att/03_sisu1712.pdf",
-      "retrievedAt": "2026-10-11T16:35:49.134910Z"
-    },
-    {
-      "id": "6993e3f0a48e3aa1",
-      "name": "JPX・統計月報 3-1 株価指数（年月末・日別）",
-      "url": "https://www.jpx.co.jp/markets/statistics-equities/monthly/nlsgeu00000280ko-att/03_sisu1612.pdf",
-      "retrievedAt": "2026-10-11T16:35:49.386651Z"
     },
     {
       "id": "aaafc66369e845aa",
@@ -496,17 +421,30 @@
       "name": "住宅金融支援機構・新機構団信付きフラット35の借入金利水準",
       "url": "https://www.simulation.jhf.go.jp/flat35/kinri/index.php/rates/top",
       "retrievedAt": "2026-10-12T04:06:55.568019Z"
+    },
+    {
+      "id": "e52c3b43f2113164",
+      "url": "https://www.jpx.co.jp/markets/indices/topix/",
+      "name": "JPX・TOPIX（東証株価指数）― 指数値の推移",
+      "retrievedAt": "2026-10-12T05:24:24.160473Z"
+    },
+    {
+      "id": "af0c6128de232760",
+      "url": "https://www.jpx.co.jp/markets/indices/topix/tvdivq00000030ne-att/topixyear_j.xls",
+      "name": "JPX・TOPIX年間四本値（topixyear_j.xls、年末終値）",
+      "retrievedAt": "2026-10-12T05:24:24.160473Z"
     }
   ],
   "warnings": [
     "国債30年：60半期中54半期を収録。未取得の期間は欠測です。",
     "フラット35：60半期中46半期を収録。未取得の期間は欠測です。",
-    "TOPIX：60半期中22半期を収録。未取得の期間は欠測です。"
+    "TOPIX：年間四本値の年末終値を30年分収録。6月および未収録年の値は表示していません。"
   ],
   "flat35Method": "range-midpoint-v1",
+  "topixMethod": "annual-close-v1",
   "insight": {
-    "summary": "2024年末から2026年6月末にかけて、国債10年金利は1.111％から2.690％、30年金利は2.252％から3.873％へ上昇した。フラット35の最高・最低金利の中間値も2.715％から4.345％へ、TOPIXは2,784.92から3,994.76ポイントへ上昇した。AIの推論として、新規借入れの負担が増す一方、株式の評価は高まっていると考えられる。ただし、フラット35の中間値は実際の借入金利の平均ではなく、株価上昇の原因や資金流入額も、この図表だけでは判断できない。",
-    "generatedAt": "2026-10-12T04:06:55Z",
+    "summary": "2024年末から2025年末にかけて、TOPIXは2,784.92から3,408.97ポイントへ上昇した。同期間に国債10年金利は1.111％から2.066％、30年金利は2.252％から3.354％、フラット35の最高・最低金利の中間値は2.715％から3.240％へ上昇した。AIの推論として、株式の評価が高まる一方、新規借入れの負担も増していると考えられる。ただし、中間値は実際の借入金利の平均ではなく、資金流入額や株価上昇の原因はこの図表だけでは判断できない。TOPIXは添付資料の年末値を使用し、2026年分は未収録。",
+    "generatedAt": "2026-10-12T05:25:49.504Z",
     "model": "initial"
   }
 }

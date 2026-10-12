@@ -1,13 +1,50 @@
-"""TOPIX price index from JPX monthly statistical bulletins (table 3-1)."""
+"""TOPIX annual closing values from JPX's annual OHLC workbook."""
 import io
 import re
 import unicodedata
+import math
 from urllib.parse import urljoin
 
 from domain import month_end
 from sources import Html, with_provenance
 
 INDEX = "https://www.jpx.co.jp/markets/statistics-equities/monthly/index.html"
+ANNUAL_INDEX = "https://www.jpx.co.jp/markets/indices/topix/"
+ANNUAL_FILE = ANNUAL_INDEX + "tvdivq00000030ne-att/topixyear_j.xls"
+
+
+def parse_topix_annual(raw):
+    import xlrd
+    workbook = xlrd.open_workbook(file_contents=raw)
+    sheet = workbook.sheet_by_index(0)
+    if "TOPIX" not in str(sheet.cell_value(1, 0)) or "終値" not in str(sheet.cell_value(1, 0)):
+        raise ValueError("TOPIX annual closing-value title not found")
+    if sheet.cell_value(4, 1) != "" or sheet.cell_value(4, 7).replace(" ", "") not in ("年(月）末", "年（月）末"):
+        raise ValueError("TOPIX annual closing-value column changed")
+    published = xlrd.xldate_as_datetime(sheet.cell_value(2, 5), workbook.datemode)
+    rows = []
+    for row in range(5, sheet.nrows):
+        year = sheet.cell_value(row, 1)
+        if year == "":
+            continue
+        value = sheet.cell_value(row, 7)
+        if not isinstance(year, (int, float)) or int(year) != year or not 1949 <= year <= published.year:
+            raise ValueError("Invalid TOPIX year")
+        if year == published.year and published.month != 12:
+            raise ValueError("Partial-year TOPIX must not be labelled as December")
+        if not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:
+            raise ValueError("Invalid TOPIX annual close")
+        rows.append({"date": f"{int(year)}-12-31", "value": value})
+    if not rows or any(int(b["date"][:4]) != int(a["date"][:4]) + 1 for a, b in zip(rows, rows[1:])):
+        raise ValueError("Missing or duplicate TOPIX years")
+    return rows
+
+
+def collect_topix(fetcher, as_of, backfill=False):
+    raw, source_id = fetcher.get(ANNUAL_FILE, "JPX・TOPIX年間四本値（指数値の推移、年末終値）")
+    _, page_id = fetcher.get(ANNUAL_INDEX, "JPX・TOPIX（東証株価指数）― 指数値の推移")
+    rows = [row for row in parse_topix_annual(raw) if row["date"] <= as_of]
+    return {"topix": {"observations": rows, "sourceIds": [page_id, source_id], "method": "annual-close-v1"}}
 
 
 def parse_topix_text(text):
@@ -40,7 +77,7 @@ def parse_topix_text(text):
     return rows
 
 
-def collect_topix(fetcher, as_of, backfill=False):
+def collect_topix_monthly(fetcher, as_of, backfill=False):
     from pypdf import PdfReader
     raw, _ = fetcher.get(INDEX, "JPX・統計月報一覧")
     html = raw.decode("utf-8-sig")

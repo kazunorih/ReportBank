@@ -40,6 +40,7 @@ export type WeeklyReport = z.infer<typeof reportSchema>;
 export type ReportSummary = z.infer<typeof summarySchema>;
 
 export const marketChartSchema = z.object({
+  topixMethod: z.literal("annual-close-v1"),
   flat35Method: z.literal("range-midpoint-v1"),
   asOf: date,
   periods: reportSchema.shape.periods,

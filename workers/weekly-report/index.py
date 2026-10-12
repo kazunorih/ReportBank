@@ -107,7 +107,7 @@ def collect(event):
                                "sourceIds": list(dict.fromkeys(existing["sourceIds"] + [s["id"] for s in sources]))}
     for series_id, dataset in fresh.items():
         existing = datasets.get(series_id, {"observations": [], "sourceIds": []})
-        if series_id == "flat35" and existing.get("method") != "range-midpoint-v1":
+        if series_id == "topix" or (series_id == "flat35" and existing.get("method") != "range-midpoint-v1"):
             existing = {"observations": [], "sourceIds": []}  # Exclude bank/minimum-rate history.
         fresh_months = {row["date"][:7] for row in dataset["observations"]}
         merged = {row["date"]: row for row in existing["observations"] if row["date"][:7] not in fresh_months and row["date"] <= as_of}
@@ -144,6 +144,8 @@ def collect_markets(as_of, prefix):
     for collector in (collect_mof, collect_flat35, collect_topix):
         for key, fresh in collector(fetcher, as_of).items():
             old = datasets.get(key, {"observations": [], "sourceIds": []})
+            if key == "topix":
+                old = {"observations": [], "sourceIds": []}  # Workbook replaces all monthly history.
             months = {row["date"][:7] for row in fresh["observations"]}
             merged = {row["date"]: row for row in old["observations"] if row["date"][:7] not in months}
             merged.update({row["date"]: row for row in fresh["observations"]})

@@ -4,12 +4,24 @@ from unittest.mock import patch
 from domain import (SERIES, aggregate, half_years, parse_boj, parse_mof, report_date,
                     validate_observations, validate_summary)
 from sources import parse_flat35, parse_flat35_history, collect_flat35, parse_import, safe_url
-from topix import parse_topix_text
+from topix import parse_topix_text, parse_topix_annual
 from markets import build_markets
 import index as worker
 
 
 class AggregationTests(unittest.TestCase):
+    def test_attached_topix_workbook_uses_annual_close_not_open_high_or_low(self):
+        from pathlib import Path
+        rows = parse_topix_annual((Path(__file__).parent / 'data' / 'topixyear_j.xls').read_bytes())
+        self.assertEqual(len(rows), 77)
+        self.assertEqual(rows[0], {'date': '1949-12-31', 'value': 12.85})
+        self.assertEqual(rows[-1], {'date': '2025-12-31', 'value': 3408.97})
+        self.assertTrue(all(row['date'].endswith('-12-31') for row in rows))
+        self.assertEqual(aggregate(rows, ['2025-06-30', '2025-12-31', '2026-06-30'], 'last'), [None, 3408.97, None])
+        validate_observations('topix', rows, '2026-10-12')
+        with self.assertRaises(ValueError):
+            validate_observations('topix', rows, '2027-03-01')
+
     def test_flat35_history_midpoint_preserves_precision_and_provenance(self):
         from pathlib import Path
         content = (Path(__file__).parent / 'data' / 'flat35-range.csv').read_text(encoding='utf-8')
