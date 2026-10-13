@@ -9,8 +9,8 @@ import { getMarketChart } from "@/lib/reports/markets";
 import { withReportFigures } from "@/lib/reports/boj";
 
 export const metadata: Metadata = {
-  title: "日本のマクロ金融環境 | 週次レポート | ReportBank",
-  description: "日本の金利、株式市場、建設受注、貸出と日本銀行の資産を公表統計で確認する週次レポート。",
+  title: "日本のマクロ金融環境 | 週次定点観測 | ReportBank",
+  description: "日本の金利、株式市場、建設受注、貸出と日本銀行の資産を公表統計で確認する週次定点観測。",
 };
 const formatTime = (date: string) => new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long", timeStyle: "short" }).format(new Date(date));
 
@@ -42,11 +42,8 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
           </div>
         </header>
         <section className="max-w-3xl text-sm leading-7 text-slate-600">
-          <p>WEEKLY INSIGHT</p>
-          <h2 className="mt-2">3つの図表を統合した400字整理</h2>
-          <p className="mt-3">AIによる推論です。公表機関の見解とは異なります。統計の時点・集計範囲を踏まえた考察としてお読みください。</p>
+          <h2>WEEKLY INSIGHT（資料からのAI推論）</h2>
           <p className="mt-5 whitespace-pre-wrap">{insight?.summary || (failed ? "レポートを取得できませんでした。時間をおいて再度お試しください。" : "この図表のデータに基づく400字以内の整理を準備しています。")}</p>
-          {insight && <p className="mt-4">{[...insight.summary].length}字 / {insight.model === "initial" ? "初回掲載文（AI作成）" : "GPT-5.6-luna"} / 収集基準日 {marketChart?.asOf}</p>}
         </section>
         {marketChart && chartData ? <>
           <p className="text-sm leading-7 text-slate-600">収集基準日：{marketChart.asOf}。貸出残高は日本銀行の提供CSVを使用（最新観測日：{chartData.series.find((series) => series.id === "otherLoans")?.latestDate}）。日本銀行の資産は財務諸表を使用（最新決算日：{chartData.series.find((series) => series.id === "bojStatementJgb")?.latestDate}）。</p>
