@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { chartScale } from "@/lib/reports/chart-scale";
+import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/catalog";
 import type { WeeklyReport, FiscalData } from "@/lib/reports/schema";
 import FiscalChart from "./fiscal-chart";
@@ -42,38 +44,38 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
           (item.group === group.id || ((group.id === "loanComparison" || group.id === "bojComparison") && item.unit === "%")));
         const hasRates = group.id === "markets" || group.id === "loanComparison" || group.id === "bojComparison";
         const available = series.filter((item) => data.some((row) => row[item.id] != null));
+        const amounts = available.filter(item => item.unit !== "%");
+        const stacked = group.id === "loanComparison" || group.id === "bojComparison";
+        const amountScale = chartScale(data.flatMap(row => stacked ? [amounts.reduce((sum, item) => sum + (row[item.id] ?? 0), 0)] : amounts.map(item => row[item.id])));
+        const rateScale = chartScale(data.flatMap(row => available.filter(item => item.unit === "%").map(item => row[item.id])));
         return (
           <section key={group.id} className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
             <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(groupIndex + 1).padStart(2, "0")}</p>
             <h3 className="mt-2 text-xl font-semibold">{group.title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-500">{group.description}</p>
             {available.length ? (
-              <div className="mt-6 w-full overflow-x-auto" role="img" aria-label={`${group.title}。半年ごとの推移。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
-                <div style={{ minWidth: Math.max(600, years * 36 + 110) }}>
-                <div className="mb-2 flex justify-between pl-4 pr-2 text-xs text-slate-500">
-                  <span>{group.id === "markets" ? "ポイント" : "兆円"}</span>
-                  {hasRates && <span>金利（%）</span>}
-                </div>
-                <div className="h-96">
+              <>
+                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit={group.id === "markets" ? "ポイント" : "兆円"} rightUnit="金利（%）" minWidth={Math.max(600, years * 36 + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={data} margin={{ top: 12, right: 8, bottom: 12, left: 0 }} accessibilityLayer>
+                  <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                     <XAxis dataKey="period" ticks={data.filter((row) => row.period.endsWith("-12-31")).map((row) => row.period)} interval={0}
-                      angle={-55} textAnchor="end" height={65} tickMargin={8}
+                      angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8}
                       tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} tick={{ fontSize: 11 }} />
-                    <YAxis yAxisId="amount" width={65} tick={{ fontSize: 11 }} tickFormatter={(value: number) => value.toLocaleString("ja-JP")} />
-                    {hasRates && <YAxis yAxisId="rate" orientation="right" width={45} tick={{ fontSize: 11 }} unit="%" domain={["auto", "auto"]} />}
+                    <YAxis yAxisId="amount" hide domain={amountScale.domain} ticks={amountScale.ticks} />
+                    {hasRates && <YAxis yAxisId="rate" hide domain={rateScale.domain} ticks={rateScale.ticks} />}
                     <Tooltip labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
-                    <Legend wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
                     {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
                       ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
                       : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={group.id === "bojComparison"} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>
-                </div>
-                </div>
-              </div>
+                </FixedAxisChart>
+                <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" aria-label="凡例">
+                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "topix" ? "#94a3b8" : colors[index] }}>{item.unit === "%" ? "━" : "■"} {item.label}</li>)}
+                </ul>
+              </>
             ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}
             <ul className="mt-4 space-y-2 text-xs leading-5 text-slate-500">
               {series.map((item) => {

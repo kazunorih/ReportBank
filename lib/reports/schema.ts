@@ -50,7 +50,7 @@ export const fiscalSchema = z.object({
 export type FiscalData = z.infer<typeof fiscalSchema>;
 
 export const marketChartSchema = z.object({
-  summaryScope: z.literal("four-figures-v1").optional(),
+  summaryScope: z.literal("four-figures-v2").optional(),
   fiscal: fiscalSchema.optional(),
   lending: z.object({
     observations: z.array(z.object({ date, domesticBankLoans: z.number().finite().nonnegative().nullable(), housingLoans: z.number().finite().nonnegative().nullable() })),
@@ -77,7 +77,7 @@ export const marketChartSchema = z.object({
     model: z.enum(["initial", "gpt-5.6-luna"]),
   }).optional(),
 }).superRefine((chart, ctx) => {
-  if (chart.summaryScope === "four-figures-v1") {
+  if (chart.summaryScope === "four-figures-v2") {
     const financials = chart.bojFinancials;
     const sources = new Set(chart.sources.map(source => source.id));
     if (!financials || !chart.lending || !chart.fiscal || financials.observations.length === 0 ||
