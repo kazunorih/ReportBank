@@ -1,0 +1,1762 @@
+{
+  "debt": [
+    {
+      "date": "1996-12-31",
+      "amount": 343.6817,
+      "sha256": "502146775c588a69fd6e35fb0d829fa2b12a79b831c67946bfb7befc2b31e42a",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "9601037bff102aa4"
+      ]
+    },
+    {
+      "date": "1997-06-30",
+      "amount": 362.545,
+      "sha256": "686acbc0827e13d08a9b3e181609b4e17354a9e120df30a01b5a67500e901d95",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "0968deac7b70a1c1"
+      ]
+    },
+    {
+      "date": "1997-12-31",
+      "amount": 368.5974,
+      "sha256": "0768b05caf9af3872b2436dcad4e12af16220be0057c5f580b7f02a313fddd85",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "60a623b75bee1873"
+      ]
+    },
+    {
+      "date": "1998-06-30",
+      "amount": 400.173,
+      "sha256": "7f7a087b3f817d790847b129fbcd0e9f74111a733ab896672674a8c22a6cc9d2",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "28c77570a18383af"
+      ]
+    },
+    {
+      "date": "1998-12-31",
+      "amount": 426.9774,
+      "sha256": "a0c13f43f0b707f126983bd631620365f1fb795a120f82de44406c2a5cd0054c",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "b38eef5604136959"
+      ]
+    },
+    {
+      "date": "1999-06-30",
+      "amount": 460.6676,
+      "sha256": "325ada4321a58f62d71436cbd2b88f0cc0d679ee8157249eb604ffd2f6d7509f",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "8652b628ad02a2a6"
+      ]
+    },
+    {
+      "date": "1999-12-31",
+      "amount": 477.7638,
+      "sha256": "bdefd13e4ed1aad74187cbab895457ffdd1c8d529ce76d22d4d0e078485fbdbf",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "7a3a465c97221f04"
+      ]
+    },
+    {
+      "date": "2000-06-30",
+      "amount": 502.3687,
+      "sha256": "914ab56e1134d03ae08c7586debfccd0a337ade75a3eb58a0c3c2560658542f4",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "2bea0e15b3ebcc17"
+      ]
+    },
+    {
+      "date": "2000-12-31",
+      "amount": 522.0991,
+      "sha256": "604c4297b042fd65627527bbe866460ae727c2cb883a1e0c8754bafbe7ecddc9",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "f2a64bd570a2631d"
+      ]
+    },
+    {
+      "date": "2001-06-30",
+      "amount": 557.1861,
+      "sha256": "e4bd12a91bcc1b0651c25e34c6842af3436ccaaa1bd077b3ef38bd79d1a3b2c1",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "1ab012483131a471"
+      ]
+    },
+    {
+      "date": "2001-12-31",
+      "amount": 582.4556,
+      "sha256": "d05475d7032cbcb75157be0399a4241678b326bd89ba24fb919e9eb53a455812",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "82dd4e6d6261e988"
+      ]
+    },
+    {
+      "date": "2002-06-30",
+      "amount": 627.39,
+      "sha256": "feb9c8dbad62657f41a9a476c61dc590aa2abe4bd5db174e8597dbc3baae83dd",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "cbdaa7511d19478b"
+      ]
+    },
+    {
+      "date": "2002-12-31",
+      "amount": 643.1945,
+      "sha256": "0d2947c59ba264667cc5876ae47a7d456db67f454ba3ce3f52d72d8c67b96a7b",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "38048c777a03446e"
+      ]
+    },
+    {
+      "date": "2003-06-30",
+      "amount": 643.7599,
+      "sha256": "e91cc57dcd1aa1abc06de5b723b63e4c30e3273b0c5fc7a2c1f70a93b2dad0bc",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "7cf6f53b3f758d89"
+      ]
+    },
+    {
+      "date": "2003-12-31",
+      "amount": 670.1212,
+      "sha256": "bbf7175900b23c64cba723364a23b03aa5241462fa61e207f04aba9b971d4be1",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "bf44d7d28aec5c29"
+      ]
+    },
+    {
+      "date": "2004-06-30",
+      "amount": 729.2281,
+      "sha256": "beae91077e312cf44e094c82156513cd6d21823f5c47260222dc93c217274d36",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "9c12f43ee7639a1d"
+      ]
+    },
+    {
+      "date": "2004-12-31",
+      "amount": 751.1065,
+      "sha256": "3ef0eb1906b819bb03201733791f536946b96b5924f7f1060e3218109914e2a1",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "a821dd038edbe733"
+      ]
+    },
+    {
+      "date": "2005-06-30",
+      "amount": 795.8338,
+      "sha256": "9eaf396a58b3731df02ad2bc525d1c80f3873586ccabdd0f4cb2476d3140fa37",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "b30ca5bdadc9b07d"
+      ]
+    },
+    {
+      "date": "2005-12-31",
+      "amount": 813.183,
+      "sha256": "12fd2aa093f53195d7533c29dce0a8d4674d24dbb1edadc9760e751a06ffc793",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "d1e8e509d941858a"
+      ]
+    },
+    {
+      "date": "2006-06-30",
+      "amount": 827.7948,
+      "sha256": "fdfff810b5e6322936dd21d8af0413709451d0e7c26b1dcd96695bb728db8f58",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "a246c0690f6efb96"
+      ]
+    },
+    {
+      "date": "2006-12-31",
+      "amount": 832.2631,
+      "sha256": "24e9e3f8dee70d028dc932859294a3975ae4e03feb37b179651dcd8bb0331e4b",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "80036a0d6c5646ad"
+      ]
+    },
+    {
+      "date": "2007-06-30",
+      "amount": 836.5213,
+      "sha256": "40f1df6829f11086d76f26cfd51403cec3df8cae7604acb565e31a0490a3ac11",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "a439343e2e782e14"
+      ]
+    },
+    {
+      "date": "2007-12-31",
+      "amount": 838.005,
+      "sha256": "438c9a40126115947e27889662a8938f933b509bcff01684b892321f289144cf",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "d479241227a32794"
+      ]
+    },
+    {
+      "date": "2008-06-30",
+      "amount": 848.4424,
+      "sha256": "3e000deb98efb3cd1f2e0c16205e01fc4e8e299da51f8cd61f4fbf5492a95518",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "ccd5af8f2bb7236f"
+      ]
+    },
+    {
+      "date": "2008-12-31",
+      "amount": 846.6905,
+      "sha256": "7ba1edd40a1c85e02aca94bcb391b69a7ac7115dcaef3717b2d343882097327f",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "bfdabd55b382da5c"
+      ]
+    },
+    {
+      "date": "2009-06-30",
+      "amount": 860.2557,
+      "sha256": "65fa77ac5f9c5d6368358d7d65431df16b0886fb4742c2a4b4a3d82a69a5cd39",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "9682670813d167c1"
+      ]
+    },
+    {
+      "date": "2009-12-31",
+      "amount": 871.5104,
+      "sha256": "ca44fdfe787b5cd1e09225fa33ddfa3d582f642509df18a18da5f53cbbfedcde",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "792f3a4ba8f7e270"
+      ]
+    },
+    {
+      "date": "2010-06-30",
+      "amount": 904.0772,
+      "sha256": "50c3aeca42ef7a84891bace9fe4bc8293ce65cf1d4504a040e9eeb3196e90c1c",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "da34028b3100a705"
+      ]
+    },
+    {
+      "date": "2010-12-31",
+      "amount": 919.1511,
+      "sha256": "b1eb0066e229f74b8c20068812dfbf2f36b09aa907e70cce9b7f4e17170c3189",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "323890baa563bbc3"
+      ]
+    },
+    {
+      "date": "2011-06-30",
+      "amount": 943.8096,
+      "sha256": "dc0d593afcbe7b95ecfc6671d09112836ff0120d25cb3f07e17515a99c3df44a",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "89bb58dbf1908375"
+      ]
+    },
+    {
+      "date": "2011-12-31",
+      "amount": 958.6385,
+      "sha256": "cfc8c1b14252f256c4166f6af7663b360739984b937eece523af280c2879cede",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "9113969f128a0e5f"
+      ]
+    },
+    {
+      "date": "2012-06-30",
+      "amount": 976.1853,
+      "sha256": "ebde05104613295718db16f3e12e9a2c16eb055190d6c2a1eeee221a1980124b",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "0cb4f0bc8dc558fe"
+      ]
+    },
+    {
+      "date": "2012-12-31",
+      "amount": 997.2181,
+      "sha256": "996def033f54b7b475e66886469d2d74aa5b20aa69d329c3d03635693a9799f2",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "2b6bb3c2a616f6df"
+      ]
+    },
+    {
+      "date": "2013-06-30",
+      "amount": 1008.6281,
+      "sha256": "c2368825b351aa529af5e6a032192aef5143b2d9ee369947312ecefb210605cb",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "509d9dd1983428be"
+      ]
+    },
+    {
+      "date": "2013-12-31",
+      "amount": 1017.9459,
+      "sha256": "da54f8e38440fffc052a605a8da8d38a4a3bc6136bf1156ee4e5945a1415a539",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "e0f2cb44e2c9dd42"
+      ]
+    },
+    {
+      "date": "2014-06-30",
+      "amount": 1039.4132,
+      "sha256": "5c617d32177879dd730a25835e29f91bdec3c77718eeda02a8aaefc78a0ef403",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "892187795341299e"
+      ]
+    },
+    {
+      "date": "2014-12-31",
+      "amount": 1029.9205,
+      "sha256": "bb1d47cc7a83ade3ea68b597f31cb7903995d0ac79def5b32dcb8c97859b3cd9",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "060722b083849336"
+      ]
+    },
+    {
+      "date": "2015-06-30",
+      "amount": 1057.2235,
+      "sha256": "c12cb7f917aed66941894c54ba320075d8c7b469cb78bf9954d48ee6936298af",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "4babd7783e34bdf8"
+      ]
+    },
+    {
+      "date": "2015-12-31",
+      "amount": 1044.5904,
+      "sha256": "aad5d6502f7ddeaa9f0d1f2b105248ec118952ad5f15a9c692870e8034307dfe",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "2038323446580b55"
+      ]
+    },
+    {
+      "date": "2016-06-30",
+      "amount": 1053.4676,
+      "sha256": "718209bab396a6c73c70b66d846a87739a9277db727bfe4d8a110d677285829a",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "7774332b565ed4dd"
+      ]
+    },
+    {
+      "date": "2016-12-31",
+      "amount": 1066.4234,
+      "sha256": "9619c462b341bfd10cb5114cac3d24b7d9a27b0898a6c1aa337244d2660ea5d8",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "cbf816d1ec0aebc1"
+      ]
+    },
+    {
+      "date": "2017-06-30",
+      "amount": 1078.9664,
+      "sha256": "aeaa6d17c078bcb30e7bb4f3dd3463214d16f237fdd99e588163fbb3ec538346",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "4b7203446368c46c"
+      ]
+    },
+    {
+      "date": "2017-12-31",
+      "amount": 1085.7537,
+      "sha256": "2aef5a034df2af3d4da303f854819389baff1d622a8f43604229b8a5af1f218e",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "aa346f3d36fabde8"
+      ]
+    },
+    {
+      "date": "2018-06-30",
+      "amount": 1088.9851,
+      "sha256": "f32fdbd63adf510b8408fdb5724a4e211aa55d8a1e4bfbf0a7f0d64757ad21dd",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "ec7429ea185301d6"
+      ]
+    },
+    {
+      "date": "2018-12-31",
+      "amount": 1100.5266,
+      "sha256": "921d509c61b9a02b62042bbecdda803359fbcfbb7935a6b5b42f1fee897cbf22",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "1139674d61d724dd"
+      ]
+    },
+    {
+      "date": "2019-06-30",
+      "amount": 1105.4353,
+      "sha256": "9af5162d79506da457810971579f7dd450b39c0bcf858130f78a159fb25734b2",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "da53f264e3b934a7"
+      ]
+    },
+    {
+      "date": "2019-12-31",
+      "amount": 1110.7807,
+      "sha256": "a35fe6b1c13fb56eab0df5810e297d446993351e75fad53392ba5f0acf86ff5e",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "8423b9231394f5d5"
+      ]
+    },
+    {
+      "date": "2020-06-30",
+      "amount": 1159.0289,
+      "sha256": "503d7551b9e558c6d529f64a532d22362ce2b53d87f9f10bcc78411cd50fb8f9",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "0fe8314b60c46e4b"
+      ]
+    },
+    {
+      "date": "2020-12-31",
+      "amount": 1212.468,
+      "sha256": "bb4efc03511a0aa07e9ef4b41a64446b4bbb769f5891656dd099d0066fc1dbd0",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "76a44481ae19dee0"
+      ]
+    },
+    {
+      "date": "2021-06-30",
+      "amount": 1220.6368,
+      "sha256": "3760e7e9dc4af1dd0712bd2f1e376c3e7e8cc7d06f1147126206572c5fceba6c",
+      "sourceIds": [
+        "9719d34a7173a226",
+        "4e4c9e2249a03d18"
+      ]
+    },
+    {
+      "date": "2021-12-31",
+      "amount": 1218.433,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2022-06-30",
+      "amount": 1255.1932,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2022-12-31",
+      "amount": 1256.9992,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2023-06-30",
+      "amount": 1276.3155,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2023-12-31",
+      "amount": 1286.452,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2024-06-30",
+      "amount": 1311.0421,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2024-12-31",
+      "amount": 1317.6365,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2025-06-30",
+      "amount": 1332.1872,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2025-12-31",
+      "amount": 1342.172,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "amount": 1346.6833,
+      "sourceIds": [
+        "9719d34a7173a226",
+        "dfa0749f5b5db644"
+      ]
+    }
+  ],
+  "budgets": [
+    {
+      "fiscalYear": 1997,
+      "interest": 11.682066918,
+      "budget": 77.390003705,
+      "share": 15.095059256658555,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 11.682066918,
+          "page": 461,
+          "organization": "大蔵省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "839ee402ed648d79"
+      ],
+      "sha256": "97752fd35dcf970f235b8746f95d465d870ce7ce0f4accfcb6dee0af276f2d4e"
+    },
+    {
+      "fiscalYear": 1998,
+      "interest": 11.589236532,
+      "budget": 77.669179091,
+      "share": 14.921281089403085,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 11.589236532,
+          "page": 523,
+          "organization": "大蔵省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "343ced8320b1f9ac"
+      ],
+      "sha256": "0c164dbab1d55047508b75d640b591dc1de6c786aca45f7b26161c23523872a1"
+    },
+    {
+      "fiscalYear": 1999,
+      "interest": 11.368224863,
+      "budget": 80.242709156,
+      "share": 14.167299412709275,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 11.368224863,
+          "page": 481,
+          "organization": "大蔵省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "29f6b4e9278550f4"
+      ],
+      "sha256": "5c729cc9fc925eb22def4860a1a14591d6cbc4650c978b4c5ec3c61c3596c9bd"
+    },
+    {
+      "fiscalYear": 2000,
+      "interest": 10.743244069,
+      "budget": 84.987053259,
+      "share": 12.641036083766446,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.029680115,
+          "page": 548,
+          "organization": "大蔵省"
+        },
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 2.713563954,
+          "page": 1120,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "60a2f173d064a669"
+      ],
+      "sha256": "5d503e41ae4028a4ed24d76271fdb3f6c0061372e34b0b6201cad39add215c1b"
+    },
+    {
+      "fiscalYear": 2001,
+      "interest": 10.402276261,
+      "budget": 82.652378963,
+      "share": 12.585573932066326,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 10.402276261,
+          "page": 431,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "b11d14a1a2d4562e"
+      ],
+      "sha256": "f899840a501abd6653fb1067aef4dd3dbf1f03ea94faec6620c89a5bf622ee07"
+    },
+    {
+      "fiscalYear": 2002,
+      "interest": 9.594406189,
+      "budget": 81.229993005,
+      "share": 11.811408365392117,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.594406189,
+          "page": 417,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "f58b016a2179a5db"
+      ],
+      "sha256": "c5fa0a2735bd59d95e6b34329bc714ce44e64034e42c57fc8e388fb879ab9738"
+    },
+    {
+      "fiscalYear": 2003,
+      "interest": 9.060208865,
+      "budget": 81.789077666,
+      "share": 11.07752908279385,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.060208865,
+          "page": 420,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "07d86f363e115b03"
+      ],
+      "sha256": "878918e509e585b5855f8ab8a3c74c2e4f0a2b75ea3b6ebb83a9c3a043bfb9c6"
+    },
+    {
+      "fiscalYear": 2004,
+      "interest": 8.734165196,
+      "budget": 82.110924617,
+      "share": 10.637031840452208,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.734165196,
+          "page": 444,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "2f4765b582db5271"
+      ],
+      "sha256": "c7a930d78328135dc83014707cdaae8c54aa99c0a606defd29522394b4462ff8"
+    },
+    {
+      "fiscalYear": 2005,
+      "interest": 8.864104716,
+      "budget": 82.182917678,
+      "share": 10.785823826224268,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.864104716,
+          "page": 438,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "b6281114a351f81d"
+      ],
+      "sha256": "51566d71f8b46fe834e7fd21543d1784c2cfc077fae8c518bf2786307b272444"
+    },
+    {
+      "fiscalYear": 2006,
+      "interest": 8.648126781,
+      "budget": 79.686024221,
+      "share": 10.852752242997363,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.648126781,
+          "page": 436,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "8aa251e3581e5d33"
+      ],
+      "sha256": "305d11d958df2dab62ad4fb7b0fdaf60867c76c761162b96c65a9259e622f8ae"
+    },
+    {
+      "fiscalYear": 2007,
+      "interest": 9.514313081,
+      "budget": 82.908807811,
+      "share": 11.475636102124339,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "国債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.514313081,
+          "page": 427,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "598e07e9cddff406"
+      ],
+      "sha256": "f947c0255721224425d4dbf74aa97878e5069127c00721e7f34d990e25f0d70a"
+    },
+    {
+      "fiscalYear": 2008,
+      "interest": 9.340580463,
+      "budget": 83.061339913,
+      "share": 11.245400655447527,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.340580463,
+          "page": 461,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "24b8cfeaff924d3a"
+      ],
+      "sha256": "1e47175f9cf7a9f4cc441462e7064980ac2eeb322376e2a05ebde257646ebe57"
+    },
+    {
+      "fiscalYear": 2009,
+      "interest": 9.392846264,
+      "budget": 88.548001321,
+      "share": 10.607632158685885,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.392846264,
+          "page": 467,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "feb02612c64081c5"
+      ],
+      "sha256": "bf0be999163b85de990918de6956535f2c777b6da1056cc5fbbf147676eda386"
+    },
+    {
+      "fiscalYear": 2010,
+      "interest": 9.734967196,
+      "budget": 91.581016945,
+      "share": 10.62989637016855,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.734967196,
+          "page": 473,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "7009e4ec1f676e43"
+      ],
+      "sha256": "0f974a9488ab494c3fc3d8f81e9cbc1ffe183f4009d10c488ea6ea54cd31542c"
+    },
+    {
+      "fiscalYear": 2011,
+      "interest": 9.906720551,
+      "budget": 92.411612715,
+      "share": 10.720211735242195,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.906720551,
+          "page": 486,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "97a8f58c9cdd9367"
+      ],
+      "sha256": "d7913b4fda7dbe5c672d9f1c2bb57f1486c3402886831816bdafc2badd350a74"
+    },
+    {
+      "fiscalYear": 2012,
+      "interest": 9.827065176,
+      "budget": 90.333931511,
+      "share": 10.878597899620205,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.827065176,
+          "page": 496,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "7086ab45b41f0620"
+      ],
+      "sha256": "7bafc92df137be7b4467c969148a372c7fd58aec32c527bf328d32098b3c0b10"
+    },
+    {
+      "fiscalYear": 2013,
+      "interest": 9.860771321,
+      "budget": 92.611539328,
+      "share": 10.647454294087854,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.846745493,
+          "page": 486,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.014025828,
+          "page": 487,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "6bfe7297be7b551a"
+      ],
+      "sha256": "e6b811a8a260ff4b38bfbb5534e0eb76313ba6feef8c325132cc3b063e452386"
+    },
+    {
+      "fiscalYear": 2014,
+      "interest": 10.091416035,
+      "budget": 95.882302829,
+      "share": 10.524795230458118,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 10.048710705,
+          "page": 712,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.04270533,
+          "page": 712,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "aad0422554c46985"
+      ],
+      "sha256": "9542161421587a31a8f1f16f9fa5ac43cb7a0f24adfa2788a58ab563d838cd23"
+    },
+    {
+      "fiscalYear": 2015,
+      "interest": 10.112453062,
+      "budget": 96.34195097,
+      "share": 10.49641714765453,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 10.083396856,
+          "page": 521,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.029056206,
+          "page": 521,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "2014b2df7c8dc6c4"
+      ],
+      "sha256": "c1cf09acbb80a63585ef58be184b5684944f54615c9298a06aa72cfc966ef36d"
+    },
+    {
+      "fiscalYear": 2016,
+      "interest": 9.866529271,
+      "budget": 96.721841054,
+      "share": 10.200932037151253,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.845286829,
+          "page": 521,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.021242442,
+          "page": 522,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "7df8ec0a372f9a22"
+      ],
+      "sha256": "8a9f7ee2db04eabdfea09ae4862a15e09e45cec1dbe1a13b3e2b7c2a5779b70f"
+    },
+    {
+      "fiscalYear": 2017,
+      "interest": 9.131110611,
+      "budget": 97.45470941,
+      "share": 9.369594005544323,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.110369583,
+          "page": 528,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.020741028,
+          "page": 529,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "cf96932a8e3093b6"
+      ],
+      "sha256": "e9934797abf0dadd1973cce0c260f62b626b34b22c17210215ae55547dc4b6ef"
+    },
+    {
+      "fiscalYear": 2018,
+      "interest": 8.997837944,
+      "budget": 97.712769411,
+      "share": 9.20845657966488,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.972367664,
+          "page": 528,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.02547028,
+          "page": 528,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "0158a6d80d1a2905"
+      ],
+      "sha256": "aa40302c3e4c1d0e98c0c6cdd30e5a88a12174e6ebf0bca57b372fcca529f307"
+    },
+    {
+      "fiscalYear": 2019,
+      "interest": 8.815262477,
+      "budget": 101.45709357,
+      "share": 8.688660562622895,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.797829367,
+          "page": 796,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.01743311,
+          "page": 796,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "03b7d0a6689ab73e"
+      ],
+      "sha256": "988d8f9fe17cc4ca0b6727b3bcd0b8a5db3656af9950e6cdffd313be240ee643"
+    },
+    {
+      "fiscalYear": 2020,
+      "interest": 8.390408446,
+      "budget": 102.657971326,
+      "share": 8.173167984544984,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.377423965,
+          "page": 553,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.012984481,
+          "page": 553,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "7943dc1e6fc1c32a"
+      ],
+      "sha256": "deff3feac876f5acd5b5d2cb59e4b14236e072cbb76544a6faca57f41d6fa536"
+    },
+    {
+      "fiscalYear": 2021,
+      "interest": 8.5035657,
+      "budget": 106.609707875,
+      "share": 7.976352125427864,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.490053344,
+          "page": 551,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.013512356,
+          "page": 551,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "7e533f5132ce86bd"
+      ],
+      "sha256": "07713e2fb2aab3b056ad4f3c647b880cf5cdd1d1e53ba52cbe77faacbf8f0457"
+    },
+    {
+      "fiscalYear": 2022,
+      "interest": 8.247240299,
+      "budget": 107.596424558,
+      "share": 7.664976167079152,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.233459252,
+          "page": 539,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.013781047,
+          "page": 539,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "92f2316f670d603a"
+      ],
+      "sha256": "d5cfa39b1ed0fc29138c0d6c1653c7e4d76e3aafa2f7b9caea1e23b86e84b6d9"
+    },
+    {
+      "fiscalYear": 2023,
+      "interest": 8.472283234,
+      "budget": 114.381235569,
+      "share": 7.407056928397256,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 8.458089613,
+          "page": 563,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.014193621,
+          "page": 563,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "630d6d296f128c24"
+      ],
+      "sha256": "7f45f962c97fe47746b1ef03e4a6b63f419132e276bdeca209fc5ad8b8630c77"
+    },
+    {
+      "fiscalYear": 2024,
+      "interest": 9.690987877,
+      "budget": 112.571688422,
+      "share": 8.608725704345108,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 9.675738148,
+          "page": 582,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.015249729,
+          "page": 582,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "8fb0bca21197e5d1"
+      ],
+      "sha256": "d5031c98e8a1296985b5a12b3896ce7abc181e438ba57cca1b0639b9725a1883"
+    },
+    {
+      "fiscalYear": 2025,
+      "interest": 10.522976293,
+      "budget": 115.197845248,
+      "share": 9.13469889158599,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 10.509397283,
+          "page": 581,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.01357901,
+          "page": 581,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "e69e6967d557b334"
+      ],
+      "sha256": "399dad831183424318319097f9d4446149726d2c8650d118b6348f85ed16a518"
+    },
+    {
+      "fiscalYear": 2026,
+      "interest": 13.037146231,
+      "budget": 122.309247035,
+      "share": 10.659166454740166,
+      "basis": "initial-budget",
+      "components": [
+        {
+          "label": "公債利子等の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 13.013889259,
+          "page": 608,
+          "organization": "財務省"
+        },
+        {
+          "label": "年金特例公債利子の支払財源の国債整理基金特別会計へ繰入れに必要な経費",
+          "amount": 0.023256972,
+          "page": 608,
+          "organization": "財務省"
+        }
+      ],
+      "sourceIds": [
+        "9cdb437b7975a2da",
+        "37b848952ffb37ea",
+        "af11eea07073cbd2"
+      ],
+      "sha256": "00c07cb21b2a034bfbf9b01fc108ce7dbe091be7777c0ed9ea1dc1be034e6935"
+    }
+  ],
+  "sources": [
+    {
+      "id": "9719d34a7173a226",
+      "name": "財務省・国債及び借入金並びに政府保証債務現在高（統計表一覧）",
+      "url": "https://www.mof.go.jp/jgbs/reference/gbb/data.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "9cdb437b7975a2da",
+      "name": "財務省・予算（年度別資料）",
+      "url": "https://www.mof.go.jp/policy/budget/budger_workflow/budget/index.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "37b848952ffb37ea",
+      "name": "財務省・財政統計第19表（2）一般会計歳出当初予算及び補正予算",
+      "url": "https://www.mof.go.jp/policy/budget/reference/statistics/19b.xlsx",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "2b6bb3c2a616f6df",
+      "name": "財務省・国債及び借入金現在高（2012-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2412.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "0cb4f0bc8dc558fe",
+      "name": "財務省・国債及び借入金現在高（2012-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2406.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "9113969f128a0e5f",
+      "name": "財務省・国債及び借入金現在高（2011-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2312.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "89bb58dbf1908375",
+      "name": "財務省・国債及び借入金現在高（2011-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2306.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "323890baa563bbc3",
+      "name": "財務省・国債及び借入金現在高（2010-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2212.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "da34028b3100a705",
+      "name": "財務省・国債及び借入金現在高（2010-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2206.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "792f3a4ba8f7e270",
+      "name": "財務省・国債及び借入金現在高（2009-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2112.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "9682670813d167c1",
+      "name": "財務省・国債及び借入金現在高（2009-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2106.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "bfdabd55b382da5c",
+      "name": "財務省・国債及び借入金現在高（2008-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2012.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "ccd5af8f2bb7236f",
+      "name": "財務省・国債及び借入金現在高（2008-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/2006.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "d479241227a32794",
+      "name": "財務省・国債及び借入金現在高（2007-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1912.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "a439343e2e782e14",
+      "name": "財務省・国債及び借入金現在高（2007-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1906.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "80036a0d6c5646ad",
+      "name": "財務省・国債及び借入金現在高（2006-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1812.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "a246c0690f6efb96",
+      "name": "財務省・国債及び借入金現在高（2006-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1806.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "d1e8e509d941858a",
+      "name": "財務省・国債及び借入金現在高（2005-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1712.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "b30ca5bdadc9b07d",
+      "name": "財務省・国債及び借入金現在高（2005-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1706.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "a821dd038edbe733",
+      "name": "財務省・国債及び借入金現在高（2004-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1612.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "9c12f43ee7639a1d",
+      "name": "財務省・国債及び借入金現在高（2004-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1606.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "bf44d7d28aec5c29",
+      "name": "財務省・国債及び借入金現在高（2003-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1512.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7cf6f53b3f758d89",
+      "name": "財務省・国債及び借入金現在高（2003-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1506.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "38048c777a03446e",
+      "name": "財務省・国債及び借入金現在高（2002-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1412.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "cbdaa7511d19478b",
+      "name": "財務省・国債及び借入金現在高（2002-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1406.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "82dd4e6d6261e988",
+      "name": "財務省・国債及び借入金現在高（2001-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1312.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "1ab012483131a471",
+      "name": "財務省・国債及び借入金現在高（2001-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1306.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "f2a64bd570a2631d",
+      "name": "財務省・国債及び借入金現在高（2000-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020s.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "2bea0e15b3ebcc17",
+      "name": "財務省・国債及び借入金現在高（2000-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020q.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7a3a465c97221f04",
+      "name": "財務省・国債及び借入金現在高（1999-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020o.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "8652b628ad02a2a6",
+      "name": "財務省・国債及び借入金現在高（1999-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020m.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "b38eef5604136959",
+      "name": "財務省・国債及び借入金現在高（1998-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020k.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "28c77570a18383af",
+      "name": "財務省・国債及び借入金現在高（1998-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020i.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "60a623b75bee1873",
+      "name": "財務省・国債及び借入金現在高（1997-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020g.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "0968deac7b70a1c1",
+      "name": "財務省・国債及び借入金現在高（1997-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020e.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "9601037bff102aa4",
+      "name": "財務省・国債及び借入金現在高（1996-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20160209/20160205092520/www.mof.go.jp/jgbs/reference/gbb/1c020c.htm",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "1139674d61d724dd",
+      "name": "財務省・国債及び借入金現在高（2018-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/3012.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "ec7429ea185301d6",
+      "name": "財務省・国債及び借入金現在高（2018-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/3006.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "aa346f3d36fabde8",
+      "name": "財務省・国債及び借入金現在高（2017-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/2912.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "4b7203446368c46c",
+      "name": "財務省・国債及び借入金現在高（2017-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/2906.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "cbf816d1ec0aebc1",
+      "name": "財務省・国債及び借入金現在高（2016-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/2812.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7774332b565ed4dd",
+      "name": "財務省・国債及び借入金現在高（2016-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/2806.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "2038323446580b55",
+      "name": "財務省・国債及び借入金現在高（2015-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/2712.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "4babd7783e34bdf8",
+      "name": "財務省・国債及び借入金現在高（2015-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/201506.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "060722b083849336",
+      "name": "財務省・国債及び借入金現在高（2014-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/201412.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "892187795341299e",
+      "name": "財務省・国債及び借入金現在高（2014-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/201406.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "e0f2cb44e2c9dd42",
+      "name": "財務省・国債及び借入金現在高（2013-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/201312.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "509d9dd1983428be",
+      "name": "財務省・国債及び借入金現在高（2013-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20190503/20190501104223/www.mof.go.jp/jgbs/reference/gbb/201306.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "4e4c9e2249a03d18",
+      "name": "財務省・国債及び借入金現在高（2021-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20230503/20230501025004/www.mof.go.jp/jgbs/reference/gbb/202106.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "76a44481ae19dee0",
+      "name": "財務省・国債及び借入金現在高（2020-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20230503/20230501025004/www.mof.go.jp/jgbs/reference/gbb/202012.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "0fe8314b60c46e4b",
+      "name": "財務省・国債及び借入金現在高（2020-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20230503/20230501025004/www.mof.go.jp/jgbs/reference/gbb/202006.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "8423b9231394f5d5",
+      "name": "財務省・国債及び借入金現在高（2019-12-31、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20230503/20230501025004/www.mof.go.jp/jgbs/reference/gbb/201912.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "da53f264e3b934a7",
+      "name": "財務省・国債及び借入金現在高（2019-06-30、国立国会図書館保存）",
+      "url": "https://warp.ndl.go.jp/20230503/20230501025004/www.mof.go.jp/jgbs/reference/gbb/201906.html",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "dfa0749f5b5db644",
+      "name": "財務省・最近5年間の国債及び借入金並びに政府保証債務現在高の推移",
+      "url": "https://www.mof.go.jp/jgbs/reference/gbb/suii.xls",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "839ee402ed648d79",
+      "name": "財務省・1997年度一般会計当初予算書（利払い財源、PDF 461ページ）",
+      "url": "https://www.bb.mof.go.jp/server/1997/dlpdf/DL199711001.pdf#page=461",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "343ced8320b1f9ac",
+      "name": "財務省・1998年度一般会計当初予算書（利払い財源、PDF 523ページ）",
+      "url": "https://www.bb.mof.go.jp/server/1998/dlpdf/DL199811001.pdf#page=523",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "29f6b4e9278550f4",
+      "name": "財務省・1999年度一般会計当初予算書（利払い財源、PDF 481ページ）",
+      "url": "https://www.bb.mof.go.jp/server/1999/dlpdf/DL199911001.pdf#page=481",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "60a2f173d064a669",
+      "name": "財務省・2000年度一般会計当初予算書（利払い財源、PDF 548・1120ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2000/dlpdf/DL200011001.pdf#page=548",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "b11d14a1a2d4562e",
+      "name": "財務省・2001年度一般会計当初予算書（利払い財源、PDF 431ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2001/dlpdf/DL200111001.pdf#page=431",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "f58b016a2179a5db",
+      "name": "財務省・2002年度一般会計当初予算書（利払い財源、PDF 417ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2002/dlpdf/DL200211001.pdf#page=417",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "07d86f363e115b03",
+      "name": "財務省・2003年度一般会計当初予算書（利払い財源、PDF 420ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2003/dlpdf/DL200311001.pdf#page=420",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "2f4765b582db5271",
+      "name": "財務省・2004年度一般会計当初予算書（利払い財源、PDF 444ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2004/dlpdf/DL200411001.pdf#page=444",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "b6281114a351f81d",
+      "name": "財務省・2005年度一般会計当初予算書（利払い財源、PDF 438ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2005/dlpdf/DL200511001.pdf#page=438",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "8aa251e3581e5d33",
+      "name": "財務省・2006年度一般会計当初予算書（利払い財源、PDF 436ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2006/dlpdf/DL200611001.pdf#page=436",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "598e07e9cddff406",
+      "name": "財務省・2007年度一般会計当初予算書（利払い財源、PDF 427ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2007/dlpdf/DL200711001.pdf#page=427",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "24b8cfeaff924d3a",
+      "name": "財務省・2008年度一般会計当初予算書（利払い財源、PDF 461ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2008/dlpdf/DL200811001.pdf#page=461",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "feb02612c64081c5",
+      "name": "財務省・2009年度一般会計当初予算書（利払い財源、PDF 467ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2009/dlpdf/DL200911001.pdf#page=467",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7009e4ec1f676e43",
+      "name": "財務省・2010年度一般会計当初予算書（利払い財源、PDF 473ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2010/dlpdf/DL201011001.pdf#page=473",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "97a8f58c9cdd9367",
+      "name": "財務省・2011年度一般会計当初予算書（利払い財源、PDF 486ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2011/dlpdf/DL201111001.pdf#page=486",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7086ab45b41f0620",
+      "name": "財務省・2012年度一般会計当初予算書（利払い財源、PDF 496ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2012/dlpdf/DL201211001.pdf#page=496",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "6bfe7297be7b551a",
+      "name": "財務省・2013年度一般会計当初予算書（利払い財源、PDF 486・487ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2013/dlpdf/DL201311001.pdf#page=486",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "aad0422554c46985",
+      "name": "財務省・2014年度一般会計当初予算書（利払い財源、PDF 712・712ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2014/dlpdf/DL201411001.pdf#page=712",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "2014b2df7c8dc6c4",
+      "name": "財務省・2015年度一般会計当初予算書（利払い財源、PDF 521・521ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2015/dlpdf/DL201511001.pdf#page=521",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7df8ec0a372f9a22",
+      "name": "財務省・2016年度一般会計当初予算書（利払い財源、PDF 521・522ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2016/dlpdf/DL201611001.pdf#page=521",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "cf96932a8e3093b6",
+      "name": "財務省・2017年度一般会計当初予算書（利払い財源、PDF 528・529ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2017/dlpdf/DL201711001.pdf#page=528",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "0158a6d80d1a2905",
+      "name": "財務省・2018年度一般会計当初予算書（利払い財源、PDF 528・528ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2018/dlpdf/DL201811001.pdf#page=528",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "03b7d0a6689ab73e",
+      "name": "財務省・2019年度一般会計当初予算書（利払い財源、PDF 796・796ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2019/dlpdf/DL201911001.pdf#page=796",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7943dc1e6fc1c32a",
+      "name": "財務省・2020年度一般会計当初予算書（利払い財源、PDF 553・553ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2020/dlpdf/DL202011001.pdf#page=553",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "7e533f5132ce86bd",
+      "name": "財務省・2021年度一般会計当初予算書（利払い財源、PDF 551・551ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2021/dlpdf/DL202111001.pdf#page=551",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "92f2316f670d603a",
+      "name": "財務省・2022年度一般会計当初予算書（利払い財源、PDF 539・539ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2022/dlpdf/DL202211001.pdf#page=539",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "630d6d296f128c24",
+      "name": "財務省・2023年度一般会計当初予算書（利払い財源、PDF 563・563ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2023/dlpdf/DL202311001.pdf#page=563",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "8fb0bca21197e5d1",
+      "name": "財務省・2024年度一般会計当初予算書（利払い財源、PDF 582・582ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2024/dlpdf/DL202411001.pdf#page=582",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "e69e6967d557b334",
+      "name": "財務省・2025年度一般会計当初予算書（利払い財源、PDF 581・581ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2025/dlpdf/DL202511001.pdf#page=581",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "af11eea07073cbd2",
+      "name": "財務省・2026年度一般会計当初予算書（利払い財源、PDF 608・608ページ）",
+      "url": "https://www.bb.mof.go.jp/server/2026/dlpdf/DL202611001.pdf#page=608",
+      "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    }
+  ]
+}

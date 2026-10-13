@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/catalog";
-import type { WeeklyReport } from "@/lib/reports/schema";
+import type { WeeklyReport, FiscalData } from "@/lib/reports/schema";
+import FiscalChart from "./fiscal-chart";
 import { bojSeriesCatalog } from "@/lib/reports/boj";
 
 const colors = ["#0284c7", "#0f766e", "#7c3aed", "#d97706", "#be123c"];
 const displayCatalog = [...seriesCatalog, ...lendingSeriesCatalog, ...bojSeriesCatalog];
 type ChartSeriesId = (typeof displayCatalog)[number]["id"];
 type ChartReport = Pick<WeeklyReport, "periods" | "sources"> & {
+  asOf: string;
+  fiscal?: FiscalData;
   series: (Omit<WeeklyReport["series"][number], "id"> & { id: ChartSeriesId; observations?: { date: string; value: number }[] })[];
 };
 export default function ReportCharts({ report }: { report: ChartReport }) {
@@ -92,6 +95,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
           </section>
         );
       })}
+      {report.fiscal && <FiscalChart fiscal={report.fiscal} periods={report.periods} asOf={report.asOf} years={years} />}
     </section>
   );
 }

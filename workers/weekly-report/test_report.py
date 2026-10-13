@@ -184,6 +184,7 @@ class PublicationTests(unittest.TestCase):
         self.assertNotIn("referenceDocuments", evidence)
         self.assertEqual(evidence["figure02"], chart["lending"])
         self.assertEqual(evidence["figure03"], chart["bojFinancials"])
+        self.assertEqual(evidence["figure04"], chart["fiscal"])
         self.assertIn("政府債務全体ではありません", request["instructions"])
         self.assertIn("分からない", request["instructions"])
         self.assertEqual(insight["model"], "gpt-5.6-luna")

@@ -154,7 +154,8 @@ def collect_markets(as_of, prefix):
                              **({"method": fresh["method"]} if "method" in fresh else {})}
     payload = {"asOf": as_of, "datasets": datasets,
                "sources": list({source["id"]: source for source in fetcher.sources}.values())}
-    chart = integrate(build_markets(payload), fetcher, previous.get("chart", {}).get("bojFinancials") if previous else None)
+    previous_chart = previous.get("chart", {}) if previous else {}
+    chart = integrate(build_markets(payload), fetcher, previous_chart.get("bojFinancials"), previous_chart.get("fiscal"))
     if os.environ.get("OPENAI_SECRET_ARN", "").strip():
         chart["insight"] = generate({"prefix": prefix}, chart=chart)
     write_json(f"{prefix}/markets-collected.json", payload)
@@ -163,7 +164,7 @@ def collect_markets(as_of, prefix):
                                                "chart": chart, "collectionKey": f"{prefix}/markets-collected.json"}), parse_float=Decimal),
                      ConditionExpression="attribute_not_exists(pk) OR asOf <= :asOf",
                      ExpressionAttributeValues={":asOf": as_of})
-    # All three figures and their generated summary are published together.
+    # All four figures and their generated summary are published together.
     return {"skipped": True, "asOf": as_of, "prefix": prefix, "status": "markets-published"}
 
 
@@ -216,11 +217,12 @@ def generate(event, chart=None):
 参考資料の索引やリンクのタイトルだけでは記事本文の主張を推定しないでください。
 summaryと、その本文が参照した既存sourceIdの配列sourceIdsを返してください。"""
     if chart is not None:
-        if chart.get("summaryScope") != "three-figures-v1":
-            raise ValueError("Integrated summary requires all three figures")
+        if chart.get("summaryScope") != "four-figures-v1":
+            raise ValueError("Integrated summary requires all four figures")
         evidence["figure02"] = chart["lending"]
         evidence["figure03"] = chart["bojFinancials"]
-        instructions += "\nFIGURE01（金利・TOPIX）、FIGURE02（国内銀行の住宅資金と総貸出－住宅資金）、FIGURE03（日銀の国債と資産合計－国債）の3図を統合してください。民間債務と政府債務のバランス、および金融政策が経済に与えていそうな影響をAIの推論と明記して論じてください。ただし国内銀行の総貸出は民間債務全体ではなく、日銀の国債保有は政府債務全体ではありません。この3図では両債務の総額比率や政策の因果的効果は分からないと明記してください。貸出・資産の単位は兆円。日銀財務諸表は3月末・9月末、金利は6月末・12月末であり同一時点と扱わないでください。その他資産は資産合計から国債を引いたものです。未取得期間を補間せず、TOPIX上昇を資金流入額と同一視しないでください。対象外の図表やニュースを使わないでください。"
+        evidence["figure04"] = chart["fiscal"]
+        instructions += "\nFIGURE01（金利・TOPIX）、FIGURE02（国内銀行の住宅資金と総貸出－住宅資金）、FIGURE03（日銀の国債と資産合計－国債）、FIGURE04（国債及び借入金現在高、一般会計当初予算の利払費と歳出比）の4図を統合してください。民間債務と政府債務のバランス、金融政策が経済に与えていそうな影響、民間金融機関の国債保有がどうなりそうかの予測を含め、AIの推論・予測と明記してください。国内銀行貸出は民間債務全体ではなく、日銀保有国債は政府債務全体ではありません。FIGURE04の残高は内国債・借入金・政府短期証券の合計で、政府保証債務や地方政府を含まず、政府内部の保有・借入は含みます。日銀の保有減少分や政府残高との差額を民間金融機関の保有と断定しないでください。海外投資家等も買い手となり得るため、保有者別統計がないこの4図から民間金融機関の実際の保有増減や政策の因果的効果は分からないと述べてください。利払費は一般会計当初予算で、元本償還費・事務取扱費を含まず決算実績でもありません。歳出比は利払費÷一般会計当初予算総額×100です。金額は兆円。日銀資産は3・9月末、金利・貸出・政府残高は6・12月末、予算は年度単位で、同一時点と扱わないでください。その他資産は総資産－国債。未取得期間を補間せず、TOPIX上昇を資金流入額と同一視しないでください。外部ニュースを使わないでください。"
     request_body = {
         "model": MODEL, "store": False, "instructions": instructions,
         "input": json.dumps(evidence, ensure_ascii=False), "max_output_tokens": 5000,

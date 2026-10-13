@@ -34,7 +34,7 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
         <header className="border-b border-slate-200 pb-8">
           <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / WEEKLY REPORT</p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">日本のマクロ金融環境</h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">金利・TOPIX、国内銀行の貸出、日本銀行の資産の推移から、日本の金融環境を定点観測します。</p>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">金利・TOPIX、国内銀行の貸出、日本銀行の資産、政府の債務と利払い負担から、日本の金融環境を定点観測します。</p>
           <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-600">
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">毎週金曜 23:00（日本時間）生成開始</span>
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">生成・検証完了後に更新</span>

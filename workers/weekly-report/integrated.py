@@ -1,11 +1,12 @@
-"""Keep the three displayed figures and summary evidence in one snapshot."""
+"""Keep the four displayed figures and summary evidence in one snapshot."""
 import json
 from pathlib import Path
 from boj_financials import collect_statements
+from fiscal import collect_fiscal
 
 DATA = Path(__file__).parent / "data"
 
-def integrate(chart, fetcher=None, previous=None):
+def integrate(chart, fetcher=None, previous=None, previous_fiscal=None):
     financials = json.loads((DATA / "boj-financials.json").read_text(encoding="utf-8"))
     rows = {row["date"]: row for row in financials["observations"]}
     sources = {s["id"]: s for s in financials["sources"]}
@@ -23,6 +24,7 @@ def integrate(chart, fetcher=None, previous=None):
     financials = {"observations": rows, "sources": [s for sid, s in sources.items() if sid in used]}
     lending = json.loads((DATA / "lending.json").read_text(encoding="utf-8"))
     lending["observations"] = [row for row in lending["observations"] if row["date"] in chart["periods"]]
-    chart.update(summaryScope="three-figures-v1", bojFinancials=financials, lending=lending)
-    chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + [lending["source"]]}.values())
+    fiscal = collect_fiscal(fetcher, chart["asOf"], previous_fiscal)
+    chart.update(summaryScope="four-figures-v1", bojFinancials=financials, lending=lending, fiscal=fiscal)
+    chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + [lending["source"]]}.values())
     return chart
