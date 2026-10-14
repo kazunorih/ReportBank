@@ -54,7 +54,7 @@ export default function FiscalChart({ fiscal, periods, asOf, years }: { fiscal: 
               </ComposedChart>
             </ResponsiveContainer>
         </FixedAxisChart>
-        <ul className="mt-3 flex flex-wrap justify-center gap-4 text-xs" aria-label="凡例"><li className="text-orange-700">■ 利払費</li><li className="text-teal-700">━ 一般会計歳出比</li></ul>
+        <ul className="mt-3 flex flex-wrap justify-center gap-4 text-xs" aria-label="凡例"><li className="text-orange-700"><span aria-hidden="true" style={{ color: "#fed7aa" }}>■</span> 利払費</li><li className="text-teal-700">━ 一般会計歳出比</li></ul>
       </section>
     </div>
     <p className="mt-4 text-xs leading-5 text-slate-500">残高は国が保有する国債・国内部の借入金を含む国の総額で、地方政府を含む一般政府の連結債務や純債務ではありません。利払費は一般会計負担の国債等の利子・割引料の支払財源として国債整理基金特別会計へ繰り入れる額（年金特例公債分を含む）。元本償還費・事務取扱費は除きます。割合は利払費÷同年度の一般会計歳出当初予算×100で算定し、補正予算・決算とは区別しています。2000年度は省庁再編前後の大蔵省・財務省分を合算しています。</p>

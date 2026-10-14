@@ -25,8 +25,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
   })).slice(-years * 2);
   return (
     <section aria-label="統計図表" className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold">30年の資金循環を読む</h2>
+      <div className="flex flex-wrap items-center justify-end gap-3">
         <label className="text-sm text-slate-600">表示期間
           <select value={years} onChange={(event) => setYears(Number(event.target.value))} className="ml-3 rounded-lg border border-slate-300 bg-white p-2">
             {[30, 10, 5].map((value) => <option key={value} value={value}>{value}年</option>)}
@@ -73,7 +72,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                 </ResponsiveContainer>
                 </FixedAxisChart>
                 <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" aria-label="凡例">
-                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "topix" ? "#94a3b8" : colors[index] }}>{item.unit === "%" ? "━" : "■"} {item.label}</li>)}
+                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
                 </ul>
               </>
             ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}
