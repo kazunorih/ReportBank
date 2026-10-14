@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from boj_financials import collect_statements
 from fiscal import collect_fiscal
+from lending import with_corporate
 
 DATA = Path(__file__).parent / "data"
 
@@ -22,9 +23,9 @@ def integrate(chart, fetcher=None, previous=None, previous_fiscal=None):
     rows = [{**row, **{key: float(row[key]) for key in ("assets", "jgb", "other")}} for row in rows]
     used = {sid for row in rows for sid in row["sourceIds"]}
     financials = {"observations": rows, "sources": [s for sid, s in sources.items() if sid in used]}
-    lending = json.loads((DATA / "lending.json").read_text(encoding="utf-8"))
+    lending = with_corporate(json.loads((DATA / "lending.json").read_text(encoding="utf-8")))
     lending["observations"] = [row for row in lending["observations"] if row["date"] in chart["periods"]]
     fiscal = collect_fiscal(fetcher, chart["asOf"], previous_fiscal)
-    chart.update(summaryScope="four-figures-v2", bojFinancials=financials, lending=lending, fiscal=fiscal)
-    chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + [lending["source"]]}.values())
+    chart.update(summaryScope="four-figures-v3", bojFinancials=financials, lending=lending, fiscal=fiscal)
+    chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + [lending["source"], lending["corporateSource"]]}.values())
     return chart

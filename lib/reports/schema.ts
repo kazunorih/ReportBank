@@ -50,11 +50,12 @@ export const fiscalSchema = z.object({
 export type FiscalData = z.infer<typeof fiscalSchema>;
 
 export const marketChartSchema = z.object({
-  summaryScope: z.literal("four-figures-v2").optional(),
+  summaryScope: z.literal("four-figures-v3").optional(),
   fiscal: fiscalSchema.optional(),
   lending: z.object({
-    observations: z.array(z.object({ date, domesticBankLoans: z.number().finite().nonnegative().nullable(), housingLoans: z.number().finite().nonnegative().nullable() })),
+    observations: z.array(z.object({ date, domesticBankLoans: z.number().finite().nonnegative().nullable(), housingLoans: z.number().finite().nonnegative().nullable(), domesticCorporateLoans: z.number().finite().nonnegative().nullable() })),
     source: reportSchema.shape.sources.element,
+    corporateSource: reportSchema.shape.sources.element,
   }).optional(),
   bojFinancials: z.object({
     observations: z.array(z.object({
@@ -77,14 +78,14 @@ export const marketChartSchema = z.object({
     model: z.enum(["initial", "gpt-5.6-luna"]),
   }).optional(),
 }).superRefine((chart, ctx) => {
-  if (chart.summaryScope === "four-figures-v2") {
+  if (chart.summaryScope === "four-figures-v3") {
     const financials = chart.bojFinancials;
     const sources = new Set(chart.sources.map(source => source.id));
     if (!financials || !chart.lending || !chart.fiscal || financials.observations.length === 0 ||
         financials.observations.some((row, index) => row.date > chart.asOf ||
           (index > 0 && row.date <= financials.observations[index - 1].date) || row.sourceIds.some(id => !sources.has(id))) ||
-        !sources.has(chart.lending.source.id) || chart.lending.observations.some(row =>
-          row.date > chart.asOf || (row.housingLoans !== null && row.domesticBankLoans !== null && row.housingLoans > row.domesticBankLoans))) {
+        !sources.has(chart.lending.source.id) || !sources.has(chart.lending.corporateSource.id) || chart.lending.observations.some(row =>
+          row.date > chart.asOf || (row.housingLoans !== null && row.domesticBankLoans !== null && Math.round(row.housingLoans * 10000) + Math.round((row.domesticCorporateLoans ?? 0) * 10000) > Math.round(row.domesticBankLoans * 10000)))) {
       ctx.addIssue({ code: "custom", message: "Invalid integrated figure evidence" });
     }
     const fiscal = chart.fiscal;

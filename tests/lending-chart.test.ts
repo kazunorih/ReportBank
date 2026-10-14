@@ -14,16 +14,19 @@ describe("BOJ lending chart", () => {
     }
     const other = result.series.find((s) => s.id === "otherLoans")!;
     const housing = result.series.find((s) => s.id === "housingLoans")!;
+    const corporate = result.series.find((s) => s.id === "domesticCorporateLoans")!;
     expect(other.values).toHaveLength(60);
     expect(other.values.every((v) => v !== null)).toBe(true);
     expect(housing.values.every((v) => v !== null)).toBe(true);
-    expect(other.values[0]).toBe(456.8564);
+    expect(other.values[0]).toBe(47.8166);
+    expect(corporate.values[0]).toBe(409.0398);
     expect(housing.values[0]).toBe(55.2039);
-    expect(other.values.at(-1)).toBe(515.3052);
+    expect(other.values.at(-1)).toBe(62.3718);
+    expect(corporate.values.at(-1)).toBe(452.9334);
     expect(housing.values.at(-1)).toBe(159.7284);
     result.periods.forEach((period, index) => {
       const original = lendingSnapshot.observations.find((row) => row.date === period)!;
-      expect(other.values[index]! + housing.values[index]!).toBeCloseTo(original.domesticBankLoans, 8);
+      expect(other.values[index]! + housing.values[index]! + corporate.values[index]!).toBeCloseTo(original.domesticBankLoans, 8);
       expect(other.values[index]).toBeGreaterThanOrEqual(0);
     });
     expect(other.latestDate).toBe("2026-06-30");
@@ -35,5 +38,11 @@ describe("BOJ lending chart", () => {
     const market = marketChartSchema.parse(marketSnapshot);
     const future = withLendingChart({ ...market, asOf: "2026-12-31", periods: [...market.periods.slice(1), "2026-12-31"] });
     expect(future.series.find((s) => s.id === "otherLoans")?.values.at(-1)).toBeNull();
+  });
+
+  it("rejects overlapping loan components", () => {
+    const bad = structuredClone(marketSnapshot);
+    bad.lending.observations[0].domesticCorporateLoans = bad.lending.observations[0].domesticBankLoans;
+    expect(marketChartSchema.safeParse(bad).success).toBe(false);
   });
 });
