@@ -66,13 +66,13 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                     <Tooltip labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
-                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
+                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
                       : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={group.id === "bojComparison"} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>
                 </FixedAxisChart>
                 <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" aria-label="凡例">
-                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
+                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
                 </ul>
               </>
             ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}

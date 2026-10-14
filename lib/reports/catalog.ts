@@ -16,9 +16,9 @@ export const seriesCatalog = [
 
 export type SeriesId = (typeof seriesCatalog)[number]["id"];
 export const lendingSeriesCatalog = [
+  { id: "domesticCorporateLoans", label: "法人向け（金融業含む）", unit: "兆円", group: "loanComparison" },
   { id: "housingLoans", label: "住宅資金", unit: "兆円", group: "loanComparison" },
   { id: "otherLoans", label: "それ以外", unit: "兆円", group: "loanComparison" },
-  { id: "domesticCorporateLoans", label: "法人向け（金融業含む）", unit: "兆円", group: "loanComparison" },
 ] as const;
 export const chartGroups = [
   { id: "markets", title: "金利とTOPIX", description: "棒グラフ・左軸：TOPIXの年末終値（ポイント） ／ 折れ線・右軸：国債10年・30年、フラット35の金利（%、6月・12月）" },
