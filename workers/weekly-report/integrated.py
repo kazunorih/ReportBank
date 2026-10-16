@@ -26,6 +26,6 @@ def integrate(chart, fetcher=None, previous=None, previous_fiscal=None):
     lending = with_corporate(json.loads((DATA / "lending.json").read_text(encoding="utf-8")))
     lending["observations"] = [row for row in lending["observations"] if row["date"] in chart["periods"]]
     fiscal = collect_fiscal(fetcher, chart["asOf"], previous_fiscal)
-    chart.update(summaryScope="four-figures-v3", bojFinancials=financials, lending=lending, fiscal=fiscal)
+    chart.update(summaryScope="four-figures-v4", bojFinancials=financials, lending=lending, fiscal=fiscal)
     chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + [lending["source"], lending["corporateSource"]]}.values())
     return chart
