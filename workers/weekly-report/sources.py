@@ -15,6 +15,7 @@ from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 from domain import SERIES, month_end, number, parse_boj, parse_mof
 
 ALLOWED_HOSTS = {
+    "www.mhlw.go.jp",
     "www.bb.mof.go.jp", "warp.ndl.go.jp",
     "www.stat-search.boj.or.jp", "www.boj.or.jp", "www.mof.go.jp",
     "www.meti.go.jp", "www.mlit.go.jp", "www.e-stat.go.jp", "www.jpx.co.jp",

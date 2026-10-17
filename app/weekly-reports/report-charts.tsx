@@ -5,7 +5,8 @@ import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, 
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/catalog";
-import type { WeeklyReport, FiscalData } from "@/lib/reports/schema";
+import type { WeeklyReport, FiscalData, HouseholdData } from "@/lib/reports/schema";
+import HouseholdChart from "./household-chart";
 import FiscalChart from "./fiscal-chart";
 import { bojSeriesCatalog } from "@/lib/reports/boj";
 
@@ -15,6 +16,7 @@ type ChartSeriesId = (typeof displayCatalog)[number]["id"];
 type ChartReport = Pick<WeeklyReport, "periods" | "sources"> & {
   asOf: string;
   fiscal?: FiscalData;
+  household?: HouseholdData;
   series: (Omit<WeeklyReport["series"][number], "id"> & { id: ChartSeriesId; observations?: { date: string; value: number }[] })[];
 };
 export default function ReportCharts({ report }: { report: ChartReport }) {
@@ -98,6 +100,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         );
       })}
       {report.fiscal && <FiscalChart fiscal={report.fiscal} periods={report.periods} asOf={report.asOf} years={years} />}
+      {report.household && <HouseholdChart data={report.household} years={years} />}
     </section>
   );
 }

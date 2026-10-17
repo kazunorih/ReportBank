@@ -1,0 +1,719 @@
+{
+  "asOf": "2026-10-17",
+  "observations": [
+    {
+      "year": 1995,
+      "surveyYear": 1996,
+      "averageIncome": 659.6,
+      "belowMeanShare": 60.0,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "998cf6ba0a4f7686"
+      ],
+      "unemploymentRate": 3.2,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 1996,
+      "surveyYear": 1997,
+      "averageIncome": 661.2,
+      "belowMeanShare": 60.6,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "70d115b2daf5b953"
+      ],
+      "unemploymentRate": 3.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 1997,
+      "surveyYear": 1998,
+      "averageIncome": 657.7,
+      "belowMeanShare": 60.6,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "ba5b42556fc39895"
+      ],
+      "unemploymentRate": 3.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 1998,
+      "surveyYear": 1999,
+      "averageIncome": 655.2,
+      "belowMeanShare": 60.6,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "04850fbdecc644b1"
+      ],
+      "unemploymentRate": 4.1,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 1999,
+      "surveyYear": 2000,
+      "averageIncome": 626.0,
+      "belowMeanShare": 61.2,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "876cebd561f12834"
+      ],
+      "unemploymentRate": 4.7,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2000,
+      "surveyYear": 2001,
+      "averageIncome": 616.9,
+      "belowMeanShare": 61.1,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "2d57efaaa7e156da"
+      ],
+      "unemploymentRate": 4.7,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2001,
+      "surveyYear": 2002,
+      "averageIncome": 602.0,
+      "belowMeanShare": 61.2,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "6a8012017fe2ff33"
+      ],
+      "unemploymentRate": 5.0,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2002,
+      "surveyYear": 2003,
+      "averageIncome": 589.3,
+      "belowMeanShare": 60.4,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "e7678f75d3ea3c28"
+      ],
+      "unemploymentRate": 5.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2003,
+      "surveyYear": 2004,
+      "averageIncome": 579.7,
+      "belowMeanShare": 59.7,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "fb13793af4b92eb5"
+      ],
+      "unemploymentRate": 5.3,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2004,
+      "surveyYear": 2005,
+      "averageIncome": 580.4,
+      "belowMeanShare": 60.5,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "3d754c562a6df747"
+      ],
+      "unemploymentRate": 4.7,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2005,
+      "surveyYear": 2006,
+      "averageIncome": 563.8,
+      "belowMeanShare": 60.7,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "28b1e1896e2a3c51"
+      ],
+      "unemploymentRate": 4.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2006,
+      "surveyYear": 2007,
+      "averageIncome": 566.8,
+      "belowMeanShare": 61.2,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "7c7283ce6afc9a55"
+      ],
+      "unemploymentRate": 4.1,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2007,
+      "surveyYear": 2008,
+      "averageIncome": 556.2,
+      "belowMeanShare": 60.9,
+      "comparison": "below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "38696f1608fc03d4"
+      ],
+      "unemploymentRate": 3.9,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2008,
+      "surveyYear": 2009,
+      "averageIncome": 547.5,
+      "belowMeanShare": 61.3,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "c167307e6ba7ad3c"
+      ],
+      "unemploymentRate": 4.0,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2009,
+      "surveyYear": 2010,
+      "averageIncome": 549.6,
+      "belowMeanShare": 61.4,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "4531bf9d11c8ae5f"
+      ],
+      "unemploymentRate": 5.1,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2010,
+      "surveyYear": 2011,
+      "averageIncome": 538.0,
+      "belowMeanShare": 61.2,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "8ebfc861857aa279"
+      ],
+      "unemploymentRate": 5.1,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2011,
+      "surveyYear": 2012,
+      "averageIncome": 548.2,
+      "belowMeanShare": 62.3,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "64a3ee6a6b0fe904"
+      ],
+      "unemploymentRate": 4.6,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2012,
+      "surveyYear": 2013,
+      "averageIncome": 537.2,
+      "belowMeanShare": 60.8,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "caaf5ecf04dcbbf4"
+      ],
+      "unemploymentRate": 4.3,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2013,
+      "surveyYear": 2014,
+      "averageIncome": 528.9,
+      "belowMeanShare": 61.2,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "fafb31361c1c3c26"
+      ],
+      "unemploymentRate": 4.0,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2014,
+      "surveyYear": 2015,
+      "averageIncome": 541.9,
+      "belowMeanShare": 61.2,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "209d32b6cf8be834"
+      ],
+      "unemploymentRate": 3.6,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2015,
+      "surveyYear": 2016,
+      "averageIncome": 545.4,
+      "belowMeanShare": 61.5,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "495416f2fdd3095e"
+      ],
+      "unemploymentRate": 3.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2016,
+      "surveyYear": 2017,
+      "averageIncome": 560.2,
+      "belowMeanShare": 61.5,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "4250b15c59430746"
+      ],
+      "unemploymentRate": 3.1,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2017,
+      "surveyYear": 2018,
+      "averageIncome": 551.6,
+      "belowMeanShare": 62.4,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "0d12d56bb78b83f2"
+      ],
+      "unemploymentRate": 2.8,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2018,
+      "surveyYear": 2019,
+      "averageIncome": 552.3,
+      "belowMeanShare": 61.1,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "48bf59ce24d96ace"
+      ],
+      "unemploymentRate": 2.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2019,
+      "surveyYear": null,
+      "comparison": null,
+      "averageIncome": null,
+      "belowMeanShare": null,
+      "incomeSourceIds": [],
+      "unemploymentRate": 2.4,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2020,
+      "surveyYear": 2021,
+      "averageIncome": 564.3,
+      "belowMeanShare": 61.5,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "f10b9d7f5693b94a"
+      ],
+      "unemploymentRate": 2.8,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2021,
+      "surveyYear": 2022,
+      "averageIncome": 545.7,
+      "belowMeanShare": 61.6,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "ce78a78f671bf164"
+      ],
+      "unemploymentRate": 2.8,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2022,
+      "surveyYear": 2023,
+      "averageIncome": 524.2,
+      "belowMeanShare": 62.2,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "b464d2963f4e4ceb"
+      ],
+      "unemploymentRate": 2.6,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2023,
+      "surveyYear": 2024,
+      "averageIncome": 536.0,
+      "belowMeanShare": 61.9,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "911e41470af54c7e"
+      ],
+      "unemploymentRate": 2.6,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2024,
+      "surveyYear": 2025,
+      "averageIncome": 575.2,
+      "belowMeanShare": 61.5,
+      "comparison": "at-or-below",
+      "incomeSourceIds": [
+        "86bdad5f235d6e9d",
+        "3819c8c4239442d4"
+      ],
+      "unemploymentRate": 2.5,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    },
+    {
+      "year": 2025,
+      "surveyYear": null,
+      "comparison": null,
+      "averageIncome": null,
+      "belowMeanShare": null,
+      "incomeSourceIds": [],
+      "unemploymentRate": 2.5,
+      "unemploymentSourceIds": [
+        "570aa04085e09bde",
+        "51b8a858af1e09ac"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "86bdad5f235d6e9d",
+      "url": "https://www.mhlw.go.jp/toukei/list/20-21kekka.html",
+      "name": "厚生労働省・国民生活基礎調査 結果の概要",
+      "retrievedAt": "2026-10-17T02:25:56.452356Z"
+    },
+    {
+      "id": "570aa04085e09bde",
+      "url": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200531&tstat=000001226583&cycle=0&tclass1=000001226851&tclass2=000001226852&tclass3val=0",
+      "name": "e-Stat・労働力調査 長期時系列データ 基本集計",
+      "retrievedAt": "2026-10-17T02:25:56.452371Z"
+    },
+    {
+      "id": "3819c8c4239442d4",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa25/dl/03.pdf",
+      "name": "厚生労働省・2025年国民生活基礎調査 所得の分布（2024年所得）",
+      "retrievedAt": "2026-10-17T02:25:56.904558Z",
+      "sha256": "5cb4b0bc5c676c934376a090c3b99ac986c5b35cc90223f115e22e2eadb115bc"
+    },
+    {
+      "id": "911e41470af54c7e",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa24/dl/03.pdf",
+      "name": "厚生労働省・2024年国民生活基礎調査 所得の分布（2023年所得）",
+      "retrievedAt": "2026-10-17T02:25:57.051319Z",
+      "sha256": "3e8de01fe3325db2635e80da4db5e538e0c3b4c45980285069c6353a7312d60a"
+    },
+    {
+      "id": "b464d2963f4e4ceb",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa23/dl/03.pdf",
+      "name": "厚生労働省・2023年国民生活基礎調査 所得の分布（2022年所得）",
+      "retrievedAt": "2026-10-17T02:25:57.179745Z",
+      "sha256": "889bd8a70828bc430c49c32f146e26ea0cd50df51a9f60fc5709024ffb3be003"
+    },
+    {
+      "id": "ce78a78f671bf164",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa22/dl/03.pdf",
+      "name": "厚生労働省・2022年国民生活基礎調査 所得の分布（2021年所得）",
+      "retrievedAt": "2026-10-17T02:25:57.450152Z",
+      "sha256": "c23d9a5016ebf48b8cb3728525c031213dcb89255e625d0a993a4155ed0916e2"
+    },
+    {
+      "id": "f10b9d7f5693b94a",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa21/dl/03.pdf",
+      "name": "厚生労働省・2021年国民生活基礎調査 所得の分布（2020年所得）",
+      "retrievedAt": "2026-10-17T02:25:57.600996Z",
+      "sha256": "c8901c4b346ad7280bba35b1d528900010d6fcc5f52393bb9834dd0739731a8c"
+    },
+    {
+      "id": "48bf59ce24d96ace",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa19/dl/03.pdf",
+      "name": "厚生労働省・2019年国民生活基礎調査 所得の分布（2018年所得）",
+      "retrievedAt": "2026-10-17T02:25:57.910832Z",
+      "sha256": "cbbba7e3addc617a0f857c78dfb0706392b56ad667770d0bca95af08aa4ff47f"
+    },
+    {
+      "id": "0d12d56bb78b83f2",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa18/dl/03.pdf",
+      "name": "厚生労働省・2018年国民生活基礎調査 所得の分布（2017年所得）",
+      "retrievedAt": "2026-10-17T02:25:58.025890Z",
+      "sha256": "898e50818d3618c419b003e58381c5c3ddb5124ff0effc2f17e76554a86f651a"
+    },
+    {
+      "id": "4250b15c59430746",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa17/dl/03.pdf",
+      "name": "厚生労働省・2017年国民生活基礎調査 所得の分布（2016年所得）",
+      "retrievedAt": "2026-10-17T02:25:58.171625Z",
+      "sha256": "e0cdfc09dab4965bc0ab4a410e3e03303480b682c9d3e0cea6d86f3411be4133"
+    },
+    {
+      "id": "495416f2fdd3095e",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa16/dl/03.pdf",
+      "name": "厚生労働省・2016年国民生活基礎調査 所得の分布（2015年所得）",
+      "retrievedAt": "2026-10-17T02:25:58.500895Z",
+      "sha256": "e1956f06bce8f1f04ae9fea08059aa26ec29bfe7913ac3221f93385db89a5a87"
+    },
+    {
+      "id": "209d32b6cf8be834",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa15/dl/03.pdf",
+      "name": "厚生労働省・2015年国民生活基礎調査 所得の分布（2014年所得）",
+      "retrievedAt": "2026-10-17T02:25:58.673759Z",
+      "sha256": "b345e1f5f0228956e32f984685de9523b41b470cb6e3acc697365fd0714924be"
+    },
+    {
+      "id": "fafb31361c1c3c26",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa14/dl/03.pdf",
+      "name": "厚生労働省・2014年国民生活基礎調査 所得の分布（2013年所得）",
+      "retrievedAt": "2026-10-17T02:25:58.841095Z",
+      "sha256": "4663d1bcdf0437520dad5e7ee2566ebd219d41a3ed98038253eafb860c496b4d"
+    },
+    {
+      "id": "caaf5ecf04dcbbf4",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa13/dl/03.pdf",
+      "name": "厚生労働省・2013年国民生活基礎調査 所得の分布（2012年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.332109Z",
+      "sha256": "826b94c9c1be8af3dc700947b8916a54e567efd135f0d7391ffa8bd10b6ae5d6"
+    },
+    {
+      "id": "64a3ee6a6b0fe904",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa12/dl/03.pdf",
+      "name": "厚生労働省・2012年国民生活基礎調査 所得の分布（2011年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.561953Z",
+      "sha256": "d5e3a90b48a345dd2c4eef9d1169fa9ef8d26f6407fd284a13bd3a0cb22dd430"
+    },
+    {
+      "id": "8ebfc861857aa279",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa11/dl/03.pdf",
+      "name": "厚生労働省・2011年国民生活基礎調査 所得の分布（2010年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.848190Z",
+      "sha256": "6eec95977a16bf40a13d1220f965691a3e46b48187ac39d577b16ac0bfe57cd5"
+    },
+    {
+      "id": "4531bf9d11c8ae5f",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa10/2-2.html",
+      "name": "厚生労働省・2010年国民生活基礎調査 所得の分布（2009年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.857659Z",
+      "sha256": "d602af5567d381cdf2a07c5421433f801dac133a9c943202c83b61478336c6cf"
+    },
+    {
+      "id": "c167307e6ba7ad3c",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa09/2-2.html",
+      "name": "厚生労働省・2009年国民生活基礎調査 所得の分布（2008年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.866030Z",
+      "sha256": "93a13b6938b587b8cc8fcd49f0fb43bb10851e0f72d254bf6d20552860f8ec52"
+    },
+    {
+      "id": "38696f1608fc03d4",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa08/2-2.html",
+      "name": "厚生労働省・2008年国民生活基礎調査 所得の分布（2007年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.870777Z",
+      "sha256": "c3b93740fe55ad8f9172af6b024cc39446d056f2638a367ac2cdabbfde11c9e9"
+    },
+    {
+      "id": "7c7283ce6afc9a55",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa07/2-1.html",
+      "name": "厚生労働省・2007年国民生活基礎調査 所得の分布（2006年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.873450Z",
+      "sha256": "27ebec3c6487adce7c08a8a389f6b8b679d80d8e9144d088d0b6694e5820eb8e"
+    },
+    {
+      "id": "28b1e1896e2a3c51",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa06/2-1.html",
+      "name": "厚生労働省・2006年国民生活基礎調査 所得の分布（2005年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.875887Z",
+      "sha256": "aae8f4065b1bdb501b63c4dd4fa0e5ea9ca264488dd7d290b1dfc3bef872e096"
+    },
+    {
+      "id": "3d754c562a6df747",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa05/2-1.html",
+      "name": "厚生労働省・2005年国民生活基礎調査 所得の分布（2004年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.880286Z",
+      "sha256": "ef1054e5d30d7d4cd56f8b3bf7ec65692b9aff7d0d0abf5df45e69a83818edea"
+    },
+    {
+      "id": "fb13793af4b92eb5",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa04/2-1.html",
+      "name": "厚生労働省・2004年国民生活基礎調査 所得の分布（2003年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.882685Z",
+      "sha256": "20221ec1dbd52be5ba8c157a87c461ebf59d18f6fd591f5904fa9e20752bd897"
+    },
+    {
+      "id": "e7678f75d3ea3c28",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa03/2-1.html",
+      "name": "厚生労働省・2003年国民生活基礎調査 所得の分布（2002年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.884621Z",
+      "sha256": "1c9fead563070facb29984d569cee19510c35a165495528682268fa250199bfb"
+    },
+    {
+      "id": "6a8012017fe2ff33",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa02/2-1.html",
+      "name": "厚生労働省・2002年国民生活基礎調査 所得の分布（2001年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.886459Z",
+      "sha256": "838b746e5374617d4f3448ca5de4abccf431df901e638a4ed181b6e8c9a7cef1"
+    },
+    {
+      "id": "2d57efaaa7e156da",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa01/2-1.html",
+      "name": "厚生労働省・2001年国民生活基礎調査 所得の分布（2000年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.888086Z",
+      "sha256": "478744b930d78c2dc69752846456ad5908fb79f15f38f511956f0f581ab296c3"
+    },
+    {
+      "id": "876cebd561f12834",
+      "url": "https://www.mhlw.go.jp/toukei/saikin/hw/k-tyosa/k-tyosa00/syotoku2.html",
+      "name": "厚生労働省・2000年国民生活基礎調査 所得の分布（1999年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.890108Z",
+      "sha256": "4a92cffa4a3590a9099512b65ee0ac9a0605f9957d644741ec4893ee8c6c826a"
+    },
+    {
+      "id": "04850fbdecc644b1",
+      "url": "https://www.mhlw.go.jp/www1/toukei/h11k-tyosa/1-2-2_8.html",
+      "name": "厚生労働省・1999年国民生活基礎調査 所得の分布（1998年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.892909Z",
+      "sha256": "b094eb7c103f9a9b99c45513f89210e6c898cb04a06d03ab16b63e1431d5d0f8"
+    },
+    {
+      "id": "ba5b42556fc39895",
+      "url": "https://www.mhlw.go.jp/www1/toukei/h10-ktyosa/1-3-2_8.html",
+      "name": "厚生労働省・1998年国民生活基礎調査 所得の分布（1997年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.897620Z",
+      "sha256": "daf18bb0e65b5a03109b040b53e9896fcd1487caffbb29574bec7e452fa491ca"
+    },
+    {
+      "id": "70d115b2daf5b953",
+      "url": "https://www.mhlw.go.jp/www1/toukei/ks-tyosa/1-2-2.html",
+      "name": "厚生労働省・1997年国民生活基礎調査 所得の分布（1996年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.901564Z",
+      "sha256": "3fc9528cac7cc9413a68bd6fedee9fb0171e6cbfcb0bdd8ed71e288fe92b2dde"
+    },
+    {
+      "id": "998cf6ba0a4f7686",
+      "url": "https://www.mhlw.go.jp/www1/houdou/0906/h0628-9g.html",
+      "name": "厚生労働省・1996年国民生活基礎調査 所得の分布（1995年所得）",
+      "retrievedAt": "2026-10-17T02:25:59.905305Z",
+      "sha256": "96f0954d13331c5c70be869102e68eb3252c59a9353329840587c1c4f695da7b"
+    },
+    {
+      "id": "51b8a858af1e09ac",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000001082681",
+      "name": "総務省・労働力調査 長期時系列表2-1 年平均（全国・男女計）",
+      "retrievedAt": "2026-10-17T02:25:59.905592Z",
+      "sha256": "7ee865692c8882a8452c5d36f5c5111cb2f75ebee9d972205ebd4941eb5afdab"
+    }
+  ]
+}

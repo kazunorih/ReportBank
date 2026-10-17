@@ -49,7 +49,33 @@ export const fiscalSchema = z.object({
 });
 export type FiscalData = z.infer<typeof fiscalSchema>;
 
+export const householdSchema = z.object({
+  asOf: date,
+  observations: z.array(z.object({
+    year: z.number().int().min(1995),
+    surveyYear: z.number().int().nullable(),
+    unemploymentRate: z.number().finite().min(0).max(100).nullable(),
+    averageIncome: z.number().finite().positive().nullable(),
+    belowMeanShare: z.number().finite().min(0).max(100).nullable(),
+    comparison: z.enum(["below", "at-or-below"]).nullable(),
+    incomeSourceIds: z.array(z.string()), unemploymentSourceIds: z.array(z.string()),
+  })).min(1),
+  sources: z.array(reportSchema.shape.sources.element.extend({ sha256: z.string().regex(/^[a-f0-9]{64}$/).optional() })),
+}).superRefine((data, ctx) => {
+  const ids = new Set(data.sources.map(s => s.id));
+  if (data.observations.some((r, i) => r.year >= Number(data.asOf.slice(0, 4)) ||
+      (i > 0 && r.year !== data.observations[i - 1].year + 1) ||
+      (r.averageIncome === null ? r.belowMeanShare !== null || r.surveyYear !== null || r.comparison !== null
+        : r.surveyYear !== r.year + 1 || r.belowMeanShare === null || r.comparison === null || !r.incomeSourceIds.length) ||
+      (r.unemploymentRate !== null && !r.unemploymentSourceIds.length) ||
+      [...r.incomeSourceIds, ...r.unemploymentSourceIds].some(id => !ids.has(id)))) {
+    ctx.addIssue({ code: "custom", message: "Invalid annual household dates or sources" });
+  }
+});
+export type HouseholdData = z.infer<typeof householdSchema>;
+
 export const marketChartSchema = z.object({
+  household: householdSchema.optional(),
   summaryScope: z.literal("four-figures-v6").optional(),
   fiscal: fiscalSchema.optional(),
   lending: z.object({

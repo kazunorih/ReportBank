@@ -4,10 +4,11 @@ from pathlib import Path
 from boj_financials import collect_statements
 from fiscal import collect_fiscal
 from lending import with_corporate
+from household import collect_household
 
 DATA = Path(__file__).parent / "data"
 
-def integrate(chart, fetcher=None, previous=None, previous_fiscal=None):
+def integrate(chart, fetcher=None, previous=None, previous_fiscal=None, previous_household=None):
     financials = json.loads((DATA / "boj-financials.json").read_text(encoding="utf-8"))
     rows = {row["date"]: row for row in financials["observations"]}
     sources = {s["id"]: s for s in financials["sources"]}
@@ -26,6 +27,8 @@ def integrate(chart, fetcher=None, previous=None, previous_fiscal=None):
     lending = with_corporate(json.loads((DATA / "lending.json").read_text(encoding="utf-8")))
     lending["observations"] = [row for row in lending["observations"] if row["date"] in chart["periods"]]
     fiscal = collect_fiscal(fetcher, chart["asOf"], previous_fiscal)
+    household = collect_household(fetcher, chart["asOf"], previous_household)
+    chart["household"] = household
     chart.update(summaryScope="four-figures-v6", bojFinancials=financials, lending=lending, fiscal=fiscal)
-    chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + [lending["source"], lending["corporateSource"]]}.values())
+    chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + household["sources"] + [lending["source"], lending["corporateSource"]]}.values())
     return chart

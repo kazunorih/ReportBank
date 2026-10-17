@@ -155,7 +155,7 @@ def collect_markets(as_of, prefix):
     payload = {"asOf": as_of, "datasets": datasets,
                "sources": list({source["id"]: source for source in fetcher.sources}.values())}
     previous_chart = previous.get("chart", {}) if previous else {}
-    chart = integrate(build_markets(payload), fetcher, previous_chart.get("bojFinancials"), previous_chart.get("fiscal"))
+    chart = integrate(build_markets(payload), fetcher, previous_chart.get("bojFinancials"), previous_chart.get("fiscal"), previous_chart.get("household"))
     if os.environ.get("OPENAI_SECRET_ARN", "").strip():
         chart["insight"] = generate({"prefix": prefix}, chart=chart)
     write_json(f"{prefix}/markets-collected.json", payload)

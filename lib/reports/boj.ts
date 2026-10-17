@@ -1,5 +1,7 @@
 import type { MarketChart } from "./schema";
 import { withLendingChart } from "./lending";
+import householdSnapshot from "./data/household.json";
+import { householdSchema } from "./schema";
 
 export const bojSeriesCatalog = [
   { id: "bojStatementJgb", label: "日本国債", unit: "兆円", group: "bojComparison" },
@@ -7,6 +9,7 @@ export const bojSeriesCatalog = [
 ] as const;
 
 export function withReportFigures(market: MarketChart) {
+  const household = market.household ?? householdSchema.parse(householdSnapshot);
   const report = withLendingChart(market);
   const financials = market.bojFinancials;
   const rows = financials?.observations.filter(row => row.date <= market.asOf) ?? [];
@@ -17,5 +20,5 @@ export function withReportFigures(market: MarketChart) {
     latestDate: rows.at(-1)?.date ?? null,
     note: item.id === "bojStatementJgb" ? "日本銀行の財務諸表の「国債」。短期・長期を含み、政府債務全体ではありません。" : "財務諸表の資産合計から国債を差し引いた金額。貸出金、ETF等を含み、勘定科目「その他資産」とは異なります。",
   }));
-  return { ...report, series: [...report.series, ...series], sources: [...new Map([...report.sources, ...(financials?.sources ?? [])].map(s => [s.id, s])).values()] };
+  return { ...report, household, series: [...report.series, ...series], sources: [...new Map([...report.sources, ...(financials?.sources ?? []), ...household.sources].map(s => [s.id, s])).values()] };
 }
