@@ -33,12 +33,12 @@ def month_end(year, month):
     return date(year, month, calendar.monthrange(year, month)[1]).isoformat()
 
 
-def half_years(as_of):
-    """Last 60 completed calendar half years, including a half closing today."""
+def half_years(as_of, years=30):
+    """Last years * 2 completed calendar half years, including a half closing today."""
     cutoff = date.fromisoformat(as_of)
     candidates = [date(y, m, 30 if m == 6 else 31)
-                  for y in range(cutoff.year - 31, cutoff.year + 1) for m in (6, 12)]
-    return [value.isoformat() for value in candidates if value <= cutoff][-60:]
+                  for y in range(cutoff.year - years - 1, cutoff.year + 1) for m in (6, 12)]
+    return [value.isoformat() for value in candidates if value <= cutoff][-years * 2:]
 
 
 def number(value):

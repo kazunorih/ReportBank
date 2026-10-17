@@ -68,6 +68,9 @@ class AggregationTests(unittest.TestCase):
         self.assertEqual((len(periods), periods[0], periods[-1]), (60, "1996-12-31", "2026-06-30"))
         self.assertEqual(half_years("2026-06-29")[-1], "2025-12-31")
         self.assertEqual(half_years("2026-06-30")[-1], "2026-06-30")
+        extended = half_years("2026-10-17", 50)
+        self.assertEqual((len(extended), extended[0], extended[-1]), (100, "1976-12-31", "2026-06-30"))
+        self.assertEqual(half_years("2026-12-31", 50)[0], "1977-06-30")
         self.assertEqual(report_date("2026-10-09T14:00:00Z"), "2026-10-09")
         self.assertEqual(report_date("2026-10-09T16:00:00Z"), "2026-10-10")
 
@@ -188,7 +191,7 @@ class PublicationTests(unittest.TestCase):
         self.assertIn("①金利増減と貸出残高増減の関係", request["instructions"])
         self.assertIn("②政府の国債発行残高の増減と利払い費の増減", request["instructions"])
         self.assertIn("③日銀の国債保有残高の増減と民間金融機関に与える影響予測", request["instructions"])
-        self.assertIn("過去30年の観測窓を主軸", request["instructions"])
+        self.assertIn("過去50年の観測窓を主軸", request["instructions"])
         self.assertIn("少なくとも20年以上", request["instructions"])
         self.assertIn("日銀財務諸表は取得済み期間だけ", request["instructions"])
         self.assertIn("政府債務全体ではありません", request["instructions"])

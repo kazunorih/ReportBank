@@ -24,7 +24,10 @@ class FiscalTests(unittest.TestCase):
     def test_fiscal_window_and_publication_lag_do_not_invent_values(self):
         data = collect_fiscal(None, "2026-10-14")
         self.assertEqual(len(data["debt"]), 60)
-        self.assertEqual(len(data["budgets"]), 30)
+        self.assertEqual(len(data["budgets"]), 50)
+        self.assertEqual(data["budgets"][0]["fiscalYear"], 1977)
+        self.assertEqual(data["budgets"][0]["interest"], 1.9316)
+        self.assertEqual(data["budgets"][0]["budget"], 28.5143)
         self.assertTrue(all(300 < row["amount"] < 1500 for row in data["debt"]))
         future = collect_fiscal(None, "2027-07-01", data)
         self.assertFalse(any(row["date"] > "2026-06-30" for row in future["debt"]))

@@ -18,7 +18,7 @@ type ChartReport = Pick<WeeklyReport, "periods" | "sources"> & {
   series: (Omit<WeeklyReport["series"][number], "id"> & { id: ChartSeriesId; observations?: { date: string; value: number }[] })[];
 };
 export default function ReportCharts({ report }: { report: ChartReport }) {
-  const [years, setYears] = useState(30);
+  const [years, setYears] = useState(50);
   const halfYearData = report.periods.map((period, index): { period: string } & Record<ChartSeriesId, number | null> => ({
     period,
     ...Object.fromEntries(report.series.map((series) => [series.id, series.values[index]])) as Record<ChartSeriesId, number | null>,
@@ -26,14 +26,15 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
   return (
     <section aria-label="統計図表" className="space-y-6">
       <div className="flex flex-wrap items-center justify-end gap-3">
+        <span className="text-xs text-slate-500">FIGURE03は最大30年</span>
         <label className="text-sm text-slate-600">表示期間
           <select value={years} onChange={(event) => setYears(Number(event.target.value))} className="ml-3 rounded-lg border border-slate-300 bg-white p-2">
-            {[30, 10, 5].map((value) => <option key={value} value={value}>{value}年</option>)}
+            {[50, 30, 10, 5].map((value) => <option key={value} value={value}>{value}年</option>)}
           </select>
         </label>
       </div>
       {chartGroups.filter((group) => displayCatalog.some((item) => item.group === group.id && report.series.some((stored) => stored.id === item.id))).map((group, groupIndex) => {
-        const data = group.id === "bojComparison" ? report.periods.slice(-years * 2).flatMap(period => {
+        const data = group.id === "bojComparison" ? report.periods.slice(-Math.min(years, 30) * 2).flatMap(period => {
           const quarter = period.slice(0, 4) + (period.endsWith("06-30") ? "-03-31" : "-09-30");
           return [quarter, period].map(date => ({ period: date, ...Object.fromEntries(report.series.map(stored => [stored.id,
             stored.observations ? stored.observations.find(row => row.date === date)?.value ?? null : halfYearData.find(row => row.period === date)?.[stored.id] ?? null,
@@ -54,7 +55,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
             <p className="mt-2 text-sm leading-6 text-slate-500">{group.description}</p>
             {available.length ? (
               <>
-                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit={group.id === "markets" ? "ポイント" : "兆円"} rightUnit="金利（%）" minWidth={Math.max(600, years * 36 + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
+                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit={group.id === "markets" ? "ポイント" : "兆円"} rightUnit="金利（%）" minWidth={Math.max(600, (group.id === "bojComparison" ? Math.min(years, 30) : years) * 36 + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
@@ -66,13 +67,13 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                     <Tooltip labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
-                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
+                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
                       : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={group.id === "bojComparison"} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>
                 </FixedAxisChart>
                 <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" aria-label="凡例">
-                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
+                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
                 </ul>
               </>
             ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}

@@ -533,6 +533,226 @@
   ],
   "budgets": [
     {
+      "fiscalYear": 1977,
+      "interest": 1.9316,
+      "budget": 28.5143,
+      "share": 6.774144902733015,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1978,
+      "interest": 2.628,
+      "budget": 34.295,
+      "share": 7.6629246245808424,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1979,
+      "interest": 3.3398,
+      "budget": 38.6001,
+      "share": 8.65230919090883,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1980,
+      "interest": 4.4173,
+      "budget": 42.5888,
+      "share": 10.371975730708543,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1981,
+      "interest": 5.5653,
+      "budget": 46.7881,
+      "share": 11.894691171473088,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1982,
+      "interest": 6.465,
+      "budget": 49.6808,
+      "share": 13.013075473824898,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1983,
+      "interest": 7.905,
+      "budget": 50.3796,
+      "share": 15.690874877926781,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1984,
+      "interest": 8.8657,
+      "budget": 50.6272,
+      "share": 17.511732823462488,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1985,
+      "interest": 9.8785,
+      "budget": 52.4996,
+      "share": 18.81633383873401,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1986,
+      "interest": 10.6048,
+      "budget": 54.0886,
+      "share": 19.606349581982155,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1987,
+      "interest": 10.9428,
+      "budget": 54.101,
+      "share": 20.22661318644757,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1988,
+      "interest": 11.0827,
+      "budget": 56.6997,
+      "share": 19.54631153251252,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1989,
+      "interest": 11.1321,
+      "budget": 60.4142,
+      "share": 18.426297128820707,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1990,
+      "interest": 11.0694,
+      "budget": 66.2368,
+      "share": 16.71185806077588,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1991,
+      "interest": 11.9301,
+      "budget": 70.3474,
+      "share": 16.95883572100746,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1992,
+      "interest": 12.1257,
+      "budget": 72.218,
+      "share": 16.790412362568887,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1993,
+      "interest": 11.6614,
+      "budget": 72.3548,
+      "share": 16.11696805187769,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1994,
+      "interest": 11.5875,
+      "budget": 73.0817,
+      "share": 15.855542495590552,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1995,
+      "interest": 11.6505,
+      "budget": 70.9871,
+      "share": 16.41213685303386,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
+      "fiscalYear": 1996,
+      "interest": 11.7031,
+      "budget": 75.1049,
+      "share": 15.582338835415529,
+      "basis": "initial-budget",
+      "sourceIds": [
+        "mof-budget-744-table3"
+      ],
+      "sourceSha256": "f5677f9d94a0915ba4b262175319ae98c032d142fa92ef09465f893f1a2c20d0"
+    },
+    {
       "fiscalYear": 1997,
       "interest": 11.682066918,
       "budget": 77.390003705,
@@ -1757,6 +1977,12 @@
       "name": "財務省・2026年度一般会計当初予算書（利払い財源、PDF 608・608ページ）",
       "url": "https://www.bb.mof.go.jp/server/2026/dlpdf/DL202611001.pdf#page=608",
       "retrievedAt": "2026-10-13T15:12:19.687698Z"
+    },
+    {
+      "id": "mof-budget-744-table3",
+      "name": "財務省・財政金融統計月報第744号 第3表 一般会計歳出等の推移（当初予算、億円単位。国立国会図書館保存）",
+      "url": "https://warp.da.ndl.go.jp/info:ndljp/pid/11217434/www.mof.go.jp/pri/publication/zaikin_geppo/hyou/g744/744_03.xls",
+      "retrievedAt": "2026-10-17T01:35:29.163329Z"
     }
   ]
 }

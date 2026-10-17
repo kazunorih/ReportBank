@@ -32,7 +32,9 @@ describe("weekly reports", () => {
     expect(chart.series.find((item) => item.id === "topix")?.values.some((value) => value !== null && value > 0)).toBe(true);
     expect(chart.sources.some((source) => source.url === "https://www.jpx.co.jp/markets/indices/topix/" && source.name.includes("指数値の推移"))).toBe(true);
     const topix = chart.series.find((item) => item.id === "topix")!;
-    expect(topix.values.filter((value) => value !== null)).toHaveLength(30);
+    expect(chart.periods).toHaveLength(100);
+    expect(chart.periods[0]).toBe("1976-12-31");
+    expect(topix.values.filter((value) => value !== null)).toHaveLength(50);
     expect(topix.values[chart.periods.indexOf("2025-12-31")]).toBe(3408.97);
     expect(topix.values.every((value, i) => value === null || chart.periods[i].endsWith("-12-31"))).toBe(true);
     expect(topix.values.at(-1)).toBeNull();

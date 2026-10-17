@@ -120,7 +120,7 @@ def collect_fiscal(fetcher, as_of, previous=None):
         totals = parse_budget_totals(raw)
         current_fy = date.fromisoformat(as_of).year - (date.fromisoformat(as_of).month < 4)
         for year, total in totals.items():
-            if year < current_fy - 29 or year > current_fy:
+            if year < current_fy - 49 or year > current_fy:
                 continue
             existing = budgets.get(year)
             if not existing:
@@ -137,10 +137,10 @@ def collect_fiscal(fetcher, as_of, previous=None):
         sources.update({s["id"]: s for s in fetcher.sources})
     current_fy = date.fromisoformat(as_of).year - (date.fromisoformat(as_of).month < 4)
     from domain import half_years
-    periods = half_years(as_of)
+    periods = half_years(as_of, 50)
     debt_rows = [{**row, "amount": float(row["amount"])} for stamp, row in sorted(debt.items()) if stamp in periods]
     budget_rows = [{**row, **{k: float(row[k]) for k in ("budget", "interest", "share")}, "fiscalYear": int(year)}
-                   for year, row in sorted(budgets.items()) if current_fy - 29 <= year <= current_fy]
+                   for year, row in sorted(budgets.items()) if current_fy - 49 <= year <= current_fy]
     if not debt_rows or not budget_rows:
         raise ValueError("Missing fiscal data; publication stopped")
     for row in budget_rows:

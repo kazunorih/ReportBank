@@ -40,17 +40,17 @@ export type WeeklyReport = z.infer<typeof reportSchema>;
 export type ReportSummary = z.infer<typeof summarySchema>;
 
 export const fiscalSchema = z.object({
-  debt: z.array(z.object({ date, amount: z.number().finite().positive(), sourceIds: z.array(z.string()).min(1) })).min(1).max(60),
+  debt: z.array(z.object({ date, amount: z.number().finite().positive(), sourceIds: z.array(z.string()).min(1) })).min(1).max(100),
   budgets: z.array(z.object({
     fiscalYear: z.number().int(), interest: z.number().finite().positive(), budget: z.number().finite().positive(),
     share: z.number().finite().positive().max(100), basis: z.literal("initial-budget"), sourceIds: z.array(z.string()).min(1),
-  }).refine(row => row.interest < row.budget && Math.abs(row.share - row.interest / row.budget * 100) < 1e-8)).min(1).max(30),
+  }).refine(row => row.interest < row.budget && Math.abs(row.share - row.interest / row.budget * 100) < 1e-8)).min(1).max(50),
   sources: reportSchema.shape.sources,
 });
 export type FiscalData = z.infer<typeof fiscalSchema>;
 
 export const marketChartSchema = z.object({
-  summaryScope: z.literal("four-figures-v4").optional(),
+  summaryScope: z.literal("four-figures-v5").optional(),
   fiscal: fiscalSchema.optional(),
   lending: z.object({
     observations: z.array(z.object({ date, domesticBankLoans: z.number().finite().nonnegative().nullable(), housingLoans: z.number().finite().nonnegative().nullable(), domesticCorporateLoans: z.number().finite().nonnegative().nullable() })),
@@ -68,8 +68,8 @@ export const marketChartSchema = z.object({
   topixMethod: z.literal("annual-close-v1"),
   flat35Method: z.literal("range-midpoint-v1"),
   asOf: date,
-  periods: reportSchema.shape.periods,
-  series: z.array(reportSchema.shape.series.element).transform((items) => items.filter((item) => item.id !== "jgb3")).pipe(z.array(reportSchema.shape.series.element).length(4)),
+  periods: z.array(date).length(100),
+  series: z.array(reportSchema.shape.series.element.extend({ values: z.array(z.number().finite().nullable()).length(100) })).transform((items) => items.filter((item) => item.id !== "jgb3")).pipe(z.array(reportSchema.shape.series.element.extend({ values: z.array(z.number().finite().nullable()).length(100) })).length(4)),
   sources: reportSchema.shape.sources,
   warnings: reportSchema.shape.warnings,
   insight: z.object({
@@ -78,7 +78,7 @@ export const marketChartSchema = z.object({
     model: z.enum(["initial", "gpt-5.6-luna"]),
   }).optional(),
 }).superRefine((chart, ctx) => {
-  if (chart.summaryScope === "four-figures-v4") {
+  if (chart.summaryScope === "four-figures-v5") {
     const financials = chart.bojFinancials;
     const sources = new Set(chart.sources.map(source => source.id));
     if (!financials || !chart.lending || !chart.fiscal || financials.observations.length === 0 ||
@@ -91,7 +91,7 @@ export const marketChartSchema = z.object({
     const fiscal = chart.fiscal;
     const currentFy = Number(chart.asOf.slice(0, 4)) - (Number(chart.asOf.slice(5, 7)) < 4 ? 1 : 0);
     if (fiscal && (fiscal.debt.some((row, index) => !chart.periods.includes(row.date) || (index > 0 && row.date <= fiscal.debt[index - 1].date)) ||
-        fiscal.budgets.some((row, index) => row.fiscalYear > currentFy || row.fiscalYear < currentFy - 29 || (index > 0 && row.fiscalYear <= fiscal.budgets[index - 1].fiscalYear)) ||
+        fiscal.budgets.some((row, index) => row.fiscalYear > currentFy || row.fiscalYear < currentFy - 49 || (index > 0 && row.fiscalYear <= fiscal.budgets[index - 1].fiscalYear)) ||
         [...fiscal.debt, ...fiscal.budgets].some(row => row.sourceIds.some(id => !sources.has(id) || !fiscal.sources.some(s => s.id === id))))) {
       ctx.addIssue({ code: "custom", message: "Invalid fiscal dates or sources" });
     }

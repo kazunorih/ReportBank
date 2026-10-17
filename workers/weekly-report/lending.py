@@ -12,20 +12,34 @@ CORPORATE_CODE = "DLLILKG84_DLLI5DS2THKL"
 
 def with_corporate(data):
     from domain import parse_boj
-    raw = (Path(__file__).parent / "data/corporate-la01.json").read_bytes()
+    raw = (Path(__file__).parent / "data/lending-history-la01.json").read_bytes()
     payload = json.loads(raw)
     series = payload["RESULTSET"]
-    if len(series) != 1 or series[0]["SERIES_CODE"] != CORPORATE_CODE or series[0]["NAME_OF_TIME_SERIES_J"] != "法人計＜含金融＞／残高／銀行勘定、信託勘定、海外店勘定の合計／国内銀行":
+    corporate = next((s for s in series if s["SERIES_CODE"] == CORPORATE_CODE), None)
+    if len(series) != 3 or corporate is None or corporate["NAME_OF_TIME_SERIES_J"] != "法人計＜含金融＞／残高／銀行勘定、信託勘定、海外店勘定の合計／国内銀行":
         raise ValueError("Unexpected corporate lending definition")
-    rows = parse_boj(payload, {CORPORATE_CODE: "domesticCorporateLoans"})["domesticCorporateLoans"]
+    codes = {CODES[0].split("'")[1]: "domesticBankLoans", CODES[1].split("'")[1]: "housingLoans", CORPORATE_CODE: "domesticCorporateLoans"}
+    for code, name in zip(CODES, NAMES):
+        entry = next((s for s in series if s["SERIES_CODE"] == code.split("'")[1]), None)
+        if entry is None or entry["NAME_OF_TIME_SERIES_J"] != name:
+            raise ValueError("Unexpected historical lending definition")
+    history = parse_boj(payload, codes)
+    first = min(row["date"] for row in data["observations"])
+    older = {}
+    for key in ("domesticBankLoans", "housingLoans"):
+        for row in history[key]:
+            if row["date"] < first:
+                older.setdefault(row["date"], {"date": row["date"], "domesticBankLoans": None, "housingLoans": None})[key] = row["value"]
+    data["observations"] = [older[k] for k in sorted(older)] + data["observations"]
+    rows = history["domesticCorporateLoans"]
     values = {row["date"]: row["value"] for row in rows}
     for row in data["observations"]:
         row["domesticCorporateLoans"] = values.get(row["date"])
         amounts = [row[key] for key in ("domesticBankLoans", "housingLoans", "domesticCorporateLoans")]
         if all(value is not None for value in amounts) and round(amounts[0] * 10000) < round(amounts[1] * 10000) + round(amounts[2] * 10000):
             raise ValueError("Lending components exceed total")
-    data["corporateSource"] = {"id": "boj-la01-corporate", "name": "日本銀行・貸出先別貸出金（LA01）法人計〈含金融〉・国内銀行3勘定合算",
-        "url": "https://www.stat-search.boj.or.jp/api/v1/getDataCode?format=json&db=LA01&code=" + CORPORATE_CODE + "&startDate=199501&endDate=202602",
+    data["corporateSource"] = {"id": "boj-la01-corporate", "name": "日本銀行・貸出先別貸出金（LA01）総貸出・住宅資金・法人計〈含金融〉・国内銀行3勘定合算",
+        "url": "https://www.stat-search.boj.or.jp/api/v1/getDataCode?format=json&db=LA01&code=" + ",".join(codes) + "&startDate=197601&endDate=202602",
         "retrievedAt": payload["DATE"]}
     from datetime import datetime, timezone
     data["corporateSource"]["retrievedAt"] = datetime.fromisoformat(payload["DATE"]).astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
