@@ -282,7 +282,7 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 
 | 確認箇所 | 正常な状態 |
 | --- | --- |
-| `chart.summaryScope` | 現時点のコードでは `four-figures-v5` |
+| `chart.summaryScope` | 現時点のコードでは `four-figures-v6` |
 | `chart.insight.summary` | 400字以内の日本語。50年の観測窓を踏まえた3点の考察 |
 | `chart.insight.model` | `gpt-5.6-luna` |
 | `chart.insight.generatedAt` | 今回の実行時刻に近い日時 |

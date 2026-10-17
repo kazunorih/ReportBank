@@ -16,8 +16,8 @@ export const seriesCatalog = [
 
 export type SeriesId = (typeof seriesCatalog)[number]["id"];
 export const lendingSeriesCatalog = [
-  { id: "domesticCorporateLoans", label: "法人向け（金融業含む）", unit: "兆円", group: "loanComparison" },
   { id: "housingLoans", label: "住宅資金", unit: "兆円", group: "loanComparison" },
+  { id: "domesticCorporateLoans", label: "法人向け（金融業含む）", unit: "兆円", group: "loanComparison" },
   { id: "unclassifiedLoans", label: "住宅資金以外（法人内訳未取得）", unit: "兆円", group: "loanComparison" },
   { id: "otherLoans", label: "それ以外", unit: "兆円", group: "loanComparison" },
 ] as const;
