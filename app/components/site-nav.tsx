@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function SiteNav({ current }: { current: "home" | "weekly" | "info" }) {
+export default function SiteNav({ current }: { current?: "home" | "weekly" | "info" }) {
   const links = [
     { id: "home", href: "/", label: "ホーム" },
     { id: "weekly", href: "/weekly-reports", label: "週次定点観測" },
