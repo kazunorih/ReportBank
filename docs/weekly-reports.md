@@ -1,10 +1,10 @@
 # 週次レポートの実装・運用
 
-**Gemini移行について：** [AWS構築手順書](weekly-reports-aws-setup.md)をGemini API無料枠向けに更新しました。現行コードはまだOpenAI専用です。手順書3-0の対応が完了するまで、そのままGeminiキーでデプロイしないでください。本ページのOpenAIに関する記述は現行実装の説明です。
+**Gemini対応：** LambdaからGemini APIを直接呼び出します。FIGURE01～05の統計・注記・プロンプトに変更があった場合のみ400字要約を生成します。[構築・更新手順](weekly-reports-aws-setup.md)を参照してください。AWSへの反映は別途必要です。
 
-**初めてAWSを構築する方は、[AWS構築手順書（初心者向け）](weekly-reports-aws-setup.md)を上から順に進めてください。** 本ページは統計定義・実装の参照資料です。導入対象は `markets` モードのFIGURE01～04です。
+**初めてAWSを構築する方は、[AWS構築手順書（初心者向け）](weekly-reports-aws-setup.md)を上から順に進めてください。** 本ページは統計定義・実装の参照資料です。導入対象は `markets` モードのFIGURE01～05です。
 
-`/weekly-reports` に「日本のマクロ金融環境」を表示します。ホーム・週次定点観測・サイト情報のナビゲーション、FIGURE01～04、出典、AI推論による400字以内の本文を実装しています。過去本文の表示欄はありますが、現在の `markets` モードから履歴一覧への保存は未実装です。
+`/weekly-reports` に「日本のマクロ金融環境」を表示します。ホーム・週次定点観測・サイト情報のナビゲーション、FIGURE01～05、出典、AI推論による400字以内の本文を実装しています。過去本文の表示欄はありますが、現在の `markets` モードから履歴一覧への保存は未実装です。
 
 ## FIGURE05：富の偏りと失業率（1995年以降）
 
@@ -16,7 +16,7 @@ FIGURE05は年次統計です。左軸は完全失業率（全国・男女計の
 
 `workers/weekly-report/household.py` が週次処理で年平均Excelと最新所得概要を取得・検証し、原本は既存Fetcher経由でS3へ保存します。公表が年次のため毎週数値が変わるとは限りません。過去分は `data/household.json` の出典URL・取得日時・SHA-256付きデータを維持します。フロント側の同梱データは `lib/reports/data/household.json`。初回取得の再現は `scripts/research-household.py`、e-Stat Excelを `tmp/household/unemployment.xlsx` に保存したうえで `scripts/import-household-history.py` を実行します。Python依存ライブラリは既存週次Workerと同じです。
 
-WEEKLY INSIGHTの考察対象は従来どおりFIGURE01～04の3論点です。FIGURE05の追加だけで考察範囲を自動変更しません。左右固定軸は単位を個別指定でき、FIGURE05の右軸目盛りに％を付けません。
+WEEKLY INSIGHTはFIGURE01～04の3論点を中心に、FIGURE05の所得・失業率も考察に含めます。左右固定軸は単位を個別指定でき、FIGURE05の右軸目盛りに％を付けません。
 
 ## AWS構成
 
@@ -29,14 +29,14 @@ flowchart LR
   C --> B[S3: 原本・正規化データ]
   B --> G[Lambda: 検証・400字生成]
   K[Secrets Manager] --> G
-  G --> O[OpenAI Responses API\ngpt-5.6-luna]
+  G --> O[Gemini API\ngemini-3.8-flash]
   G --> P[Lambda: 公開]
   P --> D[DynamoDB: 最新版・履歴]
   D --> A[Amplify / Next.js]
   S --> N[SNS / CloudWatch: 失敗通知]
 ```
 
-AWS側はすべてフルマネージドです。モデルはOpenAI APIの `gpt-5.6-luna` を直接呼び出します。Amazon Bedrockのモデルとしては扱いません。別モデルへの自動切替はありません。金曜23時は**生成開始時刻**であり、収集・検証・生成が終わった時点で公開します。
+AWS側はすべてフルマネージドです。モデルはGemini APIの `gemini-3.8-flash` を直接呼び出します。Amazon Bedrockのモデルとしては扱いません。別モデルへの自動切替はありません。金曜23時は**更新確認開始時刻**であり、収集・検証・生成が終わった時点で公開します。
 
 ## データ定義と取得状況
 
@@ -87,7 +87,7 @@ AWS側はすべてフルマネージドです。モデルはOpenAI APIの `gpt-5
 
 初期値・資料URL・該当PDFページ・原本SHA-256は `workers/weekly-report/data/fiscal.json` に保存。週次処理では最新残高Excelと予算総額を再取得し、新年度分は公式予算書PDFを解析します。保存済みの過年度利払費は維持します。未公表期間は補間しません。手動更新は `python scripts/refresh-fiscal.py`（現在の図表期間を維持し本文を無効化）。図表全体の期間更新は `scripts/refresh-market-chart.py` を使用します。
 
-要約は4図の表示用データを統合して400字以内で生成します。金利増減と貸出残高増減、政府の国債等残高増減と利払費増減、日銀の国債保有増減と民間金融機関への影響予測の3点に絞ります。民間債務全体と銀行貸出の集計範囲を区別し、民間金融機関の国債購入については予測として記述します。日銀保有減少や政府残高との差額を民間金融機関の保有増加とみなさず、海外投資家等の可能性と、実際の保有増減・政策の因果的効果は分からないことを明記する指示です。同梱の初回文はAI作成339字で、OpenAI APIによる定期生成結果ではありません。
+要約は5図の表示用データを統合して400字以内で生成します。金利増減と貸出残高増減、政府の国債等残高増減と利払費増減、日銀の国債保有増減と民間金融機関への影響予測の3点を中心にFIGURE05の所得・失業率も簡潔に扱います。民間債務全体と銀行貸出の集計範囲を区別し、民間金融機関の国債購入については予測として記述します。日銀保有減少や政府残高との差額を民間金融機関の保有増加とみなさず、海外投資家等の可能性と、実際の保有増減・政策の因果的効果は分からないことを明記する指示です。同梱の初回文はAI作成339字で、Gemini APIによる定期生成結果ではありません。
 
 元CSVは `workers/weekly-report/data/lending-la01.csv`、抽出結果・出典・SHA-256は `lib/reports/data/lending.json` に保存しています。貸出データはこの添付の固定スナップショットです。差し替えは `python scripts/import-lending.py <CSVのパス>` を実行し、アプリを再公開します。金利は既存の週次更新結果を共有します。
 
@@ -132,9 +132,9 @@ python scripts/check-report-import.py flat35 flat35.csv
 
 ## 最初の図表の先行実装
 
-FIGURE01の表示対象は国債10年・30年・フラット35（中間値）の折れ線と、TOPIXの棒グラフです。国債3年は表示・要約入力から除外しています。現在のまとめはFIGURE01～04を統合した本文です。同梱文は実装時にAIが作成した文章で、GPT-5.6-luna APIの定期実行結果ではありません。観測値は半年ごと、横軸ラベルは各年12月のみ。単位はグラフ上部に独立して表示し、狭い画面では横スクロールできます。
+FIGURE01の表示対象は国債10年・30年・フラット35（中間値）の折れ線と、TOPIXの棒グラフです。国債3年は表示・要約入力から除外しています。自動生成する本文はFIGURE01～05を統合します。同梱の初回本文は旧版です。同梱文は実装時にAIが作成した文章で、Gemini 3.8 Flash APIの定期実行結果ではありません。観測値は半年ごと、横軸ラベルは各年12月のみ。単位はグラフ上部に独立して表示し、狭い画面では横スクロールできます。
 
-`markets` モードでも `OpenAISecretArn` を設定すると、FIGURE01の4系列、FIGURE02の貸出残高、FIGURE03の財務諸表、FIGURE04の政府債務・利払費、各観測日・出典をGPT-5.6-lunaに渡し、400字以内のまとめを図表と同じスナップショットに保存します。参考記事・国債3年・図表にない直近値は渡しません。生成に失敗した場合は公開せず、前回の図表と本文を保持します。キー未設定の場合は図表のみ更新し、古い本文を新しい図表に流用しません。ローカル更新コマンドも本文を生成しないため、再取得後は本文の再作成が必要です。`summaryScope: four-figures-v6` のない旧スナップショットは同梱データへ移行し、旧本文を4図の統合要約として表示しません。
+`markets` モードでも `GeminiSecretArn` を設定すると、FIGURE01の4系列、FIGURE02の貸出残高、FIGURE03の財務諸表、FIGURE04の政府債務・利払費、FIGURE05の所得・失業率、各観測日・出典をGemini 3.8 Flashに渡し、400字以内のまとめを図表と同じスナップショットに保存します。取得日時を除くデータ・プロンプト・モデルのハッシュが前回と同じならAPIを呼ばず、前回本文と生成日時を引き継ぎます。参考記事・国債3年・図表にない直近値は渡しません。生成に失敗した場合は公開せず、前回の図表と本文を保持します。キー未設定の場合は図表のみ更新し、古い本文を新しい図表に流用しません。ローカル更新コマンドも本文を生成しないため、再取得後は本文の再作成が必要です。Gemini生成のスナップショットは `summaryScope: five-figures-v1` です。既存の `four-figures-v6` の表示互換性は維持しますが、初回のGemini実行では5図の本文を新規生成します。
 
 FIGURE01は「金利とTOPIX」です。TOPIXはユーザー提供の `topixyear_j.xls`（1949～2025年、77年分）を読み取り、1976～2025年の50年末を表示します。参照情報は[JPX「TOPIX」ページの「指数値の推移」](https://www.jpx.co.jp/markets/indices/topix/)と、その年間四本値Excelです。「年（月）末」列だけを使い、年初・高値・安値を混同しません。6月や2026年の値はこの資料にないため欠測です。元ファイルは `workers/weekly-report/data/topixyear_j.xls`、抽出結果・SHA-256は `data/topix.json` に保存しています。再取り込みは `python scripts/import-topix-annual.py <Excelのパス>`。値を変更すると旧まとめは削除されるため、図表に合わせて再作成します。
 
@@ -146,17 +146,17 @@ python scripts/refresh-market-chart.py
 
 このコマンドはJPXの年間四本値Excelを読み、財務省の国債金利、機構のフラット35履歴CSVと当月金利を合わせて図表JSONを更新します。Python依存ライブラリのインストールが必要です。AWSや生成AIは呼び出しません。
 
-SAMの `ReportScope` は既定で `markets` です。このモードでは4図のデータと任意の生成本文を `CHART / MARKETS` に保存します。財務諸表・財政資料の取得は必須、本文生成とOpenAIキーは任意です。市場モードの本文は最新版とS3の実行記録に保存され、全体モードのHISTORY一覧への保存はまだ行いません。公開済みの全体レポートがない場合、Web側はこの図表を表示します。テーブル未設定または図表未登録の場合は同梱の実測値を、収集基準日付きで表示します。AWS通信障害時は静的データへ黙って切り替えません。
+SAMの `ReportScope` は既定で `markets` です。このモードでは4図のデータと任意の生成本文を `CHART / MARKETS` に保存します。財務諸表・財政資料の取得は必須、本文生成とGeminiキーは任意です。市場モードの本文は最新版とS3の実行記録に保存され、全体モードのHISTORY一覧への保存はまだ行いません。公開済みの全体レポートがない場合、Web側はこの図表を表示します。テーブル未設定または図表未登録の場合は同梱の実測値を、収集基準日付きで表示します。AWS通信障害時は静的データへ黙って切り替えません。
 
 TOPIXは毎週、同じ公式Excelを取得し、年末終値を置き換えます。以前の月報・CSVの値とは統合しません。年次資料なので鮮度判定は400日（年次更新と公表猶予）です。保存済み図表も `annual-close-v1` の定義識別子を確認し、旧月次データは表示しません。取得・検証に失敗した場合は直前の図表を保持します。フラット35は当月金利を毎週取得し、同じ定義の保存済み観測値を引き継ぎます。履歴PDFの改定はCSVの再確認が必要です。
 
-最初の図表だけを導入する際は、下記のOpenAIキー準備と必須CSV配置を省略できます。全体レポートを有効にする場合のみ `ReportScope=full` とし、残りのデータ・キーを準備してください。AWSへのデプロイと定期実行の有効化は未実施です。
+最初の図表だけを導入する際は、下記のGeminiキー準備と必須CSV配置を省略できます。全体レポートを有効にする場合のみ `ReportScope=full` とし、残りのデータ・キーを準備してください。AWSへのデプロイと定期実行の有効化は未実施です。
 
 ## AWSへの導入
 
 実際の操作は [AWS構築手順書](weekly-reports-aws-setup.md) に集約しています。APIキーの保存、SAMによる一括構築、手動実行、Amplify接続、毎週実行の有効化の順で進めます。
 
-現在の4図表には `ReportScope=markets` を指定します。初回CSVのS3アップロードは不要です。Weekly Insightを生成するためにOpenAISecretArnを設定し、手動実行が成功するまではScheduleState=DISABLEDを維持します。テンプレートの「First chart only」は古い説明なので、対象範囲はコードと新しい手順書を参照してください。
+現在の5図表には `ReportScope=markets` を指定します。初回CSVのS3アップロードは不要です。Weekly Insightを生成するためにGeminiSecretArnを設定し、手動実行が成功するまではScheduleState=DISABLEDを維持します。対象範囲はコードと新しい手順書を参照してください。
 
 ## 公開時の検証・障害対応
 
@@ -180,12 +180,12 @@ sam validate --lint --template-file infra/weekly-reports.yaml
 python scripts/check-report-sources.py
 ```
 
-PythonのローカルテストではAWS SDK `boto3` も必要です（Lambdaランタイムには同梱）。ライブ統計検証はAWSへの書き込み・OpenAI呼び出しを行いません。モデルAPIとAWS上の実行の疎通確認は、秘密情報とデプロイ先が設定されてから行います。
+PythonのローカルテストではAWS SDK `boto3` も必要です（Lambdaランタイムには同梱）。ライブ統計検証はAWSへの書き込み・Gemini呼び出しを行いません。モデルAPIとAWS上の実行の疎通確認は、秘密情報とデプロイ先が設定されてから行います。
 
 ## 公式仕様
 
-- [OpenAI GPT-5.6 Luna](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
-- [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)
+- [Gemini API料金・無料枠](https://ai.google.dev/gemini-api/docs/pricing)
+- [Gemini構造化出力](https://ai.google.dev/gemini-api/docs/structured-output)
 - [EventBridge Schedulerのスケジュールとタイムゾーン](https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html)
 - [日銀・統計APIマニュアル](https://www.stat-search.boj.or.jp/info/api_manual.pdf)
 - [財務省・国債金利](https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm)

@@ -168,7 +168,7 @@ class PublicationTests(unittest.TestCase):
         self.assertNotIn("summary", chart)
         self.assertTrue(all(v is None for v in next(s for s in chart["series"] if s["id"] == "flat35")["values"]))
 
-    @patch.dict("os.environ", {"OPENAI_SECRET_ARN": "test-secret", "OPENAI_MODEL": "gpt-5.6-luna"})
+    @patch.dict("os.environ", {"GEMINI_SECRET_ARN": "test-secret", "GEMINI_MODEL": "gemini-3.8-flash"})
     @patch.object(worker, "write_json")
     @patch.object(worker, "urlopen")
     @patch.object(worker.boto3, "client")
@@ -176,27 +176,29 @@ class PublicationTests(unittest.TestCase):
         import io
         import json
         client.return_value.get_secret_value.return_value = {"SecretString": '{"apiKey":"test-key"}'}
-        response = {"status": "completed", "output": [{"type": "message", "content": [{"type": "output_text", "text": json.dumps({"summary": "図表に基づくテスト本文", "sourceIds": ["source"]})}]}]}
+        response = {"candidates": [{"finishReason": "STOP", "content": {"parts": [{"text": json.dumps({"summary": "図表に基づくテスト本文", "sourceIds": ["source"]})}]}}]}
         urlopen.return_value.__enter__.return_value = io.StringIO(json.dumps(response))
         chart = worker.integrate(build_markets(fixture_payload()))
         insight = worker.generate({"prefix": "runs/test"}, chart=chart)
         request = json.loads(urlopen.call_args.args[0].data)
-        evidence = json.loads(request["input"])
+        evidence = json.loads(request["contents"][0]["parts"][0]["text"])
         self.assertEqual({s["id"] for s in evidence["series"]}, {"jgb10", "jgb30", "flat35", "topix"})
         self.assertNotIn("latestObservations", evidence)
         self.assertNotIn("referenceDocuments", evidence)
-        self.assertEqual(evidence["figure02"], chart["lending"])
-        self.assertEqual(evidence["figure03"], chart["bojFinancials"])
-        self.assertEqual(evidence["figure04"], chart["fiscal"])
-        self.assertIn("①金利増減と貸出残高増減の関係", request["instructions"])
-        self.assertIn("②政府の国債発行残高の増減と利払い費の増減", request["instructions"])
-        self.assertIn("③日銀の国債保有残高の増減と民間金融機関に与える影響予測", request["instructions"])
-        self.assertIn("過去50年の観測窓を主軸", request["instructions"])
-        self.assertIn("1970年代から最大50年", request["instructions"])
-        self.assertIn("日銀財務諸表は取得済み期間だけ", request["instructions"])
-        self.assertIn("政府債務全体ではありません", request["instructions"])
-        self.assertIn("分からない", request["instructions"])
-        self.assertEqual(insight["model"], "gpt-5.6-luna")
+        from insight_config import semantic
+        self.assertEqual(evidence["figure02"], semantic(chart["lending"]))
+        self.assertEqual(evidence["figure03"], semantic(chart["bojFinancials"]))
+        self.assertEqual(evidence["figure04"], semantic(chart["fiscal"]))
+        self.assertEqual(evidence["figure05"], semantic(chart["household"]))
+        self.assertIn("①金利増減と貸出残高増減の関係", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("②政府の国債発行残高の増減と利払い費の増減", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("③日銀の国債保有残高の増減と民間金融機関に与える影響予測", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("過去50年の観測窓を主軸", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("1970年代から最大50年", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("日銀財務諸表は取得済み期間だけ", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("政府債務全体ではありません", request["systemInstruction"]["parts"][0]["text"])
+        self.assertIn("分からない", request["systemInstruction"]["parts"][0]["text"])
+        self.assertEqual(insight["model"], "gemini-3.8-flash")
         self.assertNotIn("insight", chart)
 
     def test_missing_series_stops_publication(self):

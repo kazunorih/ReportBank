@@ -1,11 +1,11 @@
 # ReportBank 週次定点観測：AWS構築手順書（Gemini API無料枠）
 
-対象：WindowsのPCから、現在のFIGURE01～05とWeekly Insightを毎週更新する方。確認日：2026年10月18日。Weekly Insightの考察対象はFIGURE01～04です。
+対象：WindowsのPCから、現在のFIGURE01～05とWeekly Insightを毎週更新する方。確認日：2026年10月18日。Weekly Insightの考察対象はFIGURE01～05です。
 
 **この手順書は構築の説明書です。AWSへの作成・公開・課金を伴う操作は、まだ実行していません。**
 
 
-**実装状況：この版はGemini移行用の手順書です。現行のLambdaコードとSAMテンプレートはまだOpenAI専用です。手順1～2の準備はできますが、手順3-0のコード対応が完了するまでデプロイ・手動生成・スケジュール有効化は行いません。** `GeminiSecretArn` などは対応後に追加する設定名であり、現在のテンプレートにはありません。Geminiキーを既存のOpenAI用設定へ入れても動きません。
+**実装状況：Lambda・SAMテンプレートをGemini APIに対応させました。FIGURE01～05の値・期間・注記・出典またはプロンプト／モデルに変更がある場合だけ本文を生成します。変更がなければ前回本文と生成日時を維持します。AWSへのデプロイと実キーでの接続確認は未実施です。**
 
 今回は **Lambda → Gemini Developer API** の直接接続です。Amazon Bedrock・Vertex AIの設定、OpenAIのAPIキー・入金は不要です。Googleの無料枠はAI呼び出しに適用され、Lambda・Secrets Manager・S3などのAWS料金は別です。
 
@@ -72,9 +72,9 @@ AWSの各サービスを一つずつ手作業で作る必要はありません�
 
 `ReportScope` はReportBank用テンプレートの設定項目です。**手順3-2で、PCのPowerShellに表示される `Parameter ReportScope [markets]:` という質問へ `markets` と入力します。** `[markets]` が既定値ならEnterだけでも同じです。AWSコンソールでこの名前のサービスを探す操作はありません。
 
-名前は古いですが、現在はFIGURE01～05の収集・保存に対応しています。本文の考察対象はFIGURE01～04です。テンプレートの説明にある「First chart only」は以前の説明です。`full` は別の13系列を扱うモードなので選びません。
+名前は古いですが、現在はFIGURE01～05の収集・保存に対応しています。本文の考察対象もFIGURE01～05です。`full` は別の13系列を扱うモードなので選びません。
 
-Gemini対応後の構成は次のとおりです。現在のコードとの差分は手順3-0を参照してください。
+Gemini対応版の構成は次のとおりです。プロンプトと更新判定は手順3-0を参照してください。
 
 ```mermaid
 flowchart TD
@@ -100,7 +100,7 @@ Lambdaは1つです。`markets` ではStep Functionsの **Collect内で生成・
 | 日銀資産 | 指定の財務諸表を再取得。古い期間を他統計で埋めない |
 | 政府債務・利払費 | 最新残高・予算総額を再取得。新年度の利払費を追加。保存済み年度の利払費は維持 |
 | FIGURE05の所得・失業率 | 最新の年次統計を再取得。所得は調査前年に配置し、未調査年を補間しない |
-| Weekly Insight | キー設定時に4図のデータから400字以内で生成。モデルの自動切替なし |
+| Weekly Insight | キー設定時に5図のデータに変更がある場合のみ400字以内で生成。モデルの自動切替なし |
 | 「過去の400字整理」欄 | `markets` の本文をこの一覧へ追加する処理は未実装。実行ごとの本文はS3に保存される |
 
 **AWSを構築するだけで、貸出の自動取得や過去本文の一覧保存が追加されるわけではありません。** この手順の完成条件は「5図の掲載・現行収集処理とGeminiによる最新本文の週次実行」です。
@@ -282,31 +282,29 @@ APIキーはLambdaだけが使用します。チャット、Git、ブラウザ�
 
 ## 3. 設計図を使ってAWS一式を作成する
 
-### 3-0. Gemini対応版のコードが用意されていることを確認する
+### 3-0. プロンプトと更新条件を確認する
 
-**操作場所：** PCのエディター／PowerShellでリポジトリのコードを確認。
+**操作場所：** PCのエディターで下記ファイルを確認。変更後はSAMで再ビルド・再デプロイします。
 
-**使用アカウント：** PC作業者・コードの実装担当。AWSへ反映する段階ではAWS構築担当。
+**使用アカウント：** PC作業者。デプロイはAWS構築担当。
 
-**必要な権限：** ローカルファイルの読み書きと、反映する場合のGitリポジトリへの書き込み。本項の確認だけではAWS操作なし。
+**必要な権限：** ファイルの読み書き、デプロイ時は手順3-2の構築権限。
 
-**2026年10月18日時点では以下は未対応です。実装担当が対応してから手順3-1へ進みます。** この表を実装担当に渡してください。名前だけの置換ではAPIの送受信形式が異なるため動きません。
+| 設定 | 場所・動作 |
+| --- | --- |
+| 本文への指示 | [weekly-insight-prompt.txt](../workers/weekly-report/weekly-insight-prompt.txt)。FIGURE01～05を根拠に400字以内。金利と貸出、政府残高と利払費、日銀国債保有と民間金融機関への影響を中心に、所得・失業率も簡潔に扱う |
+| 長期の考察 | 最大50年の取得済み期間を比較。FIGURE05は1995年以降、日銀は財務諸表の取得済み期間だけ。欠測補間・因果関係の断定をしない |
+| 更新判定 | [insight_config.py](../workers/weekly-report/insight_config.py)。5図の意味のあるデータ、プロンプト全文、モデルをハッシュ化。取得日時や原本ハッシュだけの変更では再生成しない |
+| 初回・移行時 | 前回のGemini本文・比較ハッシュがない場合は生成する |
+| 更新なし | APIを呼ばず前回本文・生成日時を維持。監査記録に `status: unchanged` を保存 |
+| 失敗 | 不完全応答、拒否、400字超過、未知の出典ID、429等は公開せず前回の図表・本文を維持。Step Functionsが最大2回再試行した後SNS通知。別モデルや有料APIへの切替なし |
+| モデル | `GeminiModel=gemini-3.8-flash`。現行版の許可値はこのモデルのみ。変更時はコード・スキーマ・料金の確認が必要 |
 
-| 対応箇所 | 現状 | Gemini対応版の条件 |
-| --- | --- | --- |
-| `infra/weekly-reports.yaml` | `OpenAISecretArn`、`OPENAI_SECRET_ARN`、`OPENAI_MODEL` | `GeminiSecretArn`、`GEMINI_SECRET_ARN`、`GeminiModel` → `GEMINI_MODEL` を用意。既定モデルを `gemini-3.8-flash` に設定 |
-| WorkerのIAM権限 | OpenAI用シークレットARNを参照 | Gemini用ARNに限って `secretsmanager:GetSecretValue` を許可 |
-| `workers/weekly-report/index.py` | OpenAI Responses APIへ送信 | Secrets ManagerのJSON `apiKey` を読み、`generativelanguage.googleapis.com` へHTTPSで直接送信。キーは `x-goog-api-key` ヘッダーに指定し、ログに出さない |
-| リクエスト・応答処理 | OpenAI形式・モデル固定の検査 | 採用するGemini API形式に対応し、完了状態・本文・出典ID・使用量を解析。既存の400字・出典検証を維持 |
-| モデル情報 | `domain.py` 等が `gpt-5.6-luna` 固定 | 生成結果・監査記録・公開時の検査を実際のGeminiモデルに合わせる |
-| 失敗時の扱い | 現行の例外処理 | 429・認証失敗・不完全応答・検証不合格で公開を止め、前回の図表と本文を維持。再試行は回数を制限し、SNSで通知。有料API・別モデルへの自動切替なし |
-| テスト | OpenAI応答のモック | Geminiの成功、429、拒否／空応答、文字数超過、未知の出典IDについて検証し、失敗時に最新版を書き換えないことを確認 |
+統計の収集は毎週金曜23時に実行します。生成日時が前週のままでも、`generation-audit.json` が `unchanged` なら正常です。プロンプト変更も次回実行で再生成の対象になります。
 
-Lambdaはインターネット経由でGoogleへ接続します。現行テンプレートはVPC接続を指定していないため、このためだけにVPCやNAT Gatewayを新設する必要はありません。独自にVPCへ入れる場合は外部HTTPS接続の経路が別途必要です。
+LambdaはGeminiキーをSecrets Managerから読み、`x-goog-api-key` ヘッダーでGoogleの `generateContent` APIへHTTPS送信します。IAM権限はAWS内のシークレット取得に使用します。APIキー本体を環境変数へ入れる必要はありません。現行テンプレートはVPC接続なしで、このためのNAT GatewayやBedrock権限は不要です。
 
-対応後は、SAMテンプレート経由でLambdaにAI用の **シークレットARNとモデル名だけ**を渡します。ブラウザのLambda → 設定 → 環境変数では反映結果を確認し、直接編集しません。APIキーそのものはSecrets Managerに置きます。IAM権限はAWS内のシークレット取得に使い、Googleへの認証にはGeminiキーを使います。Bedrockのモデルアクセス権限は不要です。
-
-**合格条件：** 上記の実装とテストが完了し、以降の `sam deploy --guided` で `GeminiSecretArn` と `GeminiModel` が表示されること。`OpenAISecretArn` が表示される場合は古いテンプレートまたは古いビルドです。GeminiのARNをその欄へ入力せず、対応版の確認と再ビルドを行います。
+旧版の `OpenAISecretArn` がデプロイ時に表示された場合は、最新版のコードで再ビルドしてください。旧OpenAIシークレットにGeminiキーを上書きせず、手順2のGemini専用シークレットを指定します。Amplify側も新モデル・5図要約の読み取り対応版へ再デプロイします。
 
 ### 3-1. ビルドする【PC】
 
@@ -344,8 +342,8 @@ sam deploy --guided --template-file .aws-sam/weekly-build/template.yaml --config
 | Stack Name | `reportbank-weekly` |
 | AWS Region | `ap-northeast-1` |
 | Parameter AppName | `reportbank` |
-| Parameter GeminiSecretArn | 手順2で控えたGemini用ARN。APIキー本体ではない（対応版で追加） |
-| Parameter GeminiModel | `gemini-3.8-flash`（対応版で追加。手順2-1の無料枠確認が前提） |
+| Parameter GeminiSecretArn | 手順2で控えたGemini用ARN。APIキー本体ではない |
+| Parameter GeminiModel | `gemini-3.8-flash`（手順2-1の無料枠確認が前提） |
 | Parameter ReportScope | **`markets`** |
 | Parameter AlertEmail | 自分の通知用メールアドレス |
 | Parameter ScheduleState | **`DISABLED`** |
@@ -459,10 +457,10 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 
 | 確認箇所 | 正常な状態 |
 | --- | --- |
-| `chart.summaryScope` | 現時点のコードでは `four-figures-v6` |
+| `chart.summaryScope` | 現時点のコードでは `five-figures-v1` |
 | `chart.insight.summary` | 400字以内の日本語。50年の観測窓を踏まえた3点の考察 |
 | `chart.insight.model` | `gemini-3.8-flash` |
-| `chart.insight.generatedAt` | 今回の実行時刻に近い日時 |
+| `chart.insight.generatedAt` | 生成した場合は今回の実行時刻。変更なしの場合は前回の生成日時 |
 | `chart.fiscal` / `chart.lending` / `chart.bojFinancials` / `chart.household` | 各図のデータが入っている |
 
 `insight` がなければ、キー未設定の図表のみ更新で成功している可能性があります。これでは今回のAI週次生成の完成条件を満たしません。`GeminiSecretArn` を確認します。
@@ -585,7 +583,7 @@ frontend:
 `https://reportbankwebsite.com/weekly-reports` を開きます。
 
 - FIGURE01～05が表示される。
-- Weekly Insightの「本文作成」が手順5の実行時刻に対応する。
+- Weekly Insightの「本文作成」が初回生成の日時に対応する。変更なしの場合は前回日時を維持する。
 - 表示本文がDynamoDBの `chart.insight.summary` と一致する。
 - データ取得エラーが表示されていない。
 
@@ -695,7 +693,7 @@ Lambda側の変更はPCで `sam build` →同じ設定ファイル・スタッ�
 | Gemini 429 / RESOURCE_EXHAUSTED | AI Studioで対象モデルのリクエスト／トークンの無料枠を確認。枠の回復を待つ。連続実行や有料への自動切替をしない |
 | `Summary must contain 1–400...` | 生成本文が文字数などの検証に不合格。前回掲載を維持。実行記録から原因を確認して再実行 |
 | 公表資料の取得・解析で失敗 | Step FunctionsのCollectのエラー、CloudWatchログを確認。URL・単位・資料形式の変更はコード側の対応が必要 |
-| Step Functionsは成功、本文がない | GeminiSecretArnとDynamoDBのinsightを確認。旧実装ではキーなしでも図表更新は成功する。Gemini対応の有無も手順3-0で確認 |
+| Step Functionsは成功、本文がない | GeminiSecretArnとDynamoDBのinsightを確認。キーなしでは本文を生成しない。初回生成には正しいGeminiSecretArnが必要 |
 | ページでAccessDenied | Amplifyの**Compute role**に対象テーブルのGetItem・Queryがあるか確認。ビルド用ロールだけに付けていないか確認 |
 | ページが古いまま | Amplify環境変数、configure:reports、再デプロイ、本文日時を確認。アプリとWorkerのsummaryScopeの版をそろえる |
 | 「過去の400字整理」が空 | marketsからHISTORYへの保存は未実装。今回の本文はS3のmarkets.jsonで確認 |
@@ -721,19 +719,19 @@ CloudWatchログへは、CloudFormation →リソース→ `Worker` →Lambdaの
 - [ ] SNS通知の購読確認が完了
 - [ ] 手動実行がSucceeded、出力はmarkets-published
 - [ ] DynamoDBにgemini-3.8-flashで生成した本文がある
-- [ ] S3にmarkets.jsonとgeneration-audit.jsonがある
+- [ ] S3にmarkets.jsonとgeneration-audit.jsonがある（未変更時はstatusがunchanged）
 - [ ] AmplifyのCompute role・環境変数・ビルド設定を反映した
 - [ ] ページの本文・作成日時がDynamoDBと一致した
 - [ ] SchedulerがENABLED、金曜23時、Asia/Tokyo
-- [ ] 次の金曜日に実行が始まり、本文日時が更新された
+- [ ] 次の金曜日に実行が始まり、変更時は本文日時が更新され、変更なしなら維持された
 
 ## 参照した実装
 
-本書は以下の既存実装を確認し、Geminiへの移行後の操作手順として作成しています。コード側の未対応箇所は手順3-0に列挙しています。AWS・Google画面の表記は変更される場合があります。
+本書は以下の既存実装を確認し、Gemini対応版の操作手順として作成しています。プロンプト・更新判定は手順3-0に記載しています。AWS・Google画面の表記は変更される場合があります。
 
 - [構築テンプレート](../infra/weekly-reports.yaml)
 - [収集・生成・保存処理](../workers/weekly-report/index.py)
-- [5図表のデータ統合・4図表の要約生成](../workers/weekly-report/integrated.py)
+- [5図表のデータ統合](../workers/weekly-report/integrated.py)
 - [Amplifyの実行時設定](../scripts/configure-report-env.mjs)
 - [最新図表の読み取り](../lib/reports/markets.ts)
 - [履歴の読み取り](../lib/reports/store.ts)

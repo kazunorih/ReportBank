@@ -7,7 +7,7 @@ export const summarySchema = z.object({
   date,
   generatedAt: z.string().datetime(),
   summary: z.string().min(1).refine((text) => [...text].length <= 400),
-  model: z.literal("gpt-5.6-luna"),
+  model: z.enum(["gpt-5.6-luna", "gemini-3.8-flash"]),
 });
 export const reportSchema = summarySchema.extend({
   schemaVersion: z.literal(1),
@@ -76,7 +76,7 @@ export type HouseholdData = z.infer<typeof householdSchema>;
 
 export const marketChartSchema = z.object({
   household: householdSchema.optional(),
-  summaryScope: z.literal("four-figures-v6").optional(),
+  summaryScope: z.enum(["four-figures-v6", "five-figures-v1"]).optional(),
   fiscal: fiscalSchema.optional(),
   lending: z.object({
     observations: z.array(z.object({ date, domesticBankLoans: z.number().finite().nonnegative().nullable(), housingLoans: z.number().finite().nonnegative().nullable(), domesticCorporateLoans: z.number().finite().nonnegative().nullable() })),
@@ -101,10 +101,10 @@ export const marketChartSchema = z.object({
   insight: z.object({
     summary: summarySchema.shape.summary,
     generatedAt: summarySchema.shape.generatedAt,
-    model: z.enum(["initial", "gpt-5.6-luna"]),
+    model: z.enum(["initial", "gpt-5.6-luna", "gemini-3.8-flash"]),
   }).optional(),
 }).superRefine((chart, ctx) => {
-  if (chart.summaryScope === "four-figures-v6") {
+  if (["four-figures-v6", "five-figures-v1"].includes(chart.summaryScope ?? "")) {
     const financials = chart.bojFinancials;
     const sources = new Set(chart.sources.map(source => source.id));
     if (!financials || !chart.lending || !chart.fiscal || financials.observations.length === 0 ||
@@ -122,6 +122,7 @@ export const marketChartSchema = z.object({
       ctx.addIssue({ code: "custom", message: "Invalid fiscal dates or sources" });
     }
   }
+  if (chart.summaryScope === "five-figures-v1" && !chart.household) ctx.addIssue({ code: "custom", message: "Missing FIGURE05" });
   const required = ["jgb10", "jgb30", "flat35", "topix"];
   const ids = new Set(chart.series.map((item) => item.id));
   const sources = new Set(chart.sources.map((item) => item.id));

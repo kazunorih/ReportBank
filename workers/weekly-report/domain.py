@@ -7,7 +7,7 @@ import re
 from datetime import date, datetime, timedelta, timezone
 
 JST = timezone(timedelta(hours=9))
-MODEL = "gpt-5.6-luna"
+MODEL = "gemini-3.8-flash"
 LABELS = dict(zip(
     ("jgb3", "jgb10", "jgb30", "flat35", "topix", "marketCap", "construction", "corporateLoans", "householdLoans", "bankJgb", "publicLoans", "bojAssets", "bojJgb"),
     ("国債3年", "国債10年", "国債30年", "フラット35", "TOPIX", "東証時価総額", "建設工事受注高", "企業向け貸出", "家計向け貸出", "国債・財投債保有", "地方公共団体向け貸出", "日本銀行総資産", "日本銀行国債保有"),

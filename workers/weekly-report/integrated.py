@@ -29,6 +29,6 @@ def integrate(chart, fetcher=None, previous=None, previous_fiscal=None, previous
     fiscal = collect_fiscal(fetcher, chart["asOf"], previous_fiscal)
     household = collect_household(fetcher, chart["asOf"], previous_household)
     chart["household"] = household
-    chart.update(summaryScope="four-figures-v6", bojFinancials=financials, lending=lending, fiscal=fiscal)
+    chart.update(summaryScope="five-figures-v1", bojFinancials=financials, lending=lending, fiscal=fiscal)
     chart["sources"] = list({s["id"]: s for s in chart["sources"] + financials["sources"] + fiscal["sources"] + household["sources"] + [lending["source"], lending["corporateSource"]]}.values())
     return chart

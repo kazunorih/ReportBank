@@ -1,6 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { seriesCatalog } from "@/lib/reports/catalog";
-import { reportSchema, summarySchema } from "@/lib/reports/schema";
+import snapshot from "@/lib/reports/data/markets.json";
+import household from "@/lib/reports/data/household.json";
+import { marketChartSchema, reportSchema, summarySchema } from "@/lib/reports/schema";
 
 const { send } = vi.hoisted(() => ({ send: vi.fn() }));
 vi.mock("@/lib/aws/clients", () => ({ dynamoClient: { send } }));
@@ -112,4 +114,15 @@ describe("weekly reports", () => {
     send.mockRejectedValue(new Error("AccessDenied"));
     await expect(getWeeklyReports()).rejects.toThrow("AccessDenied");
   });
+});
+
+
+it("reads five-figure Gemini reports while keeping the old snapshot compatible", async () => {
+  const chart = { ...snapshot, household, summaryScope: "five-figures-v1",
+    insight: { summary: "AIの推論です。政策効果は分からない。", model: "gemini-3.8-flash", generatedAt: "2026-10-18T00:00:00Z" } };
+  expect(marketChartSchema.safeParse(chart).success).toBe(true);
+  expect(marketChartSchema.safeParse({ ...chart, household: undefined }).success).toBe(false);
+  vi.stubEnv("WEEKLY_REPORTS_TABLE_NAME", "reports");
+  send.mockResolvedValue({ Item: { chart } });
+  expect((await getMarketChart()).insight?.model).toBe("gemini-3.8-flash");
 });

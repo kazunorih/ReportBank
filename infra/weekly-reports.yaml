@@ -6,16 +6,20 @@ Parameters:
   AppName:
     Type: String
     Default: reportbank
-  OpenAISecretArn:
+  GeminiSecretArn:
     Type: String
     Default: ''
     Description: Existing Secrets Manager secret ARN containing JSON {"apiKey":"..."}
     AllowedPattern: '^$|arn:aws:secretsmanager:[a-z0-9-]+:[0-9]{12}:secret:.+'
+  GeminiModel:
+    Type: String
+    Default: gemini-3.8-flash
+    AllowedValues: [gemini-3.8-flash]
   ReportScope:
     Type: String
     Default: markets
     AllowedValues: [markets, full]
-    Description: First chart only (no AI key required), or full report
+    Description: Five displayed figures with change-triggered Gemini insight, or legacy full report
   AlertEmail:
     Type: String
     Default: ''
@@ -28,7 +32,7 @@ Parameters:
 
 Conditions:
   HasAlertEmail: !Not [!Equals [!Ref AlertEmail, '']]
-  HasOpenAISecret: !Not [!Equals [!Ref OpenAISecretArn, '']]
+  HasGeminiSecret: !Not [!Equals [!Ref GeminiSecretArn, '']]
 
 Resources:
   ReportBucket:
@@ -117,8 +121,8 @@ Resources:
           REPORT_BUCKET: !Ref ReportBucket
           REPORT_TABLE: !Ref ReportsTable
           REPORT_SCOPE: !Ref ReportScope
-          OPENAI_SECRET_ARN: !Ref OpenAISecretArn
-          OPENAI_MODEL: gpt-5.6-luna
+          GEMINI_SECRET_ARN: !Ref GeminiSecretArn
+          GEMINI_MODEL: !Ref GeminiModel
       Policies:
         - Statement:
             - Effect: Allow
@@ -134,10 +138,10 @@ Resources:
               Action: [dynamodb:GetItem, dynamodb:PutItem]
               Resource: !GetAtt ReportsTable.Arn
             - !If
-              - HasOpenAISecret
+              - HasGeminiSecret
               - Effect: Allow
                 Action: secretsmanager:GetSecretValue
-                Resource: !Ref OpenAISecretArn
+                Resource: !Ref GeminiSecretArn
               - !Ref AWS::NoValue
 
   WorkerLog:
