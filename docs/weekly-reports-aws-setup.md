@@ -1,8 +1,13 @@
-# ReportBank 週次定点観測：AWS構築手順書
+# ReportBank 週次定点観測：AWS構築手順書（Gemini API無料枠）
 
 対象：WindowsのPCから、現在のFIGURE01～05とWeekly Insightを毎週更新する方。確認日：2026年10月18日。Weekly Insightの考察対象はFIGURE01～04です。
 
 **この手順書は構築の説明書です。AWSへの作成・公開・課金を伴う操作は、まだ実行していません。**
+
+
+**実装状況：この版はGemini移行用の手順書です。現行のLambdaコードとSAMテンプレートはまだOpenAI専用です。手順1～2の準備はできますが、手順3-0のコード対応が完了するまでデプロイ・手動生成・スケジュール有効化は行いません。** `GeminiSecretArn` などは対応後に追加する設定名であり、現在のテンプレートにはありません。Geminiキーを既存のOpenAI用設定へ入れても動きません。
+
+今回は **Lambda → Gemini Developer API** の直接接続です。Amazon Bedrock・Vertex AIの設定、OpenAIのAPIキー・入金は不要です。Googleの無料枠はAI呼び出しに適用され、Lambda・Secrets Manager・S3などのAWS料金は別です。
 
 ## 最初に：何をすれば完成するか
 
@@ -13,7 +18,7 @@ AWSの各サービスを一つずつ手作業で作る必要はありません�
 | 順番 | 作業 | 操作する場所 | 完了の目印 |
 | --- | --- | --- | --- |
 | 1 | 使用アカウントとPCの準備 | AWSコンソール・PowerShell | AWSアカウント番号を確認できる |
-| 2 | OpenAI APIキーを保存 | OpenAI・Secrets Manager | シークレットARNを控えた |
+| 2 | Gemini APIキーを保存 | Google AI Studio・Secrets Manager | シークレットARNを控えた |
 | 3 | AWS一式を作成 | PowerShell・CloudFormation | スタックがCREATE_COMPLETE |
 | 4 | 通知を有効化 | メール・SNS | 購読が確認済み |
 | 5 | 初回レポートを生成 | Step Functions | markets-publishedと本文を確認 |
@@ -29,11 +34,11 @@ AWSの各サービスを一つずつ手作業で作る必要はありません�
 | PC作業者 | 自分のWindowsユーザーでPCへログイン | プロジェクトの読み書きとコマンド実行。ツールのインストーラーが要求する場合だけWindows管理者権限を使用 |
 | AWS構築担当 | ReportBankを置いている12桁のAWSアカウントへ、組織が割り当てたSSO許可セット／IAMロールでログイン | 下記の構築・IAM設定・Secrets Manager・Amplifyの変更が許可されたロールを使用 |
 | AWS運用担当 | 同じAWSアカウントへ、運用用の許可セット／IAMロールでログイン | 実行・停止、ログ・生成データの確認。閲覧専用ロールでは手動実行や停止はできない |
-| OpenAI設定担当 | [OpenAI Platform](https://platform.openai.com/)へ、ReportBankで使う組織・APIプロジェクトのメンバーとしてログイン | 自分のプロジェクトAPIキーの作成権限。課金・メンバー・モデル制限の変更は、その管理権限を持つ担当者が実施 |
+| Google設定担当 | [Google AI Studio](https://aistudio.google.com/)へ自分のGoogleアカウントでログインし、ReportBank用Google Cloudプロジェクトを選択 | プロジェクト参照・APIキー作成・必要なAPI有効化。作成できない場合は手順2-1の権限をGoogle Cloud管理者に確認 |
 | メール受信者 | `AlertEmail` に指定する受信箱へログイン | SNS購読確認メールを開いて承認。メール内の承認操作にAWS管理権限は不要 |
-| サイト確認者 | 通常のブラウザで公開URLを開く | 閲覧のみ。AWS・OpenAIへのログインは不要 |
+| サイト確認者 | 通常のブラウザで公開URLを開く | 閲覧のみ。AWS・Googleへのログインは不要 |
 
-**Windowsの「管理者として実行」、AWSの権限、OpenAIの権限は、それぞれ別です。** PowerShellを管理者として開いてもAWSの権限は増えません。AWSコンソールにログインしただけでは、PCのAWS CLIも同じアカウントになるとは限りません。手順1-4でCLIの接続先とロールを確認します。
+**Windowsの「管理者として実行」、AWSの権限、Google Cloudの権限は、それぞれ別です。** PowerShellを管理者として開いてもAWSの権限は増えません。AWSコンソールにログインしただけでは、PCのAWS CLIも同じアカウントになるとは限りません。手順1-4でCLIの接続先とロールを確認します。
 
 ### AWS構築担当に用意する権限（管理者への依頼用）
 
@@ -69,14 +74,14 @@ AWSの各サービスを一つずつ手作業で作る必要はありません�
 
 名前は古いですが、現在はFIGURE01～05の収集・保存に対応しています。本文の考察対象はFIGURE01～04です。テンプレートの説明にある「First chart only」は以前の説明です。`full` は別の13系列を扱うモードなので選びません。
 
-現行コードで動く流れは次のとおりです。
+Gemini対応後の構成は次のとおりです。現在のコードとの差分は手順3-0を参照してください。
 
 ```mermaid
 flowchart TD
   E[Scheduler：金曜23時・日本時間] --> S[Step Functions：実行管理]
   S --> L[Lambda Worker：収集・検証・AI生成・保存]
   K[Secrets Manager：APIキー] --> L
-  L --> O[OpenAI Responses API：gpt-5.6-luna]
+  L --> O[Gemini Developer API：gemini-3.8-flash]
   L --> B[S3：原本と実行記録]
   L --> D[DynamoDB：CHART / MARKETS]
   D --> A[既存Amplify：週次定点観測ページ]
@@ -98,7 +103,7 @@ Lambdaは1つです。`markets` ではStep Functionsの **Collect内で生成・
 | Weekly Insight | キー設定時に4図のデータから400字以内で生成。モデルの自動切替なし |
 | 「過去の400字整理」欄 | `markets` の本文をこの一覧へ追加する処理は未実装。実行ごとの本文はS3に保存される |
 
-**AWSを構築するだけで、貸出の自動取得や過去本文の一覧保存が追加されるわけではありません。** この手順の完成条件は「5図の掲載・現行収集処理と最新本文の週次実行」です。
+**AWSを構築するだけで、貸出の自動取得や過去本文の一覧保存が追加されるわけではありません。** この手順の完成条件は「5図の掲載・現行収集処理とGeminiによる最新本文の週次実行」です。
 
 ## 1. アカウント・PCを準備する
 
@@ -117,12 +122,12 @@ Lambdaは1つです。`markets` ではStep Functionsの **Collect内で生成・
 | AWSアカウントID | 12桁の番号 |
 | AWSログイン先・ロール名 | アクセスポータルURLと構築用許可セット／ロール名 |
 | CLIの実行者ARN | 手順1-4の `Arn` を記入 |
-| OpenAI組織・プロジェクト | APIキーを作成する組織名・プロジェクト名 |
+| Googleアカウント・プロジェクト | 使用するGoogleアカウント・プロジェクト名・プロジェクトID |
 | AWSリージョン | `ap-northeast-1`（東京） |
 | AWS CLIプロファイル | この手順では `reportbank` |
 | スタック名 | この手順では `reportbank-weekly` |
 | 通知メールアドレス | 自分が受信・確認できるアドレス |
-| OpenAISecretArn | 手順2で記入 |
+| GeminiSecretArn | 手順2で記入 |
 | ReportsTableName / ReportsTableArn | 手順3で記入 |
 | DataBucket / WorkflowArn / ScheduleName | 手順3で記入 |
 | Amplifyアプリ名・本番ブランチ名 | 現在公開中のもの |
@@ -226,21 +231,29 @@ $weeklyConfig = Join-Path (Get-Location) 'weekly-samconfig.toml'
 
 **確認：** 2つとも `True`。最新の作業内容と `workers/weekly-report/data/` の同梱資料が必要です。コマンドは以後、このフォルダーで実行します。PowerShellを開き直した場合はこの手順を再実行してください。
 
-## 2. OpenAI APIキーをSecrets Managerへ保存する
+## 2. Gemini APIキーをSecrets Managerへ保存する
 
-### 2-1. OpenAI側の用意
+### 2-1. Google AI Studioで無料枠とAPIキーを用意する
 
-**操作場所：** ブラウザ → OpenAI Platform → 対象の組織・プロジェクト → API keys。
+**操作場所：** PCのブラウザ → [Google AI Studio](https://aistudio.google.com/) → DashboardのProjects／API Keys。
 
-**使用アカウント：** OpenAI設定担当。
+**使用アカウント：** Google設定担当。AWSのOwnerやOpenAIアカウントではなく、自分のGoogleアカウントを使います。
 
-**必要な権限：** プロジェクトAPIキーの作成・Responses API利用。課金・モデル制限の変更は各管理権限を持つ担当者が実施。
+**必要な権限：** 対象Google Cloudプロジェクトの参照、APIキー作成、Generative Language APIの有効化。現在のAI Studioで作成する認証キーには、サービスアカウントの作成・キーとの関連付け権限も必要です。作成ボタンが使えない場合はGoogle Cloud管理者に確認します。AWSのAdministratorAccessではGoogleの権限は増えません。
 
-OpenAIのAPIプロジェクトでAPIキーを作成し、APIの課金設定・利用上限・モデル利用権限を確認します。指定モデルは **`gpt-5.6-luna`** です。[公式モデル仕様](https://developers.openai.com/api/docs/models/gpt-5.6-luna)を確認し、このプロジェクトでの実際の呼び出し可否は手順5で確認します。別モデルには自動切替しません。
+1. Google AI Studioにログインし、初回は利用条件を確認します。
+2. **Projects** を開き、ReportBank用プロジェクトを選びます。新規利用者には既定プロジェクトが作成される場合があります。既存プロジェクトを使う場合は **Import projects** から取り込みます。名前とプロジェクトIDをメモします。
+3. 対象プロジェクトの料金区分が **Free／Free Tier** であることを確認します。本書では **Set up billing／Upgrade／Prepayを実行せず、請求先アカウントを紐付けません**。既に有料のプロジェクトを使う場合、同じモデルでも無料とは限りません。既存サービスの請求設定を解除せず、ReportBank専用の無料プロジェクトを用意します。
+4. **API Keys → Create API key** を選び、対象プロジェクトを指定します。名前を付けられる場合は `reportbank-weekly` にします。作成したキーをコピーし、続く手順2-2で保存します。
+5. [公式料金表](https://ai.google.dev/gemini-api/docs/pricing)で **`gemini-3.8-flash` のStandardのFree Tier** に入力・出力の無料枠があることを確認します。AI Studioの利用制限画面でも、そのプロジェクトで利用できるモデル・リクエスト数・トークン数の枠を確認します。枠は固定値として本書に記載しません。
 
-キー作成前に組織・プロジェクトを確認します。制限付きキーではResponses APIを許可し、担当者のプロジェクト権限も確認します。[OpenAIの権限管理](https://developers.openai.com/api/docs/guides/rbac)
+**確認：** 正しいGoogle CloudプロジェクトのAPIキーを作成でき、Free Tierと対象モデルの枠を確認できたこと。モデルが無料対象から外れたり、枠がゼロだったりする場合は自動生成を有効にしません。有料モデルやOpenAIへ自動切替する設計にはしません。
 
-APIキーを使うのはLambdaだけです。ブラウザ向けの `NEXT_PUBLIC_...`、Amplifyの環境変数、Gitのファイルには保存しません。
+無料枠の入力・出力はGoogleの製品改善に利用される場合があります。この構成では公開統計と生成指示を送り、認証情報や非公開資料は送信しません。料金・利用条件は変更され得るため、運用中も確認します。週1回でも、長い入力や再試行により制限に達する可能性があります。
+
+APIキーはLambdaだけが使用します。チャット、Git、ブラウザ向けの `NEXT_PUBLIC_...`、Amplify環境変数には保存しません。Google AI Studioの新しいキーはGenerative Language APIに制限された認証キーとして作成されます。Lambdaからの呼び出しにWebサイトのHTTPリファラー制限を付けると動きません。固定送信元IPを用意していない構成でIP制限を設定しないでください。
+
+[Google公式：APIキーの作成・必要な権限](https://ai.google.dev/gemini-api/docs/api-key) ／ [無料・有料区分の確認](https://ai.google.dev/gemini-api/docs/billing)
 
 ### 2-2. AWSコンソールで保存する
 
@@ -253,21 +266,47 @@ APIキーを使うのはLambdaだけです。ブラウザ向けの `NEXT_PUBLIC_
 1. 東京リージョンの「Secrets Manager」を検索して開きます。
 2. 「新しいシークレットを保存する」を選びます。
 3. 種類は「その他のシークレットのタイプ」。
-4. キー／値の欄で、キーを **`apiKey`**、値をOpenAIの実際のAPIキーにします。大文字小文字をそのまま合わせます。
+4. キー／値の欄で、キーを **`apiKey`**、値をGeminiの実際のAPIキーにします。大文字小文字をそのまま合わせます。
 5. 暗号化キーはこの手順では既定の **`aws/secretsmanager`** を使います。
-6. 名前を `reportbank/weekly/openai` にします。
+6. 名前を `reportbank/weekly/gemini` にします。
 7. 自動ローテーションは今回は設定せず、内容を確認して保存します。
 8. 作成したシークレットを開き、「シークレットARN」を作業メモへコピーします。
 
 保存される内容の形は次のJSONです。例の文字列をそのままAPIキーとして登録しないでください。
 
 ```json
-{"apiKey":"ここに実際のOpenAI APIキー"}
+{"apiKey":"ここに実際のGemini APIキー"}
 ```
 
 **確認：** ARNは `arn:aws:secretsmanager:ap-northeast-1:...:secret:...` で始まります。後ろのランダム文字まで全部コピーします。独自KMSキーを使う場合は追加の復号権限が必要になるため、この標準手順の範囲外です。[Secrets Managerの公式手順](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html)
 
 ## 3. 設計図を使ってAWS一式を作成する
+
+### 3-0. Gemini対応版のコードが用意されていることを確認する
+
+**操作場所：** PCのエディター／PowerShellでリポジトリのコードを確認。
+
+**使用アカウント：** PC作業者・コードの実装担当。AWSへ反映する段階ではAWS構築担当。
+
+**必要な権限：** ローカルファイルの読み書きと、反映する場合のGitリポジトリへの書き込み。本項の確認だけではAWS操作なし。
+
+**2026年10月18日時点では以下は未対応です。実装担当が対応してから手順3-1へ進みます。** この表を実装担当に渡してください。名前だけの置換ではAPIの送受信形式が異なるため動きません。
+
+| 対応箇所 | 現状 | Gemini対応版の条件 |
+| --- | --- | --- |
+| `infra/weekly-reports.yaml` | `OpenAISecretArn`、`OPENAI_SECRET_ARN`、`OPENAI_MODEL` | `GeminiSecretArn`、`GEMINI_SECRET_ARN`、`GeminiModel` → `GEMINI_MODEL` を用意。既定モデルを `gemini-3.8-flash` に設定 |
+| WorkerのIAM権限 | OpenAI用シークレットARNを参照 | Gemini用ARNに限って `secretsmanager:GetSecretValue` を許可 |
+| `workers/weekly-report/index.py` | OpenAI Responses APIへ送信 | Secrets ManagerのJSON `apiKey` を読み、`generativelanguage.googleapis.com` へHTTPSで直接送信。キーは `x-goog-api-key` ヘッダーに指定し、ログに出さない |
+| リクエスト・応答処理 | OpenAI形式・モデル固定の検査 | 採用するGemini API形式に対応し、完了状態・本文・出典ID・使用量を解析。既存の400字・出典検証を維持 |
+| モデル情報 | `domain.py` 等が `gpt-5.6-luna` 固定 | 生成結果・監査記録・公開時の検査を実際のGeminiモデルに合わせる |
+| 失敗時の扱い | 現行の例外処理 | 429・認証失敗・不完全応答・検証不合格で公開を止め、前回の図表と本文を維持。再試行は回数を制限し、SNSで通知。有料API・別モデルへの自動切替なし |
+| テスト | OpenAI応答のモック | Geminiの成功、429、拒否／空応答、文字数超過、未知の出典IDについて検証し、失敗時に最新版を書き換えないことを確認 |
+
+Lambdaはインターネット経由でGoogleへ接続します。現行テンプレートはVPC接続を指定していないため、このためだけにVPCやNAT Gatewayを新設する必要はありません。独自にVPCへ入れる場合は外部HTTPS接続の経路が別途必要です。
+
+対応後は、SAMテンプレート経由でLambdaにAI用の **シークレットARNとモデル名だけ**を渡します。ブラウザのLambda → 設定 → 環境変数では反映結果を確認し、直接編集しません。APIキーそのものはSecrets Managerに置きます。IAM権限はAWS内のシークレット取得に使い、Googleへの認証にはGeminiキーを使います。Bedrockのモデルアクセス権限は不要です。
+
+**合格条件：** 上記の実装とテストが完了し、以降の `sam deploy --guided` で `GeminiSecretArn` と `GeminiModel` が表示されること。`OpenAISecretArn` が表示される場合は古いテンプレートまたは古いビルドです。GeminiのARNをその欄へ入力せず、対応版の確認と再ビルドを行います。
 
 ### 3-1. ビルドする【PC】
 
@@ -305,7 +344,8 @@ sam deploy --guided --template-file .aws-sam/weekly-build/template.yaml --config
 | Stack Name | `reportbank-weekly` |
 | AWS Region | `ap-northeast-1` |
 | Parameter AppName | `reportbank` |
-| Parameter OpenAISecretArn | 手順2で控えたARN。APIキー本体ではない |
+| Parameter GeminiSecretArn | 手順2で控えたGemini用ARN。APIキー本体ではない（対応版で追加） |
+| Parameter GeminiModel | `gemini-3.8-flash`（対応版で追加。手順2-1の無料枠確認が前提） |
 | Parameter ReportScope | **`markets`** |
 | Parameter AlertEmail | 自分の通知用メールアドレス |
 | Parameter ScheduleState | **`DISABLED`** |
@@ -392,7 +432,7 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 4. 入力欄を手順5-1のJSONに置き換えます。`action` や `run` は入力不要です。
 5. 「実行を開始」を押し、完了まで待ちます。公表資料の取得・AI呼び出し・再試行で数分以上かかる場合があります。
 
-この操作は実際にデータを収集し、OpenAI APIを呼び出し、DynamoDBの最新版を保存します。何度も連打すると再度API料金がかかり得ます。
+この操作は実際に統計を収集し、Gemini APIの無料枠を消費します。生成・検証に成功した場合だけDynamoDBの最新版を保存します。AWSの実行料金は別です。何度も連打せず、失敗時はログと無料枠を確認します。
 
 ### 5-3. 成功を確認する
 
@@ -421,11 +461,11 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 | --- | --- |
 | `chart.summaryScope` | 現時点のコードでは `four-figures-v6` |
 | `chart.insight.summary` | 400字以内の日本語。50年の観測窓を踏まえた3点の考察 |
-| `chart.insight.model` | `gpt-5.6-luna` |
+| `chart.insight.model` | `gemini-3.8-flash` |
 | `chart.insight.generatedAt` | 今回の実行時刻に近い日時 |
 | `chart.fiscal` / `chart.lending` / `chart.bojFinancials` / `chart.household` | 各図のデータが入っている |
 
-`insight` がなければ、キー未設定の図表のみ更新で成功している可能性があります。これでは今回のAI週次生成の完成条件を満たしません。`OpenAISecretArn` を確認します。
+`insight` がなければ、キー未設定の図表のみ更新で成功している可能性があります。これでは今回のAI週次生成の完成条件を満たしません。`GeminiSecretArn` を確認します。
 
 **S3：** `DataBucket` → `runs/` →今回の日付→実行IDを開きます。`markets.json`、`markets-collected.json`、キー設定時の `generation-audit.json`、`raw/` を確認します。`markets.json` が今回保存された図表・本文です。バケットを公開する必要はありません。
 
@@ -487,7 +527,7 @@ Compute roleが未設定なら、IAM →「ロール」→「ロールを作成�
 
 次へ進み `ReportBankWeeklyRead` を選択、ロール名を `ReportBankWeeklySsrRole` として作成します。AmplifyのCompute role編集で作成したロールを選んで保存します。本番ブランチに別のロールが指定されている場合は、そのブランチに実際に適用されるロールへ権限を追加してください。
 
-**確認：** Amplifyの実行ロールが対象テーブルの `GetItem` と `Query` を許可していること。WebサイトにOpenAIキーやAWSアクセスキーを渡す必要はありません。[Amplifyの公式SSRロール手順](https://docs.aws.amazon.com/amplify/latest/userguide/amplify-SSR-compute-role.html)
+**確認：** Amplifyの実行ロールが対象テーブルの `GetItem` と `Query` を許可していること。WebサイトにGeminiキーやAWSアクセスキーを渡す必要はありません。[Amplifyの公式SSRロール手順](https://docs.aws.amazon.com/amplify/latest/userguide/amplify-SSR-compute-role.html)
 
 ### 6-3. 環境変数を設定する
 
@@ -584,15 +624,15 @@ frontend:
 
 ### 毎週の確認
 
-**操作場所：** ブラウザ → Step Functions・DynamoDB・公開ページ。料金はAWS請求画面とOpenAI Platformで別々に確認。
+**操作場所：** ブラウザ → Step Functions・DynamoDB・公開ページ。料金はAWS請求画面とGoogle AI Studioで別々に確認。
 
 **使用アカウント：** 処理確認はAWS運用担当。請求・API利用状況は各サービスで閲覧を許可された担当者。
 
-**必要な権限：** 実行履歴・テーブル・ログの閲覧。AWS運用権限だけでは請求やOpenAI利用状況を見られるとは限らない。
+**必要な権限：** 実行履歴・テーブル・ログの閲覧。AWS運用権限だけでは請求やGemini利用状況を見られるとは限らない。
 
 金曜の実行後、Step Functionsが成功し、DynamoDBとページの本文作成日時が更新されたか確認します。株価や残高の公表頻度が低い場合、グラフの数値が前週と同じでも正常です。
 
-AWSとOpenAIの利用料は別々です。正確な金額は実行後にAWSの請求画面とOpenAIプロジェクトの利用状況で確認します。S3、DynamoDB、Secrets Managerなどはスケジュール停止中にも保管料金が発生し得ます。
+AWS料金はAWSの請求画面、Geminiの使用量・残りの枠はGoogle AI Studioの対象プロジェクトで確認します。Free Tierが維持され、対象モデルが無料のままであることも確認します。無料枠を増やすための有料アップグレードは本手順には含めません。S3、DynamoDB、Secrets Managerなどはスケジュール停止中にも保管料金が発生し得ます。
 
 ### コード・同梱データを変更したとき
 
@@ -630,9 +670,9 @@ Lambda側の変更はPCで `sam build` →同じ設定ファイル・スタッ�
 
 ## 9. 困ったときの確認表
 
-**操作場所：** 下表に示すPCまたはAWS／OpenAI画面。
+**操作場所：** 下表に示すPCまたはAWS／Google画面。
 
-**使用アカウント：** ローカルはPC作業者、AWS調査はAWS運用担当、構成修正はAWS構築担当、API設定はOpenAI設定担当。
+**使用アカウント：** ローカルはPC作業者、AWS調査はAWS運用担当、構成修正はAWS構築担当、API設定はGoogle設定担当。
 
 **必要な権限：** 調査対象とCloudWatchログの閲覧。権限の変更はAWSの権限管理者へ依頼。
 
@@ -650,12 +690,12 @@ Lambda側の変更はPCで `sam build` →同じ設定ファイル・スタッ�
 | `No changes to deploy` | 設定が既に同じなら正常。コード変更時は先に再ビルドしたか確認 |
 | `ResourceNotFoundException`（シークレット） | ARN全体、東京リージョン、削除予定でないことを確認 |
 | `apiKey`のKeyError | Secrets Managerのキー名が正確に `apiKey` か確認 |
-| OpenAI 401 / 403 | APIキーの有効性、プロジェクト・モデルの権限を確認 |
-| OpenAI 404 / model not found | `gpt-5.6-luna` の利用可否を確認。代替モデルへ変更せず、自動実行は無効のままにする |
-| OpenAI 429 | 利用上限・残高・レート制限を確認。連続再実行しない |
+| Gemini 400 / 401 / 403 | キーの有効性、Google Cloudプロジェクト、API制限、応答のエラー理由を確認。無料枠の対象地域・利用可否も確認 |
+| Gemini 404 / model not found | `gemini-3.8-flash` の利用可否を確認。代替モデルへ変更せず、自動実行は無効のままにする |
+| Gemini 429 / RESOURCE_EXHAUSTED | AI Studioで対象モデルのリクエスト／トークンの無料枠を確認。枠の回復を待つ。連続実行や有料への自動切替をしない |
 | `Summary must contain 1–400...` | 生成本文が文字数などの検証に不合格。前回掲載を維持。実行記録から原因を確認して再実行 |
 | 公表資料の取得・解析で失敗 | Step FunctionsのCollectのエラー、CloudWatchログを確認。URL・単位・資料形式の変更はコード側の対応が必要 |
-| Step Functionsは成功、本文がない | OpenAISecretArnとDynamoDBのinsightを確認。キーなしでも図表更新は成功する |
+| Step Functionsは成功、本文がない | GeminiSecretArnとDynamoDBのinsightを確認。旧実装ではキーなしでも図表更新は成功する。Gemini対応の有無も手順3-0で確認 |
 | ページでAccessDenied | Amplifyの**Compute role**に対象テーブルのGetItem・Queryがあるか確認。ビルド用ロールだけに付けていないか確認 |
 | ページが古いまま | Amplify環境変数、configure:reports、再デプロイ、本文日時を確認。アプリとWorkerのsummaryScopeの版をそろえる |
 | 「過去の400字整理」が空 | marketsからHISTORYへの保存は未実装。今回の本文はS3のmarkets.jsonで確認 |
@@ -674,11 +714,13 @@ CloudWatchログへは、CloudFormation →リソース→ `Worker` →Lambdaの
 
 **必要な権限：** 対象の閲覧。追加実行・変更には対応する手順の操作権限が必要。
 
+- [ ] 手順3-0のGemini対応とテストが完了
+- [ ] Google AI Studioで対象プロジェクトがFree Tier、対象モデルの無料枠を確認
 - [ ] CloudFormationがCREATE_COMPLETEまたはUPDATE_COMPLETE
-- [ ] ReportScopeはmarkets、OpenAISecretArnは正しい
+- [ ] ReportScopeはmarkets、GeminiSecretArnは正しい
 - [ ] SNS通知の購読確認が完了
 - [ ] 手動実行がSucceeded、出力はmarkets-published
-- [ ] DynamoDBにgpt-5.6-lunaで生成した本文がある
+- [ ] DynamoDBにgemini-3.8-flashで生成した本文がある
 - [ ] S3にmarkets.jsonとgeneration-audit.jsonがある
 - [ ] AmplifyのCompute role・環境変数・ビルド設定を反映した
 - [ ] ページの本文・作成日時がDynamoDBと一致した
@@ -687,7 +729,7 @@ CloudWatchログへは、CloudFormation →リソース→ `Worker` →Lambdaの
 
 ## 参照した実装
 
-本書は次のファイルに照らして作成しています。AWS画面の表記は変更される場合があります。
+本書は以下の既存実装を確認し、Geminiへの移行後の操作手順として作成しています。コード側の未対応箇所は手順3-0に列挙しています。AWS・Google画面の表記は変更される場合があります。
 
 - [構築テンプレート](../infra/weekly-reports.yaml)
 - [収集・生成・保存処理](../workers/weekly-report/index.py)
