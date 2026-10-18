@@ -21,6 +21,7 @@
 /build
 /dist
 /.aws-sam/
+/weekly-samconfig.toml
 __pycache__/
 
 # misc

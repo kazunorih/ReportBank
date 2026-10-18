@@ -115,7 +115,8 @@ Resources:
       CodeUri: ../workers/weekly-report/
       Timeout: 900
       MemorySize: 1024
-      ReservedConcurrentExecutions: 2
+      # Use the account's shared concurrency pool; small accounts may have
+      # no capacity available for reservations. Do not set this to zero.
       Environment:
         Variables:
           REPORT_BUCKET: !Ref ReportBucket

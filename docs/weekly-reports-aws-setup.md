@@ -227,6 +227,9 @@ Set-Location -LiteralPath 'C:\Users\kazut\Documents\my-first-site'
 Test-Path -LiteralPath '.\infra\weekly-reports.yaml'
 Test-Path -LiteralPath '.\workers\weekly-report\data\corporate-la01.json'
 $weeklyConfig = Join-Path (Get-Location) 'weekly-samconfig.toml'
+if (-not (Test-Path -LiteralPath $weeklyConfig)) {
+    Set-Content -LiteralPath $weeklyConfig -Value 'version = 0.1' -Encoding ascii
+}
 ```
 
 **確認：** 2つとも `True`。最新の作業内容と `workers/weekly-report/data/` の同梱資料が必要です。コマンドは以後、このフォルダーで実行します。PowerShellを開き直した場合はこの手順を再実行してください。
@@ -332,7 +335,7 @@ sam build --template-file infra/weekly-reports.yaml --build-dir .aws-sam/weekly-
 ここからAWSリソースが作られ、利用料が発生します。SAMはLambdaのコードと依存ライブラリも梱包してアップロードします。元のYAMLだけをCloudFormation画面へ直接アップロードする方法は、このコードの配置には使いません。
 
 ```powershell
-sam deploy --guided --template-file .aws-sam/weekly-build/template.yaml --config-file "$weeklyConfig" --config-env weekly --region ap-northeast-1 --profile reportbank
+sam deploy --guided --stack-name reportbank-weekly --template-file .aws-sam/weekly-build/template.yaml --config-file "$weeklyConfig" --config-env weekly --region ap-northeast-1 --profile reportbank
 ```
 
 質問の順番はSAMのバージョンで変わることがあります。表示された項目に次の値を入力します。
@@ -684,7 +687,7 @@ Lambda側の変更はPCで `sam build` →同じ設定ファイル・スタッ�
 | Lambda実行中にAccessDenied | ログにあるAction・対象ARNとWorker実行ロールを確認。手動開始した人の権限とは別 |
 | デプロイでAccessDenied | `get-caller-identity` のアカウントとロールを確認。拒否されたActionを管理者へ伝える |
 | `ROLLBACK_COMPLETE` | CloudFormationの「イベント」で最初のCREATE_FAILEDを確認。原因解消後、初回失敗スタックの扱いを確認して再作成。既存稼働スタックを削除しない |
-| Lambdaの予約同時実行数を設定できない | テンプレートは2を予約する。アカウントのリージョン別同時実行枠をService Quotasで確認・増枠する |
+| Lambdaの予約同時実行数を設定できない | 旧テンプレートのReservedConcurrentExecutions: 2が原因。最新版は予約を指定せず共有枠を使用。再ビルドしてからデプロイする。0にすると実行停止になるため0にはしない |
 | `No changes to deploy` | 設定が既に同じなら正常。コード変更時は先に再ビルドしたか確認 |
 | `ResourceNotFoundException`（シークレット） | ARN全体、東京リージョン、削除予定でないことを確認 |
 | `apiKey`のKeyError | Secrets Managerのキー名が正確に `apiKey` か確認 |
@@ -738,3 +741,18 @@ CloudWatchログへは、CloudFormation →リソース→ `Worker` →Lambdaの
 - [統計定義と実装の詳細](weekly-reports.md)
 
 検証範囲はソースコードと公式資料の照合です。実アカウントへのデプロイ、APIキー登録、初回実行、通知送信は本書作成時には行っていません。
+
+
+### 初回デプロイが同時実行枠の予約で失敗した場合
+
+**操作場所：** PCのPowerShellで再ビルドとデプロイ。状態確認はAWSコンソール → 東京 → CloudFormation。
+
+**使用アカウント・権限：** AWS構築担当（CLIはreportbankプロファイル）。手順3の構築権限。
+
+`ReservedConcurrentExecutions ... UnreservedConcurrentExecution ... minimum` は、Lambdaの共有枠を最低限残せない予約設定が原因です。最新版では予約を外しています。週次実行は共有枠を使用し、関数単位の同時実行上限2は設定しません。手動実行を重複して開始しないでください。
+
+旧ログでスタック名が `sam-app`、状態が `ROLLBACK_COMPLETE` なら、その失敗スタックをそのまま更新できません。今回の初回構築は `--stack-name reportbank-weekly` を明示し、質問のStack Nameも確認して、予定の名前で構築します。既にその名前のスタックがある場合は状態と内容を確認し、稼働中の別用途スタックを削除しないでください。
+
+`sam build --template-file infra/weekly-reports.yaml --build-dir .aws-sam/weekly-build` を実行してから、手順3-2のデプロイコマンドを再実行します。ScheduleStateはDISABLEDのままにします。
+
+失敗したsam-appのS3・DynamoDBはRetain設定により残ります（ログのDELETE_SKIPPED）。新スタックとは別のリソースで、空でも料金が発生する場合があります。新構成の成功後、CloudFormationのsam-app → リソースで物理IDを確認し、不要な失敗時リソースだけを整理します。スタックの削除だけでは保持されたS3・DynamoDBは削除されません。新しいSNS通知の購読確認メールを使用してください。
