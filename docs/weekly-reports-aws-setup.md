@@ -1,6 +1,6 @@
 # ReportBank 週次定点観測：AWS構築手順書
 
-対象：WindowsのPCから、現在のFIGURE01～04とWeekly Insightを毎週更新する方。確認日：2026年10月17日。
+対象：WindowsのPCから、現在のFIGURE01～05とWeekly Insightを毎週更新する方。確認日：2026年10月18日。Weekly Insightの考察対象はFIGURE01～04です。
 
 **この手順書は構築の説明書です。AWSへの作成・公開・課金を伴う操作は、まだ実行していません。**
 
@@ -20,9 +20,54 @@ AWSの各サービスを一つずつ手作業で作る必要はありません�
 | 6 | サイトから読めるよう設定 | IAM・Amplify | 本文作成日時が初回実行の日時になる |
 | 7 | 毎週の実行を有効化 | PowerShell・Scheduler | 東京時間の金曜23時、ENABLED |
 
-### 今回の設定は `markets`
+### この手順書で使うアカウントと権限
 
-`ReportScope=markets` を選びます。名前は古いですが、**現在はFIGURE01～04の4図表に対応**しています。テンプレートの説明にある「First chart only」は以前の説明であり、現在の処理内容とは異なります。`full` は別の13系列を扱うモードなので選びません。
+**最初に、下表の「AWS構築担当」に該当する自分のログイン先・ロール名を確認してください。** 「構築担当」「運用担当」は本書での呼び名です。その名前のユーザーやロールがAWSに既に存在するという意味ではありません。実際のアカウントID・ロール名は手順1のメモに記入します。同じ人が複数の担当を兼ねても構いません。
+
+| 本書での呼び名 | どこへ、何の資格でログインするか | 行うこと・必要な権限 |
+| --- | --- | --- |
+| PC作業者 | 自分のWindowsユーザーでPCへログイン | プロジェクトの読み書きとコマンド実行。ツールのインストーラーが要求する場合だけWindows管理者権限を使用 |
+| AWS構築担当 | ReportBankを置いている12桁のAWSアカウントへ、組織が割り当てたSSO許可セット／IAMロールでログイン | 下記の構築・IAM設定・Secrets Manager・Amplifyの変更が許可されたロールを使用 |
+| AWS運用担当 | 同じAWSアカウントへ、運用用の許可セット／IAMロールでログイン | 実行・停止、ログ・生成データの確認。閲覧専用ロールでは手動実行や停止はできない |
+| OpenAI設定担当 | [OpenAI Platform](https://platform.openai.com/)へ、ReportBankで使う組織・APIプロジェクトのメンバーとしてログイン | 自分のプロジェクトAPIキーの作成権限。課金・メンバー・モデル制限の変更は、その管理権限を持つ担当者が実施 |
+| メール受信者 | `AlertEmail` に指定する受信箱へログイン | SNS購読確認メールを開いて承認。メール内の承認操作にAWS管理権限は不要 |
+| サイト確認者 | 通常のブラウザで公開URLを開く | 閲覧のみ。AWS・OpenAIへのログインは不要 |
+
+**Windowsの「管理者として実行」、AWSの権限、OpenAIの権限は、それぞれ別です。** PowerShellを管理者として開いてもAWSの権限は増えません。AWSコンソールにログインしただけでは、PCのAWS CLIも同じアカウントになるとは限りません。手順1-4でCLIの接続先とロールを確認します。
+
+### AWS構築担当に用意する権限（管理者への依頼用）
+
+権限を管理する方へ、この表と [infra/weekly-reports.yaml](../infra/weekly-reports.yaml) を渡してください。下表は必要な作業範囲と代表的なアクションであり、そのまま貼り付けるIAMポリシーではありません。実際のリソースARN、組織のSCP・アクセス許可境界、コンソール用の一覧取得権限に合わせて管理者が設定します。
+
+| 作業 | 権限の範囲・代表例 |
+| --- | --- |
+| SAMで作成・更新（手順3・7） | 対象CloudFormationスタックの変更セット作成・実行・参照、デプロイ用S3へのアップロード。初回SAM管理バケットの作成も含む |
+| テンプレート内リソースの構築 | Lambda、S3、DynamoDB、Step Functions、SNS、SQS、EventBridge Scheduler、CloudWatch Logs・Alarmの作成・更新・参照・タグ付け、および失敗時のロールバックに必要な削除等 |
+| 実行ロールの構築・割り当て | 対象IAMロール／ポリシーの作成・更新・参照・関連付け。`iam:PassRole` はこの構成のロールと渡すサービスに限定。例：`iam:CreateRole`、`iam:PutRolePolicy`、`iam:AttachRolePolicy`、`iam:GetRole` |
+| APIキー保存（手順2） | 対象シークレットの `secretsmanager:CreateSecret`、`DescribeSecret`。既存キーの差し替えは `PutSecretValue`。一覧・タグなど画面操作に必要な権限も付与 |
+| 初回実行・検証（手順5） | 対象Workflowの `states:StartExecution`、`DescribeExecution`、`GetExecutionHistory`。対象DynamoDBの `GetItem`／`Query`（画面でスキャンする場合は `Scan`）、S3の `ListBucket`／`GetObject`、ログの閲覧 |
+| サイト接続（手順6） | 対象Amplifyアプリ・本番ブランチの参照／更新／デプロイ。例：`amplify:GetApp`、`UpdateApp`、`UpdateBranch`、`StartJob`。SSR用IAMポリシーの作成・付与、対象Compute roleの `iam:PassRole` |
+
+本書の `sam deploy` コマンドはCloudFormation専用のサービスロールを明示指定しません。新規スタックではCLIでログインした構築担当の権限を基にリソースを作成するため、**CloudFormationへのアクセス権だけでは足りません**。既存スタックにサービスロールが設定済みの場合は、そのロールの権限も管理者が確認してください。[CloudFormationの実行権限](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html)
+
+`iam:PassRole` は「AWSサービスに指定した実行ロールを使わせるための権限」です。作業者がそのロールにログインする操作ではありません。[IAM公式説明](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+
+### 作業者のログインと、自動処理の実行ロールを分ける
+
+| 自動処理 | 使用する権限 | 用意する場所 |
+| --- | --- | --- |
+| Scheduler → Step Functions | 対象Workflowの開始、失敗時のSQS送信 | 手順3でテンプレートが `SchedulerRole` を作成 |
+| Step Functions → Lambda・SNS | Workerの呼び出し、失敗通知の発行等 | 手順3でSAMがWorkflow用ロールを作成 |
+| Lambda Worker → S3・DynamoDB・Secrets Manager | 原本と生成結果の保存、指定シークレット取得、ログ出力 | 手順3でSAMがWorker用ロールを作成 |
+| AmplifyのSSR → DynamoDB | 対象テーブルの `GetItem`・`Query` | 手順6でCompute roleに付与 |
+
+これらはAWSサービスが使用するロールです。作業者はAWS構築担当／運用担当として操作します。サービスの実行ロールにログインし直す必要はありません。
+
+### 今回の設定は `markets`（ここではまだ入力しません）
+
+`ReportScope` はReportBank用テンプレートの設定項目です。**手順3-2で、PCのPowerShellに表示される `Parameter ReportScope [markets]:` という質問へ `markets` と入力します。** `[markets]` が既定値ならEnterだけでも同じです。AWSコンソールでこの名前のサービスを探す操作はありません。
+
+名前は古いですが、現在はFIGURE01～05の収集・保存に対応しています。本文の考察対象はFIGURE01～04です。テンプレートの説明にある「First chart only」は以前の説明です。`full` は別の13系列を扱うモードなので選びません。
 
 現行コードで動く流れは次のとおりです。
 
@@ -49,20 +94,30 @@ Lambdaは1つです。`markets` ではStep Functionsの **Collect内で生成・
 | FIGURE02の貸出 | 同梱CSV・法人向けAPI応答の保存データを使用。新しい貸出データへの自動更新は未実装 |
 | 日銀資産 | 指定の財務諸表を再取得。古い期間を他統計で埋めない |
 | 政府債務・利払費 | 最新残高・予算総額を再取得。新年度の利払費を追加。保存済み年度の利払費は維持 |
+| FIGURE05の所得・失業率 | 最新の年次統計を再取得。所得は調査前年に配置し、未調査年を補間しない |
 | Weekly Insight | キー設定時に4図のデータから400字以内で生成。モデルの自動切替なし |
 | 「過去の400字整理」欄 | `markets` の本文をこの一覧へ追加する処理は未実装。実行ごとの本文はS3に保存される |
 
-**AWSを構築するだけで、貸出の自動取得や過去本文の一覧保存が追加されるわけではありません。** この手順の完成条件は「4図と最新本文の週次更新」です。
+**AWSを構築するだけで、貸出の自動取得や過去本文の一覧保存が追加されるわけではありません。** この手順の完成条件は「5図の掲載・現行収集処理と最新本文の週次実行」です。
 
 ## 1. アカウント・PCを準備する
 
 ### 1-1. 作業メモを用意する
+
+**操作場所：** PCのメモ帳など。
+
+**使用アカウント：** PC作業者。
+
+**必要な権限：** メモの保存先への書き込み。AWS操作なし。
 
 次の表を自分用メモにコピーしてください。APIキーそのものはこのメモに書きません。
 
 | 項目 | 記入する値 |
 | --- | --- |
 | AWSアカウントID | 12桁の番号 |
+| AWSログイン先・ロール名 | アクセスポータルURLと構築用許可セット／ロール名 |
+| CLIの実行者ARN | 手順1-4の `Arn` を記入 |
+| OpenAI組織・プロジェクト | APIキーを作成する組織名・プロジェクト名 |
 | AWSリージョン | `ap-northeast-1`（東京） |
 | AWS CLIプロファイル | この手順では `reportbank` |
 | スタック名 | この手順では `reportbank-weekly` |
@@ -76,14 +131,26 @@ ARNはAWSリソースの住所のような識別子です。APIキーとは別�
 
 ### 1-2. AWSにログインする
 
+**操作場所：** ブラウザ → AWSアクセスポータル／AWSコンソール。
+
+**使用アカウント：** AWS構築担当。
+
+**必要な権限：** 冒頭の構築権限表を参照。閲覧専用ロールでは構築不可。
+
 1. AWSコンソールへ、普段ReportBankを管理しているアカウントでログインします。
-2. 右上のアカウント情報で12桁のアカウントIDを控えます。
+2. 右上のアカウント情報で12桁のアカウントIDと現在のロール名を控えます。SSOではアクセスポータルで対象アカウントと構築用許可セットを選びます。
 3. リージョンを「アジアパシフィック（東京）」にします。IAMはリージョン選択がない画面です。
 4. 構築を担当するユーザー／ロールに、CloudFormationと本書のサービスを作成できる権限があることを確認します。IAMロールの作成と `iam:PassRole` も必要です。組織のアカウントでは、このテンプレートを管理者に渡して権限を用意してもらいます。
 
 閲覧だけの権限では構築できません。ルートユーザーのアクセスキーを作る必要はありません。
 
 ### 1-3. PCにツールを用意する
+
+**操作場所：** PCのブラウザで取得 → Windowsへインストール → PowerShell。
+
+**使用アカウント：** PC作業者。インストーラーが要求した場合だけWindows管理者。
+
+**必要な権限：** ローカルのインストール・実行。AWSログイン不要。
 
 Windowsのスタートメニューから「PowerShell」を開きます。以下のリンクから未導入のツールをインストールしてください。
 
@@ -108,9 +175,15 @@ python --version
 
 ### 1-4. PowerShellからAWSへログインする
 
+**操作場所：** PCのPowerShell。SSO認証時だけブラウザへ移動し、認証後戻る。
+
+**使用アカウント：** AWS CLIではAWS構築担当の資格を使用。
+
+**必要な権限：** 対象アカウント・構築用許可セットへのアクセス。Identity Centerの初期設定はその管理権限を持つAWS管理者が実施。
+
 既に動作するCLIプロファイルがある場合は、それを使えます。その場合は以後の `--profile reportbank` を自分のプロファイル名に読み替えてください。
 
-未設定の場合はIAM Identity Centerのログインを使います。管理者から「AWSアクセスポータルURL」「SSOリージョン」「利用アカウント」「許可セット（ロール）」を受け取ってください。**SSOリージョンは東京とは限りません。** 個人アカウントで未設定なら、先に[Identity Centerの開始手順](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)でAWSアカウントにアクセスできるユーザーと許可セットを準備します。
+未設定の場合はIAM Identity Centerのログインを使います。管理者から「AWSアクセスポータルURL」「SSOリージョン」「利用アカウント」「許可セット（ロール）」を受け取ってください。**SSOリージョンは東京とは限りません。** 個人アカウントで未設定なら、Identity Centerを設定できる管理者が先に[Identity Centerの開始手順](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)でAWSアカウントにアクセスできるユーザーと許可セットを準備します。
 
 ```powershell
 aws configure sso --profile reportbank
@@ -134,9 +207,15 @@ aws sso login --profile reportbank
 aws sts get-caller-identity --profile reportbank
 ```
 
-**確認：** `Account` が手順1-2の12桁の番号と同じであること。違う場合はデプロイしません。SSOログインは期限が切れるので、その場合は `aws sso login` を再実行します。[公式CLIのSSO手順](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)
+**確認：** `Account` が手順1-2の12桁の番号と同じであること。`Arn` も確認し、構築用ロールのセッションであることを確かめてメモします。違う場合はプロファイルを直してから進めます。`reportbank` はPCの接続設定の名前で、AWSユーザー名ではありません。SSOログインは期限が切れるので、その場合は `aws sso login` を再実行します。[公式CLIのSSO手順](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)
 
 ### 1-5. プロジェクトを開く
+
+**操作場所：** PCのPowerShell。
+
+**使用アカウント：** PC作業者。
+
+**必要な権限：** プロジェクトの読み取りと出力先への書き込み。AWS操作なし。
 
 ```powershell
 Set-Location -LiteralPath 'C:\Users\kazut\Documents\my-first-site'
@@ -151,11 +230,25 @@ $weeklyConfig = Join-Path (Get-Location) 'weekly-samconfig.toml'
 
 ### 2-1. OpenAI側の用意
 
+**操作場所：** ブラウザ → OpenAI Platform → 対象の組織・プロジェクト → API keys。
+
+**使用アカウント：** OpenAI設定担当。
+
+**必要な権限：** プロジェクトAPIキーの作成・Responses API利用。課金・モデル制限の変更は各管理権限を持つ担当者が実施。
+
 OpenAIのAPIプロジェクトでAPIキーを作成し、APIの課金設定・利用上限・モデル利用権限を確認します。指定モデルは **`gpt-5.6-luna`** です。[公式モデル仕様](https://developers.openai.com/api/docs/models/gpt-5.6-luna)を確認し、このプロジェクトでの実際の呼び出し可否は手順5で確認します。別モデルには自動切替しません。
+
+キー作成前に組織・プロジェクトを確認します。制限付きキーではResponses APIを許可し、担当者のプロジェクト権限も確認します。[OpenAIの権限管理](https://developers.openai.com/api/docs/guides/rbac)
 
 APIキーを使うのはLambdaだけです。ブラウザ向けの `NEXT_PUBLIC_...`、Amplifyの環境変数、Gitのファイルには保存しません。
 
 ### 2-2. AWSコンソールで保存する
+
+**操作場所：** ブラウザ → AWSコンソール → Secrets Manager（東京）。
+
+**使用アカウント：** AWS構築担当。
+
+**必要な権限：** 対象シークレットの作成・参照。値の差し替えはPutSecretValue。
 
 1. 東京リージョンの「Secrets Manager」を検索して開きます。
 2. 「新しいシークレットを保存する」を選びます。
@@ -178,6 +271,12 @@ APIキーを使うのはLambdaだけです。ブラウザ向けの `NEXT_PUBLIC_
 
 ### 3-1. ビルドする【PC】
 
+**操作場所：** PCのPowerShell。手順1-5のフォルダー。
+
+**使用アカウント：** PC作業者。AWS認証を使うコマンドはreportbankプロファイルのAWS構築担当。
+
+**必要な権限：** ローカルの読み書きと依存ライブラリ取得の通信。AWSリソースはまだ作成しない。
+
 ```powershell
 sam validate --template-file infra/weekly-reports.yaml --region ap-northeast-1 --profile reportbank
 sam build --template-file infra/weekly-reports.yaml --build-dir .aws-sam/weekly-build
@@ -186,6 +285,12 @@ sam build --template-file infra/weekly-reports.yaml --build-dir .aws-sam/weekly-
 **確認：** エラーがなく `Build Succeeded` と表示され、`.aws-sam/weekly-build/template.yaml` が生成されること。ここまでは週次レポートのAWSリソースを作成しません。
 
 ### 3-2. デプロイする【PC】
+
+**操作場所：** PCのPowerShell。コマンドも続く質問への回答も同じ画面に入力。
+
+**使用アカウント：** reportbankプロファイルのAWS構築担当。
+
+**必要な権限：** 冒頭の構築権限表の範囲。CloudFormationだけでなく配下サービスの作成・IAMのPassRole等も必要。
 
 ここからAWSリソースが作られ、利用料が発生します。SAMはLambdaのコードと依存ライブラリも梱包してアップロードします。元のYAMLだけをCloudFormation画面へ直接アップロードする方法は、このコードの配置には使いません。
 
@@ -211,11 +316,19 @@ sam deploy --guided --template-file .aws-sam/weekly-build/template.yaml --config
 | SAM configuration file | 指定した `weekly-samconfig.toml` のパスを維持 |
 | SAM configuration environment | `weekly` |
 
+PowerShellに `Parameter ReportScope [markets]:` と出たら、値だけ `markets` と入力してEnterを押します。`ReportScope=markets` 全体をコマンドとして実行する操作ではありません。IAMロール作成への `Y` は作成への同意であり、不足する作業者権限を付与するものではありません。
+
 最後に変更一覧が出ます。初回は新規追加が中心です。アカウント・リージョン・スタック名を再確認して、`Deploy this changeset?` に `Y` と答えます。以前作った同名スタックがある場合は新規作成ではなく更新になります。削除や置換が表示された場合は内容を確認してから進めてください。
 
-**確認：** 東京のCloudFormation →「スタック」→ `reportbank-weekly` が `CREATE_COMPLETE`（更新なら `UPDATE_COMPLETE`）になること。[SAM deployの公式仕様](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html)
+**確認場所を切り替えます：** ブラウザで同じAWSアカウントのAWS構築担当として、東京のCloudFormation →「スタック」→ `reportbank-weekly` が `CREATE_COMPLETE`（更新なら `UPDATE_COMPLETE`）になること。[SAM deployの公式仕様](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html)
 
 ### 3-3. 出力値を控える【コンソール】
+
+**操作場所：** ブラウザ → AWSコンソール → CloudFormation（東京）→ reportbank-weekly。
+
+**使用アカウント：** AWS構築担当。
+
+**必要な権限：** 対象スタック・出力・リソースの閲覧。
 
 CloudFormationの対象スタック →「出力」を開きます。
 
@@ -234,6 +347,12 @@ CloudFormationの対象スタック →「出力」を開きます。
 
 ## 4. 失敗通知のメールを確認する
 
+**操作場所：** 通知用メール受信箱 → ブラウザのSNSコンソール（東京）。
+
+**使用アカウント：** 承認はメール受信者。SNS画面はAWS構築担当／AWS運用担当。
+
+**必要な権限：** メール承認にAWSログイン不要。SNS購読一覧の閲覧。テスト発行時のみ対象トピックのsns:Publish。
+
 1. 手順3で入力したメールの受信箱を開きます。
 2. AWS Notificationsから届いた購読確認メールを開きます。
 3. 内容が今回のSNSトピックであることを確認し、`Confirm subscription` を押します。
@@ -245,6 +364,12 @@ CloudFormationの対象スタック →「出力」を開きます。
 
 ### 5-1. 入力を用意する【PC】
 
+**操作場所：** PCのPowerShell。
+
+**使用アカウント：** PC作業者。
+
+**必要な権限：** ローカルコマンド実行だけ。AWSへのアクセスなし。
+
 PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表示するだけで、AWSを実行しません。
 
 ```powershell
@@ -255,6 +380,12 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 
 ### 5-2. 開始する【コンソール】
 
+**操作場所：** ブラウザ → CloudFormation（東京）→ 対象スタック → Workflow → Step Functions。
+
+**使用アカウント：** AWS構築担当または実行権限を持つAWS運用担当。
+
+**必要な権限：** 対象Workflowのstates:StartExecutionと実行状況の閲覧。
+
 1. CloudFormationの「リソース」→ `Workflow` のリンクからStep Functionsを開きます。
 2. 「実行を開始」を押します。
 3. 名前は自動生成のまま、または `first-check-日時` のような重複しない名前にします。
@@ -264,6 +395,12 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 この操作は実際にデータを収集し、OpenAI APIを呼び出し、DynamoDBの最新版を保存します。何度も連打すると再度API料金がかかり得ます。
 
 ### 5-3. 成功を確認する
+
+**操作場所：** ブラウザ → Step Functions、DynamoDB、S3（すべて東京）。下記の順で移動。
+
+**使用アカウント：** AWS構築担当またはAWS運用担当。
+
+**必要な権限：** 実行履歴の閲覧、テーブルのGetItem／Query（画面でスキャンする場合はScan）、S3のListBucket／GetObject。
 
 **Step Functions：** 全体が `Succeeded`。通常は `Collect → AlreadyPublished → Done` の経路です。`Collect` の出力、または最終出力の `run` を開き、次を確認します。
 
@@ -286,7 +423,7 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 | `chart.insight.summary` | 400字以内の日本語。50年の観測窓を踏まえた3点の考察 |
 | `chart.insight.model` | `gpt-5.6-luna` |
 | `chart.insight.generatedAt` | 今回の実行時刻に近い日時 |
-| `chart.fiscal` / `chart.lending` / `chart.bojFinancials` | 各図のデータが入っている |
+| `chart.fiscal` / `chart.lending` / `chart.bojFinancials` / `chart.household` | 各図のデータが入っている |
 
 `insight` がなければ、キー未設定の図表のみ更新で成功している可能性があります。これでは今回のAI週次生成の完成条件を満たしません。`OpenAISecretArn` を確認します。
 
@@ -297,6 +434,12 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 ## 6. 既存のAmplifyサイトと接続する
 
 ### 6-1. DynamoDBを読むIAMポリシーを作る
+
+**操作場所：** ブラウザ → AWSコンソール → IAM（グローバル）。
+
+**使用アカウント：** AWS構築担当。
+
+**必要な権限：** IAMポリシーの作成・参照。下のJSONはAmplifyに与える権限であり、作業者のログイン権限ではない。
 
 1. IAM →「ポリシー」→「ポリシーの作成」→ JSON編集を選びます。
 2. 次のJSONを貼り付け、`ここをReportsTableArnに置換` を手順3の実際のARNに置き換えます。
@@ -316,6 +459,12 @@ PowerShellで次を実行します。これは現在のUTC時刻入りJSONを表
 ```
 
 ### 6-2. SSR Compute Roleへ追加する
+
+**操作場所：** ブラウザ → Amplifyの既存アプリ → IAMロール確認 → IAMで編集 → Amplifyへ戻る。
+
+**使用アカウント：** AWS構築担当。Compute roleへログインし直す必要はない。
+
+**必要な権限：** 対象IAMロールへのポリシー付与。新規作成時はCreateRole等。割り当て時はAmplify更新と対象ロールのPassRole。
 
 Amplifyの対象アプリ →「アプリの設定」→「IAMロール」で **Compute role** を確認します。ビルド用のService roleとは別です。
 
@@ -342,6 +491,12 @@ Compute roleが未設定なら、IAM →「ロール」→「ロールを作成�
 
 ### 6-3. 環境変数を設定する
 
+**操作場所：** ブラウザ → Amplify → 既存アプリ → 本番ブランチに適用する環境変数。
+
+**使用アカウント：** AWS構築担当。
+
+**必要な権限：** 対象アプリ／ブランチの参照・更新。
+
 Amplifyの対象アプリ →「ホスティング」→「環境変数」（画面構成によっては「環境変数」を直接選択）→編集で追加します。
 
 | 名前 | 値 |
@@ -353,7 +508,15 @@ Amplifyの対象アプリ →「ホスティング」→「環境変数」（画
 
 ### 6-4. ビルド設定に1行追加して再デプロイする
 
+**操作場所：** ブラウザ → Amplifyのビルド設定。Git管理の場合はPCのエディターでamplify.ymlを編集。
+
+**使用アカウント：** コンソールはAWS構築担当。Git変更はリポジトリへの書き込み権限を持つアカウント。
+
+**必要な権限：** Amplify設定更新・デプロイ開始。Git管理時はコミット・push／マージ権限も必要で、AWS権限とは別。
+
 Amplifyの「ビルドの設定」を開き、既存の `npm run build` の直前に **`npm run configure:reports`** を追加します。リポジトリの `amplify.yml` を使っている場合は、そちらの設定を変更して反映します。
+
+以下はAmplifyのビルド設定です。PowerShellへ貼り付けて実行するものではありません。
 
 これは挿入位置の例です。既存のYAML全体をこの断片で置き換えないでください。
 
@@ -373,9 +536,15 @@ frontend:
 
 ### 6-5. サイトを確認する
 
+**操作場所：** 通常のブラウザで公開サイト。照合用にDynamoDBを別タブで開く。
+
+**使用アカウント：** サイト確認者。DynamoDBはAWS構築担当またはAWS運用担当。
+
+**必要な権限：** 公開ページはログイン不要。照合には対象テーブルの読み取り。
+
 `https://reportbankwebsite.com/weekly-reports` を開きます。
 
-- FIGURE01～04が表示される。
+- FIGURE01～05が表示される。
 - Weekly Insightの「本文作成」が手順5の実行時刻に対応する。
 - 表示本文がDynamoDBの `chart.insight.summary` と一致する。
 - データ取得エラーが表示されていない。
@@ -383,6 +552,12 @@ frontend:
 **グラフが表示されるだけでは接続成功とは判定しません。** 未設定時も同梱データが表示されるため、日時と本文を照合します。`markets` では「過去の400字整理」が空でも、最新本文の接続失敗とは限りません。
 
 ## 7. 毎週金曜23時の自動実行を有効にする
+
+**操作場所：** PCのPowerShell → ブラウザのCloudFormation → EventBridge Scheduler（東京）。
+
+**使用アカウント：** 両方とも同じAWSアカウントのAWS構築担当。
+
+**必要な権限：** 手順3のスタック更新とScheduler設定閲覧。
 
 手順5と6が成功してから実施します。
 
@@ -409,11 +584,23 @@ frontend:
 
 ### 毎週の確認
 
+**操作場所：** ブラウザ → Step Functions・DynamoDB・公開ページ。料金はAWS請求画面とOpenAI Platformで別々に確認。
+
+**使用アカウント：** 処理確認はAWS運用担当。請求・API利用状況は各サービスで閲覧を許可された担当者。
+
+**必要な権限：** 実行履歴・テーブル・ログの閲覧。AWS運用権限だけでは請求やOpenAI利用状況を見られるとは限らない。
+
 金曜の実行後、Step Functionsが成功し、DynamoDBとページの本文作成日時が更新されたか確認します。株価や残高の公表頻度が低い場合、グラフの数値が前週と同じでも正常です。
 
 AWSとOpenAIの利用料は別々です。正確な金額は実行後にAWSの請求画面とOpenAIプロジェクトの利用状況で確認します。S3、DynamoDB、Secrets Managerなどはスケジュール停止中にも保管料金が発生し得ます。
 
 ### コード・同梱データを変更したとき
+
+**操作場所：** PCのエディター／PowerShell。画面側はGitとAmplify。
+
+**使用アカウント：** PC作業者＋AWS構築担当。Gitはリポジトリ書き込み権限を持つアカウント。
+
+**必要な権限：** ローカル編集、手順3のスタック更新、手順6のデプロイ。
 
 Lambda側の変更はPCで `sam build` →同じ設定ファイル・スタックへ `sam deploy --guided`。画面側の変更は既存Amplifyの本番ブランチを再デプロイします。両方を変更した場合は両方に反映します。設定変更時は `ScheduleState` が意図せず戻っていないか確認してください。
 
@@ -421,21 +608,42 @@ Lambda側の変更はPCで `sam build` →同じ設定ファイル・スタッ�
 
 ### 一時停止
 
+**操作場所：** 通常はPCのPowerShell。緊急時はSchedulerコンソール。進行中の実行はStep Functions。
+
+**使用アカウント：** SAM更新はAWS構築担当。直接停止は停止権限を持つAWS運用担当でも可。
+
+**必要な権限：** SAM更新は手順3の権限。直接変更はscheduler:UpdateScheduleと要求される場合はPassRole。実行停止はstates:StopExecution。
+
 通常は同じスタックを `ScheduleState=DISABLED` で更新します。急いで止める場合はSchedulerコンソールで対象スケジュールを無効化し、その後SAMの保存設定・スタック側もDISABLEDへそろえます。コンソールだけで変更すると、次回デプロイで元に戻ることがあります。[Schedulerの状態変更](https://docs.aws.amazon.com/scheduler/latest/UserGuide/managing-schedule-state.html)
 
 スケジュール停止は、既に開始したStep Functions実行を止めません。進行中の実行を止めたい場合はStep Functionsでその実行を停止します。既に起動したLambda処理は続く場合があるため、保存結果も確認してください。
 
 ### 廃止するとき
 
+**操作場所：** AWSコンソールのCloudFormation、S3、DynamoDB、Secrets Manager、Amplify。まず一時停止を実施。
+
+**使用アカウント：** AWS構築担当。保管データ削除は削除可否を判断できる管理担当者。
+
+**必要な権限：** スタックと配下リソースの削除。保持データ・シークレットの削除権限は別途必要。
+
 まずスケジュールを停止します。テンプレートではS3・DynamoDBを保持する設定なので、スタックを削除してもこの2つは残ります。Secrets Managerのキー、Amplifyの環境変数・権限、残したデータも別管理です。保管データを削除する前に必要な記録を保存してください。
 
 ## 9. 困ったときの確認表
+
+**操作場所：** 下表に示すPCまたはAWS／OpenAI画面。
+
+**使用アカウント：** ローカルはPC作業者、AWS調査はAWS運用担当、構成修正はAWS構築担当、API設定はOpenAI設定担当。
+
+**必要な権限：** 調査対象とCloudWatchログの閲覧。権限の変更はAWSの権限管理者へ依頼。
 
 | 症状 | 最初に確認する場所・対処 |
 | --- | --- |
 | `aws` / `sam` が見つからない | インストール完了後にPowerShellを開き直す。PATHを確認 |
 | `PythonPipBuilder:Validation` / python3.13がない | `python --version` とPython 3.13のPATH。SAM内部Pythonだけで済ませない |
 | SSOトークン期限切れ | `aws sso login --profile reportbank` を再実行 |
+| コンソールでは動くがCLIでは拒否される | PowerShellでget-caller-identityのAccountとArnを確認。コンソールとCLIは別の認証 |
+| iam:PassRoleが拒否される | AWS構築担当が対象ロールをサービスへ渡せるか管理者へ確認。Windows管理者として起動しても直りません |
+| Lambda実行中にAccessDenied | ログにあるAction・対象ARNとWorker実行ロールを確認。手動開始した人の権限とは別 |
 | デプロイでAccessDenied | `get-caller-identity` のアカウントとロールを確認。拒否されたActionを管理者へ伝える |
 | `ROLLBACK_COMPLETE` | CloudFormationの「イベント」で最初のCREATE_FAILEDを確認。原因解消後、初回失敗スタックの扱いを確認して再作成。既存稼働スタックを削除しない |
 | Lambdaの予約同時実行数を設定できない | テンプレートは2を予約する。アカウントのリージョン別同時実行枠をService Quotasで確認・増枠する |
@@ -460,6 +668,12 @@ CloudWatchログへは、CloudFormation →リソース→ `Worker` →Lambdaの
 
 ## 10. 完成チェックリスト
 
+**操作場所：** AWSコンソールの各サービスと公開ページ。手順3～7を参照。
+
+**使用アカウント：** AWS構築担当またはAWS運用担当。公開ページはサイト確認者。
+
+**必要な権限：** 対象の閲覧。追加実行・変更には対応する手順の操作権限が必要。
+
 - [ ] CloudFormationがCREATE_COMPLETEまたはUPDATE_COMPLETE
 - [ ] ReportScopeはmarkets、OpenAISecretArnは正しい
 - [ ] SNS通知の購読確認が完了
@@ -477,7 +691,7 @@ CloudWatchログへは、CloudFormation →リソース→ `Worker` →Lambdaの
 
 - [構築テンプレート](../infra/weekly-reports.yaml)
 - [収集・生成・保存処理](../workers/weekly-report/index.py)
-- [4図表の統合](../workers/weekly-report/integrated.py)
+- [5図表のデータ統合・4図表の要約生成](../workers/weekly-report/integrated.py)
 - [Amplifyの実行時設定](../scripts/configure-report-env.mjs)
 - [最新図表の読み取り](../lib/reports/markets.ts)
 - [履歴の読み取り](../lib/reports/store.ts)
