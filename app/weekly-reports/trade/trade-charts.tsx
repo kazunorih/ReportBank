@@ -1,0 +1,45 @@
+"use client";
+
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { chartScale } from "@/lib/reports/chart-scale";
+import { type TradeChart, tradeMonth } from "@/lib/reports/trade";
+import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
+
+const colors = ["#7bb9e5", "#73c9b3", "#b6a0df", "#edc278", "#eca9ad", "#cbd5e1"];
+const amount = (millions: number) => (millions / 1_000_000).toLocaleString("ja-JP", { minimumFractionDigits: 2, maximumFractionDigits: 3 });
+
+export default function TradeCharts({ charts, latestMonth }: { charts: TradeChart[]; latestMonth: string }) {
+  return <div className="space-y-8">{charts.map((chart, index) => {
+    const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value / 1_000_000])) }));
+    const scale = chartScale(chart.points.map(point => point.total / 1_000_000));
+    const latest = chart.points[chart.points.length - 1];
+    return <section key={chart.id} className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby={chart.id}>
+      <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(index + 1).padStart(2, "0")}</p>
+      <h2 id={chart.id} className="mt-2 text-xl font-semibold sm:text-2xl">{chart.title}</h2>
+      <p className="mt-3 text-sm leading-7 text-slate-500">{tradeMonth(latestMonth)}の上位5{chart.id.startsWith("country") ? "か国・地域" : "品目（主要商品大分類）"}とその他。各月の金額を積み上げて表示します。</p>
+      <FixedAxisChart left={scale} leftUnit="金額（兆円）" minWidth={1800} height={360} label={chart.title}>
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={data} margin={plotMargin} accessibilityLayer>
+            <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="month" height={xAxisHeight} interval={2} angle={-45} textAnchor="end" tick={{ fontSize: 11 }} tickFormatter={tradeMonth} />
+            <YAxis hide width={0} domain={scale.domain} ticks={scale.ticks} />
+            <Tooltip labelFormatter={label => tradeMonth(String(label))} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆円`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
+            {chart.categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="trade" fill={colors[i]} isAnimationActive={false} />)}
+          </BarChart>
+        </ResponsiveContainer>
+      </FixedAxisChart>
+      <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{chart.categories.map((name, i) => <li key={name} className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3" style={{ background: colors[i] }} />{name}</li>)}</ul>
+      <p className="mt-5 text-sm text-slate-600">最新月の合計：<strong>{amount(latest.total)}兆円</strong></p>
+      <details className="mt-4 text-sm text-slate-600">
+        <summary className="w-fit cursor-pointer rounded py-2 text-sky-700 focus-visible:outline-2">月別の金額を見る（百万円）</summary>
+        <div className="mt-2 max-h-96 overflow-auto" tabIndex={0} role="region" aria-label={`${chart.title}の数値表`}>
+          <table className="w-full whitespace-nowrap text-right text-xs tabular-nums">
+            <caption className="sr-only">{chart.title}、単位：百万円</caption>
+            <thead className="sticky top-0 bg-slate-100"><tr><th scope="col" className="p-3 text-left">年月</th>{chart.categories.map(name => <th key={name} scope="col" className="p-3">{name}</th>)}<th scope="col" className="p-3">合計</th></tr></thead>
+            <tbody>{chart.points.map(point => <tr key={point.month} className="border-b border-slate-100"><th scope="row" className="p-3 text-left font-normal">{tradeMonth(point.month)}</th>{point.values.map((value, i) => <td key={i} className="p-3">{value.toLocaleString("ja-JP")}</td>)}<td className="p-3">{point.total.toLocaleString("ja-JP")}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </details>
+    </section>;
+  })}</div>;
+}

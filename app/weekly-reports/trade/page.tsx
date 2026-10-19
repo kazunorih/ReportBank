@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import SiteNav from "@/app/components/site-nav";
+import { tradeData, tradeMonth } from "@/lib/reports/trade";
+import ObservationTabs from "../observation-tabs";
+import TradeCharts from "./trade-charts";
+
+export const metadata: Metadata = {
+  title: "月次貿易観測 | 定点観測 | ReportBank",
+  description: "財務省・税関の貿易統計から、直近5年間の月次輸出入を国別・品目別に観測します。最新月の上位5区分とその他の金額を掲載。",
+};
+
+export default function MonthlyTradePage() {
+  return <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
+    <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
+      <SiteNav current="weekly" />
+      <ObservationTabs current="trade" />
+      <header className="border-b border-slate-200 pb-8">
+        <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / MONTHLY TRADE</p>
+        <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">日本の輸出と輸入</h2>
+        <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">財務省・税関の貿易統計から、国・地域と品目ごとの輸出入の推移を定点観測します。最新月の上位5区分を全期間で固定し、貿易構造の変化を比較します。</p>
+        <p className="mt-5 text-sm text-slate-600">対象期間：{tradeMonth(tradeData.firstMonth)}～{tradeMonth(tradeData.latestMonth)}（60か月）</p>
+      </header>
+      <TradeCharts charts={tradeData.charts} latestMonth={tradeData.latestMonth} />
+      <section className="rounded-2xl bg-white p-6 text-sm leading-7 text-slate-600">
+        <h2 className="text-xl font-semibold text-slate-950">出典・集計方法</h2>
+        <p className="mt-4">出典：財務省・税関「<a className="text-sky-700 underline" href="https://www.customs.go.jp/toukei/latest/index.htm" target="_blank" rel="noopener noreferrer">貿易統計（最新の発表）</a>」および「<a className="text-sky-700 underline" href="https://www.customs.go.jp/toukei/shinbun/happyou.htm" target="_blank" rel="noopener noreferrer">報道発表資料・月次XML</a>」。輸出はFOB価格、輸入はCIF価格の円建て金額です。季節調整はしていません。</p>
+        <p className="mt-3">国別は国・地域を対象とし、EU・アジアなどの地域合計は順位に含めません。品目別は重複しない主要商品大分類を使い、「その他」を除く8分類から上位5品目を選びます。図表の「その他」は総額から上位5区分の合計を差し引いた金額です。</p>
+        <p className="mt-3">原資料の百万円を兆円に換算しています。各月は取得時点の公表値を使い、速報・確報・確定値が混在します。後日の改訂により数値が変わる場合があります。</p>
+        <p className="mt-3">データ取得日：{new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(tradeData.retrievedAt))}</p>
+        <details className="mt-4"><summary className="w-fit cursor-pointer rounded py-2 text-sky-700">月別の原資料を見る</summary><ul className="mt-2 space-y-2">{[...tradeData.sources].reverse().map(source => <li key={source.month}><a href={source.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">{source.sourceTitle}</a><span className="ml-2 text-xs">公表：{source.published}</span></li>)}</ul></details>
+      </section>
+    </div>
+  </main>;
+}
