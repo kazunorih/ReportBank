@@ -7,8 +7,6 @@ export const inflationSeries = [
   { id: "weightedMedian", label: "加重中央値", color: "#0f766e" },
   { id: "mode", label: "最頻値", color: "#7c3aed" },
   { id: "jgb10", label: "国債10年（年末）", color: "#0284c7" },
-  { id: "jgb30", label: "国債30年（年末）", color: "#475569" },
-  { id: "flat35", label: "フラット35・中間値（年末）", color: "#a16207" },
 ] as const;
 
 type RateReport = {
@@ -24,6 +22,6 @@ export function annualInflationRows(report: RateReport, years: number) {
   return observations.filter(row => row.year >= latest - years + 1).map(row => {
     const index = report.periods.indexOf(`${row.year}-12-31`);
     const rate = (id: string) => index < 0 ? null : report.series.find(series => series.id === id)?.values[index] ?? null;
-    return { ...row, jgb10: rate("jgb10"), jgb30: rate("jgb30"), flat35: rate("flat35") };
+    return { ...row, jgb10: rate("jgb10") };
   });
 }

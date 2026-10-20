@@ -25,7 +25,6 @@ describe("annual core inflation", () => {
     expect(rows).toHaveLength(5);
     expect(rows[0].jgb10).toBeNull();
     expect(rows.at(-1)!.jgb10).toBe(0);
-    expect(rows.at(-1)!.jgb30).toBeNull();
     expect(annualInflationRows({ ...report, asOf: "2025-01-01" }, 5).at(-1)!.year).toBe(2024);
   });
 });

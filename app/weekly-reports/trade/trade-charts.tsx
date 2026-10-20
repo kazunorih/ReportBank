@@ -3,6 +3,7 @@
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { chartScale } from "@/lib/reports/chart-scale";
 import { type TradeChart, tradeMonth } from "@/lib/reports/trade";
+import { examplesForCommodity } from "@/lib/reports/trade-examples";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
 const colors = ["#7bb9e5", "#73c9b3", "#b6a0df", "#edc278", "#eca9ad", "#cbd5e1"];
@@ -29,6 +30,15 @@ export default function TradeCharts({ charts, latestMonth }: { charts: TradeChar
         </ResponsiveContainer>
       </FixedAxisChart>
       <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{chart.categories.map((name, i) => <li key={name} className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3" style={{ background: colors[i] }} />{name}</li>)}</ul>
+      {chart.id.startsWith("commodity") && <div className="mt-5 rounded-xl bg-slate-50 p-4 text-xs leading-6 text-slate-600">
+        <h3 className="font-semibold text-slate-700">品目に含まれる商品の例</h3>
+        <dl className="mt-2 grid gap-x-6 gap-y-2 sm:grid-cols-2">{chart.categories.map((name, i) => <div key={name}>
+          <dt className="flex items-center gap-2 font-semibold"><span aria-hidden="true" className="h-2.5 w-2.5 shrink-0" style={{ background: colors[i] }} />{name}</dt>
+          <dd className="ml-4.5">{examplesForCommodity(name, chart.categories).join("、")}</dd>
+        </div>)}</dl>
+        <p className="mt-3">商品例は分類の一部です。「その他」は上位5品目以外の大分類と、公表分類「その他」の合計です。</p>
+        <a className="text-sky-700 underline" href="https://www.customs.go.jp/toukei/shinbun/happyou.htm" target="_blank" rel="noopener noreferrer">出典：税関・主要商品別輸出入表</a>
+      </div>}
       <p className="mt-5 text-sm text-slate-600">最新月の合計：<strong>{amount(latest.total)}兆円</strong></p>
       <details className="mt-4 text-sm text-slate-600">
         <summary className="w-fit cursor-pointer rounded py-2 text-sky-700 focus-visible:outline-2">月別の金額を見る（百万円）</summary>
