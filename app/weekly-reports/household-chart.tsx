@@ -2,6 +2,7 @@
 
 import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { HouseholdData } from "@/lib/reports/schema";
+import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 
@@ -23,7 +24,7 @@ export default function HouseholdChart({ data, years }: { data: HouseholdData; y
           <XAxis dataKey="year" interval={0} angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8} tick={{ fontSize: 11 }} tickFormatter={value => `${value}年`} />
           <YAxis yAxisId="percent" hide domain={percent.domain} ticks={percent.ticks} />
           <YAxis yAxisId="income" hide domain={income.domain} ticks={income.ticks} />
-          <Tooltip labelFormatter={value => `${value}年（所得は翌年調査）`} formatter={(value, name) => [`${number(Number(value))} ${name === "平均所得金額" ? "万円" : "%"}`, name]} />
+          <Tooltip itemSorter={tooltipOrder(["unemploymentRate", "belowMeanShare", "averageIncome"])} labelFormatter={value => `${value}年（所得は翌年調査）`} formatter={(value, name) => [`${number(Number(value))} ${name === "平均所得金額" ? "万円" : "%"}`, name]} />
           <Bar yAxisId="income" dataKey="averageIncome" name="平均所得金額" fill="#cbd5e1" maxBarSize={22} isAnimationActive={false} />
           <Line yAxisId="percent" dataKey="unemploymentRate" name="完全失業率" stroke="#0284c7" strokeWidth={2} dot={{ r: 2 }} connectNulls={false} isAnimationActive={false} />
           <Line yAxisId="percent" dataKey="belowMeanShare" name="平均所得以下の世帯割合" stroke="#7c3aed" strokeWidth={2} dot={{ r: 2 }} connectNulls={false} isAnimationActive={false} />

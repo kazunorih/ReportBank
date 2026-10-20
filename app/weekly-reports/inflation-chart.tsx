@@ -2,6 +2,7 @@
 
 import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { annualInflationRows, coreInflationData, inflationSeries } from "@/lib/reports/core-inflation";
+import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 
@@ -28,7 +29,7 @@ export default function InflationChart({ report, years }: {
           <XAxis dataKey="year" interval={0} angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8} tick={{ fontSize: 11 }} tickFormatter={value => `${value}年`} />
           <YAxis hide domain={scale.domain} ticks={scale.ticks} />
           <ReferenceLine y={0} stroke="#94a3b8" />
-          <Tooltip labelFormatter={value => `${value}年`} formatter={(value, name) => [`${format(Number(value))}%`, name]} />
+          <Tooltip itemSorter={tooltipOrder(inflationSeries.map(series => series.id))} labelFormatter={value => `${value}年`} formatter={(value, name) => [`${format(Number(value))}%`, name]} />
           {inflationSeries.map(series => <Line key={series.id} dataKey={series.id} name={series.label} stroke={series.color} strokeWidth={2} strokeDasharray={series.id === "jgb10" ? "6 3" : undefined} dot={false} connectNulls={false} isAnimationActive={false} />)}
         </LineChart>
       </ResponsiveContainer>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/catalog";
@@ -49,6 +50,10 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         const available = series.filter((item) => data.some((row) => row[item.id] != null));
         const amounts = available.filter(item => item.unit !== "%");
         const stacked = group.id === "loanComparison" || group.id === "bojComparison";
+        const isBar = (item: (typeof available)[number]) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix");
+        const bars = available.filter(isBar);
+        const displayOrder = [...available.filter(item => !isBar(item)), ...(stacked ? [...bars].reverse() : bars)];
+        const legendItems = displayOrder.map(item => ({ item, index: available.indexOf(item) }));
         const amountScale = chartScale(data.flatMap(row => stacked ? [amounts.reduce((sum, item) => sum + (row[item.id] ?? 0), 0)] : amounts.map(item => row[item.id])));
         const rateScale = chartScale(data.flatMap(row => available.filter(item => item.unit === "%").map(item => row[item.id])));
         return (
@@ -67,7 +72,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                       tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} tick={{ fontSize: 11 }} />
                     <YAxis yAxisId="amount" hide domain={amountScale.domain} ticks={amountScale.ticks} />
                     {hasRates && <YAxis yAxisId="rate" hide domain={rateScale.domain} ticks={rateScale.ticks} />}
-                    <Tooltip labelFormatter={(value) => `${value} 観測日`}
+                    <Tooltip itemSorter={tooltipOrder(displayOrder.map(item => item.id))} labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
                       ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
@@ -76,7 +81,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                 </ResponsiveContainer>
                 </FixedAxisChart>
                 <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" aria-label="凡例">
-                  {available.map((item, index) => <li key={item.id} style={{ color: item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
+                  {legendItems.map(({ item, index }) => <li key={item.id} style={{ color: item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index] }}><span aria-hidden="true" style={{ opacity: item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1 }}>{item.unit === "%" ? "━" : "■"}</span> {item.label}</li>)}
                 </ul>
               </>
             ) : <p className="my-12 text-center text-sm text-slate-500">この期間の公表データはまだ取り込まれていません。</p>}

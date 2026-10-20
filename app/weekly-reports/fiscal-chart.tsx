@@ -1,6 +1,7 @@
 "use client";
 
 import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 import type { FiscalData } from "@/lib/reports/schema";
@@ -32,7 +33,7 @@ export default function FiscalChart({ fiscal, periods, asOf, years }: { fiscal: 
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                 <XAxis dataKey="date" ticks={debt.filter(row => row.date.endsWith("-12-31")).map(row => row.date)} interval={0} angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8} tick={{ fontSize: 11 }} tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} />
                 <YAxis hide domain={debtScale.domain} ticks={debtScale.ticks} />
-                <Tooltip labelFormatter={value => `${value} 現在`} formatter={value => [`${number(Number(value))} 兆円`, "国債及び借入金現在高"]} />
+                <Tooltip itemSorter={tooltipOrder(["amount"])} labelFormatter={value => `${value} 現在`} formatter={value => [`${number(Number(value))} 兆円`, "国債及び借入金現在高"]} />
                 <Bar dataKey="amount" name="国債及び借入金現在高" fill="#93c5fd" maxBarSize={18} isAnimationActive={false} />
               </ComposedChart>
             </ResponsiveContainer>
@@ -48,13 +49,13 @@ export default function FiscalChart({ fiscal, periods, asOf, years }: { fiscal: 
                 <XAxis dataKey="fiscalYear" interval={0} angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8} tick={{ fontSize: 11 }} tickFormatter={(value: number) => `${value}年度`} />
                 <YAxis yAxisId="amount" hide domain={interestScale.domain} ticks={interestScale.ticks} />
                 <YAxis yAxisId="share" hide domain={shareScale.domain} ticks={shareScale.ticks} />
-                <Tooltip labelFormatter={value => `${value}年度 当初予算`} formatter={(value, name) => [`${number(Number(value))} ${name === "一般会計歳出比" ? "%" : "兆円"}`, name]} />
+                <Tooltip itemSorter={tooltipOrder(["share", "interest"])} labelFormatter={value => `${value}年度 当初予算`} formatter={(value, name) => [`${number(Number(value))} ${name === "一般会計歳出比" ? "%" : "兆円"}`, name]} />
                 <Bar yAxisId="amount" dataKey="interest" name="利払費" fill="#fed7aa" maxBarSize={24} isAnimationActive={false} />
                 <Line yAxisId="share" dataKey="share" name="一般会計歳出比" stroke="#0f766e" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={false} />
               </ComposedChart>
             </ResponsiveContainer>
         </FixedAxisChart>
-        <ul className="mt-3 flex flex-wrap justify-center gap-4 text-xs" aria-label="凡例"><li className="text-orange-700"><span aria-hidden="true" style={{ color: "#fed7aa" }}>■</span> 利払費</li><li className="text-teal-700">━ 一般会計歳出比</li></ul>
+        <ul className="mt-3 flex flex-wrap justify-center gap-4 text-xs" aria-label="凡例"><li className="text-teal-700">━ 一般会計歳出比</li><li className="text-orange-700"><span aria-hidden="true" style={{ color: "#fed7aa" }}>■</span> 利払費</li></ul>
       </section>
     </div>
     <p className="mt-4 text-xs leading-5 text-slate-500">残高は国が保有する国債・国内部の借入金を含む国の総額で、地方政府を含む一般政府の連結債務や純債務ではありません。利払費は一般会計負担の国債等の利子・割引料の支払財源として国債整理基金特別会計へ繰り入れる額（年金特例公債分を含む）。元本償還費・事務取扱費は除きます。割合は利払費÷同年度の一般会計歳出当初予算×100で算定し、補正予算・決算とは区別しています。1977～1996年度は財政金融統計月報の億円単位の公表値を使用しています。2000年度は省庁再編前後の大蔵省・財務省分を合算しています。</p>

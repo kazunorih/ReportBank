@@ -2,6 +2,7 @@
 
 import { Bar, BarChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { fdiStockData } from "@/lib/reports/fdi-stock";
+import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
@@ -11,6 +12,7 @@ const amount = (value: number) => value.toLocaleString("ja-JP", { maximumFractio
 export default function FdiChart() {
   const { points, categories, firstYear, latestYear } = fdiStockData;
   const rows = points.map(point => ({ year: point.year, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value / 1_000_000])) }));
+  const legendItems = categories.map((name, i) => ({ name, i })).reverse();
   const scale = chartScale(points.map(point => point.total / 1_000_000));
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="fdi-stock-title">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 05</p>
@@ -22,13 +24,13 @@ export default function FdiChart() {
           <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="year" height={xAxisHeight} interval={0} angle={-45} textAnchor="end" tick={{ fontSize: 11 }} tickFormatter={year => `${year}年末`} />
           <YAxis hide width={0} domain={scale.domain} ticks={scale.ticks} />
-          <Tooltip labelFormatter={year => `${year}年末`} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆米ドル`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
+          <Tooltip itemSorter={tooltipOrder(legendItems.map(({ i }) => `value${i}`))} labelFormatter={year => `${year}年末`} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆米ドル`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
           {categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="fdi" fill={colors[i]} isAnimationActive={false} />)}
           <ReferenceLine x={2014} stroke="#64748b" strokeDasharray="4 4" label={{ value: "基準変更", position: "insideTopLeft", fontSize: 11, fill: "#475569" }} />
         </BarChart>
       </ResponsiveContainer>
     </FixedAxisChart>
-    <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{categories.map((name, i) => <li key={name} className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3" style={{ background: colors[i] }} />{name}</li>)}</ul>
+    <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{legendItems.map(({ name, i }) => <li key={name} className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3" style={{ background: colors[i] }} />{name}</li>)}</ul>
     <p className="mt-5 text-sm text-slate-600">{latestYear}年末の合計：<strong>{amount(points.at(-1)!.total / 1_000_000)}兆米ドル</strong></p>
     <p className="mt-3 text-xs leading-6 text-slate-500">各年末時点の対外直接投資の資産残高で、年間の投資額（フロー）ではありません。円建て公表値を日銀の期末為替レートで米ドル換算したJETROデータを使用しています。残高の増減には投資取引以外に為替・価格変動なども影響します。</p>
     <p className="mt-2 text-xs leading-6 text-slate-500">国際収支統計の基準変更により、2013年以前と2014年以降のデータに連続性はありません。地域合計（EU・アジアなど）を順位に含めず、「その他」は世界合計から上位8か国の合計を差し引いて算出しています。</p>

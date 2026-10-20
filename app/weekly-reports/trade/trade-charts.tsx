@@ -1,6 +1,7 @@
 "use client";
 
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import { type TradeChart, tradeMonth } from "@/lib/reports/trade";
 import { examplesForCommodity } from "@/lib/reports/trade-examples";
@@ -13,6 +14,7 @@ export default function TradeCharts({ charts, latestMonth }: { charts: TradeChar
   return <div className="space-y-8">{charts.map((chart, index) => {
     const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value === null ? null : value / 1_000_000])) }));
     const scale = chartScale(chart.points.map(point => point.total / 1_000_000));
+    const legendItems = chart.categories.map((name, i) => ({ name, i })).reverse();
     const latest = chart.points[chart.points.length - 1];
     return <section key={chart.id} className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby={chart.id}>
       <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(index + 1).padStart(2, "0")}</p>
@@ -24,12 +26,12 @@ export default function TradeCharts({ charts, latestMonth }: { charts: TradeChar
             <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="month" height={xAxisHeight} interval={2} angle={-45} textAnchor="end" tick={{ fontSize: 11 }} tickFormatter={tradeMonth} />
             <YAxis hide width={0} domain={scale.domain} ticks={scale.ticks} />
-            <Tooltip labelFormatter={label => tradeMonth(String(label))} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆円`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
+            <Tooltip itemSorter={tooltipOrder(legendItems.map(({ i }) => `value${i}`))} labelFormatter={label => tradeMonth(String(label))} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆円`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
             {chart.categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="trade" fill={colors[i]} isAnimationActive={false} />)}
           </BarChart>
         </ResponsiveContainer>
       </FixedAxisChart>
-      <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{chart.categories.map((name, i) => <li key={name} className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3" style={{ background: colors[i] }} />{name}</li>)}</ul>
+      <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{legendItems.map(({ name, i }) => <li key={name} className="flex items-center gap-2"><span aria-hidden="true" className="h-3 w-3" style={{ background: colors[i] }} />{name}</li>)}</ul>
       {chart.id.startsWith("commodity") && <div className="mt-5 rounded-xl bg-slate-50 p-4 text-xs leading-6 text-slate-600">
         <h3 className="font-semibold text-slate-700">品目に含まれる商品の例</h3>
         <dl className="mt-2 grid gap-x-6 gap-y-2 sm:grid-cols-2">{chart.categories.map((name, i) => <div key={name}>
