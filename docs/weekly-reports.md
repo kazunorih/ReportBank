@@ -195,3 +195,13 @@ PythonのローカルテストではAWS SDK `boto3` も必要です（Lambdaラ�
 図表の左右の縦軸・単位・凡例は横スクロール領域の外に配置しています。固定軸とプロットは共通の目盛り・範囲を使い、積み上げ棒は合計値、金利は負の値を含めて範囲を決めます。
 
 Weekly Insightは過去50年を主軸とし、金利・貸出と政府債務・利払費について初期・中間・直近の変化を比較します。日銀は取得済みの2019年以降のみを扱い、長期実測の観察と条件付き将来予測を区別します。30年先の予測や欠測の補完は行いません。
+
+## FIGURE06：金利とインフレ率（コア指標）
+
+`app/weekly-reports/inflation-chart.tsx` に年次推移を表示します。日銀の[分析データ](https://www.boj.or.jp/research/research_data/index.htm)の[消費者物価のコア指標Excel](https://www.boj.or.jp/research/research_data/cpi/cpirev.xlsx)を `scripts/import-core-inflation.py` で読み、`lib/reports/data/core-inflation.json` に保存します。
+
+初回収録は1986～2025年の40暦年。指定Excelの最長系列（加重中央値・最頻値）は1986年開始のため50年には届きません。刈込平均値は2001年、生鮮食品・特殊要因を除く指標は2016年開始です。公表開始前は欠測。前年比の月次値12個、加重中央値・最頻値は四半期値4個を単純平均し、全期間がそろった完成暦年のみ表示します。年平均物価指数の前年比とは区別します。Excelで分かれた各基準年の適用期間を接続し、重複列を検出したら停止します。
+
+金利は表示中のFIGURE01と同じ国債10年・30年、フラット35中間値の12月観測値を使用。半期の平均や金利の年平均には変換しません。未収録の金利を補間しません。共通の％軸、金利は破線、インフレ率は実線。表示期間セレクターと右端の初期表示を共用します。AI本文・AWS収集処理の入力には追加していません。
+
+更新・検証：`python scripts/import-core-inflation.py`、`python scripts/test_core_inflation.py`、`npm.cmd test -- lib/reports/core-inflation.test.ts`。取得・検証の成功後にJSONを置換します。

@@ -1,0 +1,287 @@
+{
+  "retrievedAt": "2026-10-20T12:31:12.719046+00:00",
+  "sourceUrl": "https://www.boj.or.jp/research/research_data/cpi/cpirev.xlsx",
+  "method": "complete-calendar-year-mean-yoy-v1",
+  "observations": [
+    {
+      "year": 1986,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 1.178447,
+      "mode": 0.6
+    },
+    {
+      "year": 1987,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.881217,
+      "mode": 0.466667
+    },
+    {
+      "year": 1988,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.6269,
+      "mode": 0.4
+    },
+    {
+      "year": 1989,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 1.24051,
+      "mode": 0.508333
+    },
+    {
+      "year": 1990,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 2.065702,
+      "mode": 0.916667
+    },
+    {
+      "year": 1991,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 2.844859,
+      "mode": 2.141667
+    },
+    {
+      "year": 1992,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 2.394963,
+      "mode": 1.475
+    },
+    {
+      "year": 1993,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 1.284875,
+      "mode": 0.75
+    },
+    {
+      "year": 1994,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.574445,
+      "mode": 0.366667
+    },
+    {
+      "year": 1995,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.047248,
+      "mode": -0.025
+    },
+    {
+      "year": 1996,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.458155,
+      "mode": 0.15
+    },
+    {
+      "year": 1997,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.65737,
+      "mode": 0.5
+    },
+    {
+      "year": 1998,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.225915,
+      "mode": 0.225
+    },
+    {
+      "year": 1999,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": 0.006604,
+      "mode": 0.041667
+    },
+    {
+      "year": 2000,
+      "core": null,
+      "trimmedMean": null,
+      "weightedMedian": -0.157326,
+      "mode": -0.166667
+    },
+    {
+      "year": 2001,
+      "core": null,
+      "trimmedMean": -0.368333,
+      "weightedMedian": -0.263241,
+      "mode": -0.191667
+    },
+    {
+      "year": 2002,
+      "core": null,
+      "trimmedMean": -0.55,
+      "weightedMedian": -0.307485,
+      "mode": -0.291667
+    },
+    {
+      "year": 2003,
+      "core": null,
+      "trimmedMean": -0.305,
+      "weightedMedian": -0.118563,
+      "mode": -0.391667
+    },
+    {
+      "year": 2004,
+      "core": null,
+      "trimmedMean": -0.2725,
+      "weightedMedian": -0.192011,
+      "mode": -0.258333
+    },
+    {
+      "year": 2005,
+      "core": null,
+      "trimmedMean": -0.166667,
+      "weightedMedian": 0.019727,
+      "mode": -0.025
+    },
+    {
+      "year": 2006,
+      "core": null,
+      "trimmedMean": 0.087708,
+      "weightedMedian": 0.057575,
+      "mode": 0.0
+    },
+    {
+      "year": 2007,
+      "core": null,
+      "trimmedMean": 0.114223,
+      "weightedMedian": -0.030395,
+      "mode": 0.15
+    },
+    {
+      "year": 2008,
+      "core": null,
+      "trimmedMean": 0.803647,
+      "weightedMedian": 0.087684,
+      "mode": 0.308333
+    },
+    {
+      "year": 2009,
+      "core": null,
+      "trimmedMean": -0.360138,
+      "weightedMedian": -0.15199,
+      "mode": -0.016667
+    },
+    {
+      "year": 2010,
+      "core": null,
+      "trimmedMean": -0.633566,
+      "weightedMedian": -0.323725,
+      "mode": -0.366667
+    },
+    {
+      "year": 2011,
+      "core": null,
+      "trimmedMean": -0.122121,
+      "weightedMedian": -0.146072,
+      "mode": -0.225
+    },
+    {
+      "year": 2012,
+      "core": null,
+      "trimmedMean": -0.059241,
+      "weightedMedian": -0.138838,
+      "mode": -0.1
+    },
+    {
+      "year": 2013,
+      "core": null,
+      "trimmedMean": 0.057159,
+      "weightedMedian": -0.113419,
+      "mode": -0.066667
+    },
+    {
+      "year": 2014,
+      "core": null,
+      "trimmedMean": 0.699312,
+      "weightedMedian": 0.090571,
+      "mode": 0.175
+    },
+    {
+      "year": 2015,
+      "core": null,
+      "trimmedMean": 0.505705,
+      "weightedMedian": 0.07703,
+      "mode": 0.391667
+    },
+    {
+      "year": 2016,
+      "core": -0.341667,
+      "trimmedMean": 0.17151,
+      "weightedMedian": 0.010551,
+      "mode": 0.366667
+    },
+    {
+      "year": 2017,
+      "core": 0.508333,
+      "trimmedMean": 0.354155,
+      "weightedMedian": 0.064025,
+      "mode": 0.266667
+    },
+    {
+      "year": 2018,
+      "core": 0.858333,
+      "trimmedMean": 0.566831,
+      "weightedMedian": 0.076225,
+      "mode": 0.225
+    },
+    {
+      "year": 2019,
+      "core": 0.566667,
+      "trimmedMean": 0.456295,
+      "weightedMedian": 0.104363,
+      "mode": 0.25
+    },
+    {
+      "year": 2020,
+      "core": -0.241667,
+      "trimmedMean": 0.005177,
+      "weightedMedian": 0.072285,
+      "mode": 0.216667
+    },
+    {
+      "year": 2021,
+      "core": 0.65,
+      "trimmedMean": 0.185625,
+      "weightedMedian": 0.098496,
+      "mode": 0.141667
+    },
+    {
+      "year": 2022,
+      "core": 3.441667,
+      "trimmedMean": 1.803788,
+      "weightedMedian": 0.553912,
+      "mode": 0.758333
+    },
+    {
+      "year": 2023,
+      "core": 3.733333,
+      "trimmedMean": 3.005712,
+      "weightedMedian": 1.494368,
+      "mode": 2.6
+    },
+    {
+      "year": 2024,
+      "core": 2.108333,
+      "trimmedMean": 1.960053,
+      "weightedMedian": 1.142431,
+      "mode": 1.55
+    },
+    {
+      "year": 2025,
+      "core": 2.841667,
+      "trimmedMean": 2.187642,
+      "weightedMedian": 1.349793,
+      "mode": 1.516667
+    }
+  ]
+}

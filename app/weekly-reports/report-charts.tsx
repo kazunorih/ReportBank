@@ -8,6 +8,7 @@ import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/
 import type { WeeklyReport, FiscalData, HouseholdData } from "@/lib/reports/schema";
 import HouseholdChart from "./household-chart";
 import FiscalChart from "./fiscal-chart";
+import InflationChart from "./inflation-chart";
 import { bojSeriesCatalog } from "@/lib/reports/boj";
 
 const colors = ["#0284c7", "#0f766e", "#7c3aed", "#d97706", "#be123c"];
@@ -101,6 +102,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
       })}
       {report.fiscal && <FiscalChart fiscal={report.fiscal} periods={report.periods} asOf={report.asOf} years={years} />}
       {report.household && <HouseholdChart data={report.household} years={years} />}
+      <InflationChart report={report} years={years} />
     </section>
   );
 }
