@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { type ReactNode, useLayoutEffect, useRef } from "react";
 import type { ChartScale } from "@/lib/reports/chart-scale";
 
 // These dimensions are shared with the scrolling Recharts plot.
@@ -25,11 +25,18 @@ function Axis({ scale, height, right = false, suffix = "" }: { scale: ChartScale
 export default function FixedAxisChart({ left, right, leftUnit, rightUnit, minWidth, height, label, children, leftTickSuffix = "", rightTickSuffix = "%" }: {
   left: ChartScale; right?: ChartScale; leftUnit: string; rightUnit?: string; minWidth: number; height: number; label: string; children: ReactNode; leftTickSuffix?: string; rightTickSuffix?: string;
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const viewport = scrollRef.current;
+    if (viewport) viewport.scrollLeft = viewport.scrollWidth - viewport.clientWidth;
+  }, [minWidth]);
+
   return <div className="mt-5 min-w-0" role="group" aria-label={label}>
     <div className="mb-2 flex justify-between gap-3 text-xs text-slate-500"><span>{leftUnit}</span>{right && <span>{rightUnit}</span>}</div>
     <div className="flex min-w-0" data-fixed-axis-chart>
       <Axis scale={left} height={height} suffix={leftTickSuffix} />
-      <div className="min-w-0 flex-1 overflow-x-auto" tabIndex={0} role="region" aria-label={`${label}（横スクロール）`}>
+      <div ref={scrollRef} className="min-w-0 flex-1 overflow-x-auto" tabIndex={0} role="region" aria-label={`${label}（横スクロール）`}>
         <div style={{ minWidth: minWidth - 65 - (right ? 48 : 0), height }}>{children}</div>
       </div>
       {right && <Axis scale={right} height={height} right suffix={rightTickSuffix} />}

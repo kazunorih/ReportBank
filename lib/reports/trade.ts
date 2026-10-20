@@ -4,7 +4,7 @@ export type TradeChart = {
   id: string;
   title: string;
   categories: string[];
-  points: { month: string; values: number[]; total: number }[];
+  points: { month: string; values: (number | null)[]; total: number }[];
 };
 
 // Original amounts are retained as integer millions of yen. Convert only for display.

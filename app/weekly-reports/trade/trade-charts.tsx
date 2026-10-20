@@ -10,14 +10,14 @@ const amount = (millions: number) => (millions / 1_000_000).toLocaleString("ja-J
 
 export default function TradeCharts({ charts, latestMonth }: { charts: TradeChart[]; latestMonth: string }) {
   return <div className="space-y-8">{charts.map((chart, index) => {
-    const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value / 1_000_000])) }));
+    const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value === null ? null : value / 1_000_000])) }));
     const scale = chartScale(chart.points.map(point => point.total / 1_000_000));
     const latest = chart.points[chart.points.length - 1];
     return <section key={chart.id} className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby={chart.id}>
       <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(index + 1).padStart(2, "0")}</p>
       <h2 id={chart.id} className="mt-2 text-xl font-semibold sm:text-2xl">{chart.title}</h2>
       <p className="mt-3 text-sm leading-7 text-slate-500">{tradeMonth(latestMonth)}の上位5{chart.id.startsWith("country") ? "か国・地域" : "品目（主要商品大分類）"}とその他。各月の金額を積み上げて表示します。</p>
-      <FixedAxisChart left={scale} leftUnit="金額（兆円）" minWidth={1800} height={360} label={chart.title}>
+      <FixedAxisChart left={scale} leftUnit="金額（兆円）" minWidth={Math.max(1800, chart.points.length * 30)} height={360} label={chart.title}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={plotMargin} accessibilityLayer>
             <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
@@ -36,7 +36,7 @@ export default function TradeCharts({ charts, latestMonth }: { charts: TradeChar
           <table className="w-full whitespace-nowrap text-right text-xs tabular-nums">
             <caption className="sr-only">{chart.title}、単位：百万円</caption>
             <thead className="sticky top-0 bg-slate-100"><tr><th scope="col" className="p-3 text-left">年月</th>{chart.categories.map(name => <th key={name} scope="col" className="p-3">{name}</th>)}<th scope="col" className="p-3">合計</th></tr></thead>
-            <tbody>{chart.points.map(point => <tr key={point.month} className="border-b border-slate-100"><th scope="row" className="p-3 text-left font-normal">{tradeMonth(point.month)}</th>{point.values.map((value, i) => <td key={i} className="p-3">{value.toLocaleString("ja-JP")}</td>)}<td className="p-3">{point.total.toLocaleString("ja-JP")}</td></tr>)}</tbody>
+            <tbody>{chart.points.map(point => <tr key={point.month} className="border-b border-slate-100"><th scope="row" className="p-3 text-left font-normal">{tradeMonth(point.month)}</th>{point.values.map((value, i) => <td key={i} className="p-3">{value === null ? "—" : value.toLocaleString("ja-JP")}</td>)}<td className="p-3">{point.total.toLocaleString("ja-JP")}</td></tr>)}</tbody>
           </table>
         </div>
       </details>

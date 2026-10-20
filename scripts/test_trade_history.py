@@ -12,7 +12,7 @@ class TradeImportTests(unittest.TestCase):
     def releases(self):
         rows = []
         for index in range(60):
-            month = f"{2021 + index // 12:04d}-{index % 12 + 1:02d}"
+            month = f"{2000 + index // 12:04d}-{index % 12 + 1:02d}"
             series = {key: {"total": 1000, "values": {"A": 100, "B": 90, "C": 80, "D": 70, "E": 60, "F": 50}, "unlistedUpperBound": 10}
                       for key in ("country-export", "country-import", "commodity-export", "commodity-import")}
             rows.append({"month": month, "sourceUrl": "https://www.customs.go.jp/test.xml", "sourceTitle": "test", "published": "test", "series": series})
@@ -39,6 +39,23 @@ class TradeImportTests(unittest.TestCase):
         rows[20] = copy.deepcopy(rows[19])
         with self.assertRaises(ValueError):
             trade.build_snapshot(rows)
+
+    def test_missing_start_is_rejected(self):
+        with self.assertRaises(ValueError):
+            trade.build_snapshot(self.releases()[1:])
+
+    def test_old_classification_is_missing_instead_of_zero(self):
+        rows = self.releases()
+        del rows[0]["series"]["commodity-import"]["values"]["A"]
+        point = trade.build_snapshot(rows)["charts"][3]["points"][0]
+        self.assertEqual(point["values"], [None] * 6)
+        self.assertEqual(point["total"], 1000)
+
+    def test_archive_typos_and_xml_preference(self):
+        parser = trade.Releases("https://www.customs.go.jp/toukei/shinbun/kako/happyou2.htm")
+        parser.feed('<a title="206.08" href="../trade-st/2016/201608f.xml"></a><a title="2016.08" href="../trade-st/2016/2016087.pdf"></a><a title="a title=" href="/toukei/shinbun/trade-st/2004/200404f.pdf"></a>')
+        self.assertTrue(parser.links["2016-08"].endswith("201608f.xml"))
+        self.assertTrue(parser.links["2004-04"].endswith("200404f.pdf"))
 
     def test_uncertain_country_ranking_is_rejected(self):
         rows = self.releases()

@@ -1,4 +1,4 @@
-"""Import 60 monthly Customs releases. Python standard library only.
+"""Import monthly Customs releases from January 2000. PDF years require pdfplumber.
 
 Run: py -3.13 scripts/import-trade-history.py
 The snapshot is replaced only after all months and rankings pass validation.
@@ -15,25 +15,35 @@ import unicodedata
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+FIRST_MONTH = "2000-01"
 ARCHIVE = "https://www.customs.go.jp/toukei/shinbun/happyou.htm"
 
 
 class Releases(HTMLParser):
-    def __init__(self):
+    def __init__(self, base_url=ARCHIVE):
         super().__init__()
         self.links = {}
+        self.base_url = base_url
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         title = attrs.get("title", "")
         href = attrs.get("href", "")
+        # The official archive has a typo in this XML link's title.
+        if title == "206.08" and href.endswith("/201608f.xml"):
+            title = "2016.08"
+        if title == "a title=" and href.endswith("/200404f.pdf"):
+            title = "2004.04"
         # Suffix 1/2 denotes first-ten/first-twenty-day releases, not months.
-        if tag == "a" and re.fullmatch(r"20\d{2}\.\d{1,2}", title) and re.search(r"/20\d{4}[3-9f]\.xml$", href):
+        if tag == "a" and re.fullmatch(r"20\d{2}\.\d{1,2}", title) and re.search(r"/20\d{4}[3-9f]\.(?:xml|pdf)$", href):
             year, number = title.split(".")
             month = f"{year}-{int(number):02d}"
             if month in self.links:
-                raise ValueError(f"Ambiguous release: {month}")
-            self.links[month] = urljoin(ARCHIVE, href)
+                if self.links[month].endswith(".xml") and href.endswith(".pdf"):
+                    return
+                if not (self.links[month].endswith(".pdf") and href.endswith(".xml")):
+                    raise ValueError(f"Ambiguous release: {month}")
+            self.links[month] = urljoin(self.base_url, href)
 
 
 def fetch(url):
@@ -52,8 +62,8 @@ def parse_release(month, url, content):
     root = ET.fromstring(content)
     title = root.findtext("sogakutsuki/title") or ""
     period = root.findtext("sogakutsuki/taishoymtonen") or ""
-    match = re.fullmatch(r"令和\s*(\d+)年\s*(\d+)月", period.strip())
-    if not match or f"{2018 + int(match[1]):04d}-{int(match[2]):02d}" != month:
+    match = re.fullmatch(r"(令和|平成)\s*(\d+)年\s*(\d+)月", period.strip().replace("元年", "1年"))
+    if not match or f"{(2018 if match[1] == '令和' else 1988) + int(match[2]):04d}-{int(match[3]):02d}" != month:
         raise ValueError(f"Not the requested monthly release: {month}, {period}")
     result = {"month": month, "sourceUrl": url, "sourceTitle": title,
               "published": root.findtext("sogakutsuki/kohyoymd"), "series": {}}
@@ -99,11 +109,46 @@ def parse_release(month, url, content):
     return result
 
 
+def parse_pdf_release(month, url, content):
+    import io
+    import pdfplumber
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        pages = [unicodedata.normalize("NFKC", page.extract_text() or "") for page in pdf.pages[:4]]
+    compact = lambda text: re.sub(r"\s+", "", text)
+    year, number = map(int, month.split("-"))
+    if f"平成{year - 1988}年{number}月分" not in compact(pages[0]):
+        raise ValueError(f"Wrong PDF period: {month}")
+    published = re.search(r"平成\s*\d+年\s*\d+月\s*\d+日", pages[0])
+    result = {"month": month, "sourceUrl": url, "sourceTitle": f"{year}年{number}月分貿易統計（確定）", "published": published[0] if published else None, "series": {}}
+    rows = {}
+    for line in pages[1].splitlines():
+        match = re.match(r"^(.+?)\s+([\d,]+)\s+\S+\s+([\d,]+)\s+", line)
+        if match:
+            name = compact(match[1])
+            name = {"アメリカ": "アメリカ合衆国", "ヴィエトナム": "ベトナム"}.get(name, name)
+            rows[name] = (amount(match[2]), amount(match[3]))
+    if "総額" not in rows:
+        raise ValueError(f"Missing PDF totals: {month}")
+    # Only actual countries used by the latest ranking are needed in old PDFs.
+    countries = ("中華人民共和国", "アメリカ合衆国", "台湾", "大韓民国", "香港", "オーストラリア", "ベトナム", "アラブ首長国連邦", "サウジアラビア")
+    for i, direction in enumerate(("export", "import")):
+        total = rows["総額"][i]
+        result["series"][f"country-{direction}"] = {"total": total, "values": {name: rows[name][i] for name in countries if name in rows}, "unlistedUpperBound": 0}
+        items = {}
+        for line in pages[i + 2].splitlines():
+            match = re.match(r"^(?:[1-9]\s+)?([^\d]+?)\s+([\d,]+)\s+", line)
+            if match:
+                items[compact(match[1])] = amount(match[2])
+        result["series"][f"commodity-{direction}"] = {"total": total, "values": items}
+    return result
+
+
 def build_snapshot(releases):
     releases = sorted(releases, key=lambda row: row["month"])
     indices = [int(row["month"][:4]) * 12 + int(row["month"][5:]) - 1 for row in releases]
-    if len(indices) != 60 or indices != list(range(indices[-1] - 59, indices[-1] + 1)):
-        raise ValueError("Exactly 60 consecutive monthly releases are required")
+    first = 2000 * 12
+    if not indices or indices != list(range(first, indices[-1] + 1)):
+        raise ValueError("Consecutive monthly releases starting at 2000-01 are required")
     charts = []
     for key, title in (("country-export", "月次国別輸出統計"), ("country-import", "月次国別輸入統計"),
                        ("commodity-export", "月次品別輸出統計"), ("commodity-import", "月次品別輸入統計")):
@@ -114,7 +159,12 @@ def build_snapshot(releases):
         points = []
         for release in releases:
             series = release["series"][key]
-            values = [series["values"][name] for name in names]
+            values = [series["values"].get(name) for name in names]
+            if any(value is None for value in values):
+                if not key.startswith("commodity") or release["month"] >= "2004-01":
+                    raise ValueError(f"Missing category in {release['month']}: {key}")
+                points.append({"month": release["month"], "values": [None] * 6, "total": series["total"]})
+                continue
             other = series["total"] - sum(values)
             if other < 0:
                 raise ValueError("Negative residual")
@@ -127,18 +177,21 @@ def build_snapshot(releases):
 
 def main():
     parser = Releases()
-    parser.feed(fetch(ARCHIVE).decode("cp932"))
-    months = sorted(parser.links)[-60:]
+    for archive in (ARCHIVE, urljoin(ARCHIVE, "kako/happyou2.htm")):
+        page = Releases(archive)
+        page.feed(fetch(archive).decode("cp932"))
+        parser.links.update(page.links)
+    months = [month for month in sorted(parser.links) if month >= FIRST_MONTH]
     def load(month):
         url = parser.links[month]
-        return parse_release(month, url, fetch(url))
+        return (parse_pdf_release if url.endswith(".pdf") else parse_release)(month, url, fetch(url))
     with ThreadPoolExecutor(max_workers=4) as pool:
         snapshot = build_snapshot(list(pool.map(load, months)))
     target = ROOT / "lib/reports/data/trade.json"
     temporary = target.with_suffix(".tmp")
     temporary.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     temporary.replace(target)
-    print(f"Imported {snapshot['firstMonth']} through {snapshot['latestMonth']}: four charts, 60 months each")
+    print(f"Imported {snapshot['firstMonth']} through {snapshot['latestMonth']}: four charts, {len(months)} months each")
 
 
 if __name__ == "__main__":
