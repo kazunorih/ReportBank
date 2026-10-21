@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { connection } from "next/server";
-import SiteNav from "@/app/components/site-nav";
 import { chartGroups } from "@/lib/reports/catalog";
 import { getWeeklyReports } from "@/lib/reports/store";
 import ReportCharts from "./report-charts";
@@ -31,7 +30,7 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
   return (
     <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
-        <SiteNav current="weekly" />
+
         <ObservationTabs current="macro" />
         <header className="border-b border-slate-200 pb-8">
           <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / WEEKLY REPORT</p>

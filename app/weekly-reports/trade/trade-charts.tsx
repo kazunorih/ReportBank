@@ -7,11 +7,12 @@ import { type TradeChart, tradeMonth } from "@/lib/reports/trade";
 import { examplesForCommodity } from "@/lib/reports/trade-examples";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
-const colors = ["#7bb9e5", "#73c9b3", "#b6a0df", "#edc278", "#eca9ad", "#cbd5e1"];
+const palette = ["#7bb9e5", "#73c9b3", "#b6a0df", "#edc278", "#eca9ad", "#82a6b1", "#b7c98a", "#d8ad88"];
 const amount = (millions: number) => (millions / 1_000_000).toLocaleString("ja-JP", { minimumFractionDigits: 2, maximumFractionDigits: 3 });
 
 export default function TradeCharts({ charts, latestMonth }: { charts: TradeChart[]; latestMonth: string }) {
   return <div className="space-y-8">{charts.map((chart, index) => {
+    const colors = chart.categories.map((name, i) => name === "その他" ? "#cbd5e1" : palette[i]);
     const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value === null ? null : value / 1_000_000])) }));
     const scale = chartScale(chart.points.map(point => point.total / 1_000_000));
     const legendItems = chart.categories.map((name, i) => ({ name, i })).reverse();
@@ -19,7 +20,7 @@ export default function TradeCharts({ charts, latestMonth }: { charts: TradeChar
     return <section key={chart.id} className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby={chart.id}>
       <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(index + 1).padStart(2, "0")}</p>
       <h2 id={chart.id} className="mt-2 text-xl font-semibold sm:text-2xl">{chart.title}</h2>
-      <p className="mt-3 text-sm leading-7 text-slate-500">{tradeMonth(latestMonth)}の上位5{chart.id.startsWith("country") ? "か国・地域" : "品目（主要商品大分類）"}とその他。各月の金額を積み上げて表示します。</p>
+      <p className="mt-3 text-sm leading-7 text-slate-500">{tradeMonth(latestMonth)}の上位{chart.categories.length - 1}{chart.id.startsWith("country") ? "か国・地域" : "品目（主要商品大分類）"}とその他。各月の金額を積み上げて表示します。</p>
       <FixedAxisChart left={scale} leftUnit="金額（兆円）" minWidth={Math.max(1800, chart.points.length * 30)} height={360} label={chart.title}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={plotMargin} accessibilityLayer>

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import SiteNav from "@/app/components/site-nav";
 
 import { getArticle, type MicroCmsArticle } from "@/lib/microcms";
 
@@ -31,7 +30,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <main className="min-h-screen bg-[#f5f5f7] px-4 py-6 text-slate-950 sm:px-6 sm:py-12">
       <div className="mx-auto max-w-3xl">
         <div className="mb-4">
-          <SiteNav />
+
         </div>
         <Link
           href="/"

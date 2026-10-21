@@ -86,7 +86,7 @@ def parse_release(month, url, content):
                 countries[name] = value
                 regions[-1]["listed"] += value
         # Bounds on unlisted countries prove that no omitted country can enter
-        # the top five (the release lists major countries, not all countries).
+        # the top eight (the release lists major countries, not all countries).
         uncovered = total - sum(r["total"] for r in regions)
         if uncovered < -len(regions) or any(r["listed"] > r["total"] + len(countries) for r in regions):
             raise ValueError(f"Overlapping geographic regions: {month}, {direction}")
@@ -125,12 +125,12 @@ def parse_pdf_release(month, url, content):
         match = re.match(r"^(.+?)\s+([\d,]+)\s+\S+\s+([\d,]+)\s+", line)
         if match:
             name = compact(match[1])
-            name = {"アメリカ": "アメリカ合衆国", "ヴィエトナム": "ベトナム"}.get(name, name)
+            name = {"アメリカ": "アメリカ合衆国", "ヴィエトナム": "ベトナム", "サウディアラビア": "サウジアラビア"}.get(name, name)
             rows[name] = (amount(match[2]), amount(match[3]))
     if "総額" not in rows:
         raise ValueError(f"Missing PDF totals: {month}")
     # Only actual countries used by the latest ranking are needed in old PDFs.
-    countries = ("中華人民共和国", "アメリカ合衆国", "台湾", "大韓民国", "香港", "オーストラリア", "ベトナム", "アラブ首長国連邦", "サウジアラビア")
+    countries = ("中華人民共和国", "アメリカ合衆国", "台湾", "大韓民国", "香港", "オーストラリア", "ベトナム", "アラブ首長国連邦", "サウジアラビア", "タイ", "シンガポール", "インド")
     for i, direction in enumerate(("export", "import")):
         total = rows["総額"][i]
         result["series"][f"country-{direction}"] = {"total": total, "values": {name: rows[name][i] for name in countries if name in rows}, "unlistedUpperBound": 0}
@@ -153,9 +153,12 @@ def build_snapshot(releases):
     for key, title in (("country-export", "月次国別輸出統計"), ("country-import", "月次国別輸入統計"),
                        ("commodity-export", "月次品別輸出統計"), ("commodity-import", "月次品別輸入統計")):
         latest = releases[-1]["series"][key]
-        names = sorted(latest["values"], key=lambda name: (-latest["values"][name], name))[:5]
+        count = 8 if key.startswith("country") else 5
+        names = sorted(latest["values"], key=lambda name: (-latest["values"][name], name))[:count]
+        if len(names) != count:
+            raise ValueError(f"Expected {count} named categories: {key}")
         if key.startswith("country") and latest["unlistedUpperBound"] >= latest["values"][names[-1]]:
-            raise ValueError("Cannot prove top five from listed countries; obtain all-country data")
+            raise ValueError("Cannot prove top eight from listed countries; obtain all-country data")
         points = []
         for release in releases:
             series = release["series"][key]

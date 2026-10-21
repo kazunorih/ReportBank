@@ -13,11 +13,12 @@ describe("published trade snapshot", () => {
     months.slice(1).forEach((month, i) => expect(ordinal(month) - ordinal(months[i])).toBe(1));
     for (const chart of tradeData.charts) {
       expect(chart.points.map(point => point.month)).toEqual(months);
-      expect(chart.categories).toHaveLength(6);
-      expect(new Set(chart.categories).size).toBe(6);
-      expect(chart.categories[5]).toBe("その他");
+      const count = chart.id.startsWith("country") ? 8 : 5;
+      expect(chart.categories).toHaveLength(count + 1);
+      expect(new Set(chart.categories).size).toBe(count + 1);
+      expect(chart.categories[count]).toBe("その他");
       for (const point of chart.points) {
-        expect(point.values).toHaveLength(6);
+        expect(point.values).toHaveLength(count + 1);
         if (point.values.every(value => value === null)) {
           expect(chart.id.startsWith("commodity")).toBe(true);
           expect(point.month < "2004-01").toBe(true);
@@ -26,7 +27,7 @@ describe("published trade snapshot", () => {
         expect(point.values.every(value => value !== null && Number.isInteger(value) && value >= 0)).toBe(true);
         expect(point.values.reduce((sum, value) => sum! + value!, 0)).toBe(point.total);
       }
-      const top = chart.points.at(-1)!.values.slice(0, 5).map(value => {
+      const top = chart.points.at(-1)!.values.slice(0, count).map(value => {
         expect(value).not.toBeNull();
         return value!;
       });

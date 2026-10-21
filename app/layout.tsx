@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import SiteNav from "./components/site-nav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,6 +39,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-slate-50 font-sans text-slate-900">
+        <header className="border-b border-slate-200 bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6 sm:py-5"><SiteNav /></div>
+        </header>
         {children}
       </body>
 

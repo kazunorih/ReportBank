@@ -13,7 +13,7 @@ class TradeImportTests(unittest.TestCase):
         rows = []
         for index in range(60):
             month = f"{2000 + index // 12:04d}-{index % 12 + 1:02d}"
-            series = {key: {"total": 1000, "values": {"A": 100, "B": 90, "C": 80, "D": 70, "E": 60, "F": 50}, "unlistedUpperBound": 10}
+            series = {key: {"total": 1000, "values": {"A": 100, "B": 90, "C": 80, "D": 70, "E": 60, "F": 50, "G": 40, "H": 30, "I": 20}, "unlistedUpperBound": 10}
                       for key in ("country-export", "country-import", "commodity-export", "commodity-import")}
             rows.append({"month": month, "sourceUrl": "https://www.customs.go.jp/test.xml", "sourceTitle": "test", "published": "test", "series": series})
         return rows
@@ -28,7 +28,7 @@ class TradeImportTests(unittest.TestCase):
         for series in rows[-1]["series"].values():
             series["values"]["F"] = 110
         chart = trade.build_snapshot(rows)["charts"][0]
-        self.assertEqual(chart["categories"], ["F", "A", "B", "C", "D", "その他"])
+        self.assertEqual(chart["categories"], ["F", "A", "B", "C", "D", "E", "G", "H", "その他"])
         self.assertEqual(chart["points"][0]["values"][0], 50)
         self.assertEqual(chart["points"][-1]["values"][0], 110)
         for point in chart["points"]:
