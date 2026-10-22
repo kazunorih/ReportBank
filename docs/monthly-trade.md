@@ -55,3 +55,15 @@ FIGURE05は[JETRO直接投資統計](https://www.jetro.go.jp/world/japan/stats/f
 図表の上部にTRADE INSIGHTを表示します。2026年10月20日に掲載データからAIが作成した初回文（356字）を `lib/reports/data/trade-insight.json` に保存。Gemini APIの定期生成結果ではありません。月次輸出入は2026年8月、対外直接投資残高は2025年末で、観測期間・通貨・フローと残高を区別します。
 
 `lib/reports/trade-insight.ts` がFIGURE01～05の数値・分類・期間のハッシュを検証します。図表が改訂された場合は古い本文を表示せず、再作成待ちを表示します。取得日時だけの変更では無効にしません。検証：`npm.cmd test -- lib/reports/observation-insights.test.ts`。
+
+## FIGURE06・07：港別月次輸出入（空港を含む）
+
+[e-Stat普通貿易統計・税関別品別国別表](https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&tstat=000001013143&cycle=1&tclass1=000001013229&tclass2=000001013230)のCSVから、2000年1月～既存の貿易観測最新月を収録します。輸出入それぞれで最新月の上位8つの3桁税関官署符号を選び、過去にも固定します。実際の積卸港別統計ではなく、通関官署別です。全国合計・その他には海港・空港以外の官署も含みます。
+
+各明細の `Value-Jan` ～ `Value-Dec` を合算。旧様式の `Value-Apl` は4月として扱います。`Value-Year` や数量列、概況品小計は加算しません。2000年代前半の港・HS部類別の分割表は全件を足し合わせ、2009年以降は同期間の全国分・国別総額表CSVとの全月一致も検証します。2000年12月の輸出総額は当時の全国国別総額表PDFの左右両段・国符号701を含めた合算で独立検証しています。
+
+更新：`python scripts/import-port-trade.py`。ネット接続を使用し、過去の分割表が多いため初回は時間がかかります。解析済みファイルと一覧を `tmp/ports/cache` にキャッシュし、中断後も再開できます。改訂値を再取得するときは該当する一覧・CSVのキャッシュを除いて再実行します。全月の取得・検証完了後に `lib/reports/data/port-trade.json` を置換し、明細URL・表題・SHA-256は `port-trade-sources.json` に保存します。
+
+原資料と数値表は千円の整数、図表は兆円へ換算（10億で割る）。既存FIGURE01～04の百万円とは倍率が異なります。過去年は12月分の各月額、直近年は最新公表月までを使用。既存図表と公表段階・改訂時点が異なる場合があります。右端の初期表示と、棒の上段から下段に並べる凡例・ツールチップを共用します。本文要約はFIGURE01～05に基づくため、この追加では更新しません。
+
+検証：`python scripts/test_port_trade.py`、`npm.cmd test -- lib/reports/port-trade.test.ts`。
