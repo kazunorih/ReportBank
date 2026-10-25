@@ -33,10 +33,25 @@ class ValuesTest(unittest.TestCase):
                 cell = E.SubElement(row, tag('c'), {'r': f'{column}{i}', 't': 's'})
                 E.SubElement(cell, tag('v')).text = str(index)
         workbook = E.Element(tag('workbook'))
-        E.SubElement(E.SubElement(workbook, tag('sheets')), tag('sheet'), {'name': 'Consolidated(AVG)～202203', '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id': 'rId5'})
+        sheets = E.SubElement(workbook, tag('sheets'))
+        E.SubElement(sheets, tag('sheet'), {'name': 'Consolidated(AVG)～202203', '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id': 'rId5'})
+        E.SubElement(sheets, tag('sheet'), {'name': 'Consolidated(Average)', '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id': 'rId1'})
+        current = E.Element(tag('worksheet'))
+        current_data = E.SubElement(current, tag('sheetData'))
+        for i, cells in enumerate([
+            {'A': '連結総合(単純）'}, {'C': 'プライム市場', 'H': 'スタンダード市場'},
+            {'D': 'PER', 'E': 'PBR', 'I': 'PER', 'J': 'PBR'}, {},
+            {'A': '2022', 'B': '4', 'D': '-', 'E': '1.3', 'I': '25.8', 'J': '1'},
+        ], 1):
+            row = E.SubElement(current_data, tag('row'))
+            for column, value in cells.items():
+                index = len(strings)
+                E.SubElement(E.SubElement(strings, tag('si')), tag('t')).text = value
+                cell = E.SubElement(row, tag('c'), {'r': f'{column}{i}', 't': 's'})
+                E.SubElement(cell, tag('v')).text = str(index)
         buffer = BytesIO()
         with ZipFile(buffer, 'w') as z:
-            for path, root in [('xl/workbook.xml', workbook), ('xl/sharedStrings.xml', strings), ('xl/worksheets/sheet5.xml', worksheet)]:
+            for path, root in [('xl/workbook.xml', workbook), ('xl/sharedStrings.xml', strings), ('xl/worksheets/sheet5.xml', worksheet), ('xl/worksheets/sheet1.xml', current)]:
                 z.writestr(path, E.tostring(root))
         records = module.parse(buffer.getvalue())['observations']
         self.assertEqual(records, [
@@ -44,6 +59,8 @@ class ValuesTest(unittest.TestCase):
             {'month': '2021-12', 'market': 'second', 'per': 0, 'pbr': None},
             {'month': '2022-03', 'market': 'first', 'per': None, 'pbr': None},
             {'month': '2022-03', 'market': 'second', 'per': 21.5, 'pbr': 0.7},
+            {'month': '2022-04', 'market': 'prime', 'per': 0, 'pbr': 1.3},
+            {'month': '2022-04', 'market': 'standard', 'per': 25.8, 'pbr': 1},
         ])
 
 if __name__ == '__main__': unittest.main()

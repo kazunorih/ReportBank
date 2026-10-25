@@ -1,7 +1,7 @@
 """Read JPX consolidated simple-average market PER/PBR. No workbook edits.
 
 Run: python scripts/import-equity-valuations.py
-Read only 1st and 2nd Sections in Consolidated(AVG)～202203.
+Read 1st/2nd Sections and Prime/Standard, keeping market reform series separate.
 """
 from datetime import datetime, timezone
 from hashlib import sha256
@@ -37,14 +37,17 @@ def parse(content):
         return round(value, 4)
     records = []
     workbook = E.fromstring(z.read('xl/workbook.xml'))
-    named_sheet = workbook.find("m:sheets/m:sheet[@name='Consolidated(AVG)～202203']", NS)
-    if named_sheet is None or named_sheet.get('{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id') != 'rId5':
-        raise ValueError('Unexpected source sheet; verify workbook relationships')
-    groups = [(5, [('first', '市場第一部', 'I', 'J'), ('second', '市場第二部', 'N', 'O')])]
+    for name, relationship in [('Consolidated(AVG)～202203', 'rId5'), ('Consolidated(Average)', 'rId1')]:
+        named_sheet = workbook.find(f"m:sheets/m:sheet[@name='{name}']", NS)
+        if named_sheet is None or named_sheet.get('{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id') != relationship:
+            raise ValueError('Unexpected source sheet; verify workbook relationships')
+    groups = [(5, [('first', '市場第一部', 'I', 'J'), ('second', '市場第二部', 'N', 'O')]),
+              (1, [('prime', 'プライム', 'D', 'E'), ('standard', 'スタンダード', 'I', 'J')])]
     for index, markets in groups:
         rows = sheet(index)
         if '連結' not in rows[0].get('A', '') or '単純' not in rows[0].get('A', ''): raise ValueError('Unexpected calculation basis')
-        if not rows[1].get('H', '').startswith('市場第一部') or not rows[1].get('M', '').startswith('市場第二部'): raise ValueError('Unexpected market sections')
+        headers = {'H': '市場第一部', 'M': '市場第二部'} if index == 5 else {'C': 'プライム市場', 'H': 'スタンダード市場'}
+        if any(not rows[1].get(column, '').startswith(label) for column, label in headers.items()): raise ValueError('Unexpected market sections')
         if any(rows[2].get(per) != 'PER' or rows[2].get(pbr) != 'PBR' for _, _, per, pbr in markets): raise ValueError('Unexpected columns')
         for row in rows:
             if not re.fullmatch(r'\d{4}', row.get('A', '')): continue
@@ -62,7 +65,7 @@ def main():
     if not link: raise ValueError('Missing JPX long-range workbook')
     url = urljoin(PAGE, link.group(1))
     content = urlopen(url, timeout=60).read()
-    snapshot = {**parse(content), 'basis': 'consolidated-simple-average', 'sourceSheet': 'Consolidated(AVG)～202203', 'sourceColumns': {'first': {'per': 'I', 'pbr': 'J'}, 'second': {'per': 'N', 'pbr': 'O'}}, 'dashPolicy': 'zero', 'blankPolicy': 'null', 'sourcePage': PAGE, 'sourceUrl': url, 'sha256': sha256(content).hexdigest(), 'retrievedAt': datetime.now(timezone.utc).isoformat()}
+    snapshot = {**parse(content), 'basis': 'consolidated-simple-average', 'sourceSheet': 'Consolidated(AVG)～202203', 'currentSourceSheet': 'Consolidated(Average)', 'sourceColumns': {'first': {'per': 'I', 'pbr': 'J'}, 'second': {'per': 'N', 'pbr': 'O'}, 'prime': {'per': 'D', 'pbr': 'E'}, 'standard': {'per': 'I', 'pbr': 'J'}}, 'dashPolicy': 'zero', 'blankPolicy': 'null', 'sourcePage': PAGE, 'sourceUrl': url, 'sha256': sha256(content).hexdigest(), 'retrievedAt': datetime.now(timezone.utc).isoformat()}
     target = ROOT / 'lib/reports/data/equity-valuations.json'
     temp = target.with_suffix('.tmp')
     temp.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

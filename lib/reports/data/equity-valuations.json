@@ -7,6 +7,14 @@
     {
       "id": "second",
       "label": "市場第二部"
+    },
+    {
+      "id": "prime",
+      "label": "プライム"
+    },
+    {
+      "id": "standard",
+      "label": "スタンダード"
     }
   ],
   "observations": [
@@ -3357,10 +3365,659 @@
       "market": "second",
       "per": 21.5,
       "pbr": 0.7
+    },
+    {
+      "month": "2022-04",
+      "market": "prime",
+      "per": 20.4,
+      "pbr": 1.2
+    },
+    {
+      "month": "2022-04",
+      "market": "standard",
+      "per": 21.7,
+      "pbr": 0.7
+    },
+    {
+      "month": "2022-05",
+      "market": "prime",
+      "per": 19.8,
+      "pbr": 1.2
+    },
+    {
+      "month": "2022-05",
+      "market": "standard",
+      "per": 20.2,
+      "pbr": 0.7
+    },
+    {
+      "month": "2022-06",
+      "market": "prime",
+      "per": 13.7,
+      "pbr": 1.1
+    },
+    {
+      "month": "2022-06",
+      "market": "standard",
+      "per": 13.0,
+      "pbr": 0.7
+    },
+    {
+      "month": "2022-07",
+      "market": "prime",
+      "per": 14.4,
+      "pbr": 1.2
+    },
+    {
+      "month": "2022-07",
+      "market": "standard",
+      "per": 13.2,
+      "pbr": 0.7
+    },
+    {
+      "month": "2022-08",
+      "market": "prime",
+      "per": 14.6,
+      "pbr": 1.2
+    },
+    {
+      "month": "2022-08",
+      "market": "standard",
+      "per": 13.5,
+      "pbr": 0.8
+    },
+    {
+      "month": "2022-09",
+      "market": "prime",
+      "per": 14.2,
+      "pbr": 1.1
+    },
+    {
+      "month": "2022-09",
+      "market": "standard",
+      "per": 12.9,
+      "pbr": 0.7
+    },
+    {
+      "month": "2022-10",
+      "market": "prime",
+      "per": 14.7,
+      "pbr": 1.2
+    },
+    {
+      "month": "2022-10",
+      "market": "standard",
+      "per": 13.0,
+      "pbr": 0.7
+    },
+    {
+      "month": "2022-11",
+      "market": "prime",
+      "per": 15.1,
+      "pbr": 1.2
+    },
+    {
+      "month": "2022-11",
+      "market": "standard",
+      "per": 13.3,
+      "pbr": 0.8
+    },
+    {
+      "month": "2022-12",
+      "market": "prime",
+      "per": 14.4,
+      "pbr": 1.1
+    },
+    {
+      "month": "2022-12",
+      "market": "standard",
+      "per": 12.9,
+      "pbr": 0.7
+    },
+    {
+      "month": "2023-01",
+      "market": "prime",
+      "per": 14.9,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-01",
+      "market": "standard",
+      "per": 13.2,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-02",
+      "market": "prime",
+      "per": 15.0,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-02",
+      "market": "standard",
+      "per": 13.6,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-03",
+      "market": "prime",
+      "per": 14.8,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-03",
+      "market": "standard",
+      "per": 13.4,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-04",
+      "market": "prime",
+      "per": 15.0,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-04",
+      "market": "standard",
+      "per": 13.5,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-05",
+      "market": "prime",
+      "per": 15.2,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-05",
+      "market": "standard",
+      "per": 13.6,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-06",
+      "market": "prime",
+      "per": 15.6,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-06",
+      "market": "standard",
+      "per": 13.4,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-07",
+      "market": "prime",
+      "per": 15.8,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-07",
+      "market": "standard",
+      "per": 13.2,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-08",
+      "market": "prime",
+      "per": 16.0,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-08",
+      "market": "standard",
+      "per": 13.4,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-09",
+      "market": "prime",
+      "per": 15.7,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-09",
+      "market": "standard",
+      "per": 13.6,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-10",
+      "market": "prime",
+      "per": 15.2,
+      "pbr": 1.2
+    },
+    {
+      "month": "2023-10",
+      "market": "standard",
+      "per": 13.3,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-11",
+      "market": "prime",
+      "per": 16.0,
+      "pbr": 1.3
+    },
+    {
+      "month": "2023-11",
+      "market": "standard",
+      "per": 13.9,
+      "pbr": 0.8
+    },
+    {
+      "month": "2023-12",
+      "market": "prime",
+      "per": 16.2,
+      "pbr": 1.3
+    },
+    {
+      "month": "2023-12",
+      "market": "standard",
+      "per": 14.0,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-01",
+      "market": "prime",
+      "per": 17.0,
+      "pbr": 1.3
+    },
+    {
+      "month": "2024-01",
+      "market": "standard",
+      "per": 14.9,
+      "pbr": 0.9
+    },
+    {
+      "month": "2024-02",
+      "market": "prime",
+      "per": 17.6,
+      "pbr": 1.4
+    },
+    {
+      "month": "2024-02",
+      "market": "standard",
+      "per": 15.2,
+      "pbr": 0.9
+    },
+    {
+      "month": "2024-03",
+      "market": "prime",
+      "per": 18.3,
+      "pbr": 1.4
+    },
+    {
+      "month": "2024-03",
+      "market": "standard",
+      "per": 15.3,
+      "pbr": 0.9
+    },
+    {
+      "month": "2024-04",
+      "market": "prime",
+      "per": 17.9,
+      "pbr": 1.4
+    },
+    {
+      "month": "2024-04",
+      "market": "standard",
+      "per": 14.9,
+      "pbr": 0.9
+    },
+    {
+      "month": "2024-05",
+      "market": "prime",
+      "per": 17.9,
+      "pbr": 1.4
+    },
+    {
+      "month": "2024-05",
+      "market": "standard",
+      "per": 14.6,
+      "pbr": 0.9
+    },
+    {
+      "month": "2024-06",
+      "market": "prime",
+      "per": 17.6,
+      "pbr": 1.3
+    },
+    {
+      "month": "2024-06",
+      "market": "standard",
+      "per": 13.3,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-07",
+      "market": "prime",
+      "per": 17.5,
+      "pbr": 1.3
+    },
+    {
+      "month": "2024-07",
+      "market": "standard",
+      "per": 13.2,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-08",
+      "market": "prime",
+      "per": 16.9,
+      "pbr": 1.2
+    },
+    {
+      "month": "2024-08",
+      "market": "standard",
+      "per": 12.9,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-09",
+      "market": "prime",
+      "per": 16.7,
+      "pbr": 1.2
+    },
+    {
+      "month": "2024-09",
+      "market": "standard",
+      "per": 12.7,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-10",
+      "market": "prime",
+      "per": 16.8,
+      "pbr": 1.2
+    },
+    {
+      "month": "2024-10",
+      "market": "standard",
+      "per": 12.6,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-11",
+      "market": "prime",
+      "per": 16.6,
+      "pbr": 1.2
+    },
+    {
+      "month": "2024-11",
+      "market": "standard",
+      "per": 12.6,
+      "pbr": 0.8
+    },
+    {
+      "month": "2024-12",
+      "market": "prime",
+      "per": 17.0,
+      "pbr": 1.2
+    },
+    {
+      "month": "2024-12",
+      "market": "standard",
+      "per": 12.9,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-01",
+      "market": "prime",
+      "per": 16.9,
+      "pbr": 1.2
+    },
+    {
+      "month": "2025-01",
+      "market": "standard",
+      "per": 12.9,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-02",
+      "market": "prime",
+      "per": 16.3,
+      "pbr": 1.2
+    },
+    {
+      "month": "2025-02",
+      "market": "standard",
+      "per": 13.0,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-03",
+      "market": "prime",
+      "per": 16.2,
+      "pbr": 1.2
+    },
+    {
+      "month": "2025-03",
+      "market": "standard",
+      "per": 12.8,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-04",
+      "market": "prime",
+      "per": 16.3,
+      "pbr": 1.2
+    },
+    {
+      "month": "2025-04",
+      "market": "standard",
+      "per": 12.8,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-05",
+      "market": "prime",
+      "per": 16.9,
+      "pbr": 1.2
+    },
+    {
+      "month": "2025-05",
+      "market": "standard",
+      "per": 13.2,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-06",
+      "market": "prime",
+      "per": 15.5,
+      "pbr": 1.2
+    },
+    {
+      "month": "2025-06",
+      "market": "standard",
+      "per": 13.0,
+      "pbr": 0.8
+    },
+    {
+      "month": "2025-07",
+      "market": "prime",
+      "per": 16.1,
+      "pbr": 1.3
+    },
+    {
+      "month": "2025-07",
+      "market": "standard",
+      "per": 13.6,
+      "pbr": 0.9
+    },
+    {
+      "month": "2025-08",
+      "market": "prime",
+      "per": 16.8,
+      "pbr": 1.3
+    },
+    {
+      "month": "2025-08",
+      "market": "standard",
+      "per": 14.3,
+      "pbr": 0.9
+    },
+    {
+      "month": "2025-09",
+      "market": "prime",
+      "per": 17.0,
+      "pbr": 1.3
+    },
+    {
+      "month": "2025-09",
+      "market": "standard",
+      "per": 14.5,
+      "pbr": 0.9
+    },
+    {
+      "month": "2025-10",
+      "market": "prime",
+      "per": 17.5,
+      "pbr": 1.4
+    },
+    {
+      "month": "2025-10",
+      "market": "standard",
+      "per": 14.5,
+      "pbr": 0.9
+    },
+    {
+      "month": "2025-11",
+      "market": "prime",
+      "per": 17.9,
+      "pbr": 1.4
+    },
+    {
+      "month": "2025-11",
+      "market": "standard",
+      "per": 14.8,
+      "pbr": 0.9
+    },
+    {
+      "month": "2025-12",
+      "market": "prime",
+      "per": 18.0,
+      "pbr": 1.4
+    },
+    {
+      "month": "2025-12",
+      "market": "standard",
+      "per": 14.8,
+      "pbr": 0.9
+    },
+    {
+      "month": "2026-01",
+      "market": "prime",
+      "per": 18.8,
+      "pbr": 1.5
+    },
+    {
+      "month": "2026-01",
+      "market": "standard",
+      "per": 15.2,
+      "pbr": 1.0
+    },
+    {
+      "month": "2026-02",
+      "market": "prime",
+      "per": 21.0,
+      "pbr": 1.7
+    },
+    {
+      "month": "2026-02",
+      "market": "standard",
+      "per": 16.5,
+      "pbr": 1.0
+    },
+    {
+      "month": "2026-03",
+      "market": "prime",
+      "per": 18.6,
+      "pbr": 1.5
+    },
+    {
+      "month": "2026-03",
+      "market": "standard",
+      "per": 15.3,
+      "pbr": 0.9
+    },
+    {
+      "month": "2026-04",
+      "market": "prime",
+      "per": 20.1,
+      "pbr": 1.6
+    },
+    {
+      "month": "2026-04",
+      "market": "standard",
+      "per": 15.6,
+      "pbr": 1.0
+    },
+    {
+      "month": "2026-05",
+      "market": "prime",
+      "per": 20.9,
+      "pbr": 1.6
+    },
+    {
+      "month": "2026-05",
+      "market": "standard",
+      "per": 15.7,
+      "pbr": 1.0
+    },
+    {
+      "month": "2026-06",
+      "market": "prime",
+      "per": 19.0,
+      "pbr": 1.6
+    },
+    {
+      "month": "2026-06",
+      "market": "standard",
+      "per": 14.2,
+      "pbr": 0.9
+    },
+    {
+      "month": "2026-07",
+      "market": "prime",
+      "per": 18.5,
+      "pbr": 1.5
+    },
+    {
+      "month": "2026-07",
+      "market": "standard",
+      "per": 13.9,
+      "pbr": 0.9
+    },
+    {
+      "month": "2026-08",
+      "market": "prime",
+      "per": 19.3,
+      "pbr": 1.6
+    },
+    {
+      "month": "2026-08",
+      "market": "standard",
+      "per": 14.5,
+      "pbr": 0.9
+    },
+    {
+      "month": "2026-09",
+      "market": "prime",
+      "per": 18.9,
+      "pbr": 1.5
+    },
+    {
+      "month": "2026-09",
+      "market": "standard",
+      "per": 14.5,
+      "pbr": 0.9
     }
   ],
   "basis": "consolidated-simple-average",
   "sourceSheet": "Consolidated(AVG)～202203",
+  "currentSourceSheet": "Consolidated(Average)",
   "sourceColumns": {
     "first": {
       "per": "I",
@@ -3369,6 +4026,14 @@
     "second": {
       "per": "N",
       "pbr": "O"
+    },
+    "prime": {
+      "per": "D",
+      "pbr": "E"
+    },
+    "standard": {
+      "per": "I",
+      "pbr": "J"
     }
   },
   "dashPolicy": "zero",
@@ -3376,5 +4041,5 @@
   "sourcePage": "https://www.jpx.co.jp/markets/statistics-equities/misc/04.html",
   "sourceUrl": "https://www.jpx.co.jp/markets/statistics-equities/misc/tvdivq00000015r6-att/longrange-perpbr.xlsx",
   "sha256": "4e7f87b4fbb575ccf929c5c37b91f9f0b3489aef468e9c7a0098b7b5f4658faf",
-  "retrievedAt": "2026-10-25T04:21:08.386595+00:00"
+  "retrievedAt": "2026-10-25T10:07:02.901953+00:00"
 }
