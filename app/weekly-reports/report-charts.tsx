@@ -10,6 +10,7 @@ import type { WeeklyReport, FiscalData, HouseholdData } from "@/lib/reports/sche
 import HouseholdChart from "./household-chart";
 import FiscalChart from "./fiscal-chart";
 import InflationChart from "./inflation-chart";
+import ValuationChart from "./valuation-chart";
 import { bojSeriesCatalog } from "@/lib/reports/boj";
 
 const colors = ["#0284c7", "#0f766e", "#7c3aed", "#d97706", "#be123c"];
@@ -30,7 +31,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
   return (
     <section aria-label="統計図表" className="space-y-6">
       <div className="flex flex-wrap items-center justify-end gap-3">
-        <span className="text-xs text-slate-500">FIGURE03は最大30年</span>
+        <span className="text-xs text-slate-500">FIGURE02は最大30年</span>
         <label className="text-sm text-slate-600">表示期間
           <select value={years} onChange={(event) => setYears(Number(event.target.value))} className="ml-3 rounded-lg border border-slate-300 bg-white p-2">
             {[50, 30, 10, 5].map((value) => <option key={value} value={value}>{value}年</option>)}
@@ -38,6 +39,10 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         </label>
       </div>
       {chartGroups.filter((group) => displayCatalog.some((item) => item.group === group.id && report.series.some((stored) => stored.id === item.id))).map((group, groupIndex) => {
+        if (group.id === "markets") return <ValuationChart key={group.id} years={years} topix={report.periods.flatMap((period, index) => {
+          const value = report.series.find(series => series.id === "topix")?.values[index];
+          return value != null && period.endsWith("-12-31") ? [{ period, value }] : [];
+        })} />;
         const data = group.id === "bojComparison" ? report.periods.slice(-Math.min(years, 30) * 2).flatMap(period => {
           const quarter = period.slice(0, 4) + (period.endsWith("06-30") ? "-03-31" : "-09-30");
           return [quarter, period].map(date => ({ period: date, ...Object.fromEntries(report.series.map(stored => [stored.id,
@@ -46,7 +51,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         }) : halfYearData;
         const series = displayCatalog.filter((item) => item.id !== "jgb3" && report.series.some((stored) => stored.id === item.id) &&
           (item.group === group.id || ((group.id === "loanComparison" || group.id === "bojComparison") && item.unit === "%")));
-        const hasRates = group.id === "markets" || group.id === "loanComparison" || group.id === "bojComparison";
+        const hasRates = group.id === "loanComparison" || group.id === "bojComparison";
         const available = series.filter((item) => data.some((row) => row[item.id] != null));
         const amounts = available.filter(item => item.unit !== "%");
         const stacked = group.id === "loanComparison" || group.id === "bojComparison";
@@ -63,7 +68,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
             <p className="mt-2 text-sm leading-6 text-slate-500">{group.description}</p>
             {available.length ? (
               <>
-                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit={group.id === "markets" ? "ポイント" : "兆円"} rightUnit="金利（%）" minWidth={Math.max(600, (group.id === "bojComparison" ? Math.min(years, 30) : years) * 36 + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
+                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit="兆円" rightUnit="金利（%）" minWidth={Math.max(600, (group.id === "bojComparison" ? Math.min(years, 30) : years) * 36 + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />

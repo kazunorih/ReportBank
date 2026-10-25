@@ -36,7 +36,7 @@ export default function InflationChart({ report, years }: {
     </FixedAxisChart>
     <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs" aria-label="凡例">{inflationSeries.map(series => <li key={series.id} style={{ color: series.color }}><span aria-hidden="true">{series.id === "jgb10" ? "┄" : "━"}</span> {series.label}</li>)}</ul>
     <p className="mt-4 text-xs leading-6 text-slate-500">日銀Excelで最長の系列は{firstYear}年開始の加重中央値・最頻値のため、最大{lastYear - firstYear + 1}年分（{firstYear}～{lastYear}年）を掲載。刈込平均値は2001年、生鮮食品・特殊要因を除く指標は2016年から。公表開始前を補間せず、基準改定はExcelの各期間の系列を接続しています。特殊要因を除く指標は、消費税率変更・教育無償化等の影響を除いた日銀の試算値です。</p>
-    <p className="mt-2 text-xs leading-6 text-slate-500">インフレ率は公表前年比の12か月平均（加重中央値・最頻値は4四半期平均）で、年平均指数の前年比とは異なります。未完了年は除外。金利はFIGURE01と同じ12月の観測値で、年平均ではありません。</p>
+    <p className="mt-2 text-xs leading-6 text-slate-500">インフレ率は公表前年比の12か月平均（加重中央値・最頻値は4四半期平均）で、年平均指数の前年比とは異なります。未完了年は除外。金利はFIGURE02・03と同じ系列の12月の観測値で、年平均ではありません。</p>
     <details className="mt-5 border-t border-slate-100 pt-4 text-sm">
       <summary className="cursor-pointer font-medium text-sky-700">数値・出典を確認する</summary>
       <div className="mt-4 overflow-x-auto">
