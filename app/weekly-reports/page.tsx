@@ -9,8 +9,8 @@ import { withReportFigures } from "@/lib/reports/boj";
 import ObservationTabs from "./observation-tabs";
 
 export const metadata: Metadata = {
-  title: "週次マクロ金融観測 | 定点観測 | ReportBank",
-  description: "日本の金利、株式市場、貸出、日本銀行の資産、政府債務、所得と失業率を公表統計で確認する週次マクロ金融観測。",
+  title: "マクロ金融指標 | 定点観測 | ReportBank",
+  description: "日本の金利、株式市場、貸出、日本銀行の資産、政府債務、所得と失業率を公表統計で確認するマクロ金融指標。",
 };
 const formatTime = (date: string) => new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long", timeStyle: "short" }).format(new Date(date));
 
@@ -34,7 +34,7 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
         <ObservationTabs current="macro" />
         <header className="border-b border-slate-200 pb-8">
           <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / WEEKLY REPORT</p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">日本のマクロ金融環境</h2>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">マクロ金融指標</h2>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">TOPIXと市場第一部・市場第二部・プライム・スタンダードのPER・PBR、日本銀行の金融政策、金利と国内銀行の貸出、政府の債務と利払い負担、世帯所得と失業率から、日本の金融環境を定点観測します。</p>
           <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-600">
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">毎週金曜 23:00（日本時間）生成開始</span>
