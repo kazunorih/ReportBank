@@ -1,7 +1,7 @@
 """Read JPX consolidated simple-average market PER/PBR. No workbook edits.
 
 Run: python scripts/import-equity-valuations.py
-Read only Total of 1st, 2nd Sections in Consolidated(AVG)～202203.
+Read only 1st and 2nd Sections in Consolidated(AVG)～202203.
 """
 from datetime import datetime, timezone
 from hashlib import sha256
@@ -30,7 +30,8 @@ def parse(content):
             result.append(cells)
         return result
     def number(text):
-        if text in (None, '', '-', '－', '＊', '*'): return None
+        if text in ('-', '－'): return 0
+        if text in (None, '', '＊', '*'): return None
         value = float(text)
         if not math.isfinite(value) or value < 0: raise ValueError('Invalid valuation')
         return round(value, 4)
@@ -39,11 +40,11 @@ def parse(content):
     named_sheet = workbook.find("m:sheets/m:sheet[@name='Consolidated(AVG)～202203']", NS)
     if named_sheet is None or named_sheet.get('{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id') != 'rId5':
         raise ValueError('Unexpected source sheet; verify workbook relationships')
-    groups = [(5, [('firstSecondTotal', '市場第一部・二部合計', 'D', 'E')])]
+    groups = [(5, [('first', '市場第一部', 'I', 'J'), ('second', '市場第二部', 'N', 'O')])]
     for index, markets in groups:
         rows = sheet(index)
         if '連結' not in rows[0].get('A', '') or '単純' not in rows[0].get('A', ''): raise ValueError('Unexpected calculation basis')
-        if not rows[1].get('C', '').startswith('市場第一部・二部合計'): raise ValueError('Unexpected market aggregate')
+        if not rows[1].get('H', '').startswith('市場第一部') or not rows[1].get('M', '').startswith('市場第二部'): raise ValueError('Unexpected market sections')
         if any(rows[2].get(per) != 'PER' or rows[2].get(pbr) != 'PBR' for _, _, per, pbr in markets): raise ValueError('Unexpected columns')
         for row in rows:
             if not re.fullmatch(r'\d{4}', row.get('A', '')): continue
@@ -61,7 +62,7 @@ def main():
     if not link: raise ValueError('Missing JPX long-range workbook')
     url = urljoin(PAGE, link.group(1))
     content = urlopen(url, timeout=60).read()
-    snapshot = {**parse(content), 'basis': 'consolidated-simple-average', 'sourceSheet': 'Consolidated(AVG)～202203', 'sourceColumns': {'per': 'D', 'pbr': 'E'}, 'sourcePage': PAGE, 'sourceUrl': url, 'sha256': sha256(content).hexdigest(), 'retrievedAt': datetime.now(timezone.utc).isoformat()}
+    snapshot = {**parse(content), 'basis': 'consolidated-simple-average', 'sourceSheet': 'Consolidated(AVG)～202203', 'sourceColumns': {'first': {'per': 'I', 'pbr': 'J'}, 'second': {'per': 'N', 'pbr': 'O'}}, 'dashPolicy': 'zero', 'blankPolicy': 'null', 'sourcePage': PAGE, 'sourceUrl': url, 'sha256': sha256(content).hexdigest(), 'retrievedAt': datetime.now(timezone.utc).isoformat()}
     target = ROOT / 'lib/reports/data/equity-valuations.json'
     temp = target.with_suffix('.tmp')
     temp.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
