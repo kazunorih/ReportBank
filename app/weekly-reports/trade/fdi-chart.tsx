@@ -4,13 +4,14 @@ import { Bar, BarChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Toolt
 import { fdiStockData } from "@/lib/reports/fdi-stock";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
+import { countryColor } from "@/lib/reports/trade-colors";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
-const colors = ["#7bb9e5", "#73c9b3", "#b6a0df", "#edc278", "#eca9ad", "#82a6b1", "#b7c98a", "#d8ad88", "#cbd5e1"];
 const amount = (value: number) => value.toLocaleString("ja-JP", { maximumFractionDigits: 3 });
 
 export default function FdiChart() {
   const { points, categories, firstYear, latestYear } = fdiStockData;
+  const colors = categories.map(countryColor);
   const rows = points.map(point => ({ year: point.year, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value / 1_000_000])) }));
   const legendItems = categories.map((name, i) => ({ name, i })).reverse();
   const scale = chartScale(points.map(point => point.total / 1_000_000));

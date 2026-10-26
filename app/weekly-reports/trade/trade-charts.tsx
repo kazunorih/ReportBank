@@ -5,6 +5,7 @@ import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import { chartScale } from "@/lib/reports/chart-scale";
 import { type TradeChart, tradeMonth } from "@/lib/reports/trade";
 import { examplesForCommodity } from "@/lib/reports/trade-examples";
+import { countryColor, portColor } from "@/lib/reports/trade-colors";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
 const palette = ["#7bb9e5", "#73c9b3", "#b6a0df", "#edc278", "#eca9ad", "#82a6b1", "#b7c98a", "#d8ad88"];
@@ -13,7 +14,7 @@ const amount = (value: number, divisor: number) => (value / divisor).toLocaleStr
 export default function TradeCharts({ charts, latestMonth, firstFigure = 1, sourceUnit = "百万円" }: { charts: TradeChart[]; latestMonth: string; firstFigure?: number; sourceUnit?: "百万円" | "千円" }) {
   const divisor = sourceUnit === "千円" ? 1_000_000_000 : 1_000_000;
   return <div className="space-y-8">{charts.map((chart, index) => {
-    const colors = chart.categories.map((name, i) => name === "その他" ? "#cbd5e1" : palette[i]);
+    const colors = chart.categories.map((name, i) => chart.id.startsWith("country") ? countryColor(name) : chart.id.startsWith("port") ? portColor(name) : name === "その他" ? "#cbd5e1" : palette[i]);
     const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value === null ? null : value / divisor])) }));
     const scale = chartScale(chart.points.map(point => point.total / divisor));
     const legendItems = chart.categories.map((name, i) => ({ name, i })).reverse();

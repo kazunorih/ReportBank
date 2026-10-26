@@ -7,7 +7,7 @@ export default function SiteNav() {
   const pathname = usePathname();
   const current = pathname === "/" ? "home" : pathname.startsWith("/weekly-reports") ? "weekly" : pathname === "/site-info" ? "info" : undefined;
   const links = [
-    { id: "home", href: "/", label: "ホーム" },
+    { id: "home", href: "/", label: "記事一覧" },
     { id: "weekly", href: "/weekly-reports", label: "定点観測" },
     { id: "info", href: "/site-info", label: "サイト情報" },
   ];
