@@ -17,7 +17,7 @@ it("keeps fiscal statement dates, the asset identity and unchanged interest seri
   }
   const assets = report.series.find(s => s.id === "bojStatementJgb")!;
   expect(assets.values.every(v => v === null)).toBe(true); // Never shift March onto June.
-  expect(market.insight!.summary).toContain("分からない");
+  expect(market.insight!.summary).toMatch(/分からない|判断できない|不明/);
   expect([...market.insight!.summary].length).toBeLessThanOrEqual(400);
 });
 

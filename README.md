@@ -1,5 +1,7 @@
 # microCMS + Next.js + AWS Amplify
 
+Node.jsは **24.22.1以降の24系LTS**（または22.23.4以降の22系）を使用してください。未修正版でのインストール・ビルド・起動は停止します。2026年10月の脆弱性対応内容、PCの更新方法、本番反映と実ランタイムの確認手順は [Node.js脆弱性対応](docs/nodejs-security-response.md) を参照してください。
+
 週次マクロ金融レポートの構成・データ定義・AWS導入手順は [docs/weekly-reports.md](docs/weekly-reports.md) を参照してください。
 
 このプロジェクトは、microCMS の記事を取得して表示する Next.js アプリです。

@@ -52,6 +52,8 @@ Resources:
     Properties:
       FunctionName: !Sub "${AppName}-stripe-webhook-worker"
       Runtime: nodejs24.x
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto
       Handler: index.handler
       CodeUri: ../dist/stripe-webhook-worker
       Timeout: 60

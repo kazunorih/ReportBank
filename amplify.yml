@@ -1,0 +1,31 @@
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install "$(cat .nvmrc)"
+        - nvm use "$(cat .nvmrc)"
+        - node scripts/check-node-version.mjs
+        - npm ci
+
+    build:
+      commands:
+        - |
+          echo "Preparing environment variables..."
+
+          env | grep -E '^(NEXT_PUBLIC_|MICROCMS_|GA_|COGNITO_|STRIPE_|APP_AWS_REGION=|ADS_TABLE_NAME=)' > .env.production || true
+
+          echo "Environment variables prepared."
+
+        - npm run build
+
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*
