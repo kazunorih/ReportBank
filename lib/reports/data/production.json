@@ -1,0 +1,904 @@
+{
+  "agriculture": [
+    {
+      "year": 1975,
+      "total": 90514.0,
+      "rice": 34658.0,
+      "vegetables": 14673.0,
+      "livestock": 24867.0,
+      "other": 16316.0
+    },
+    {
+      "year": 1976,
+      "total": 92946.0,
+      "rice": 33545.0,
+      "vegetables": 15360.0,
+      "livestock": 25638.0,
+      "other": 18403.0
+    },
+    {
+      "year": 1977,
+      "total": 101140.0,
+      "rice": 39075.0,
+      "vegetables": 15264.0,
+      "livestock": 27907.0,
+      "other": 18894.0
+    },
+    {
+      "year": 1978,
+      "total": 103476.0,
+      "rice": 38510.0,
+      "vegetables": 15979.0,
+      "livestock": 28330.0,
+      "other": 20657.0
+    },
+    {
+      "year": 1979,
+      "total": 105390.0,
+      "rice": 36082.0,
+      "vegetables": 18767.0,
+      "livestock": 29754.0,
+      "other": 20787.0
+    },
+    {
+      "year": 1980,
+      "total": 102625.0,
+      "rice": 30781.0,
+      "vegetables": 19037.0,
+      "livestock": 32187.0,
+      "other": 20620.0
+    },
+    {
+      "year": 1981,
+      "total": 107154.0,
+      "rice": 32994.0,
+      "vegetables": 19549.0,
+      "livestock": 32358.0,
+      "other": 22253.0
+    },
+    {
+      "year": 1982,
+      "total": 106725.0,
+      "rice": 33059.0,
+      "vegetables": 18752.0,
+      "livestock": 32475.0,
+      "other": 22439.0
+    },
+    {
+      "year": 1983,
+      "total": 110027.0,
+      "rice": 34134.0,
+      "vegetables": 20792.0,
+      "livestock": 32460.0,
+      "other": 22641.0
+    },
+    {
+      "year": 1984,
+      "total": 117171.0,
+      "rice": 39300.0,
+      "vegetables": 19718.0,
+      "livestock": 32897.0,
+      "other": 25256.0
+    },
+    {
+      "year": 1985,
+      "total": 116295.0,
+      "rice": 38299.0,
+      "vegetables": 21104.0,
+      "livestock": 32531.0,
+      "other": 24361.0
+    },
+    {
+      "year": 1986,
+      "total": 114232.0,
+      "rice": 37566.0,
+      "vegetables": 20833.0,
+      "livestock": 32205.0,
+      "other": 23628.0
+    },
+    {
+      "year": 1987,
+      "total": 105814.0,
+      "rice": 32697.0,
+      "vegetables": 21181.0,
+      "livestock": 29097.0,
+      "other": 22839.0
+    },
+    {
+      "year": 1988,
+      "total": 105165.0,
+      "rice": 30347.0,
+      "vegetables": 23038.0,
+      "livestock": 29156.0,
+      "other": 22624.0
+    },
+    {
+      "year": 1989,
+      "total": 110526.0,
+      "rice": 32266.0,
+      "vegetables": 23218.0,
+      "livestock": 30549.0,
+      "other": 24493.0
+    },
+    {
+      "year": 1990,
+      "total": 114927.0,
+      "rice": 31959.0,
+      "vegetables": 25880.0,
+      "livestock": 31303.0,
+      "other": 25785.0
+    },
+    {
+      "year": 1991,
+      "total": 114869.0,
+      "rice": 29219.0,
+      "vegetables": 28005.0,
+      "livestock": 31320.0,
+      "other": 26325.0
+    },
+    {
+      "year": 1992,
+      "total": 112418.0,
+      "rice": 33889.0,
+      "vegetables": 24607.0,
+      "livestock": 28611.0,
+      "other": 25311.0
+    },
+    {
+      "year": 1993,
+      "total": 104472.0,
+      "rice": 28359.0,
+      "vegetables": 26545.0,
+      "livestock": 26696.0,
+      "other": 22872.0
+    },
+    {
+      "year": 1994,
+      "total": 113103.0,
+      "rice": 38249.0,
+      "vegetables": 25088.0,
+      "livestock": 25596.0,
+      "other": 24170.0
+    },
+    {
+      "year": 1995,
+      "total": 104498.0,
+      "rice": 31861.0,
+      "vegetables": 23978.0,
+      "livestock": 25204.0,
+      "other": 23455.0
+    },
+    {
+      "year": 1996,
+      "total": 103166.0,
+      "rice": 30540.0,
+      "vegetables": 22986.0,
+      "livestock": 25882.0,
+      "other": 23758.0
+    },
+    {
+      "year": 1997,
+      "total": 99113.0,
+      "rice": 27792.0,
+      "vegetables": 23090.0,
+      "livestock": 25823.0,
+      "other": 22408.0
+    },
+    {
+      "year": 1998,
+      "total": 99264.0,
+      "rice": 25148.0,
+      "vegetables": 25953.0,
+      "livestock": 24684.0,
+      "other": 23479.0
+    },
+    {
+      "year": 1999,
+      "total": 93638.0,
+      "rice": 23761.0,
+      "vegetables": 22395.0,
+      "livestock": 24670.0,
+      "other": 22812.0
+    },
+    {
+      "year": 2000,
+      "total": 91295.0,
+      "rice": 23210.0,
+      "vegetables": 21139.0,
+      "livestock": 24596.0,
+      "other": 22350.0
+    },
+    {
+      "year": 2001,
+      "total": 88813.0,
+      "rice": 22284.0,
+      "vegetables": 21188.0,
+      "livestock": 24125.0,
+      "other": 21216.0
+    },
+    {
+      "year": 2002,
+      "total": 89297.0,
+      "rice": 21720.0,
+      "vegetables": 21514.0,
+      "livestock": 24783.0,
+      "other": 21280.0
+    },
+    {
+      "year": 2003,
+      "total": 88565.0,
+      "rice": 23416.0,
+      "vegetables": 20970.0,
+      "livestock": 23289.0,
+      "other": 20890.0
+    },
+    {
+      "year": 2004,
+      "total": 87136.0,
+      "rice": 19910.0,
+      "vegetables": 21427.0,
+      "livestock": 24580.0,
+      "other": 21219.0
+    },
+    {
+      "year": 2005,
+      "total": 85119.0,
+      "rice": 19469.0,
+      "vegetables": 20327.0,
+      "livestock": 25057.0,
+      "other": 20266.0
+    },
+    {
+      "year": 2006,
+      "total": 83322.0,
+      "rice": 18147.0,
+      "vegetables": 20508.0,
+      "livestock": 24525.0,
+      "other": 20142.0
+    },
+    {
+      "year": 2007,
+      "total": 82585.0,
+      "rice": 17903.0,
+      "vegetables": 20893.0,
+      "livestock": 24787.0,
+      "other": 19002.0
+    },
+    {
+      "year": 2008,
+      "total": 84662.0,
+      "rice": 19014.0,
+      "vegetables": 21105.0,
+      "livestock": 25852.0,
+      "other": 18691.0
+    },
+    {
+      "year": 2009,
+      "total": 81902.0,
+      "rice": 17950.0,
+      "vegetables": 20850.0,
+      "livestock": 25466.0,
+      "other": 17636.0
+    },
+    {
+      "year": 2010,
+      "total": 81214.0,
+      "rice": 15517.0,
+      "vegetables": 22485.0,
+      "livestock": 25525.0,
+      "other": 17687.0
+    },
+    {
+      "year": 2011,
+      "total": 82463.0,
+      "rice": 18497.0,
+      "vegetables": 21343.0,
+      "livestock": 25509.0,
+      "other": 17114.0
+    },
+    {
+      "year": 2012,
+      "total": 85251.0,
+      "rice": 20286.0,
+      "vegetables": 21896.0,
+      "livestock": 25880.0,
+      "other": 17189.0
+    },
+    {
+      "year": 2013,
+      "total": 84668.0,
+      "rice": 17807.0,
+      "vegetables": 22533.0,
+      "livestock": 27092.0,
+      "other": 17236.0
+    },
+    {
+      "year": 2014,
+      "total": 83639.0,
+      "rice": 14343.0,
+      "vegetables": 22421.0,
+      "livestock": 29448.0,
+      "other": 17427.0
+    },
+    {
+      "year": 2015,
+      "total": 87979.0,
+      "rice": 14994.0,
+      "vegetables": 23916.0,
+      "livestock": 31179.0,
+      "other": 17890.0
+    },
+    {
+      "year": 2016,
+      "total": 92025.0,
+      "rice": 16549.0,
+      "vegetables": 25567.0,
+      "livestock": 31626.0,
+      "other": 18283.0
+    },
+    {
+      "year": 2017,
+      "total": 92742.0,
+      "rice": 17357.0,
+      "vegetables": 24508.0,
+      "livestock": 32522.0,
+      "other": 18355.0
+    },
+    {
+      "year": 2018,
+      "total": 90558.0,
+      "rice": 17416.0,
+      "vegetables": 23212.0,
+      "livestock": 32129.0,
+      "other": 17801.0
+    },
+    {
+      "year": 2019,
+      "total": 88937.0,
+      "rice": 17426.0,
+      "vegetables": 21515.0,
+      "livestock": 32107.0,
+      "other": 17889.0
+    },
+    {
+      "year": 2020,
+      "total": 89369.0,
+      "rice": 16431.0,
+      "vegetables": 22519.0,
+      "livestock": 32372.0,
+      "other": 18047.0
+    },
+    {
+      "year": 2021,
+      "total": 88380.0,
+      "rice": 13699.0,
+      "vegetables": 21463.0,
+      "livestock": 34048.0,
+      "other": 19170.0
+    },
+    {
+      "year": 2022,
+      "total": 89984.0,
+      "rice": 13946.0,
+      "vegetables": 22294.0,
+      "livestock": 34652.0,
+      "other": 19092.0
+    },
+    {
+      "year": 2023,
+      "total": 94878.0,
+      "rice": 15193.0,
+      "vegetables": 23243.0,
+      "livestock": 37139.0,
+      "other": 19303.0
+    },
+    {
+      "year": 2024,
+      "total": 107801.0,
+      "rice": 25524.0,
+      "vegetables": 25510.0,
+      "livestock": 36654.0,
+      "other": 20113.0
+    }
+  ],
+  "selfSufficiency": [
+    {
+      "year": 1975,
+      "rate": 54.0,
+      "provisional": false
+    },
+    {
+      "year": 1976,
+      "rate": 53.0,
+      "provisional": false
+    },
+    {
+      "year": 1977,
+      "rate": 53.0,
+      "provisional": false
+    },
+    {
+      "year": 1978,
+      "rate": 54.0,
+      "provisional": false
+    },
+    {
+      "year": 1979,
+      "rate": 54.0,
+      "provisional": false
+    },
+    {
+      "year": 1980,
+      "rate": 53.0,
+      "provisional": false
+    },
+    {
+      "year": 1981,
+      "rate": 52.0,
+      "provisional": false
+    },
+    {
+      "year": 1982,
+      "rate": 53.0,
+      "provisional": false
+    },
+    {
+      "year": 1983,
+      "rate": 52.0,
+      "provisional": false
+    },
+    {
+      "year": 1984,
+      "rate": 53.0,
+      "provisional": false
+    },
+    {
+      "year": 1985,
+      "rate": 53.0,
+      "provisional": false
+    },
+    {
+      "year": 1986,
+      "rate": 51.0,
+      "provisional": false
+    },
+    {
+      "year": 1987,
+      "rate": 50.0,
+      "provisional": false
+    },
+    {
+      "year": 1988,
+      "rate": 50.0,
+      "provisional": false
+    },
+    {
+      "year": 1989,
+      "rate": 49.0,
+      "provisional": false
+    },
+    {
+      "year": 1990,
+      "rate": 48.0,
+      "provisional": false
+    },
+    {
+      "year": 1991,
+      "rate": 46.0,
+      "provisional": false
+    },
+    {
+      "year": 1992,
+      "rate": 46.0,
+      "provisional": false
+    },
+    {
+      "year": 1993,
+      "rate": 37.0,
+      "provisional": false
+    },
+    {
+      "year": 1994,
+      "rate": 46.0,
+      "provisional": false
+    },
+    {
+      "year": 1995,
+      "rate": 43.0,
+      "provisional": false
+    },
+    {
+      "year": 1996,
+      "rate": 42.0,
+      "provisional": false
+    },
+    {
+      "year": 1997,
+      "rate": 41.0,
+      "provisional": false
+    },
+    {
+      "year": 1998,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 1999,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2000,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2001,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2002,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2003,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2004,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2005,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2006,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2007,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2008,
+      "rate": 41.0,
+      "provisional": false
+    },
+    {
+      "year": 2009,
+      "rate": 40.0,
+      "provisional": false
+    },
+    {
+      "year": 2010,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2011,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2012,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2013,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2014,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2015,
+      "rate": 39.0,
+      "provisional": false
+    },
+    {
+      "year": 2016,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2017,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2018,
+      "rate": 37.0,
+      "provisional": false
+    },
+    {
+      "year": 2019,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2020,
+      "rate": 37.0,
+      "provisional": false
+    },
+    {
+      "year": 2021,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2022,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2023,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2024,
+      "rate": 38.0,
+      "provisional": false
+    },
+    {
+      "year": 2025,
+      "rate": 37.0,
+      "provisional": true
+    }
+  ],
+  "industry": [
+    {
+      "year": 1994,
+      "mining": 360.3,
+      "manufacturing": 122042.1,
+      "construction": 43644.2,
+      "total": 166046.6
+    },
+    {
+      "year": 1995,
+      "mining": 322.6,
+      "manufacturing": 124845.5,
+      "construction": 42338.7,
+      "total": 167506.8
+    },
+    {
+      "year": 1996,
+      "mining": 324.9,
+      "manufacturing": 128119.9,
+      "construction": 44692.9,
+      "total": 173137.7
+    },
+    {
+      "year": 1997,
+      "mining": 301.4,
+      "manufacturing": 129086.3,
+      "construction": 42825.8,
+      "total": 172213.5
+    },
+    {
+      "year": 1998,
+      "mining": 293.6,
+      "manufacturing": 123314.7,
+      "construction": 40039.1,
+      "total": 163647.4
+    },
+    {
+      "year": 1999,
+      "mining": 268.5,
+      "manufacturing": 117694.9,
+      "construction": 38219.9,
+      "total": 156183.3
+    },
+    {
+      "year": 2000,
+      "mining": 228.4,
+      "manufacturing": 120504.9,
+      "construction": 38123.9,
+      "total": 158857.2
+    },
+    {
+      "year": 2001,
+      "mining": 212.3,
+      "manufacturing": 114006.5,
+      "construction": 36836.1,
+      "total": 151054.9
+    },
+    {
+      "year": 2002,
+      "mining": 177.1,
+      "manufacturing": 109584.6,
+      "construction": 34569.9,
+      "total": 144331.6
+    },
+    {
+      "year": 2003,
+      "mining": 180.9,
+      "manufacturing": 109907.5,
+      "construction": 32387,
+      "total": 142475.4
+    },
+    {
+      "year": 2004,
+      "mining": 165.5,
+      "manufacturing": 112103.6,
+      "construction": 30834.7,
+      "total": 143103.8
+    },
+    {
+      "year": 2005,
+      "mining": 171.2,
+      "manufacturing": 113252.6,
+      "construction": 29087,
+      "total": 142510.8
+    },
+    {
+      "year": 2006,
+      "mining": 181.9,
+      "manufacturing": 114328,
+      "construction": 29522.9,
+      "total": 144032.8
+    },
+    {
+      "year": 2007,
+      "mining": 216.1,
+      "manufacturing": 118425.7,
+      "construction": 28638.6,
+      "total": 147280.4
+    },
+    {
+      "year": 2008,
+      "mining": 231.4,
+      "manufacturing": 113558.6,
+      "construction": 28013.1,
+      "total": 141803.1
+    },
+    {
+      "year": 2009,
+      "mining": 216.3,
+      "manufacturing": 95159.8,
+      "construction": 27338.7,
+      "total": 122714.8
+    },
+    {
+      "year": 2010,
+      "mining": 241.3,
+      "manufacturing": 106490.8,
+      "construction": 25917.3,
+      "total": 132649.4
+    },
+    {
+      "year": 2011,
+      "mining": 222.5,
+      "manufacturing": 98632.4,
+      "construction": 25778.8,
+      "total": 124633.7
+    },
+    {
+      "year": 2012,
+      "mining": 228.2,
+      "manufacturing": 99722.2,
+      "construction": 26597.5,
+      "total": 126547.9
+    },
+    {
+      "year": 2013,
+      "mining": 255.1,
+      "manufacturing": 98695,
+      "construction": 29335.7,
+      "total": 128285.8
+    },
+    {
+      "year": 2014,
+      "mining": 286,
+      "manufacturing": 102514.9,
+      "construction": 32687.3,
+      "total": 135488.2
+    },
+    {
+      "year": 2015,
+      "mining": 292.5,
+      "manufacturing": 110179.6,
+      "construction": 35408.2,
+      "total": 145880.3
+    },
+    {
+      "year": 2016,
+      "mining": 264.9,
+      "manufacturing": 111348.5,
+      "construction": 35754.4,
+      "total": 147367.8
+    },
+    {
+      "year": 2017,
+      "mining": 275.9,
+      "manufacturing": 113837.2,
+      "construction": 36060.1,
+      "total": 150173.2
+    },
+    {
+      "year": 2018,
+      "mining": 272.4,
+      "manufacturing": 115711.4,
+      "construction": 35259.1,
+      "total": 151242.9
+    },
+    {
+      "year": 2019,
+      "mining": 264.9,
+      "manufacturing": 114674.7,
+      "construction": 34608.6,
+      "total": 149548.2
+    },
+    {
+      "year": 2020,
+      "mining": 264.7,
+      "manufacturing": 109616,
+      "construction": 33433.7,
+      "total": 143314.4
+    },
+    {
+      "year": 2021,
+      "mining": 271.7,
+      "manufacturing": 112857.5,
+      "construction": 33472.2,
+      "total": 146601.4
+    },
+    {
+      "year": 2022,
+      "mining": 348.6,
+      "manufacturing": 110100.2,
+      "construction": 33211.8,
+      "total": 143660.6
+    },
+    {
+      "year": 2023,
+      "mining": 362.6,
+      "manufacturing": 120054.3,
+      "construction": 34934.5,
+      "total": 155351.4
+    },
+    {
+      "year": 2024,
+      "mining": 355.3,
+      "manufacturing": 119345.1,
+      "construction": 33514.2,
+      "total": 153214.6
+    }
+  ],
+  "retrievedAt": "2026-10-28T12:32:36.423425+00:00",
+  "sources": [
+    {
+      "id": "agriculture",
+      "name": "農林水産省・生産農業所得統計（全国累年）",
+      "file": "agriculture.xlsx",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000040426619",
+      "sha256": "ab3f9b262bc59723835c9c2e35420a89e38d353dc9c0462d45744d37f1955252"
+    },
+    {
+      "id": "selfSufficiency",
+      "name": "農林水産省・総合食料自給率の推移",
+      "file": "self-sufficiency.xls",
+      "url": "https://www.maff.go.jp/j/zyukyu/zikyu_ritu/attach/xls/012-7.xls",
+      "sha256": "023443691ad24a6a0d40f0bd433e054d00b8266d54fb513f234babd74af3bcd0"
+    },
+    {
+      "id": "industry",
+      "name": "内閣府・2024年度国民経済計算 経済活動別国内総生産（名目）",
+      "file": "industry.xlsx",
+      "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/kakuhou/files/2024/tables/2024fcm3n_jp.xlsx",
+      "sha256": "89565ff9bbf92f8533507200f2b72f9d619535ea78ef20b401b0e35c5f9cecbb"
+    }
+  ]
+}
