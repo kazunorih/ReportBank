@@ -11,7 +11,7 @@ import PageViewsChart from "./page-views-chart";
 
 export const metadata: Metadata = {
   title: "サイト情報 | ReportBank",
-  description: "ReportBankのGoogle Analytics 4によるページビュー統計です。",
+  description: "ReportBankのページビュー統計、管理人情報、広告掲載のご案内です。",
 };
 
 export default async function SiteInfoPage() {
@@ -76,6 +76,21 @@ export default async function SiteInfoPage() {
             ))}
           </div>
         )}
+
+        <section
+          aria-labelledby="administrator-heading"
+          className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8"
+        >
+          <h2 id="administrator-heading" className="text-xl font-semibold text-slate-950">
+            管理人情報
+          </h2>
+          <Link
+            href="/articles/y-h276cxoelb"
+            className="mt-4 inline-flex rounded text-sky-700 underline underline-offset-4 hover:text-sky-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-600"
+          >
+            管理人のプロフィールを見る
+          </Link>
+        </section>
 
         <section
           aria-labelledby="advertising-heading"
