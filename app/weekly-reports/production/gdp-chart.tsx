@@ -22,7 +22,7 @@ export default function GdpChart() {
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="nominal-gdp">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 04</p>
     <h2 id="nominal-gdp" className="mt-2 text-xl font-semibold sm:text-2xl">名目GDPの産業別内訳</h2>
-    <p className="mt-3 text-sm leading-7 text-slate-500">{gdp.firstYear}～{gdp.latestYear}年の名目GDP全体額を年次の積み上げ棒グラフで表示。{gdp.rankingYear}年のGDP構成比が大きい上位10産業を全期間で共通に表示し、農業を含む残りの産業は「その他」にまとめています。棒の上の数値は各年のGDP総額（兆円、小数第1位まで）です。横にスクロールして全期間を確認できます。</p>
+    <p className="mt-3 text-sm leading-7 text-slate-500">{gdp.firstYear}～{gdp.latestYear}年の名目GDP全体額を年次の積み上げ棒グラフで表示。{gdp.rankingYear}年のGDP構成比が大きい10産業（「その他のサービス」を除く）を全期間で共通に表示し、農業を含む残りの産業は「その他」にまとめています。棒の上の数値は各年のGDP総額（兆円、小数第1位まで）です。横にスクロールして全期間を確認できます。</p>
     <FixedAxisChart left={left} leftUnit="名目GDP（兆円）" minWidth={Math.max(900, data.length * 60 + 120)} height={380} label="名目GDPの産業別年次推移">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={plotMargin} accessibilityLayer>

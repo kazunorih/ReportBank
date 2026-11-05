@@ -80,7 +80,8 @@ def parse(rows):
                            statisticalDiscrepancy=float(discrepancy)))
     if [p["year"] for p in points] != list(range(1994, points[-1]["year"] + 1)):
         raise ValueError("Incomplete annual GDP series")
-    ranking = sorted(range(16), key=lambda i: points[-1][f"sector{i + 1}"], reverse=True)
+    # Keep the broad "other services" category inside the chart's "other".
+    ranking = sorted(range(15), key=lambda i: points[-1][f"sector{i + 1}"], reverse=True)
     top = ranking[:10]
     for point in points:
         point["other"] = float(Decimal(str(point["total"])) - sum(Decimal(str(point[f"sector{i + 1}"])) for i in top))

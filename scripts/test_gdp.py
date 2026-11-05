@@ -17,11 +17,15 @@ class GdpTests(unittest.TestCase):
 
     def test_ten_largest_industries_use_latest_year(self):
         latest = self.data["points"][-1]
-        expected = sorted((f"sector{i}" for i in range(1, 17)), key=lambda key: latest[key], reverse=True)[:10]
+        expected = sorted((f"sector{i}" for i in range(1, 16)), key=lambda key: latest[key], reverse=True)[:10]
         self.assertEqual([s["key"] for s in self.data["series"]], expected)
         self.assertEqual(self.data["rankingYear"], latest["year"])
         self.assertIn("農林水産業", self.data["otherIndustries"])
         self.assertIn("sector3", expected)
+        self.assertIn("sector10", expected)
+        self.assertNotIn("sector16", expected)
+        self.assertIn("その他のサービス", self.data["otherIndustries"])
+        self.assertNotIn("金融・保険業", self.data["otherIndustries"])
 
     def test_every_stack_equals_official_gdp(self):
         keys = [s["key"] for s in self.data["series"]]
