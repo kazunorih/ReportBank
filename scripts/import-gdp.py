@@ -81,7 +81,7 @@ def parse(rows):
     if [p["year"] for p in points] != list(range(1994, points[-1]["year"] + 1)):
         raise ValueError("Incomplete annual GDP series")
     ranking = sorted(range(16), key=lambda i: points[-1][f"sector{i + 1}"], reverse=True)
-    top = ranking[:8]
+    top = ranking[:10]
     for point in points:
         point["other"] = float(Decimal(str(point["total"])) - sum(Decimal(str(point[f"sector{i + 1}"])) for i in top))
         if point["other"] < 0:
@@ -113,7 +113,7 @@ def main():
             raise ValueError("FIGURE02 observation mismatch")
     (ROOT / "lib/reports/data/gdp.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"GDP: {result['firstYear']}–{result['latestYear']}, {len(result['points'])} years")
-    print("Top 8:", ", ".join(s["name"] for s in result["series"]))
+    print("Top 10:", ", ".join(s["name"] for s in result["series"]))
 
 
 if __name__ == "__main__":

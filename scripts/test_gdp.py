@@ -15,9 +15,9 @@ class GdpTests(unittest.TestCase):
     def setUp(self):
         self.data = json.loads((ROOT / "lib/reports/data/gdp.json").read_text(encoding="utf-8"), parse_float=Decimal)
 
-    def test_eight_largest_industries_use_latest_year(self):
+    def test_ten_largest_industries_use_latest_year(self):
         latest = self.data["points"][-1]
-        expected = sorted((f"sector{i}" for i in range(1, 17)), key=lambda key: latest[key], reverse=True)[:8]
+        expected = sorted((f"sector{i}" for i in range(1, 17)), key=lambda key: latest[key], reverse=True)[:10]
         self.assertEqual([s["key"] for s in self.data["series"]], expected)
         self.assertEqual(self.data["rankingYear"], latest["year"])
         self.assertIn("農林水産業", self.data["otherIndustries"])

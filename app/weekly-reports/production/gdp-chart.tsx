@@ -1,12 +1,12 @@
 "use client";
 
-import { Bar, CartesianGrid, ComposedChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, CartesianGrid, ComposedChart, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import gdp from "@/lib/reports/data/gdp.json";
 import { chartScale } from "@/lib/reports/chart-scale";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
-const colors = ["#7bb9e5", "#b6a0df", "#73c9b3", "#edc278", "#e6a3b5", "#8aabd1", "#b5c989", "#d5ac83"];
+const colors = ["#7bb9e5", "#b6a0df", "#73c9b3", "#edc278", "#e6a3b5", "#8aabd1", "#b5c989", "#d5ac83", "#74b7bd", "#c69ac3"];
 const series = [...gdp.series.map((item, index) => ({ ...item, color: colors[index] })), { key: "other", name: "その他", color: "#cbd5e1" }];
 const legend = series.toReversed();
 const format = (value: number) => value.toLocaleString("ja-JP", { maximumFractionDigits: 4 });
@@ -17,12 +17,13 @@ export default function GdpChart() {
     for (const item of series) row[item.key] = (point as Record<string, number>)[item.key] / 1_000;
     return row;
   });
-  const left = chartScale(data.map(point => point.total));
+  // Leave room above the tallest stack for its total label.
+  const left = chartScale(data.map(point => point.total * 1.08));
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="nominal-gdp">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 04</p>
     <h2 id="nominal-gdp" className="mt-2 text-xl font-semibold sm:text-2xl">名目GDPの産業別内訳</h2>
-    <p className="mt-3 text-sm leading-7 text-slate-500">{gdp.firstYear}～{gdp.latestYear}年の名目GDP全体額を年次の積み上げ棒グラフで表示。{gdp.rankingYear}年のGDP構成比が大きい上位8産業を全期間で共通に表示し、農業を含む残りの産業は「その他」にまとめています。横にスクロールして全期間を確認できます。</p>
-    <FixedAxisChart left={left} leftUnit="名目GDP（兆円）" minWidth={Math.max(900, data.length * 44 + 120)} height={380} label="名目GDPの産業別年次推移">
+    <p className="mt-3 text-sm leading-7 text-slate-500">{gdp.firstYear}～{gdp.latestYear}年の名目GDP全体額を年次の積み上げ棒グラフで表示。{gdp.rankingYear}年のGDP構成比が大きい上位10産業を全期間で共通に表示し、農業を含む残りの産業は「その他」にまとめています。棒の上の数値は各年のGDP総額（兆円、小数第1位まで）です。横にスクロールして全期間を確認できます。</p>
+    <FixedAxisChart left={left} leftUnit="名目GDP（兆円）" minWidth={Math.max(900, data.length * 60 + 120)} height={380} label="名目GDPの産業別年次推移">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
           <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
@@ -30,7 +31,9 @@ export default function GdpChart() {
           <YAxis hide width={0} domain={left.domain} ticks={left.ticks} />
           <Tooltip itemSorter={tooltipOrder(legend.map(item => item.key))} labelFormatter={year => `${year}年`}
             formatter={(value, name) => [`${format(Number(value))} 兆円`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
-          {series.map(item => <Bar key={item.key} dataKey={item.key} name={item.name} stackId="gdp" fill={item.color} isAnimationActive={false} />)}
+          {series.map(item => <Bar key={item.key} dataKey={item.key} name={item.name} stackId="gdp" fill={item.color} isAnimationActive={false}>
+            {item.key === "other" && <LabelList dataKey="total" position="top" offset={6} fontSize={11} fill="#475569" formatter={value => Number(value).toLocaleString("ja-JP", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} />}
+          </Bar>)}
         </ComposedChart>
       </ResponsiveContainer>
     </FixedAxisChart>
