@@ -6,7 +6,7 @@ import orders from "@/lib/reports/data/machinery-orders.json";
 
 export const metadata: Metadata = {
   title: "生産統計 | 定点観測 | ReportBank",
-  description: "農業総産出額と食料自給率、第2次産業の名目GDP、産業機械の内需・輸出別月次受注額を公表統計で確認します。",
+  description: "農業総産出額と食料自給率、第2次産業の名目GDP、産業機械の月次受注額、全産業の名目GDPの年次内訳を公表統計で確認します。",
 };
 
 export default function ProductionPage() {
@@ -18,8 +18,8 @@ export default function ProductionPage() {
       <header className="border-b border-slate-200 pb-8">
         <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / PRODUCTION STATISTICS</p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">生産統計</h2>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">農業総産出額と食料自給率、第2次産業の名目GDP、産業機械の内需・輸出別受注額から、日本の農業・工業の推移を確認します。金額は各時点の価格による名目値です。</p>
-        <p className="mt-4 text-xs text-slate-500">資料取得日：FIGURE01・02 {retrieved}／FIGURE03 {ordersRetrieved}</p>
+        <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">農業総産出額と食料自給率、第2次産業の名目GDP、産業機械の内需・輸出別受注額、全産業の名目GDPから、日本の生産と産業構造の推移を確認します。金額は各時点の価格による名目値です。</p>
+        <p className="mt-4 text-xs text-slate-500">資料取得日：FIGURE01・02・04 {retrieved}／FIGURE03 {ordersRetrieved}</p>
       </header>
       <ProductionCharts />
       <section className="rounded-2xl bg-white p-6">

@@ -1,5 +1,16 @@
 # 生産統計のデータ
 
+## FIGURE04：名目GDP全体の産業別内訳
+
+`lib/reports/data/gdp.json` はFIGURE02と同じ公式Excelの「実数」シートを使用する。1994～2024暦年（31年）、2020年基準・2008SNA。16産業の大分類から最新年（2024年）の金額上位8産業を選び、全期間で分類と順序を固定する。製造業の内訳などの下位分類を重ねて加算しない。残り8産業（農林水産業を含む）は「その他」。棒の合計を原表の「国内総生産」に一致させるため、その他はGDP総額－上位8産業とし、輸入品に課される税・関税、総資本形成に係る消費税の控除、統計上の不突合、丸め差も含める。原単位は10億円、表示単位は兆円。
+
+```powershell
+python scripts/import-gdp.py --source-dir tmp/production-sources
+python -m unittest discover -s scripts -p test_gdp.py
+```
+
+標準ライブラリのみ使用。`--source-dir` を省略すると公式Excelをダウンロードする。FIGURE02の保存済みSHA-256と一致する資料だけ採用し、資料取得日はFIGURE02と共通、処理日は別に保存する。公式Excelが改訂された場合は先に `import-production.py` でFIGURE02を更新する。16産業の小計・税等調整後のGDP・連続年次・FIGURE02の観測値との一致を検証してからJSONを保存する。
+
 `/weekly-reports/production` は `lib/reports/data/production.json` の公表値を表示する。
 
 - 農業総産出額：e-Stat「年次別農業総産出額及び生産農業所得」全国累年Excel。1975～2024年、原単位は億円。米（D列）、野菜小計（I列）、畜産計（Q列）を採用し、その他＝総額－3部門。1975年は沖縄県を含まない。
