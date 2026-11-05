@@ -21,6 +21,8 @@ export default function MachineryOrdersChart() {
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 03</p>
     <h2 id="machinery-orders" className="mt-2 text-xl font-semibold sm:text-2xl">産業機械の受注</h2>
     <p className="mt-3 text-sm leading-7 text-slate-500">{monthLabel(orders.firstMonth)}～{monthLabel(orders.latestMonth)}の月次受注額を、内需と輸出（外需）の積み上げ棒グラフで表示しています（{data.length}か月）。横にスクロールして全期間を確認できます。</p>
+    <p className="mt-3 text-sm leading-7 text-slate-500">ここでいう産業機械は、工場・発電所・プラントなどで、生産やエネルギー供給、流体の移送、荷物の運搬などに使う機械・設備です。受注額の大きい代表的な8機種は、ボイラ・原動機（蒸気の発生や動力の供給）、化学機械〈冷凍機械を含む〉（化学製品の製造・冷却）、ポンプ（液体の移送）、運搬機械（クレーン・コンベヤなど）、圧縮機（空気・ガスの圧縮）、プラスチック加工機械（樹脂の成形・加工）、タンク（液体・ガスなどの貯蔵）、金属加工機械（金属の成形・加工）です。</p>
+    <p className="mt-1 text-xs leading-6 text-slate-500">例は<a href="https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202608.pdf#page=3" target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">2026年8月資料の表2「産業機械 機種別受注状況」</a>に掲載された2025年度の受注額順。「その他機械」を除く上位8機種を挙げています。</p>
     <FixedAxisChart left={left} leftUnit="受注額（億円）" minWidth={Math.max(900, data.length * 44 + 120)} height={380} label="産業機械の内需・輸出別月次受注額">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
