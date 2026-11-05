@@ -5,6 +5,7 @@ import { chartScale } from "@/lib/reports/chart-scale";
 import { productionData } from "@/lib/reports/production";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
+import MachineryOrdersChart from "./machinery-orders-chart";
 
 const agriculturalSeries = [
   { key: "rice", name: "米", color: "#7bb9e5" },
@@ -77,5 +78,5 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
 }
 
 export default function ProductionCharts() {
-  return <div className="space-y-8"><AnnualFigure agricultural /><AnnualFigure agricultural={false} /></div>;
+  return <div className="space-y-8"><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /></div>;
 }

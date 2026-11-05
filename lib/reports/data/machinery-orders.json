@@ -1,0 +1,959 @@
+{
+  "retrievedAt": "2026-11-05T15:34:05.031563+00:00",
+  "indexUrl": "https://www.jsim.or.jp/statistical-data/",
+  "unit": "百万円",
+  "firstMonth": "2019-04",
+  "latestMonth": "2026-08",
+  "points": [
+    {
+      "month": "2019-04",
+      "domestic": 189933,
+      "exports": 63553,
+      "total": 253486,
+      "sourceMonth": "2021-04"
+    },
+    {
+      "month": "2019-05",
+      "domestic": 187928,
+      "exports": 93459,
+      "total": 281387,
+      "sourceMonth": "2021-05"
+    },
+    {
+      "month": "2019-06",
+      "domestic": 264494,
+      "exports": 124296,
+      "total": 388790,
+      "sourceMonth": "2021-06"
+    },
+    {
+      "month": "2019-07",
+      "domestic": 255939,
+      "exports": 86960,
+      "total": 342899,
+      "sourceMonth": "2021-07"
+    },
+    {
+      "month": "2019-08",
+      "domestic": 376642,
+      "exports": 90810,
+      "total": 467452,
+      "sourceMonth": "2021-08"
+    },
+    {
+      "month": "2019-09",
+      "domestic": 282381,
+      "exports": 144937,
+      "total": 427318,
+      "sourceMonth": "2021-09"
+    },
+    {
+      "month": "2019-10",
+      "domestic": 287285,
+      "exports": 87927,
+      "total": 375212,
+      "sourceMonth": "2021-10"
+    },
+    {
+      "month": "2019-11",
+      "domestic": 302264,
+      "exports": 80627,
+      "total": 382891,
+      "sourceMonth": "2021-11"
+    },
+    {
+      "month": "2019-12",
+      "domestic": 261383,
+      "exports": 126273,
+      "total": 387656,
+      "sourceMonth": "2021-12"
+    },
+    {
+      "month": "2020-01",
+      "domestic": 154338,
+      "exports": 83057,
+      "total": 237395,
+      "sourceMonth": "2022-01"
+    },
+    {
+      "month": "2020-02",
+      "domestic": 211993,
+      "exports": 97174,
+      "total": 309167,
+      "sourceMonth": "2022-02"
+    },
+    {
+      "month": "2020-03",
+      "domestic": 581679,
+      "exports": 352614,
+      "total": 934293,
+      "sourceMonth": "2022-03"
+    },
+    {
+      "month": "2020-04",
+      "domestic": 322421,
+      "exports": 52956,
+      "total": 375377,
+      "sourceMonth": "2022-04"
+    },
+    {
+      "month": "2020-05",
+      "domestic": 193130,
+      "exports": 51671,
+      "total": 244801,
+      "sourceMonth": "2022-05"
+    },
+    {
+      "month": "2020-06",
+      "domestic": 251604,
+      "exports": 74153,
+      "total": 325757,
+      "sourceMonth": "2022-06"
+    },
+    {
+      "month": "2020-07",
+      "domestic": 214268,
+      "exports": 52272,
+      "total": 266540,
+      "sourceMonth": "2022-07"
+    },
+    {
+      "month": "2020-08",
+      "domestic": 237622,
+      "exports": 247426,
+      "total": 485048,
+      "sourceMonth": "2022-08"
+    },
+    {
+      "month": "2020-09",
+      "domestic": 329887,
+      "exports": 88362,
+      "total": 418249,
+      "sourceMonth": "2022-09"
+    },
+    {
+      "month": "2020-10",
+      "domestic": 224828,
+      "exports": 81834,
+      "total": 306662,
+      "sourceMonth": "2022-10"
+    },
+    {
+      "month": "2020-11",
+      "domestic": 224832,
+      "exports": 91163,
+      "total": 315995,
+      "sourceMonth": "2022-11"
+    },
+    {
+      "month": "2020-12",
+      "domestic": 273169,
+      "exports": 109778,
+      "total": 382947,
+      "sourceMonth": "2022-12"
+    },
+    {
+      "month": "2021-01",
+      "domestic": 181284,
+      "exports": 81045,
+      "total": 262329,
+      "sourceMonth": "2023-01"
+    },
+    {
+      "month": "2021-02",
+      "domestic": 196676,
+      "exports": 790657,
+      "total": 987333,
+      "sourceMonth": "2023-02"
+    },
+    {
+      "month": "2021-03",
+      "domestic": 442651,
+      "exports": 218477,
+      "total": 661128,
+      "sourceMonth": "2023-03"
+    },
+    {
+      "month": "2021-04",
+      "domestic": 231994,
+      "exports": 109285,
+      "total": 341279,
+      "sourceMonth": "2023-04"
+    },
+    {
+      "month": "2021-05",
+      "domestic": 183396,
+      "exports": 98755,
+      "total": 282151,
+      "sourceMonth": "2023-05"
+    },
+    {
+      "month": "2021-06",
+      "domestic": 302041,
+      "exports": 110267,
+      "total": 412308,
+      "sourceMonth": "2023-06"
+    },
+    {
+      "month": "2021-07",
+      "domestic": 269900,
+      "exports": 96206,
+      "total": 366106,
+      "sourceMonth": "2023-07"
+    },
+    {
+      "month": "2021-08",
+      "domestic": 241026,
+      "exports": 163044,
+      "total": 404070,
+      "sourceMonth": "2023-08"
+    },
+    {
+      "month": "2021-09",
+      "domestic": 345893,
+      "exports": 116906,
+      "total": 462799,
+      "sourceMonth": "2023-09"
+    },
+    {
+      "month": "2021-10",
+      "domestic": 271516,
+      "exports": 106189,
+      "total": 377705,
+      "sourceMonth": "2023-10"
+    },
+    {
+      "month": "2021-11",
+      "domestic": 234767,
+      "exports": 169639,
+      "total": 404406,
+      "sourceMonth": "2023-11"
+    },
+    {
+      "month": "2021-12",
+      "domestic": 374612,
+      "exports": 181327,
+      "total": 555939,
+      "sourceMonth": "2023-12"
+    },
+    {
+      "month": "2022-01",
+      "domestic": 194635,
+      "exports": 98777,
+      "total": 293412,
+      "sourceMonth": "2024-01"
+    },
+    {
+      "month": "2022-02",
+      "domestic": 231267,
+      "exports": 103820,
+      "total": 335087,
+      "sourceMonth": "2024-02"
+    },
+    {
+      "month": "2022-03",
+      "domestic": 452168,
+      "exports": 262006,
+      "total": 714174,
+      "sourceMonth": "2024-03"
+    },
+    {
+      "month": "2022-04",
+      "domestic": 240842,
+      "exports": 137327,
+      "total": 378169,
+      "sourceMonth": "2024-04"
+    },
+    {
+      "month": "2022-05",
+      "domestic": 279387,
+      "exports": 149568,
+      "total": 428955,
+      "sourceMonth": "2024-05"
+    },
+    {
+      "month": "2022-06",
+      "domestic": 307364,
+      "exports": 187320,
+      "total": 494684,
+      "sourceMonth": "2024-06"
+    },
+    {
+      "month": "2022-07",
+      "domestic": 236133,
+      "exports": 140680,
+      "total": 376813,
+      "sourceMonth": "2024-07"
+    },
+    {
+      "month": "2022-08",
+      "domestic": 348914,
+      "exports": 143928,
+      "total": 492842,
+      "sourceMonth": "2024-08"
+    },
+    {
+      "month": "2022-09",
+      "domestic": 306626,
+      "exports": 140926,
+      "total": 447552,
+      "sourceMonth": "2024-09"
+    },
+    {
+      "month": "2022-10",
+      "domestic": 220456,
+      "exports": 108573,
+      "total": 329029,
+      "sourceMonth": "2024-10"
+    },
+    {
+      "month": "2022-11",
+      "domestic": 238262,
+      "exports": 177516,
+      "total": 415778,
+      "sourceMonth": "2024-11"
+    },
+    {
+      "month": "2022-12",
+      "domestic": 314830,
+      "exports": 193255,
+      "total": 508085,
+      "sourceMonth": "2024-12"
+    },
+    {
+      "month": "2023-01",
+      "domestic": 189129,
+      "exports": 135306,
+      "total": 324435,
+      "sourceMonth": "2025-01"
+    },
+    {
+      "month": "2023-02",
+      "domestic": 287441,
+      "exports": 112618,
+      "total": 400059,
+      "sourceMonth": "2025-02"
+    },
+    {
+      "month": "2023-03",
+      "domestic": 447367,
+      "exports": 221449,
+      "total": 668816,
+      "sourceMonth": "2025-03"
+    },
+    {
+      "month": "2023-04",
+      "domestic": 225398,
+      "exports": 92841,
+      "total": 318239,
+      "sourceMonth": "2025-04"
+    },
+    {
+      "month": "2023-05",
+      "domestic": 218546,
+      "exports": 154522,
+      "total": 373068,
+      "sourceMonth": "2025-05"
+    },
+    {
+      "month": "2023-06",
+      "domestic": 323462,
+      "exports": 149032,
+      "total": 472494,
+      "sourceMonth": "2025-06"
+    },
+    {
+      "month": "2023-07",
+      "domestic": 518335,
+      "exports": 95420,
+      "total": 613755,
+      "sourceMonth": "2025-07"
+    },
+    {
+      "month": "2023-08",
+      "domestic": 333379,
+      "exports": 108918,
+      "total": 442297,
+      "sourceMonth": "2025-08"
+    },
+    {
+      "month": "2023-09",
+      "domestic": 347202,
+      "exports": 201464,
+      "total": 548666,
+      "sourceMonth": "2025-09"
+    },
+    {
+      "month": "2023-10",
+      "domestic": 233028,
+      "exports": 76864,
+      "total": 309892,
+      "sourceMonth": "2025-10"
+    },
+    {
+      "month": "2023-11",
+      "domestic": 254952,
+      "exports": 87843,
+      "total": 342795,
+      "sourceMonth": "2025-11"
+    },
+    {
+      "month": "2023-12",
+      "domestic": 497636,
+      "exports": 238280,
+      "total": 735916,
+      "sourceMonth": "2025-12"
+    },
+    {
+      "month": "2024-01",
+      "domestic": 205309,
+      "exports": 166262,
+      "total": 371571,
+      "sourceMonth": "2026-01"
+    },
+    {
+      "month": "2024-02",
+      "domestic": 284094,
+      "exports": 123455,
+      "total": 407549,
+      "sourceMonth": "2026-02"
+    },
+    {
+      "month": "2024-03",
+      "domestic": 506349,
+      "exports": 139592,
+      "total": 645941,
+      "sourceMonth": "2026-03"
+    },
+    {
+      "month": "2024-04",
+      "domestic": 254276,
+      "exports": 141957,
+      "total": 396233,
+      "sourceMonth": "2026-04"
+    },
+    {
+      "month": "2024-05",
+      "domestic": 413135,
+      "exports": 103581,
+      "total": 516716,
+      "sourceMonth": "2026-05"
+    },
+    {
+      "month": "2024-06",
+      "domestic": 342593,
+      "exports": 204557,
+      "total": 547150,
+      "sourceMonth": "2026-06"
+    },
+    {
+      "month": "2024-07",
+      "domestic": 232922,
+      "exports": 141562,
+      "total": 374484,
+      "sourceMonth": "2026-07"
+    },
+    {
+      "month": "2024-08",
+      "domestic": 233516,
+      "exports": 105857,
+      "total": 339373,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2024-09",
+      "domestic": 382705,
+      "exports": 259557,
+      "total": 642262,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2024-10",
+      "domestic": 256544,
+      "exports": 106667,
+      "total": 363211,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2024-11",
+      "domestic": 264959,
+      "exports": 130352,
+      "total": 395311,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2024-12",
+      "domestic": 312206,
+      "exports": 234147,
+      "total": 546353,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-01",
+      "domestic": 260792,
+      "exports": 126655,
+      "total": 387447,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-02",
+      "domestic": 305648,
+      "exports": 103482,
+      "total": 409130,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-03",
+      "domestic": 577332,
+      "exports": 255778,
+      "total": 833110,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-04",
+      "domestic": 275824,
+      "exports": 96576,
+      "total": 372400,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-05",
+      "domestic": 365817,
+      "exports": 176969,
+      "total": 542786,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-06",
+      "domestic": 477017,
+      "exports": 251148,
+      "total": 728165,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-07",
+      "domestic": 353029,
+      "exports": 122047,
+      "total": 475076,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-08",
+      "domestic": 287134,
+      "exports": 245475,
+      "total": 532609,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-09",
+      "domestic": 425277,
+      "exports": 514670,
+      "total": 939947,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-10",
+      "domestic": 272335,
+      "exports": 125982,
+      "total": 398317,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-11",
+      "domestic": 319978,
+      "exports": 275429,
+      "total": 595407,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2025-12",
+      "domestic": 565758,
+      "exports": 564367,
+      "total": 1130125,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-01",
+      "domestic": 228823,
+      "exports": 124296,
+      "total": 353119,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-02",
+      "domestic": 357718,
+      "exports": 153417,
+      "total": 511135,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-03",
+      "domestic": 665823,
+      "exports": 250194,
+      "total": 916017,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-04",
+      "domestic": 280900,
+      "exports": 189070,
+      "total": 469970,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-05",
+      "domestic": 830219,
+      "exports": 173383,
+      "total": 1003602,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-06",
+      "domestic": 468482,
+      "exports": 638488,
+      "total": 1106970,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-07",
+      "domestic": 392681,
+      "exports": 238694,
+      "total": 631375,
+      "sourceMonth": "2026-08"
+    },
+    {
+      "month": "2026-08",
+      "domestic": 308175,
+      "exports": 186528,
+      "total": 494703,
+      "sourceMonth": "2026-08"
+    }
+  ],
+  "sources": [
+    {
+      "month": "2021-04",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202104.pdf",
+      "sha256": "dd6c81db02832e43c7fb1d1385eb02b9e9879b8e2c32590b341d93e5da0ced03"
+    },
+    {
+      "month": "2021-05",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202105.pdf",
+      "sha256": "80186553540019c3831a76da1c3ecc5579eec128d3736684d746f30ead091c5e"
+    },
+    {
+      "month": "2021-06",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202106.pdf",
+      "sha256": "2e7291cf2095c14f2e1955a4fa8b66864053534ebd29e0d02fbbf708c1cdc81e"
+    },
+    {
+      "month": "2021-07",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202107.pdf",
+      "sha256": "4989a995b5f5afba4bdc2460f93705a583a11dc1e888c4953df02a62b1af3408"
+    },
+    {
+      "month": "2021-08",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202108.pdf",
+      "sha256": "1b0f52a1f6032f92ce1e4467420f35e82d44d1a20385fc194f3232d70b1e4669"
+    },
+    {
+      "month": "2021-09",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202109.pdf",
+      "sha256": "93837331d3fd1121d0098f6c1506d5651053e9dc7de2de6addd03c7cf00c4746"
+    },
+    {
+      "month": "2021-10",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202110.pdf",
+      "sha256": "c8e468809588533037828dd7aa205a9b6432d0faef985e05e93a9184564a04f3"
+    },
+    {
+      "month": "2021-11",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202111.pdf",
+      "sha256": "eaea3c1d504be6c3dd1911f47731ce605cd301ae51a2650e33ee5597b6a2764c"
+    },
+    {
+      "month": "2021-12",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202112.pdf",
+      "sha256": "2a1f06efc6f50b3f1544edb642e979daa08dbfd69d344e469e65a9460bd8d860"
+    },
+    {
+      "month": "2022-01",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202201.pdf",
+      "sha256": "0a374b0a9d0186c0fc1d0166917f4a6e8c9e0971218b1973e5f0f070cc17550c"
+    },
+    {
+      "month": "2022-02",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202202.pdf",
+      "sha256": "71dd2862e593ea248713a2595f692fcf020933690a8cefbd16c82cf23a5ea9b4"
+    },
+    {
+      "month": "2022-03",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202203.pdf",
+      "sha256": "c43b6b2546268db0ef0962ec4223b560de5e7a39282b436a7c7d7e2c0a743a14"
+    },
+    {
+      "month": "2022-04",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202204.pdf",
+      "sha256": "79eb92e61204d3802d7107ed499a9fa6600b13dc5fefca7bd6f8fdef407abf39"
+    },
+    {
+      "month": "2022-05",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202205.pdf",
+      "sha256": "18944eb36088f327534493c3808591c2150dec55d9a452799acc9be824cda76f"
+    },
+    {
+      "month": "2022-06",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202206.pdf",
+      "sha256": "c148c59cc48a0e7f572a400ebd951752b175d7b015a60dc21191e2b68f5ae93c"
+    },
+    {
+      "month": "2022-07",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202207.pdf",
+      "sha256": "1593d5517818f068a7fc720616937b9af50624dc6c232d56bf86d45554740bf4"
+    },
+    {
+      "month": "2022-08",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202208.pdf",
+      "sha256": "5629451d42c2bc384379a90b8af31602656c87aed0f05b1850312e61d874e2ff"
+    },
+    {
+      "month": "2022-09",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202209.pdf",
+      "sha256": "9266a5b2c51e42d8c977106bca4d9d66f1752a188b5c67ea3b46811bd26b5bf6"
+    },
+    {
+      "month": "2022-10",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202210.pdf",
+      "sha256": "ffbd8760b285bbfd96e87d8c6a73b1935850b2ff3594e59c8f1cb5de26c5add5"
+    },
+    {
+      "month": "2022-11",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202211.pdf",
+      "sha256": "afc49bd4ddf8a56b3e79f6c2143430c8b770d0f1f48e3819c586da4600eb0075"
+    },
+    {
+      "month": "2022-12",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202212.pdf",
+      "sha256": "28a41bf75fbc2f08b74f83d0f6fee45f5fb5e9aa58c8b55d77312d01c9779efc"
+    },
+    {
+      "month": "2023-01",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202301.pdf",
+      "sha256": "9e0a9937f111a53d1cf347280ced2982c3087588f2c04570a7b83d04dd0d18f7"
+    },
+    {
+      "month": "2023-02",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202302.pdf",
+      "sha256": "287aa7dd4ff8d64475263dc8dd51f709dcbfb4b6d50db054a0991f49f9ee642e"
+    },
+    {
+      "month": "2023-03",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202303.pdf",
+      "sha256": "acddb4b8420a278cd631ef4045fd8bb88cfbcc0eece5f5f1855210fe749c4a2b"
+    },
+    {
+      "month": "2023-04",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202304.pdf",
+      "sha256": "067f52dd4489d20f43a6842821711b547a80f2273f4e2703e5d2b401ab130bfd"
+    },
+    {
+      "month": "2023-05",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202305.pdf",
+      "sha256": "6e08ae4bde731d5a9b0d8553ddb53ae84a16e52074f19b0260d9011a3c4c1652"
+    },
+    {
+      "month": "2023-06",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202306.pdf",
+      "sha256": "b6ad31dca29077acb735c6ec97292de6972b9539be524ba6b9e41ed751c07674"
+    },
+    {
+      "month": "2023-07",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202307.pdf",
+      "sha256": "d708d766fd390c94af8aa28af069875b686fd49b8d0e6fea65ee6ccf43b4d2ff"
+    },
+    {
+      "month": "2023-08",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202308.pdf",
+      "sha256": "c2354465cf177d50322af8ef638cea4f99977d370071e73dcbd18501eeb722f1"
+    },
+    {
+      "month": "2023-09",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202309.pdf",
+      "sha256": "91c7a3168bd42a87864fbbe131cbbfc592a04e99cc632dc03c9f2fb825b5a973"
+    },
+    {
+      "month": "2023-10",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202310.pdf",
+      "sha256": "35f6bf1bf00d1567f23fecee59b023a3480e1375edc936d73b0207cdd83284ec"
+    },
+    {
+      "month": "2023-11",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202311.pdf",
+      "sha256": "94590a7ffe7c7d07e725492199afdb2d54176ee4e243131f57845327e947f233"
+    },
+    {
+      "month": "2023-12",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202312.pdf",
+      "sha256": "d49f84459f96c99f3847bbe9de73aaa3794f1ba7a833bfb7b71b0264e452b9e9"
+    },
+    {
+      "month": "2024-01",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202401.pdf",
+      "sha256": "417c9aacedfc4c78549d197ff366271d6ea775d57f42a2fadb3b1b58683740a7"
+    },
+    {
+      "month": "2024-02",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202402.pdf",
+      "sha256": "51e2fc89bf63c174b3254901ad14968d852b820c81fbd1ae37394ab139760b5a"
+    },
+    {
+      "month": "2024-03",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202403.pdf",
+      "sha256": "442a2dbaecd082a5aa2efbeb4e43306275811f0924a576efbb6bd4a8502fc753"
+    },
+    {
+      "month": "2024-04",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202404.pdf",
+      "sha256": "719f86bd480c41c39513ade5591ba32fdfa3c91197083257f314871293ee6888"
+    },
+    {
+      "month": "2024-05",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202405.pdf",
+      "sha256": "5b0b0acd2c8dc5fb4c2b7b5e0579afaf70339a8a5287974b4f18e0beb2747b98"
+    },
+    {
+      "month": "2024-06",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202406.pdf",
+      "sha256": "d8dccd3a27f133dcf53add9604f5a6c65188aa89311a01cd8786466e13f84c32"
+    },
+    {
+      "month": "2024-07",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202407.pdf",
+      "sha256": "ee4800ef1e92d8d950482c408f9891bda9a31b134a5e34321deca687601b7510"
+    },
+    {
+      "month": "2024-08",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202408.pdf",
+      "sha256": "4e477e9a1e20c19383371be9e2f030226a57b3fe0257d06e68b978380fd88962"
+    },
+    {
+      "month": "2024-09",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202409.pdf",
+      "sha256": "394c49035a3068f1a2b806c00c8638b17a2053d583fe636f0785e160141e070e"
+    },
+    {
+      "month": "2024-10",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202410.pdf",
+      "sha256": "acedd35acfbef3dafee7ea9c05788cffe4a04ca884f8eba97e7fc75841bf5dd9"
+    },
+    {
+      "month": "2024-11",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202411.pdf",
+      "sha256": "4a25eaebf1cd5d64d68d281dc67c5444d399108a024f3bdb1bf80559c1622e32"
+    },
+    {
+      "month": "2024-12",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202412.pdf",
+      "sha256": "cce5dee5c96e37a63b5977f4771ec962e26109dec1fb52ca8a371e784dbf4907"
+    },
+    {
+      "month": "2025-01",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202501.pdf",
+      "sha256": "8ebb6979bd288a2c167f1aac4356a0e136df010345a25c3fe85f0260f961b3f5"
+    },
+    {
+      "month": "2025-02",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202502.pdf",
+      "sha256": "a125b84f38001278f933704bb878296b39c5559cc24375dcaec2bd1cc00ee42b"
+    },
+    {
+      "month": "2025-03",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202503.pdf",
+      "sha256": "8357ac5e050d6c4a4e3fa750826cd48f2a4c9ee016b9b9bcf03a0276f55ee4dd"
+    },
+    {
+      "month": "2025-04",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202504.pdf",
+      "sha256": "6915dfa74aa28ec651cd19d72eb8a9de9a0a53d321a52dba25b67c600b6bee31"
+    },
+    {
+      "month": "2025-05",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202505.pdf",
+      "sha256": "d9c4e593f03d7ebe2c8abbd78607cc15549a63d68dd452e96dfb3685c756fe18"
+    },
+    {
+      "month": "2025-06",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202506.pdf",
+      "sha256": "61f2414901ad2ce75b9d6c3c750f079ee74f547b497a0596421eb4db610a80b8"
+    },
+    {
+      "month": "2025-07",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202507.pdf",
+      "sha256": "87156a538e347cfe8dc96889721990db994a64980702d6a74205512acdbeb8bc"
+    },
+    {
+      "month": "2025-08",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202508.pdf",
+      "sha256": "c069601e1c37506098b8ec314c68c97dea1d6bfb1bd13a38ebf6136765b367ed"
+    },
+    {
+      "month": "2025-09",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202509.pdf",
+      "sha256": "74c62e2183f00ba3dfd083e187bbdca0551a022399d9ba464242da29ee28a051"
+    },
+    {
+      "month": "2025-10",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202510.pdf",
+      "sha256": "015b266a772d273e76336d4a2998d487ce5f3d2c8cc6ca5f1df39f8e59be1f5e"
+    },
+    {
+      "month": "2025-11",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202511.pdf",
+      "sha256": "1fb685b0cea7fc28e0132678270dd0c01aa61a355e0d83b5a96fcd658f6cb215"
+    },
+    {
+      "month": "2025-12",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202512.pdf",
+      "sha256": "11923628f16e7987315615203a58840d1c89e9263c7cc8878ea412e6e10d1770"
+    },
+    {
+      "month": "2026-01",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202601.pdf",
+      "sha256": "06aad02e52526e00d4774ddd8b21210dbfb611fd292973301193bac5876c1b83"
+    },
+    {
+      "month": "2026-02",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202602.pdf",
+      "sha256": "16c9967839630fb615152efe8b2da1191d5e34cbb003cd472605160343dece91"
+    },
+    {
+      "month": "2026-03",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202603.pdf",
+      "sha256": "6e8fdcc559e76bf3435bc6b6a5009ff094868f973aaa37352c5419ea2e0fa26c"
+    },
+    {
+      "month": "2026-04",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202604.pdf",
+      "sha256": "5aedf5b78ebdaef87e5284aee4a23e6e55d0ee42fcc3c7f66ec010d8a1b86faf"
+    },
+    {
+      "month": "2026-05",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202605.pdf",
+      "sha256": "2481f87dc6a4a59a6d2522c29b7b4faa31545a8b7058bf67ef665113ba61e53d"
+    },
+    {
+      "month": "2026-06",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202606.pdf",
+      "sha256": "7662ba52a313c71c9b5188b60392905a9fbaf7fc15d69a9250cf8e5a71b60e62"
+    },
+    {
+      "month": "2026-07",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202607.pdf",
+      "sha256": "7a168b1f16670ef27be957de84e1709dd9e84db8955e3b57b65635a8bb03a1e5"
+    },
+    {
+      "month": "2026-08",
+      "url": "https://www.jsim.or.jp/pdf/statistical-data/a-1-54-00-00-00-202608.pdf",
+      "sha256": "923e630efba687d38202e158b2516400031d568cbb1dfa6c0e605e9b4a6d3658"
+    }
+  ]
+}
