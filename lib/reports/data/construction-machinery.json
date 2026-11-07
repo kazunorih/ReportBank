@@ -1,0 +1,921 @@
+{
+  "indexUrl": "https://www.cema.or.jp/general/statistics/index.html",
+  "unit": "百万円",
+  "retrievedAt": "2026-11-07T12:55:39.210540+00:00",
+  "rankingYear": 2025,
+  "series": [
+    {
+      "key": "category0",
+      "name": "油圧ショベル・ミニショベル"
+    },
+    {
+      "key": "category1",
+      "name": "補給部品"
+    },
+    {
+      "key": "category2",
+      "name": "トラクタ"
+    },
+    {
+      "key": "category3",
+      "name": "建設用クレーン"
+    },
+    {
+      "key": "category4",
+      "name": "道路機械"
+    }
+  ],
+  "points": [
+    {
+      "year": 1995,
+      "months": 12,
+      "total": 1846773,
+      "categories": {
+        "トラクタ": 242414,
+        "建設用クレーン": 269018,
+        "道路機械": 74334,
+        "コンクリート機械": 64783,
+        "トンネル機械": 60287,
+        "基礎機械": 45575,
+        "油圧ブレーカ圧砕機": 21746,
+        "その他建設機械": 119366,
+        "補給部品": 220459,
+        "油圧ショベル・ミニショベル": 728791
+      },
+      "category0": 728791,
+      "category1": 220459,
+      "category2": 242414,
+      "category3": 269018,
+      "category4": 74334,
+      "other": 311757
+    },
+    {
+      "year": 1996,
+      "months": 12,
+      "total": 1970405,
+      "categories": {
+        "トラクタ": 264760,
+        "建設用クレーン": 319031,
+        "道路機械": 82166,
+        "コンクリート機械": 65020,
+        "トンネル機械": 69615,
+        "基礎機械": 48034,
+        "油圧ブレーカ圧砕機": 31244,
+        "その他建設機械": 117188,
+        "補給部品": 236135,
+        "油圧ショベル・ミニショベル": 737212
+      },
+      "category0": 737212,
+      "category1": 236135,
+      "category2": 264760,
+      "category3": 319031,
+      "category4": 82166,
+      "other": 331101
+    },
+    {
+      "year": 1997,
+      "months": 12,
+      "total": 1918212,
+      "categories": {
+        "トラクタ": 264333,
+        "建設用クレーン": 315558,
+        "道路機械": 78760,
+        "コンクリート機械": 59624,
+        "トンネル機械": 70347,
+        "基礎機械": 36616,
+        "油圧ブレーカ圧砕機": 29358,
+        "その他建設機械": 116040,
+        "補給部品": 242727,
+        "油圧ショベル・ミニショベル": 704849
+      },
+      "category0": 704849,
+      "category1": 242727,
+      "category2": 264333,
+      "category3": 315558,
+      "category4": 78760,
+      "other": 311985
+    },
+    {
+      "year": 1998,
+      "months": 12,
+      "total": 1515563,
+      "categories": {
+        "トラクタ": 230834,
+        "建設用クレーン": 205306,
+        "道路機械": 61441,
+        "コンクリート機械": 36234,
+        "トンネル機械": 59651,
+        "基礎機械": 24909,
+        "油圧ブレーカ圧砕機": 23901,
+        "その他建設機械": 83231,
+        "補給部品": 211839,
+        "油圧ショベル・ミニショベル": 578217
+      },
+      "category0": 578217,
+      "category1": 211839,
+      "category2": 230834,
+      "category3": 205306,
+      "category4": 61441,
+      "other": 227926
+    },
+    {
+      "year": 1999,
+      "months": 12,
+      "total": 1365163,
+      "categories": {
+        "トラクタ": 187319,
+        "建設用クレーン": 151131,
+        "道路機械": 53455,
+        "コンクリート機械": 33597,
+        "トンネル機械": 48214,
+        "基礎機械": 20426,
+        "油圧ブレーカ圧砕機": 23590,
+        "その他建設機械": 87921,
+        "補給部品": 191174,
+        "油圧ショベル・ミニショベル": 568336
+      },
+      "category0": 568336,
+      "category1": 191174,
+      "category2": 187319,
+      "category3": 151131,
+      "category4": 53455,
+      "other": 213748
+    },
+    {
+      "year": 2000,
+      "months": 12,
+      "total": 1337595,
+      "categories": {
+        "トラクタ": 178645,
+        "建設用クレーン": 141221,
+        "道路機械": 54830,
+        "コンクリート機械": 34537,
+        "トンネル機械": 41095,
+        "基礎機械": 19845,
+        "油圧ブレーカ圧砕機": 23279,
+        "その他建設機械": 83515,
+        "補給部品": 191647,
+        "油圧ショベル・ミニショベル": 568981
+      },
+      "category0": 568981,
+      "category1": 191647,
+      "category2": 178645,
+      "category3": 141221,
+      "category4": 54830,
+      "other": 202271
+    },
+    {
+      "year": 2001,
+      "months": 12,
+      "total": 1200870,
+      "categories": {
+        "トラクタ": 176588,
+        "建設用クレーン": 110159,
+        "道路機械": 51618,
+        "コンクリート機械": 29155,
+        "トンネル機械": 36592,
+        "基礎機械": 16891,
+        "油圧ブレーカ圧砕機": 21308,
+        "その他建設機械": 79045,
+        "補給部品": 184225,
+        "油圧ショベル・ミニショベル": 495289
+      },
+      "category0": 495289,
+      "category1": 184225,
+      "category2": 176588,
+      "category3": 110159,
+      "category4": 51618,
+      "other": 182991
+    },
+    {
+      "year": 2002,
+      "months": 12,
+      "total": 1156510,
+      "categories": {
+        "トラクタ": 169734,
+        "建設用クレーン": 102013,
+        "道路機械": 45472,
+        "コンクリート機械": 23176,
+        "トンネル機械": 38185,
+        "基礎機械": 13161,
+        "油圧ブレーカ圧砕機": 19528,
+        "その他建設機械": 86965,
+        "補給部品": 172548,
+        "油圧ショベル・ミニショベル": 485728
+      },
+      "category0": 485728,
+      "category1": 172548,
+      "category2": 169734,
+      "category3": 102013,
+      "category4": 45472,
+      "other": 181015
+    },
+    {
+      "year": 2003,
+      "months": 12,
+      "total": 1348467,
+      "categories": {
+        "トラクタ": 166154,
+        "建設用クレーン": 116171,
+        "道路機械": 45038,
+        "コンクリート機械": 27299,
+        "トンネル機械": 43249,
+        "基礎機械": 15306,
+        "油圧ブレーカ圧砕機": 20396,
+        "その他建設機械": 110984,
+        "補給部品": 173972,
+        "油圧ショベル・ミニショベル": 629898
+      },
+      "category0": 629898,
+      "category1": 173972,
+      "category2": 166154,
+      "category3": 116171,
+      "category4": 45038,
+      "other": 217234
+    },
+    {
+      "year": 2004,
+      "months": 12,
+      "total": 1602409,
+      "categories": {
+        "トラクタ": 224762,
+        "建設用クレーン": 134391,
+        "道路機械": 53048,
+        "コンクリート機械": 23231,
+        "トンネル機械": 35911,
+        "基礎機械": 14977,
+        "油圧ブレーカ圧砕機": 22203,
+        "その他建設機械": 139052,
+        "補給部品": 186950,
+        "油圧ショベル・ミニショベル": 767884
+      },
+      "category0": 767884,
+      "category1": 186950,
+      "category2": 224762,
+      "category3": 134391,
+      "category4": 53048,
+      "other": 235374
+    },
+    {
+      "year": 2005,
+      "months": 12,
+      "total": 1826196,
+      "categories": {
+        "トラクタ": 269578,
+        "建設用クレーン": 165968,
+        "道路機械": 50474,
+        "コンクリート機械": 21568,
+        "トンネル機械": 30750,
+        "基礎機械": 15395,
+        "油圧ブレーカ圧砕機": 24911,
+        "その他建設機械": 181283,
+        "補給部品": 195601,
+        "油圧ショベル・ミニショベル": 870668
+      },
+      "category0": 870668,
+      "category1": 195601,
+      "category2": 269578,
+      "category3": 165968,
+      "category4": 50474,
+      "other": 273907
+    },
+    {
+      "year": 2006,
+      "months": 12,
+      "total": 2221646,
+      "categories": {
+        "トラクタ": 327032,
+        "建設用クレーン": 218873,
+        "道路機械": 58432,
+        "コンクリート機械": 25245,
+        "トンネル機械": 25003,
+        "基礎機械": 18355,
+        "油圧ブレーカ圧砕機": 28691,
+        "その他建設機械": 237130,
+        "補給部品": 210261,
+        "油圧ショベル・ミニショベル": 1072624
+      },
+      "category0": 1072624,
+      "category1": 210261,
+      "category2": 327032,
+      "category3": 218873,
+      "category4": 58432,
+      "other": 334424
+    },
+    {
+      "year": 2007,
+      "months": 12,
+      "total": 2581630,
+      "categories": {
+        "トラクタ": 372747,
+        "建設用クレーン": 275838,
+        "道路機械": 68067,
+        "コンクリート機械": 25815,
+        "トンネル機械": 14463,
+        "基礎機械": 25859,
+        "油圧ブレーカ圧砕機": 31942,
+        "その他建設機械": 280253,
+        "補給部品": 234382,
+        "油圧ショベル・ミニショベル": 1252264
+      },
+      "category0": 1252264,
+      "category1": 234382,
+      "category2": 372747,
+      "category3": 275838,
+      "category4": 68067,
+      "other": 378332
+    },
+    {
+      "year": 2008,
+      "months": 12,
+      "total": 2593890,
+      "categories": {
+        "トラクタ": 401020,
+        "建設用クレーン": 306472,
+        "道路機械": 75036,
+        "コンクリート機械": 20084,
+        "トンネル機械": 19928,
+        "基礎機械": 26523,
+        "油圧ブレーカ圧砕機": 27191,
+        "その他建設機械": 319899,
+        "補給部品": 228372,
+        "油圧ショベル・ミニショベル": 1169365
+      },
+      "category0": 1169365,
+      "category1": 228372,
+      "category2": 401020,
+      "category3": 306472,
+      "category4": 75036,
+      "other": 413625
+    },
+    {
+      "year": 2009,
+      "months": 12,
+      "total": 1158278,
+      "categories": {
+        "トラクタ": 126757,
+        "建設用クレーン": 170948,
+        "道路機械": 36751,
+        "コンクリート機械": 13628,
+        "トンネル機械": 16066,
+        "基礎機械": 21804,
+        "油圧ブレーカ圧砕機": 12638,
+        "その他建設機械": 153903,
+        "補給部品": 189075,
+        "油圧ショベル・ミニショベル": 416708
+      },
+      "category0": 416708,
+      "category1": 189075,
+      "category2": 126757,
+      "category3": 170948,
+      "category4": 36751,
+      "other": 218039
+    },
+    {
+      "year": 2010,
+      "months": 12,
+      "total": 1848938,
+      "categories": {
+        "トラクタ": 225375,
+        "建設用クレーン": 140421,
+        "道路機械": 48789,
+        "コンクリート機械": 13727,
+        "トンネル機械": 11665,
+        "基礎機械": 20690,
+        "油圧ブレーカ圧砕機": 17267,
+        "その他建設機械": 263016,
+        "補給部品": 238465,
+        "油圧ショベル・ミニショベル": 869523
+      },
+      "category0": 869523,
+      "category1": 238465,
+      "category2": 225375,
+      "category3": 140421,
+      "category4": 48789,
+      "other": 326365
+    },
+    {
+      "year": 2011,
+      "months": 12,
+      "total": 2232683,
+      "categories": {
+        "トラクタ": 291115,
+        "建設用クレーン": 169268,
+        "道路機械": 57093,
+        "コンクリート機械": 14573,
+        "トンネル機械": 11945,
+        "基礎機械": 21942,
+        "油圧ブレーカ圧砕機": 19954,
+        "その他建設機械": 305736,
+        "補給部品": 272482,
+        "油圧ショベル・ミニショベル": 1068575
+      },
+      "category0": 1068575,
+      "category1": 272482,
+      "category2": 291115,
+      "category3": 169268,
+      "category4": 57093,
+      "other": 374150
+    },
+    {
+      "year": 2012,
+      "months": 12,
+      "total": 2253826,
+      "categories": {
+        "トラクタ": 306896,
+        "建設用クレーン": 194862,
+        "道路機械": 58068,
+        "コンクリート機械": 18310,
+        "トンネル機械": 8893,
+        "基礎機械": 25599,
+        "油圧ブレーカ圧砕機": 20805,
+        "その他建設機械": 269055,
+        "補給部品": 268931,
+        "油圧ショベル・ミニショベル": 1082407
+      },
+      "category0": 1082407,
+      "category1": 268931,
+      "category2": 306896,
+      "category3": 194862,
+      "category4": 58068,
+      "other": 342662
+    },
+    {
+      "year": 2013,
+      "months": 12,
+      "total": 2233513,
+      "categories": {
+        "トラクタ": 296243,
+        "建設用クレーン": 250612,
+        "道路機械": 66031,
+        "コンクリート機械": 23087,
+        "トンネル機械": 4316,
+        "基礎機械": 29538,
+        "油圧ブレーカ圧砕機": 22145,
+        "その他建設機械": 227678,
+        "補給部品": 262498,
+        "油圧ショベル・ミニショベル": 1051365
+      },
+      "category0": 1051365,
+      "category1": 262498,
+      "category2": 296243,
+      "category3": 250612,
+      "category4": 66031,
+      "other": 306764
+    },
+    {
+      "year": 2014,
+      "months": 12,
+      "total": 2443621,
+      "categories": {
+        "トラクタ": 321201,
+        "建設用クレーン": 314530,
+        "道路機械": 72626,
+        "コンクリート機械": 31881,
+        "トンネル機械": 13640,
+        "基礎機械": 37768,
+        "油圧ブレーカ圧砕機": 26303,
+        "その他建設機械": 228801,
+        "補給部品": 279657,
+        "油圧ショベル・ミニショベル": 1117214
+      },
+      "category0": 1117214,
+      "category1": 279657,
+      "category2": 321201,
+      "category3": 314530,
+      "category4": 72626,
+      "other": 338393
+    },
+    {
+      "year": 2015,
+      "months": 12,
+      "total": 2312940,
+      "categories": {
+        "トラクタ": 281822,
+        "建設用クレーン": 324684,
+        "道路機械": 74659,
+        "コンクリート機械": 32928,
+        "トンネル機械": 6747,
+        "基礎機械": 36869,
+        "油圧ブレーカ圧砕機": 27777,
+        "その他建設機械": 215606,
+        "補給部品": 287302,
+        "油圧ショベル・ミニショベル": 1024546
+      },
+      "category0": 1024546,
+      "category1": 287302,
+      "category2": 281822,
+      "category3": 324684,
+      "category4": 74659,
+      "other": 319927
+    },
+    {
+      "year": 2016,
+      "months": 12,
+      "total": 2142813,
+      "categories": {
+        "トラクタ": 232311,
+        "建設用クレーン": 290189,
+        "道路機械": 59911,
+        "コンクリート機械": 30492,
+        "トンネル機械": 17776,
+        "基礎機械": 41833,
+        "油圧ブレーカ圧砕機": 25445,
+        "その他建設機械": 216841,
+        "補給部品": 255158,
+        "油圧ショベル・ミニショベル": 972857
+      },
+      "category0": 972857,
+      "category1": 255158,
+      "category2": 232311,
+      "category3": 290189,
+      "category4": 59911,
+      "other": 332387
+    },
+    {
+      "year": 2017,
+      "months": 12,
+      "total": 2551319,
+      "categories": {
+        "トラクタ": 287927,
+        "建設用クレーン": 269946,
+        "道路機械": 75529,
+        "コンクリート機械": 30958,
+        "トンネル機械": 16051,
+        "基礎機械": 45868,
+        "油圧ブレーカ圧砕機": 28929,
+        "その他建設機械": 279270,
+        "補給部品": 321167,
+        "油圧ショベル・ミニショベル": 1195674
+      },
+      "category0": 1195674,
+      "category1": 321167,
+      "category2": 287927,
+      "category3": 269946,
+      "category4": 75529,
+      "other": 401076
+    },
+    {
+      "year": 2018,
+      "months": 12,
+      "total": 2758971,
+      "categories": {
+        "トラクタ": 299980,
+        "建設用クレーン": 274357,
+        "道路機械": 70233,
+        "コンクリート機械": 28558,
+        "トンネル機械": 1206,
+        "基礎機械": 46794,
+        "油圧ブレーカ圧砕機": 30251,
+        "その他建設機械": 334097,
+        "補給部品": 352694,
+        "油圧ショベル・ミニショベル": 1320801
+      },
+      "category0": 1320801,
+      "category1": 352694,
+      "category2": 299980,
+      "category3": 274357,
+      "category4": 70233,
+      "other": 440906
+    },
+    {
+      "year": 2019,
+      "months": 12,
+      "total": 2632850,
+      "categories": {
+        "トラクタ": 284280,
+        "建設用クレーン": 285676,
+        "道路機械": 60394,
+        "コンクリート機械": 32902,
+        "トンネル機械": 152,
+        "基礎機械": 47090,
+        "油圧ブレーカ圧砕機": 29535,
+        "その他建設機械": 279643,
+        "補給部品": 341799,
+        "油圧ショベル・ミニショベル": 1271379
+      },
+      "category0": 1271379,
+      "category1": 341799,
+      "category2": 284280,
+      "category3": 285676,
+      "category4": 60394,
+      "other": 389322
+    },
+    {
+      "year": 2020,
+      "months": 12,
+      "total": 2165891,
+      "categories": {
+        "トラクタ": 221032,
+        "建設用クレーン": 235650,
+        "道路機械": 60563,
+        "コンクリート機械": 31089,
+        "基礎機械": 41473,
+        "油圧ブレーカ圧砕機": 26075,
+        "その他建設機械": 208815,
+        "補給部品": 274492,
+        "油圧ショベル・ミニショベル": 1066702
+      },
+      "category0": 1066702,
+      "category1": 274492,
+      "category2": 221032,
+      "category3": 235650,
+      "category4": 60563,
+      "other": 307452
+    },
+    {
+      "year": 2021,
+      "months": 12,
+      "total": 2756858,
+      "categories": {
+        "トラクタ": 310916,
+        "建設用クレーン": 226532,
+        "道路機械": 74323,
+        "コンクリート機械": 33451,
+        "基礎機械": 39975,
+        "油圧ブレーカ圧砕機": 30700,
+        "その他建設機械": 297947,
+        "補給部品": 350809,
+        "油圧ショベル・ミニショベル": 1392205
+      },
+      "category0": 1392205,
+      "category1": 350809,
+      "category2": 310916,
+      "category3": 226532,
+      "category4": 74323,
+      "other": 402073
+    },
+    {
+      "year": 2022,
+      "months": 12,
+      "total": 3345099,
+      "categories": {
+        "トラクタ": 374601,
+        "建設用クレーン": 285117,
+        "道路機械": 77838,
+        "コンクリート機械": 30871,
+        "基礎機械": 41057,
+        "油圧ブレーカ圧砕機": 35928,
+        "その他建設機械": 392535,
+        "補給部品": 430332,
+        "油圧ショベル・ミニショベル": 1676820
+      },
+      "category0": 1676820,
+      "category1": 430332,
+      "category2": 374601,
+      "category3": 285117,
+      "category4": 77838,
+      "other": 500391
+    },
+    {
+      "year": 2023,
+      "months": 12,
+      "total": 3791207,
+      "categories": {
+        "トラクタ": 449012,
+        "建設用クレーン": 344722,
+        "道路機械": 83488,
+        "コンクリート機械": 36104,
+        "基礎機械": 40696,
+        "油圧ブレーカ圧砕機": 35777,
+        "その他建設機械": 437954,
+        "補給部品": 405317,
+        "油圧ショベル・ミニショベル": 1958137
+      },
+      "category0": 1958137,
+      "category1": 405317,
+      "category2": 449012,
+      "category3": 344722,
+      "category4": 83488,
+      "other": 550531
+    },
+    {
+      "year": 2024,
+      "months": 12,
+      "total": 3456147,
+      "categories": {
+        "トラクタ": 437696,
+        "建設用クレーン": 363468,
+        "道路機械": 87303,
+        "コンクリート機械": 37153,
+        "基礎機械": 40614,
+        "油圧ブレーカ圧砕機": 36108,
+        "その他建設機械": 427145,
+        "補給部品": 437704,
+        "油圧ショベル・ミニショベル": 1588956
+      },
+      "category0": 1588956,
+      "category1": 437704,
+      "category2": 437696,
+      "category3": 363468,
+      "category4": 87303,
+      "other": 541020
+    },
+    {
+      "year": 2025,
+      "months": 12,
+      "total": 3412383,
+      "categories": {
+        "トラクタ": 410765,
+        "建設用クレーン": 358999,
+        "道路機械": 86486,
+        "コンクリート機械": 40581,
+        "基礎機械": 40291,
+        "油圧ブレーカ圧砕機": 35291,
+        "その他建設機械": 408013,
+        "補給部品": 445988,
+        "油圧ショベル・ミニショベル": 1585969
+      },
+      "category0": 1585969,
+      "category1": 445988,
+      "category2": 410765,
+      "category3": 358999,
+      "category4": 86486,
+      "other": 524176
+    },
+    {
+      "year": 2026,
+      "months": 9,
+      "total": 2714780,
+      "categories": {
+        "トラクタ": 324448,
+        "建設用クレーン": 273079,
+        "道路機械": 63203,
+        "コンクリート機械": 30347,
+        "基礎機械": 30442,
+        "油圧ブレーカ圧砕機": 26148,
+        "その他建設機械": 288661,
+        "補給部品": 339594,
+        "油圧ショベル・ミニショベル": 1338858
+      },
+      "category0": 1338858,
+      "category1": 339594,
+      "category2": 324448,
+      "category3": 273079,
+      "category4": 63203,
+      "other": 375598
+    }
+  ],
+  "sources": [
+    {
+      "year": 1995,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001chk-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_1995.xlsx",
+      "sha256": "f89d0b4c7aecd8a127721a7d3e197db337f7e22819b87fd33c7e709a8ff69d8b"
+    },
+    {
+      "year": 1996,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001cdq-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_1996.xlsx",
+      "sha256": "64264d58d696775090cc5511140da934d0bdb1785bbd28665b87c3f95e9506ae"
+    },
+    {
+      "year": 1997,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001cdq-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_1997.xlsx",
+      "sha256": "746335ab8f7569755018732f88d7f7b8562451669df531e61b67f7279ee1ad7a"
+    },
+    {
+      "year": 1998,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001cdq-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_1998.xlsx",
+      "sha256": "63bfc777f651c0f3afb3903a7f7beeb58a6400c30fc55f0af51c394e2566d894"
+    },
+    {
+      "year": 1999,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001cdq-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_1999.xlsx",
+      "sha256": "9407f20c5122c01c5474207a13f0bac5d64a0b865472de3bac8fed016da8052f"
+    },
+    {
+      "year": 2000,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001cdq-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2000.xlsx",
+      "sha256": "a6555750fa15e6f9b47f8f792182eabdff0f1ffac6c2c1022f35b046b02d07c7"
+    },
+    {
+      "year": 2001,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c9w-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2001.xlsx",
+      "sha256": "181a11a0f60af11f5ac8aef0e4aabcbebaa0c4882669d2d104a88bf03aeb76bc"
+    },
+    {
+      "year": 2002,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c9w-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2002.xlsx",
+      "sha256": "fda74e55498253536b7e5b6f1fdc2c43ef86952ea4aa25cadcab690f05e6f66e"
+    },
+    {
+      "year": 2003,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c9w-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2003.xlsx",
+      "sha256": "6d040339e967c13f2025edee25cb84125de37bc2f1f1949a78a115f19be21ef9"
+    },
+    {
+      "year": 2004,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c9w-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2004.xlsx",
+      "sha256": "8444969419e7a0ba677d0e0060ebc9bfc81448171598853838f1ccbdd9e99eab"
+    },
+    {
+      "year": 2005,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c9w-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2005.xlsx",
+      "sha256": "4e3571e79ba1ca8ea651f59e29dfa5ba1617e3d51df16f7152ae13950bd23458"
+    },
+    {
+      "year": 2006,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c62-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2006.xlsx",
+      "sha256": "0d3ea43ad76b1a25908620210fbd5a4b60185dfbb1a1257e8f99d59d8f11dda8"
+    },
+    {
+      "year": 2007,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c62-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2007.xlsx",
+      "sha256": "3555604776600d7cb65504501c75568224df983a9038b715b866095a77c8baa8"
+    },
+    {
+      "year": 2008,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c62-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2008.xlsx",
+      "sha256": "ece0af5a9fc045aaa1f018d1dc608707e204968a9d080ab81f30952577744c33"
+    },
+    {
+      "year": 2009,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c62-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2009.xlsx",
+      "sha256": "8fcb52cc52f629bcb3736b49378d92e5181542cdb5ab77b16f5243a5c9d73651"
+    },
+    {
+      "year": 2010,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c62-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2010.xlsx",
+      "sha256": "133765f19144560b3d27b0f92b39985c16e666457aa47505a5fff992e31560e0"
+    },
+    {
+      "year": 2011,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c3b-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2011.xlsx",
+      "sha256": "98711ad2b61d1f1915122276bd86a53a8c26fec6859b4c606ba0344e17b35587"
+    },
+    {
+      "year": 2012,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c3b-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2012.xlsx",
+      "sha256": "f6f7b3b315b1816742664f75de83679c2738e93f44a38741ddd062ab36167556"
+    },
+    {
+      "year": 2013,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c3b-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2013.xlsx",
+      "sha256": "dc3e79a970173826df87c352242a1a6940ed61e8744b174d1c099f149f34dfd4"
+    },
+    {
+      "year": 2014,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c3b-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2014.xlsx",
+      "sha256": "53c20176b3701c71343fa0dbd3fa04672aa3882ca24cd3771bfc29a96480d1ad"
+    },
+    {
+      "year": 2015,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001c3b-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2015.xlsx",
+      "sha256": "3872c9016d82c32f81f2b6950180275e5e42df154d14adeb72d2c2de6285c716"
+    },
+    {
+      "year": 2016,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001bzn-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2016.xlsx",
+      "sha256": "b9d620148abd5a5c064a18ac2436d7518c984d649dd00aa99b848c3a1837667a"
+    },
+    {
+      "year": 2017,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001bzn-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2017.xlsx",
+      "sha256": "96dd4936c96d323003d229a75b796ec2ff8e416aa0fe1aad60baa462f18fea1d"
+    },
+    {
+      "year": 2018,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001bzn-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2018.xlsx",
+      "sha256": "40cb0f89828cbd4a14e567d1fdf8e27548287d1b99bc969f59eabbf2abc74157"
+    },
+    {
+      "year": 2019,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001bzn-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2019.xlsx",
+      "sha256": "8cecc4a13b7b5e7ecd1988d1ccd8aa103eeb46dbe89fa0370de55022577f016d"
+    },
+    {
+      "year": 2020,
+      "url": "https://www.cema.or.jp/general/statistics/ccgh510000001bzn-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2020.xlsx",
+      "sha256": "3e8371754bd9851b92a273eb81df96505c1bac1093aec86c904e4d235805c283"
+    },
+    {
+      "year": 2021,
+      "url": "https://www.cema.or.jp/general/statistics/tmfjj600000003nc-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2021.xlsx",
+      "sha256": "b3850335f0987d5642043e765822f7420932dbbb86f9f85d3c9ef4f9d7fbf2cb"
+    },
+    {
+      "year": 2022,
+      "url": "https://www.cema.or.jp/general/statistics/tmfjj600000003nc-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2022.xlsx",
+      "sha256": "3241aeac1a1d1c30e0ffac817bd5c634e9ff33bfb90ec8937aaa91c4475eadbb"
+    },
+    {
+      "year": 2023,
+      "url": "https://www.cema.or.jp/general/statistics/tmfjj600000003nc-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2023.xlsx",
+      "sha256": "2f66374ea4f539ef9b612318b3ab4b8c41eac05f8658c5acb31b804352abb37a"
+    },
+    {
+      "year": 2024,
+      "url": "https://www.cema.or.jp/general/statistics/tmfjj600000003nc-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2024.xlsx",
+      "sha256": "8e164d18b072cca8cc9af8b86897ca199096c515d1b67b7457f1575babd361ec"
+    },
+    {
+      "year": 2025,
+      "url": "https://www.cema.or.jp/general/statistics/tmfjj600000003nc-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2025.xlsx",
+      "sha256": "99afe87f6431c8fd9645ebdd1a4c41d284783a76217e77f2cd0f96cd8547a396"
+    },
+    {
+      "year": 2026,
+      "url": "https://www.cema.or.jp/general/statistics/tmfjj600000003nc-att/shipment_value_Statistics_DomesticDemand_ExternalDemand_2026.xlsx",
+      "sha256": "9d6fc0016f3eb8ab8cc47c4c052c859b010ca73a2c0444ba7f60d4bca41b10e9"
+    }
+  ]
+}
