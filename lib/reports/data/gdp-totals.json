@@ -1,0 +1,184 @@
+{
+  "unit": "10億円",
+  "realBaseYear": 2020,
+  "firstYear": 1994,
+  "latestYear": 2025,
+  "releaseDate": "2026-09-08",
+  "releaseName": "2026年4–6月期2次速報",
+  "indexUrl": "https://www.esri.cao.go.jp/jp/sna/data/data_list/sokuhou/files/2026/qe262_2/gdemenuja.html",
+  "retrievedAt": "2026-11-07T01:28:16.457280+00:00",
+  "points": [
+    {
+      "year": 1994,
+      "nominal": 521675.1,
+      "real": 464267.4
+    },
+    {
+      "year": 1995,
+      "nominal": 530463.2,
+      "real": 475140.8
+    },
+    {
+      "year": 1996,
+      "nominal": 546227.9,
+      "real": 489753.6
+    },
+    {
+      "year": 1997,
+      "nominal": 554111.8,
+      "real": 496428.8
+    },
+    {
+      "year": 1998,
+      "nominal": 543304.0,
+      "real": 487628.9
+    },
+    {
+      "year": 1999,
+      "nominal": 534107.1,
+      "real": 485933.9
+    },
+    {
+      "year": 2000,
+      "nominal": 543394.8,
+      "real": 500406.6
+    },
+    {
+      "year": 2001,
+      "nominal": 539441.6,
+      "real": 501830.8
+    },
+    {
+      "year": 2002,
+      "nominal": 532390.8,
+      "real": 502257.3
+    },
+    {
+      "year": 2003,
+      "nominal": 530211.8,
+      "real": 509189.0
+    },
+    {
+      "year": 2004,
+      "nominal": 534634.1,
+      "real": 519947.9
+    },
+    {
+      "year": 2005,
+      "nominal": 537385.2,
+      "real": 529558.0
+    },
+    {
+      "year": 2006,
+      "nominal": 540566.0,
+      "real": 537746.6
+    },
+    {
+      "year": 2007,
+      "nominal": 544571.1,
+      "real": 547040.9
+    },
+    {
+      "year": 2008,
+      "nominal": 533355.4,
+      "real": 540659.0
+    },
+    {
+      "year": 2009,
+      "nominal": 499361.7,
+      "real": 508565.8
+    },
+    {
+      "year": 2010,
+      "nominal": 510139.6,
+      "real": 529602.4
+    },
+    {
+      "year": 2011,
+      "nominal": 501142.0,
+      "real": 528541.3
+    },
+    {
+      "year": 2012,
+      "nominal": 505377.1,
+      "real": 537256.6
+    },
+    {
+      "year": 2013,
+      "nominal": 514553.3,
+      "real": 547987.1
+    },
+    {
+      "year": 2014,
+      "nominal": 528215.6,
+      "real": 552951.4
+    },
+    {
+      "year": 2015,
+      "nominal": 548866.7,
+      "real": 562904.4
+    },
+    {
+      "year": 2016,
+      "nominal": 555970.6,
+      "real": 566872.8
+    },
+    {
+      "year": 2017,
+      "nominal": 565119.0,
+      "real": 576075.7
+    },
+    {
+      "year": 2018,
+      "nominal": 569153.5,
+      "real": 580881.0
+    },
+    {
+      "year": 2019,
+      "nominal": 571838.0,
+      "real": 579089.0
+    },
+    {
+      "year": 2020,
+      "nominal": 554074.4,
+      "real": 554285.0
+    },
+    {
+      "year": 2021,
+      "nominal": 573687.7,
+      "real": 574163.7
+    },
+    {
+      "year": 2022,
+      "nominal": 584501.3,
+      "real": 581290.7
+    },
+    {
+      "year": 2023,
+      "nominal": 616659.4,
+      "real": 586498.2
+    },
+    {
+      "year": 2024,
+      "nominal": 636893.3,
+      "real": 586884.0
+    },
+    {
+      "year": 2025,
+      "nominal": 666440.7,
+      "real": 593689.9
+    }
+  ],
+  "sources": [
+    {
+      "id": "nominal",
+      "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/sokuhou/files/2026/qe262_2/tables/gaku-mcy2622.csv",
+      "sha256": "670fd1130075925c8e015e1c4da6f01f1d90d9d77fd7c182615e16146cb2cbe9"
+    },
+    {
+      "id": "real",
+      "url": "https://www.esri.cao.go.jp/jp/sna/data/data_list/sokuhou/files/2026/qe262_2/tables/gaku-jcy2622.csv",
+      "sha256": "643aa68da128ae4bb7739b426f8f822736cc16fcfeab7381e82eeecc4911bf4b"
+    }
+  ]
+}
