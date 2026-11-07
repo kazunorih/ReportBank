@@ -1,4 +1,4 @@
-"""Import FIGURE04 from the same official nominal-GDP workbook as FIGURE02.
+"""Import FIGURE01 from the same official nominal-GDP workbook as FIGURE03.
 
 python scripts/import-gdp.py [--source-dir tmp/production-sources]
 Uses Python's standard library; the workbook is read without modification.
@@ -106,12 +106,12 @@ def main():
             path.write_bytes(response.read())
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     if digest != source["sha256"]:
-        raise ValueError("Workbook differs from FIGURE02. Refresh FIGURE02 first to keep the data vintage consistent.")
+        raise ValueError("Workbook differs from FIGURE03. Refresh FIGURE03 first to keep the data vintage consistent.")
     result = parse(read_nominal(path))
     result.update(source=source, retrievedAt=production["retrievedAt"], processedAt=datetime.now(timezone.utc).isoformat())
     for point, factory in zip(result["points"], production["industry"], strict=True):
         if point["year"] != factory["year"] or any(point[k] != factory[label] for k, label in [("sector2", "mining"), ("sector3", "manufacturing"), ("sector5", "construction")]):
-            raise ValueError("FIGURE02 observation mismatch")
+            raise ValueError("FIGURE03 observation mismatch")
     (ROOT / "lib/reports/data/gdp.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"GDP: {result['firstYear']}–{result['latestYear']}, {len(result['points'])} years")
     print("Top 10:", ", ".join(s["name"] for s in result["series"]))

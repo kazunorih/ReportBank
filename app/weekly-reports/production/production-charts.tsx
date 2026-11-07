@@ -41,7 +41,7 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
   const title = agricultural ? "農業生産" : "工業生産";
   const id = agricultural ? "agricultural-production" : "industrial-production";
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby={id}>
-    <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {agricultural ? "01" : "02"}</p>
+    <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {agricultural ? "02" : "03"}</p>
     <h2 id={id} className="mt-2 text-xl font-semibold sm:text-2xl">{title}</h2>
     <p className="mt-3 text-sm leading-7 text-slate-500">{agricultural
       ? "1975～2024年の農業総産出額を、米・野菜・畜産・その他の積み上げ棒グラフで表示。食料自給率は1975～2025年度（2025年度は概算）を右軸の折れ線で重ねています。"
@@ -79,5 +79,5 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
 }
 
 export default function ProductionCharts() {
-  return <div className="space-y-8"><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /><GdpChart /></div>;
+  return <div className="space-y-8"><GdpChart /><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /></div>;
 }

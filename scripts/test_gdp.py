@@ -1,4 +1,4 @@
-"""Verify published FIGURE04 data and GDP reconciliation guards."""
+"""Verify published FIGURE01 data and GDP reconciliation guards."""
 import importlib.util
 import json
 from decimal import Decimal
@@ -37,7 +37,7 @@ class GdpTests(unittest.TestCase):
             adjusted = point["subtotal"] + point["importTaxes"] - point["capitalFormationTax"] + point["statisticalDiscrepancy"]
             self.assertLessEqual(abs(adjusted - point["total"]), Decimal("0.2"))
 
-    def test_matches_figure02_vintage_and_values(self):
+    def test_matches_figure03_vintage_and_values(self):
         production = json.loads((ROOT / "lib/reports/data/production.json").read_text(encoding="utf-8"), parse_float=Decimal)
         self.assertEqual(self.data["source"], next(s for s in production["sources"] if s["id"] == "industry"))
         for point, factory in zip(self.data["points"], production["industry"], strict=True):

@@ -30,8 +30,8 @@ export default function GdpChart() {
   // Leave room above the tallest stack for its total label.
   const left = chartScale(data.flatMap(point => [Number(point.total) * 1.08, point.real]));
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="nominal-gdp">
-    <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 04</p>
-    <h2 id="nominal-gdp" className="mt-2 text-xl font-semibold sm:text-2xl">日本GDP推移</h2>
+    <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 01</p>
+    <h2 id="nominal-gdp" className="mt-2 text-xl font-semibold sm:text-2xl">日本のGDP推移</h2>
     <p className="mt-3 text-sm leading-7 text-slate-500">{gdp.firstYear}～{totals.latestYear}年の名目GDPを棒、実質GDPを折れ線で表示。{gdp.latestYear}年までは{gdp.rankingYear}年のGDP構成比が大きい10産業（「その他のサービス」を除く）と「その他」の積み上げ、2025年は内訳を示さず総額のみの棒で表示しています。棒の上の数値は各年の名目GDP総額（兆円、小数第1位まで）です。横にスクロールして全期間を確認できます。</p>
     <FixedAxisChart left={left} leftUnit="GDP（兆円、実質は2020年連鎖価格）" minWidth={Math.max(900, data.length * 60 + 120)} height={380} label="日本の名目・実質GDPの年次推移">
       <ResponsiveContainer width="100%" height="100%">
@@ -52,7 +52,7 @@ export default function GdpChart() {
       </ResponsiveContainer>
     </FixedAxisChart>
     <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-slate-600" aria-label="凡例">{legend.map(item => <li key={item.key} className="flex items-center gap-2"><span aria-hidden="true" className={item.key === "real" ? "h-0.5 w-4 shrink-0" : "h-3 w-3 shrink-0"} style={{ background: item.color }} />{item.name}</li>)}</ul>
-    <p className="mt-5 text-xs leading-6 text-slate-500">FIGURE02と同じ内閣府「2024年度国民経済計算」の経済活動別国内総生産（名目、2020年基準・2008SNA）を使用しています。各年1～12月の名目付加価値額で、生産額や売上高とは異なります。FIGURE01の農業総産出額は加算していません。</p>
+    <p className="mt-5 text-xs leading-6 text-slate-500">FIGURE03と同じ内閣府「2024年度国民経済計算」の経済活動別国内総生産（名目、2020年基準・2008SNA）を使用しています。各年1～12月の名目付加価値額で、生産額や売上高とは異なります。FIGURE02の農業総産出額は加算していません。</p>
     <p className="mt-2 text-xs leading-6 text-slate-500">「その他」の産業：{gdp.otherIndustries.join("、")}。棒全体を公表GDP総額に一致させるため、「その他」には輸入品に課される税・関税、総資本形成に係る消費税の控除、統計上の不突合と丸め差も含みます。</p>
     <p className="mt-2 text-xs leading-6 text-slate-500">2025年の名目総額と全期間の実質総額は、内閣府「{totals.releaseName}」（{totals.releaseDate}公表）の支出側・暦年実額です。年度値や四半期の年率換算値ではありません。実質GDPは価格変動の影響を除いた2020年連鎖価格。名目の産業別内訳は2024年度年次推計を維持しており、速報の改訂時点と異なります。</p>
     <details className="mt-4 text-sm text-slate-600">

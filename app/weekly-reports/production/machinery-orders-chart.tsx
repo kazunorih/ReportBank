@@ -18,7 +18,7 @@ export default function MachineryOrdersChart() {
   const data = orders.points.map(point => ({ ...point, domestic: point.domestic / 100, exports: point.exports / 100, total: point.total / 100 }));
   const left = chartScale(data.map(point => point.total));
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="machinery-orders">
-    <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 03</p>
+    <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 04</p>
     <h2 id="machinery-orders" className="mt-2 text-xl font-semibold sm:text-2xl">産業機械の受注</h2>
     <p className="mt-3 text-sm leading-7 text-slate-500">{monthLabel(orders.firstMonth)}～{monthLabel(orders.latestMonth)}の月次受注額を、内需と輸出（外需）の積み上げ棒グラフで表示しています（{data.length}か月）。横にスクロールして全期間を確認できます。</p>
     <p className="mt-3 text-sm leading-7 text-slate-500">ここでいう産業機械は、工場・発電所・プラントなどで、生産やエネルギー供給、流体の移送、荷物の運搬などに使う機械・設備です。受注額の大きい代表的な8機種は、ボイラ・原動機（蒸気の発生や動力の供給）、化学機械〈冷凍機械を含む〉（化学製品の製造・冷却）、ポンプ（液体の移送）、運搬機械（クレーン・コンベヤなど）、圧縮機（空気・ガスの圧縮）、プラスチック加工機械（樹脂の成形・加工）、タンク（液体・ガスなどの貯蔵）、金属加工機械（金属の成形・加工）です。</p>
