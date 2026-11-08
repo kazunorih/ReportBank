@@ -8,6 +8,7 @@ import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 import MachineryOrdersChart from "./machinery-orders-chart";
 import GdpChart from "./gdp-chart";
 import ConstructionMachineryChart from "./construction-machinery-chart";
+import ProductProductionChart from "./product-production-chart";
 
 const agriculturalSeries = [
   { key: "rice", name: "米", color: "#7bb9e5" },
@@ -80,5 +81,5 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
 }
 
 export default function ProductionCharts() {
-  return <div className="space-y-8"><GdpChart /><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /><ConstructionMachineryChart /></div>;
+  return <div className="space-y-8"><GdpChart /><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /><ConstructionMachineryChart /><ProductProductionChart /></div>;
 }

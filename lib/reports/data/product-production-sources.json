@@ -1,0 +1,569 @@
+[
+  {
+    "id": "000040475159",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 年報 (2021年以降) / 2025年 年報 調査年月 2025年 公開（更新）日 2026-06-30 EXCEL DB 2025年 年報 経済産業省生産動態統計 年報",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040475159&fileKind=0",
+    "format": "modern",
+    "sha256": "b07a16cdf7b3b7d738bf4c13a6d235d68651156bc1a278b9360416d820eb8f1f"
+  },
+  {
+    "id": "000040293825",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 年報 (2021年以降) / 2024年 年報 調査年月 2024年 公開（更新）日 2025-06-30 EXCEL DB 2024年 年報 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040293825&fileKind=0",
+    "format": "modern",
+    "sha256": "14307dab7b1ceac9f6255ce7066e430123ec7abdc07840fe7e5f361cb65221da"
+  },
+  {
+    "id": "000040191921",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 年報 (2021年以降) / 2023年 年報 調査年月 2023年 公開（更新）日 2024-06-28 EXCEL DB 2023年 年報 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040191921&fileKind=0",
+    "format": "modern",
+    "sha256": "4959c0094cd224911a423ce985851a5a87da218a45a25c303f7cb126ba194720"
+  },
+  {
+    "id": "000040077080",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 年報 (2021年以降) / 2022年 年報 調査年月 2022年 公開（更新）日 2023-06-30 EXCEL DB 2022年 年報 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040077080&fileKind=0",
+    "format": "modern",
+    "sha256": "094ce5a6ee1ac217a3552db72fc6c52b3d48e0950a67c80521e0a7dc4461a785"
+  },
+  {
+    "id": "000032213834",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 年報 (2021年以降) / 2021年 年報 調査年月 2021年 公開（更新）日 2022-07-01 EXCEL DB 2021年 年報 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032213834&fileKind=0",
+    "format": "modern",
+    "sha256": "072d896073ca923fdcb1014c872ae7c4e15dca26fca03b76761419c48d0e016a"
+  },
+  {
+    "id": "000031703021",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2017年 公開（更新）日 2018-05-28 EXCEL DB 年報 2 統計表 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031703021&fileKind=0",
+    "format": "legacy",
+    "sha256": "06c677b6b6c9cf34092069efcaf0a9dc1df6db879573e6802489af08f8428726"
+  },
+  {
+    "id": "000031595642",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL DB 年報 2 統計表 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595642&fileKind=0",
+    "format": "legacy",
+    "sha256": "8c67eb8f8aff5ef20e95ed0dfc1feb520b12808fd6edc95174bc33f8adae4959"
+  },
+  {
+    "id": "000031444287",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL DB 年報 2 統計表 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444287&fileKind=0",
+    "format": "legacy",
+    "sha256": "b2e2a09fd8fbb21bf0791437c4107c91076f5be9410a4743d2a52c306a39192b"
+  },
+  {
+    "id": "000031284765",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL DB 年報 2 統計表 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284765&fileKind=0",
+    "format": "legacy",
+    "sha256": "4b3c2906985116694aabc2abd381150f6820af21dfb34e6508afd0ad8fc9a036"
+  },
+  {
+    "id": "000025977771",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL DB 年報 2 統計表 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025977771&fileKind=0",
+    "format": "legacy",
+    "sha256": "76f4b388eecfc6d6a0f6d59a27266f007e097d25599e0ff5f7459ba37cf8fae2"
+  },
+  {
+    "id": "000031961789",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2020年 公開（更新）日 2021-06-09 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031961789&fileKind=0",
+    "format": "legacy",
+    "sha256": "730d663f6bc81c159e054827183fb5230508deaa528528038206db054b777b0e"
+  },
+  {
+    "id": "000031961793",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2020年 公開（更新）日 2021-06-09 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031961793&fileKind=0",
+    "format": "legacy",
+    "sha256": "2ee7ab22a52ae469778bc3df1d28eeb76ca898b7f510f24034793c5cc5deee66"
+  },
+  {
+    "id": "000031961785",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2020年 公開（更新）日 2021-06-09 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031961785&fileKind=0",
+    "format": "legacy",
+    "sha256": "5b1fe579c97beafc09090edca65bf51191e8acfc23650c88e2fd9a6d99f83722"
+  },
+  {
+    "id": "000031961788",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2020年 公開（更新）日 2021-06-09 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031961788&fileKind=0",
+    "format": "legacy",
+    "sha256": "cfcac7d40a93ff451453b7f8e3401722ed80d17b8d3f7241d07722e4a0353151"
+  },
+  {
+    "id": "000031961784",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2020年 公開（更新）日 2021-06-09 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031961784&fileKind=0",
+    "format": "legacy",
+    "sha256": "fae4a2886409136bf2c63110beae6f48e445697d19c5b7f97a3d78d38752e484"
+  },
+  {
+    "id": "000031703020",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2017年 公開（更新）日 2018-05-28 EXCEL DB 年報 2 統計表 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031703020&fileKind=0",
+    "format": "legacy",
+    "sha256": "ff4bb8e8b8f73f801cf6dba3bc451729ea49f8f88574cbec16f4c1d433e11936"
+  },
+  {
+    "id": "000032094284",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2019年 公開（更新）日 2020-05-22 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032094284&fileKind=0",
+    "format": "legacy",
+    "sha256": "6b8bbe3a11b5e4d8025039721726ddf0603e264661bd418c561031c4eed0b3f6"
+  },
+  {
+    "id": "000031444286",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL DB 年報 2 統計表 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444286&fileKind=0",
+    "format": "legacy",
+    "sha256": "f8f3ab4023cc3a24c561c02b754ec0acef22bc4e1fbdd46dd92f214d4768b5b9"
+  },
+  {
+    "id": "000031595641",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL DB 年報 2 統計表 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595641&fileKind=0",
+    "format": "legacy",
+    "sha256": "0608103abd499c97a72699069ef179a3b9e7083c5ac161dda799ccaee94eea7c"
+  },
+  {
+    "id": "000032094288",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2019年 公開（更新）日 2020-05-22 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032094288&fileKind=0",
+    "format": "legacy",
+    "sha256": "71bffc029ee0b640b226c8de9102c75c7d135e890ea6e121757e82012ccdc6e8"
+  },
+  {
+    "id": "000031284764",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL DB 年報 2 統計表 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284764&fileKind=0",
+    "format": "legacy",
+    "sha256": "3acdcfc5bc78bda21f5efaac6943027057e8b7a824cd79eddd64e6bf19a86373"
+  },
+  {
+    "id": "000031833973",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2018年 公開（更新）日 2019-05-24 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031833973&fileKind=0",
+    "format": "legacy",
+    "sha256": "3407cbbd83b45e8b223bba25a16c0d44efa3c9c26a662f57d096fbbcfe9c359e"
+  },
+  {
+    "id": "000032094280",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2019年 公開（更新）日 2020-05-22 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032094280&fileKind=0",
+    "format": "legacy",
+    "sha256": "91d30bbd1b7c458f84cd5e94da9a0a5fc5518ee52e382e77ab50c9028e553dff"
+  },
+  {
+    "id": "000032094283",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2019年 公開（更新）日 2020-05-22 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032094283&fileKind=0",
+    "format": "legacy",
+    "sha256": "fad298e57f9cf2150a9073a3bce2429ad06a29633b2a07e339cea107226f9820"
+  },
+  {
+    "id": "000032094279",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2019年 公開（更新）日 2020-05-22 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032094279&fileKind=0",
+    "format": "legacy",
+    "sha256": "af8b09fab18b60b112e5b8784b1f99f84669ac90db928520ed36864dd9168d31"
+  },
+  {
+    "id": "000025977770",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 紙・印刷・プラスチック・ゴム製品統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL DB 年報 2 統計表 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025977770&fileKind=0",
+    "format": "legacy",
+    "sha256": "e4fa0334a5df57118d2e28047612b813f556e3fbc0b8ab74d2cf9c6f396e6195"
+  },
+  {
+    "id": "000031833749",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2018年 公開（更新）日 2019-05-24 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031833749&fileKind=0",
+    "format": "legacy",
+    "sha256": "8ade69fde3d1fe8e60b49014c66cd48181d71d2e0faae74936950f008fded159"
+  },
+  {
+    "id": "000031833977",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2018年 公開（更新）日 2019-05-24 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031833977&fileKind=0",
+    "format": "legacy",
+    "sha256": "edf6a3180c85f5957d9c57211c5a1aa403ed4b8ec5aec641d5192a5581c9f907"
+  },
+  {
+    "id": "000031703016",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2017年 公開（更新）日 2018-05-28 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031703016&fileKind=0",
+    "format": "legacy",
+    "sha256": "bba5e2e4cf39d755b193876d29c2c194e5e514128865cbb5c22e4e29f984e346"
+  },
+  {
+    "id": "000031833972",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2018年 公開（更新）日 2019-05-24 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031833972&fileKind=0",
+    "format": "legacy",
+    "sha256": "8f642efd25d387cad09fa2e409da10957667abad110fa5b2f38231ed6cadd87c"
+  },
+  {
+    "id": "000031737510",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2017年 公開（更新）日 2018-07-20 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031737510&fileKind=0",
+    "format": "legacy",
+    "sha256": "5628aa0ded53fc4adcdb85ee4a3571b7bd4b55715bb2909e7d35b5a8f4b0b776"
+  },
+  {
+    "id": "000022159808",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 窯業・建材統計 / 年報 調査年月 2012年 公開（更新）日 2013-08-30 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000022159808&fileKind=0",
+    "format": "legacy",
+    "sha256": "8d78a00f6bc92bafdc79b3e63f646802cc6c2b7476ec676e4926e84d57288e33"
+  },
+  {
+    "id": "000031833748",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2018年 公開（更新）日 2019-05-24 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031833748&fileKind=0",
+    "format": "legacy",
+    "sha256": "556c74bfb20e41113055038873199ee36cc984af6c3feae8e81c3150c5fbf7ff"
+  },
+  {
+    "id": "000031595637",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595637&fileKind=0",
+    "format": "legacy",
+    "sha256": "1a02c6dfc328be7dfb9df7b8d4d1d64ddc8dbc6b63bced2db005d3568670d8f8"
+  },
+  {
+    "id": "000031703024",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2017年 公開（更新）日 2018-05-28 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031703024&fileKind=0",
+    "format": "legacy",
+    "sha256": "66361bd1bfe4348fd3d757b2704f35d4d009586667519ac969375ec81dfed815"
+  },
+  {
+    "id": "000031703015",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2017年 公開（更新）日 2018-05-28 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031703015&fileKind=0",
+    "format": "legacy",
+    "sha256": "a197d847362d12731c8300da8741ed94da6b75c1de3d34541913be2f259b5c55"
+  },
+  {
+    "id": "000031595633",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595633&fileKind=0",
+    "format": "legacy",
+    "sha256": "33221dd19da36afb0cc878d9a61d49a850e5cb7d333bd58a3dcdd11a84de04a8"
+  },
+  {
+    "id": "000031703012",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2017年 公開（更新）日 2018-05-28 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031703012&fileKind=0",
+    "format": "legacy",
+    "sha256": "168d2597de0a6d619b5d7e1b6c1dd55960f99ccd890f306b31276250a41d1a44"
+  },
+  {
+    "id": "000031444278",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444278&fileKind=0",
+    "format": "legacy",
+    "sha256": "c0704a89a63306f12ef91200322a61c662dfc86ec2cb628c7237feeb687bfe93"
+  },
+  {
+    "id": "000031595636",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595636&fileKind=0",
+    "format": "legacy",
+    "sha256": "971fe0b5d582a5e9f7ba56a4058aa094e6ef7924cbc9b3e9767a827a1812f03d"
+  },
+  {
+    "id": "000031595645",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595645&fileKind=0",
+    "format": "legacy",
+    "sha256": "896f2bf14058b085ba85a541f5c479dae3a3db4c3523f4d5a96a294b44094dab"
+  },
+  {
+    "id": "000031595632",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2016年 公開（更新）日 2017-06-26 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031595632&fileKind=0",
+    "format": "legacy",
+    "sha256": "7b1806c609438665d28a4ce6063bbb143af77e93fa17229afdca3df1efc6e50c"
+  },
+  {
+    "id": "000031284756",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284756&fileKind=0",
+    "format": "legacy",
+    "sha256": "87aa7f4334734300030a471dfb41b5bf23049e66571871b368096da6a99cfd03"
+  },
+  {
+    "id": "000031444330",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444330&fileKind=0",
+    "format": "legacy",
+    "sha256": "2a451166e9bbc02a5736645833f1be1a7026fb2836ef4b90346823449e48919a"
+  },
+  {
+    "id": "000025958008",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 化学工業統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025958008&fileKind=0",
+    "format": "legacy",
+    "sha256": "036a9b8d2f9776c6333db67a5056eb96c499e8c0a0094006fad7ab13c0218446"
+  },
+  {
+    "id": "000031284768",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284768&fileKind=0",
+    "format": "legacy",
+    "sha256": "8b212692165585f511c1c3538df4c3fb7a7e2d61246a739b0e43a8f85d512d8d"
+  },
+  {
+    "id": "000025958020",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 資源・窯業・建材統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL PDF DB 年報 1 冊子及び統計表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025958020&fileKind=0",
+    "format": "legacy",
+    "sha256": "587412d9b2b26fb1f6270be884013bf07691d9acce18321fc15ef5ff053252f4"
+  },
+  {
+    "id": "000031444277",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444277&fileKind=0",
+    "format": "legacy",
+    "sha256": "b0a10a827417a374e98112054810e8713fd175ec84cdb221b830e58c261b0da7"
+  },
+  {
+    "id": "000031444281",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444281&fileKind=0",
+    "format": "legacy",
+    "sha256": "2369877fedbc59f112d654e35566a388ebf26fd27909742ff301d32e8aa3231f"
+  },
+  {
+    "id": "000031444282",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2015年 公開（更新）日 2016-08-18 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031444282&fileKind=0",
+    "format": "legacy",
+    "sha256": "ad937c60a5674c45ef87b430af581b14cc7299722926d34cc8d18cadb0245659"
+  },
+  {
+    "id": "000031284755",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284755&fileKind=0",
+    "format": "legacy",
+    "sha256": "e8c6d7ce8cda1da25a297a25d41649ecfb674eb416447ae7964a772d0e2d4182"
+  },
+  {
+    "id": "000031284759",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284759&fileKind=0",
+    "format": "legacy",
+    "sha256": "11f4f7e68ebf48536f0241e63e2c79dde2d4dbb539e7f4a8e90f70aef41a6b6c"
+  },
+  {
+    "id": "000031284760",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2014年 公開（更新）日 2015-08-29 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031284760&fileKind=0",
+    "format": "legacy",
+    "sha256": "fa1a362118ea5bba9406507a4df65c82f495852d830ea581bee1a08f9a002b40"
+  },
+  {
+    "id": "000025957767",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 鉄鋼・非鉄金属・金属製品統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL DB 年報 2 統計表 時系列表",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025957767&fileKind=0",
+    "format": "legacy",
+    "sha256": "4a6e23a702ee8f140eb2f30ab8ad1df6b5dee9b3c013e2982b43087fb93395fb"
+  },
+  {
+    "id": "000025958011",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL DB 年報 2 統計表 時系列表その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025958011&fileKind=0",
+    "format": "legacy",
+    "sha256": "08e810f9c54ff2dba3be34a7e7a85da2169ff075b74050ceaf7b168625cbbe3d"
+  },
+  {
+    "id": "000025958012",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 年報 / 機械統計編 調査年月 2013年 公開（更新）日 2014-07-14 EXCEL DB 年報 2 統計表 時系列表その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000025958012&fileKind=0",
+    "format": "legacy",
+    "sha256": "807648205f7ea5ff70753d370fd80f22cca3c863d60159a20a1ca01bf7881068"
+  },
+  {
+    "id": "000012333108",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2010年 公開（更新）日 2011-09-09 EXCEL DB 年報 ：時系列表その１ 平成22 年",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012333108&fileKind=0",
+    "format": "legacy",
+    "sha256": "679f51919c270c8085242cb25ebae3b6f8fee03afdeb0b0cf3a7035e3eea6640"
+  },
+  {
+    "id": "000012333109",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2010年 公開（更新）日 2011-09-09 EXCEL DB 年報 ：時系列表その２ 平成22 年",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012333109&fileKind=0",
+    "format": "legacy",
+    "sha256": "65525e52be0cc88ba9e3c61e4d3cb2930003f07d1d0315b4654f67d7099dbf32"
+  },
+  {
+    "id": "000002216805",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2009年 公開（更新）日 2009-05-01 EXCEL DB 平成19 年 平成19 年 その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000002216805&fileKind=0",
+    "format": "legacy",
+    "sha256": "d186163d54442c765c10e198a354d909ac8f71a691f9e742b2494a49b4e9d41a"
+  },
+  {
+    "id": "000022159778",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 鉄鋼・非鉄金属・金属製品統計 / 年報 調査年月 2012年 公開（更新）日 2013-08-30 EXCEL DB 時系列表 4 金属製品",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000022159778&fileKind=0",
+    "format": "legacy",
+    "sha256": "7b3e39e6b91fd4a569fda81dffb8cb738ed13afbfc97cf02af566e97735692f8"
+  },
+  {
+    "id": "000022159804",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2012年 公開（更新）日 2013-08-30 EXCEL DB 時系列表 2 その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000022159804&fileKind=0",
+    "format": "legacy",
+    "sha256": "63cfe3cc17a0d5abe6249335edd76490fccda173b99151bc147daa439ebd7ef9"
+  },
+  {
+    "id": "000022159805",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2012年 公開（更新）日 2013-08-30 EXCEL DB 時系列表 3 その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000022159805&fileKind=0",
+    "format": "legacy",
+    "sha256": "1a6199700a878d7a48e7d64d0a8de676487e4e1b98fc4eb568f1de1fc6c12d83"
+  },
+  {
+    "id": "000022159811",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2012年 公開（更新）日 2013-08-30 EXCEL DB 統計表 2 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000022159811&fileKind=0",
+    "format": "legacy",
+    "sha256": "da6d49930a794991b02dabd2834a2f46b4a57fab643a559777ccd28540a5b0c3"
+  },
+  {
+    "id": "000022159812",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2012年 公開（更新）日 2013-08-30 EXCEL DB 統計表 3 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000022159812&fileKind=0",
+    "format": "legacy",
+    "sha256": "5589e504bb0cfec8afffdf39057caadba33a2b5ef5ad7725937ad40d8b6f922b"
+  },
+  {
+    "id": "000014891112",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 鉄鋼・非鉄金属・金属製品統計 / 年報 調査年月 2011年 公開（更新）日 2012-08-23 EXCEL DB 時系列表 4 金属製品",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000014891112&fileKind=0",
+    "format": "legacy",
+    "sha256": "47bc0f732610c2c5aa58a1159812d51273d899788f10e5818f66fe847543be47"
+  },
+  {
+    "id": "000014891118",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2011年 公開（更新）日 2012-08-23 EXCEL DB 時系列表 2 その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000014891118&fileKind=0",
+    "format": "legacy",
+    "sha256": "409e77603cc77d89eafe9f95ad15cfc6d2168b0d3d6b60f6747fd5693595b977"
+  },
+  {
+    "id": "000014891119",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2011年 公開（更新）日 2012-08-23 EXCEL DB 時系列表 3 その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000014891119&fileKind=0",
+    "format": "legacy",
+    "sha256": "5aeeb2719ebaf1d87dddb791c1cd99e956a06c8f2399b0d6399ee277036ccdfd"
+  },
+  {
+    "id": "000014891125",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2011年 公開（更新）日 2012-08-23 EXCEL DB 統計表 2 紙・パルプ統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000014891125&fileKind=0",
+    "format": "legacy",
+    "sha256": "3949cd0626ee014b7fe2aee84b3e7af5e29b5dc725a49af3d4163b69d778d92d"
+  },
+  {
+    "id": "000014891126",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2011年 公開（更新）日 2012-08-23 EXCEL DB 統計表 3 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000014891126&fileKind=0",
+    "format": "legacy",
+    "sha256": "5fae8d66d0095d7b5c84a0c1ea46b019017a85c32a5f7e5f58f43a9493bbc8e3"
+  },
+  {
+    "id": "000012333102",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 鉄鋼・非鉄金属・金属製品統計 / 年報 調査年月 2010年 公開（更新）日 2011-09-09 EXCEL DB 時系列表：金属製品 平成22 年",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012333102&fileKind=0",
+    "format": "legacy",
+    "sha256": "bd0bf66f7282b856eff47ef43e06c7b905483d8a7714839e18d161fdb1c3b365"
+  },
+  {
+    "id": "000012333116",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2010年 公開（更新）日 2011-09-09 EXCEL DB 紙・パルプ統計 平成22 年",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012333116&fileKind=0",
+    "format": "legacy",
+    "sha256": "7895a8dcadbff4817fbae6e297906c4fb8179e529590203df34d8bce50c1f68b"
+  },
+  {
+    "id": "000012333117",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2010年 公開（更新）日 2011-09-09 EXCEL DB 印刷統計 平成22 年",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012333117&fileKind=0",
+    "format": "legacy",
+    "sha256": "af4b70a07b4785b7e512fc170b84983412144d704a8a499f3b22ffa5a9bbcaf7"
+  },
+  {
+    "id": "000012321980",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-08 EXCEL 平成20 年 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012321980&fileKind=0",
+    "format": "legacy",
+    "sha256": "b560bd981a26543c3a2bddb7cc8e1d69838253ac96925631f6ac425535dcef2b"
+  },
+  {
+    "id": "000012321984",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 紙・印刷・プラスチック・ゴム製品統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-08 EXCEL 平成21 年 印刷統計",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012321984&fileKind=0",
+    "format": "legacy",
+    "sha256": "d60f0383a5dc0a3942e536dacefdf0bcddcbd74b2fa63c3fc37c9c4da0b5c14b"
+  },
+  {
+    "id": "000012286011",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-05 EXCEL 平成20 年 平成20 年 その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012286011&fileKind=0",
+    "format": "legacy",
+    "sha256": "bc7599f019787c7b5c56fa86118597ae6a4e28dab9571c683d5c1074b4eec25d"
+  },
+  {
+    "id": "000012286012",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-05 EXCEL 平成20 年 その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012286012&fileKind=0",
+    "format": "legacy",
+    "sha256": "8e952c68218b42d58c7e7f424fb2da82079fe1e1405e56609d37287c171d0766"
+  },
+  {
+    "id": "000012286015",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-05 EXCEL 平成21 年 その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012286015&fileKind=0",
+    "format": "legacy",
+    "sha256": "12935366092219e5e0c8e9f24809914ce5982cde886c6431a7735cd629337d1e"
+  },
+  {
+    "id": "000012286016",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-05 EXCEL 平成21 年 平成21 年 その２",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012286016&fileKind=0",
+    "format": "legacy",
+    "sha256": "c82d544d2409425c3c5c540bb97d3b246f037d360c7c33da86cc33222452c45c"
+  },
+  {
+    "id": "000012285822",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 鉄鋼・非鉄金属・金属製品統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-05 EXCEL 平成21 年 鉄鋼（時系列表）",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012285822&fileKind=0",
+    "format": "legacy",
+    "sha256": "b1d2c327fc12ca71ad4fc4200105d5217ebddf7c4d84af3f4623325f64d1b7be"
+  },
+  {
+    "id": "000012285826",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 鉄鋼・非鉄金属・金属製品統計 / 年報 調査年月 2009年 公開（更新）日 2011-09-05 EXCEL 平成21 年 金属製品（時系列表）",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012285826&fileKind=0",
+    "format": "legacy",
+    "sha256": "b1d2c327fc12ca71ad4fc4200105d5217ebddf7c4d84af3f4623325f64d1b7be"
+  },
+  {
+    "id": "000002216804",
+    "name": "経済産業省生産動態統計調査 経済産業省生産動態統計 / 機械統計 / 年報 調査年月 2009年 公開（更新）日 2009-05-01 EXCEL DB 平成19 年 平成19 年 その１",
+    "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000002216804&fileKind=0",
+    "format": "legacy",
+    "sha256": "4d3d8c805755d19978418727d689129a6dc3332ed44ba79296ed4305e53c41a0"
+  }
+]

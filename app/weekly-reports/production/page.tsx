@@ -5,10 +5,11 @@ import { productionData, productionReference } from "@/lib/reports/production";
 import orders from "@/lib/reports/data/machinery-orders.json";
 import gdpTotals from "@/lib/reports/data/gdp-totals.json";
 import constructionMachinery from "@/lib/reports/data/construction-machinery.json";
+import productProduction from "@/lib/reports/data/product-production.json";
 
 export const metadata: Metadata = {
   title: "生産統計 | 定点観測 | ReportBank",
-  description: "日本のGDP、農業・工業生産、産業機械の受注、建設機械の出荷を公表統計で確認します。",
+  description: "日本のGDP、農業・工業生産、産業機械の受注、建設機械の出荷、品目別生産金額を公表統計で確認します。",
 };
 
 export default function ProductionPage() {
@@ -16,6 +17,7 @@ export default function ProductionPage() {
   const ordersRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(orders.retrievedAt));
   const gdpRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(gdpTotals.retrievedAt));
   const constructionRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(constructionMachinery.retrievedAt));
+  const productRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(productProduction.retrievedAt));
   return <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
       <ObservationTabs current="production" />
@@ -23,12 +25,13 @@ export default function ProductionPage() {
         <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / PRODUCTION STATISTICS</p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">生産統計</h2>
         <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">日本のGDP、農業総産出額と食料自給率、第2次産業の名目GDPから、生産と産業構造の推移を確認します。工業生産の参考統計として、産業機械の内需・輸出別受注額と建設機械の出荷額も掲載しています。</p>
-        <p className="mt-4 text-xs text-slate-500">資料取得日：FIGURE02・03とFIGURE01の産業別内訳 {retrieved}／FIGURE03-1 {ordersRetrieved}／FIGURE03-2 {constructionRetrieved}／FIGURE01の2025年名目総額・実質総額 {gdpRetrieved}</p>
+        <p className="mt-4 text-xs text-slate-500">資料取得日：FIGURE02・03とFIGURE01の産業別内訳 {retrieved}／FIGURE03-1 {ordersRetrieved}／FIGURE03-2 {constructionRetrieved}／FIGURE03-3 {productRetrieved}／FIGURE01の2025年名目総額・実質総額 {gdpRetrieved}</p>
       </header>
       <ProductionCharts />
       <section className="rounded-2xl bg-white p-6">
         <h2 className="text-xl font-semibold">出典・取得日</h2>
         <ul className="mt-4 space-y-4 text-sm">{productionData.sources.map(source => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">{source.name}（Excel）</a><p className="mt-1 text-xs text-slate-500">取得：{retrieved}</p></li>)}
+          <li><a href={productProduction.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">経済産業省生産動態統計年報</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE03-3：2007～2025年の生産金額。経済産業省の公式年報をe-Stat配布ファイルから取得。原単位は百万円・千円、表示は兆円。取得：{productRetrieved}。各年の採用ファイルは数値表から確認できます。</p></li>
           <li><a href={gdpTotals.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">内閣府・{gdpTotals.releaseName}（{gdpTotals.releaseDate}公表）</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE01の2025年名目GDP総額・1994～2025年実質GDP総額。取得：{gdpRetrieved}。</p><p className="mt-1 flex gap-4 text-xs">{gdpTotals.sources.map(source => <a key={source.id} href={source.url} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">{source.id === "nominal" ? "名目暦年CSV" : "実質暦年CSV"}</a>)}</p></li>
           <li><a href={orders.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">日本産業機械工業会・産業機械受注状況（月次PDF）</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE03-1：表1「産業機械 需要部門別受注状況」。取得：{ordersRetrieved}。2020～2025年の各年1～12月と、2026年1～8月をそれぞれ合計。原単位は百万円、表示は億円に換算。年別の数値表から採用資料を確認できます。</p></li>
           <li><a href={constructionMachinery.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">日本建設機械工業会・建設機械出荷金額統計（内需、外需）</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE03-2：1995年以降の各資料の1～12月分。最新年は公表済み月まで。原単位は百万円、表示は億円。取得：{constructionRetrieved}。各年の原資料へのリンクは数値表に掲載。</p></li>
