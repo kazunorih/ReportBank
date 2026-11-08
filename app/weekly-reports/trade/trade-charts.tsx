@@ -1,8 +1,8 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, LabelList, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
-import { chartScale } from "@/lib/reports/chart-scale";
+import { barTotalLabel, barLabelScale, stackLabelValue } from "@/lib/reports/bar-totals";
 import { type TradeChart, tradeMonth } from "@/lib/reports/trade";
 import { examplesForCommodity } from "@/lib/reports/trade-examples";
 import { countryColor, portColor } from "@/lib/reports/trade-colors";
@@ -15,8 +15,8 @@ export default function TradeCharts({ charts, latestMonth, firstFigure = 1, sour
   const divisor = sourceUnit === "千円" ? 1_000_000_000 : 1_000_000;
   return <div className="space-y-8">{charts.map((chart, index) => {
     const colors = chart.categories.map((name, i) => chart.id.startsWith("country") ? countryColor(name) : chart.id.startsWith("port") ? portColor(name) : name === "その他" ? "#cbd5e1" : palette[i]);
-    const data = chart.points.map(point => ({ month: point.month, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value === null ? null : value / divisor])) }));
-    const scale = chartScale(chart.points.map(point => point.total / divisor));
+    const data = chart.points.map(point => ({ month: point.month, total: point.total / divisor, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value === null ? null : value / divisor])) }));
+    const scale = barLabelScale(chart.points.map(point => point.total / divisor));
     const legendItems = chart.categories.map((name, i) => ({ name, i })).reverse();
     const latest = chart.points[chart.points.length - 1];
     return <section key={chart.id} className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby={chart.id}>
@@ -24,14 +24,14 @@ export default function TradeCharts({ charts, latestMonth, firstFigure = 1, sour
       <h2 id={chart.id} className="mt-2 text-xl font-semibold sm:text-2xl">{chart.title}</h2>
       <p className="mt-3 text-sm leading-7 text-slate-500">{tradeMonth(latestMonth)}の上位{chart.categories.length - 1}{chart.id.startsWith("port") ? "港（空港を含む）" : chart.id.startsWith("country") ? "か国・地域" : "品目（主要商品大分類）"}とその他。各月の金額を積み上げて表示します。</p>
       {chart.id.startsWith("port") && <p className="mt-2 text-xs leading-6 text-slate-500">2000年1月からの月次推移。最新月の上位8港を全期間で固定し、税関官署の3桁符号ごとに集計しています。実際に貨物を積卸した港の統計とは異なります。</p>}
-      <FixedAxisChart left={scale} leftUnit="金額（兆円）" minWidth={Math.max(1800, chart.points.length * 30)} height={360} label={chart.title}>
+      <FixedAxisChart left={scale} leftUnit="金額（兆円）" minWidth={Math.max(1800, chart.points.length * 64)} height={360} label={chart.title}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={plotMargin} accessibilityLayer>
             <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="month" height={xAxisHeight} interval={2} angle={-45} textAnchor="end" tick={{ fontSize: 11 }} tickFormatter={tradeMonth} />
             <YAxis hide width={0} domain={scale.domain} ticks={scale.ticks} />
             <Tooltip itemSorter={tooltipOrder(legendItems.map(({ i }) => `value${i}`))} labelFormatter={label => tradeMonth(String(label))} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆円`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
-            {chart.categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="trade" fill={colors[i]} isAnimationActive={false} />)}
+            {chart.categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="trade" fill={colors[i]} isAnimationActive={false}><LabelList dataKey={(row: Record<string, unknown>) => stackLabelValue(row, chart.categories.map((_, index) => `value${index}`), `value${i}`, "total")} {...barTotalLabel} /></Bar>)}
           </BarChart>
         </ResponsiveContainer>
       </FixedAxisChart>

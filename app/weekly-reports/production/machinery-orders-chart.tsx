@@ -1,9 +1,9 @@
 "use client";
 
-import { Bar, CartesianGrid, ComposedChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, LabelList, CartesianGrid, ComposedChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import orders from "@/lib/reports/data/machinery-orders.json";
 import { annualOrders } from "@/lib/reports/machinery-orders";
-import { chartScale } from "@/lib/reports/chart-scale";
+import { barTotalLabel, barLabelScale, stackLabelValue } from "@/lib/reports/bar-totals";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
@@ -17,7 +17,7 @@ const format = (value: number) => value.toLocaleString("ja-JP", { maximumFractio
 
 export default function MachineryOrdersChart() {
   const data = annualOrders.map(point => ({ ...point, domestic: point.domestic / 100, exports: point.exports / 100, total: point.total / 100 }));
-  const left = chartScale(data.map(point => point.total));
+  const left = barLabelScale(data.map(point => point.total));
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="machinery-orders">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 03-1</p>
     <h2 id="machinery-orders" className="mt-2 text-xl font-semibold sm:text-2xl">産業機械の受注</h2>
@@ -32,7 +32,7 @@ export default function MachineryOrdersChart() {
           <YAxis hide width={0} domain={left.domain} ticks={left.ticks} />
           <Tooltip itemSorter={tooltipOrder(legend.map(item => item.key))}
             formatter={(value, name) => [`${format(Number(value))} 億円`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
-          {series.map(item => <Bar key={item.key} dataKey={item.key} name={item.name} stackId="orders" fill={item.color} isAnimationActive={false} />)}
+          {series.map(item => <Bar key={item.key} dataKey={item.key} name={item.name} stackId="orders" fill={item.color} isAnimationActive={false}><LabelList dataKey={(row: Record<string, unknown>) => stackLabelValue(row, series.map(entry => entry.key), item.key, "total")} {...barTotalLabel} /></Bar>)}
         </ComposedChart>
       </ResponsiveContainer>
     </FixedAxisChart>

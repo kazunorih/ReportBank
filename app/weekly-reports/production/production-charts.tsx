@@ -1,7 +1,7 @@
 "use client";
 
-import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { chartScale } from "@/lib/reports/chart-scale";
+import { Bar, LabelList, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { barTotalLabel, barLabelScale, stackLabelValue } from "@/lib/reports/bar-totals";
 import { productionData } from "@/lib/reports/production";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
@@ -35,7 +35,7 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
       total: farm ? farm.total / 10_000 : null };
   }) : productionData.industry.map(point => ({ year: point.year, mining: point.mining / 1_000,
     manufacturing: point.manufacturing / 1_000, construction: point.construction / 1_000, total: point.total / 1_000 }));
-  const left = chartScale(data.map(point => point.total));
+  const left = barLabelScale(data.map(point => point.total));
   const right = { domain: [0, 100] as [number, number], ticks: [0, 20, 40, 60, 80, 100] };
   // Lines precede bars; bars follow the stack from top to bottom in both legend and tooltip.
   const legend = [...(agricultural ? [rateSeries] : []), ...series.toReversed()];
@@ -48,7 +48,7 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
       ? "1975～2024年の農業総産出額を、米・野菜・畜産・その他の積み上げ棒グラフで表示。食料自給率は1975～2025年度（2025年度は概算）を右軸の折れ線で重ねています。"
       : "1994～2024年の第2次産業（鉱業・製造業・建設業）の名目GDP実額を積み上げ表示。同一の2020年基準・2008SNAで取得できる全期間です。"}</p>
     <FixedAxisChart left={left} right={agricultural ? right : undefined} leftUnit={agricultural ? "農業総産出額（兆円）" : "名目GDP（兆円）"}
-      rightUnit="食料自給率（%）" minWidth={Math.max(900, data.length * 44 + 120)} height={380} label={`${title}の年次推移`}>
+      rightUnit="食料自給率（%）" minWidth={Math.max(900, data.length * 68 + 120)} height={380} label={`${title}の年次推移`}>
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
           <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
@@ -57,7 +57,7 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
           {agricultural && <YAxis yAxisId="rate" orientation="right" hide width={0} domain={right.domain} ticks={right.ticks} />}
           <Tooltip itemSorter={tooltipOrder(legend.map(item => item.key))} labelFormatter={year => agricultural ? `${year}年（自給率は年度）` : `${year}年`}
             formatter={(value, name) => [`${format(Number(value))}${name === rateSeries.name ? " %" : " 兆円"}`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
-          {series.map(item => <Bar key={item.key} yAxisId="amount" dataKey={item.key} name={item.name} stackId="production" fill={item.color} isAnimationActive={false} />)}
+          {series.map(item => <Bar key={item.key} yAxisId="amount" dataKey={item.key} name={item.name} stackId="production" fill={item.color} isAnimationActive={false}><LabelList dataKey={(row: Record<string, unknown>) => stackLabelValue(row, series.map(entry => entry.key), item.key, "total")} {...barTotalLabel} /></Bar>)}
           {agricultural && <Line yAxisId="rate" dataKey="rate" name={rateSeries.name} stroke={rateSeries.color} strokeWidth={2.5} dot={false} connectNulls={false} isAnimationActive={false} />}
         </ComposedChart>
       </ResponsiveContainer>

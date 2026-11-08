@@ -1,8 +1,9 @@
 "use client";
 
-import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, LabelList, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { HouseholdData } from "@/lib/reports/schema";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
+import { barTotalLabel, barLabelScale } from "@/lib/reports/bar-totals";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 
@@ -12,12 +13,12 @@ export default function HouseholdChart({ data, years }: { data: HouseholdData; y
   const last = data.observations.at(-1)!.year;
   const rows = data.observations.filter(row => row.year >= Math.max(1995, last - years + 1));
   const percent = chartScale(rows.flatMap(r => [r.unemploymentRate, r.belowMeanShare]));
-  const income = chartScale(rows.map(r => r.averageIncome));
+  const income = barLabelScale(rows.map(r => r.averageIncome));
   return <section className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 05</p>
     <h3 className="mt-2 text-xl font-semibold">富の偏りと失業率</h3>
     <p className="mt-2 text-sm leading-6 text-slate-500">折れ線・左軸：完全失業率、平均所得以下の世帯割合（%） ／ 棒グラフ・右軸：全世帯の1世帯当たり平均所得金額（万円）。1995年以降の年次推移。</p>
-    <FixedAxisChart left={percent} right={income} leftUnit="%" rightUnit="万円" leftTickSuffix="%" rightTickSuffix="" minWidth={Math.max(600, rows.length * 36 + 110)} height={384} label="富の偏りと失業率。左軸は割合、右軸は平均所得金額。">
+    <FixedAxisChart left={percent} right={income} leftUnit="%" rightUnit="万円" leftTickSuffix="%" rightTickSuffix="" minWidth={Math.max(600, rows.length * 72 + 110)} height={384} label="富の偏りと失業率。左軸は割合、右軸は平均所得金額。">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart data={rows} margin={plotMargin} accessibilityLayer>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
@@ -25,7 +26,7 @@ export default function HouseholdChart({ data, years }: { data: HouseholdData; y
           <YAxis yAxisId="percent" hide domain={percent.domain} ticks={percent.ticks} />
           <YAxis yAxisId="income" hide domain={income.domain} ticks={income.ticks} />
           <Tooltip itemSorter={tooltipOrder(["unemploymentRate", "belowMeanShare", "averageIncome"])} labelFormatter={value => `${value}年（所得は翌年調査）`} formatter={(value, name) => [`${number(Number(value))} ${name === "平均所得金額" ? "万円" : "%"}`, name]} />
-          <Bar yAxisId="income" dataKey="averageIncome" name="平均所得金額" fill="#cbd5e1" maxBarSize={22} isAnimationActive={false} />
+          <Bar yAxisId="income" dataKey="averageIncome" name="平均所得金額" fill="#cbd5e1" maxBarSize={22} isAnimationActive={false}><LabelList dataKey="averageIncome" {...barTotalLabel} /></Bar>
           <Line yAxisId="percent" dataKey="unemploymentRate" name="完全失業率" stroke="#0284c7" strokeWidth={2} dot={{ r: 2 }} connectNulls={false} isAnimationActive={false} />
           <Line yAxisId="percent" dataKey="belowMeanShare" name="平均所得以下の世帯割合" stroke="#7c3aed" strokeWidth={2} dot={{ r: 2 }} connectNulls={false} isAnimationActive={false} />
         </ComposedChart>

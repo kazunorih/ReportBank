@@ -1,9 +1,9 @@
 "use client";
 
-import { Bar, BarChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, LabelList, BarChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { fdiStockData } from "@/lib/reports/fdi-stock";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
-import { chartScale } from "@/lib/reports/chart-scale";
+import { barTotalLabel, barLabelScale, stackLabelValue } from "@/lib/reports/bar-totals";
 import { countryColor } from "@/lib/reports/trade-colors";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 
@@ -12,21 +12,21 @@ const amount = (value: number) => value.toLocaleString("ja-JP", { maximumFractio
 export default function FdiChart() {
   const { points, categories, firstYear, latestYear } = fdiStockData;
   const colors = categories.map(countryColor);
-  const rows = points.map(point => ({ year: point.year, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value / 1_000_000])) }));
+  const rows = points.map(point => ({ year: point.year, total: point.total / 1_000_000, ...Object.fromEntries(point.values.map((value, i) => [`value${i}`, value / 1_000_000])) }));
   const legendItems = categories.map((name, i) => ({ name, i })).reverse();
-  const scale = chartScale(points.map(point => point.total / 1_000_000));
+  const scale = barLabelScale(points.map(point => point.total / 1_000_000));
   return <section className="min-w-0 rounded-2xl bg-white px-4 py-6 sm:p-6" aria-labelledby="fdi-stock-title">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 05</p>
     <h2 id="fdi-stock-title" className="mt-2 text-xl font-semibold sm:text-2xl">日本の対外直接投資残高</h2>
     <p className="mt-3 text-sm leading-7 text-slate-500">{firstYear}～{latestYear}年末の年次推移。{latestYear}年末のJETRO掲載国・地域の上位8か国を全期間で固定し、残る投資先を「その他」にまとめた積み上げ棒グラフです。</p>
-    <FixedAxisChart left={scale} leftUnit="残高（兆米ドル）" minWidth={Math.max(900, rows.length * 44 + 80)} height={360} label="日本の対外直接投資残高の年次積み上げ棒グラフ">
+    <FixedAxisChart left={scale} leftUnit="残高（兆米ドル）" minWidth={Math.max(900, rows.length * 68 + 80)} height={360} label="日本の対外直接投資残高の年次積み上げ棒グラフ">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={rows} margin={plotMargin} accessibilityLayer>
           <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="year" height={xAxisHeight} interval={0} angle={-45} textAnchor="end" tick={{ fontSize: 11 }} tickFormatter={year => `${year}年末`} />
           <YAxis hide width={0} domain={scale.domain} ticks={scale.ticks} />
           <Tooltip itemSorter={tooltipOrder(legendItems.map(({ i }) => `value${i}`))} labelFormatter={year => `${year}年末`} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 6 })} 兆米ドル`, name]} contentStyle={{ borderRadius: 12, fontSize: 12 }} />
-          {categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="fdi" fill={colors[i]} isAnimationActive={false} />)}
+          {categories.map((name, i) => <Bar key={name} dataKey={`value${i}`} name={name} stackId="fdi" fill={colors[i]} isAnimationActive={false}><LabelList dataKey={(row: Record<string, unknown>) => stackLabelValue(row, categories.map((_, index) => `value${index}`), `value${i}`, "total")} {...barTotalLabel} /></Bar>)}
           <ReferenceLine x={2014} stroke="#64748b" strokeDasharray="4 4" label={{ value: "基準変更", position: "insideTopLeft", fontSize: 11, fill: "#475569" }} />
         </BarChart>
       </ResponsiveContainer>

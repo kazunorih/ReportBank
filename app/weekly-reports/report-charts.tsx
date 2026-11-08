@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, LabelList, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
+import { barTotalLabel, barLabelScale, stackLabelValue, sumBarValues } from "@/lib/reports/bar-totals";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 import { chartGroups, seriesCatalog, lendingSeriesCatalog } from "@/lib/reports/catalog";
@@ -59,7 +60,8 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         const bars = available.filter(isBar);
         const displayOrder = [...available.filter(item => !isBar(item)), ...(stacked ? [...bars].reverse() : bars)];
         const legendItems = displayOrder.map(item => ({ item, index: available.indexOf(item) }));
-        const amountScale = chartScale(data.flatMap(row => stacked ? [amounts.reduce((sum, item) => sum + (row[item.id] ?? 0), 0)] : amounts.map(item => row[item.id])));
+        const amountValues = data.flatMap(row => stacked ? [sumBarValues(bars.map(item => row[item.id]))] : amounts.map(item => row[item.id]));
+        const amountScale = bars.length ? barLabelScale(amountValues) : chartScale(amountValues);
         const rateScale = chartScale(data.flatMap(row => available.filter(item => item.unit === "%").map(item => row[item.id])));
         return (
           <section key={group.id} className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
@@ -68,7 +70,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
             <p className="mt-2 text-sm leading-6 text-slate-500">{group.description}</p>
             {available.length ? (
               <>
-                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit="兆円" rightUnit="金利（%）" minWidth={Math.max(600, (group.id === "bojComparison" ? Math.min(years, 30) : years) * 36 + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
+                <FixedAxisChart left={amountScale} right={hasRates ? rateScale : undefined} leftUnit="兆円" rightUnit="金利（%）" minWidth={Math.max(600, (bars.length ? data.length * (stacked ? 78 : bars.length * 72) : years * 36) + 110)} height={384} label={`${group.title}。横軸は各年12月。数値は下のデータ表でも確認できます。`}>
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={data} margin={plotMargin} accessibilityLayer>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
@@ -80,7 +82,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                     <Tooltip itemSorter={tooltipOrder(displayOrder.map(item => item.id))} labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
-                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false} />
+                      ? <Bar key={item.id} yAxisId="amount" dataKey={item.id} name={item.label} stackId={group.id === "loanComparison" || group.id === "bojComparison" ? group.id : undefined} fill={item.id === "unclassifiedLoans" ? "#cbd5e1" : item.id === "domesticCorporateLoans" ? "#93c5fd" : item.id === "housingLoans" ? "#d97706" : item.id === "otherLoans" ? "#be123c" : item.id === "topix" ? "#94a3b8" : colors[index]} fillOpacity={item.id === "topix" ? 0.5 : item.id === "otherLoans" || item.id === "bojOtherAssets" ? 0.3 : 1} maxBarSize={18} isAnimationActive={false}><LabelList dataKey={stacked ? (row: Record<string, unknown>) => stackLabelValue(row, bars.map(bar => bar.id), item.id) : item.id} {...barTotalLabel} /></Bar>
                       : <Line key={item.id} yAxisId={item.unit === "%" ? "rate" : "amount"} dataKey={item.id} name={item.label} stroke={colors[index]} strokeWidth={2} type="linear" dot={false} connectNulls={group.id === "bojComparison"} isAnimationActive={false} />)}
                   </ComposedChart>
                 </ResponsiveContainer>

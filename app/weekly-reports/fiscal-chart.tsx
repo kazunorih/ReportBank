@@ -1,7 +1,8 @@
 "use client";
 
-import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, LabelList, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
+import { barTotalLabel, barLabelScale } from "@/lib/reports/bar-totals";
 import { chartScale } from "@/lib/reports/chart-scale";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
 import type { FiscalData } from "@/lib/reports/schema";
@@ -16,9 +17,9 @@ export default function FiscalChart({ fiscal, periods, asOf, years }: { fiscal: 
     const row = fiscal.budgets.find(row => row.fiscalYear === fiscalYear);
     return { fiscalYear, interest: row?.interest ?? null, budget: row?.budget ?? null, share: row?.share ?? null };
   });
-  const width = Math.max(600, years * 36 + 110);
-  const debtScale = chartScale(debt.map(row => row.amount));
-  const interestScale = chartScale(budgets.map(row => row.interest));
+  const width = Math.max(600, years * 144 + 110);
+  const debtScale = barLabelScale(debt.map(row => row.amount));
+  const interestScale = barLabelScale(budgets.map(row => row.interest));
   const shareScale = chartScale(budgets.map(row => row.share));
   return <section className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
     <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE 04</p>
@@ -34,7 +35,7 @@ export default function FiscalChart({ fiscal, periods, asOf, years }: { fiscal: 
                 <XAxis dataKey="date" ticks={debt.filter(row => row.date.endsWith("-12-31")).map(row => row.date)} interval={0} angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8} tick={{ fontSize: 11 }} tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} />
                 <YAxis hide domain={debtScale.domain} ticks={debtScale.ticks} />
                 <Tooltip itemSorter={tooltipOrder(["amount"])} labelFormatter={value => `${value} 現在`} formatter={value => [`${number(Number(value))} 兆円`, "国債及び借入金現在高"]} />
-                <Bar dataKey="amount" name="国債及び借入金現在高" fill="#93c5fd" maxBarSize={18} isAnimationActive={false} />
+                <Bar dataKey="amount" name="国債及び借入金現在高" fill="#93c5fd" maxBarSize={18} isAnimationActive={false}><LabelList dataKey="amount" {...barTotalLabel} /></Bar>
               </ComposedChart>
             </ResponsiveContainer>
         </FixedAxisChart>
@@ -50,7 +51,7 @@ export default function FiscalChart({ fiscal, periods, asOf, years }: { fiscal: 
                 <YAxis yAxisId="amount" hide domain={interestScale.domain} ticks={interestScale.ticks} />
                 <YAxis yAxisId="share" hide domain={shareScale.domain} ticks={shareScale.ticks} />
                 <Tooltip itemSorter={tooltipOrder(["share", "interest"])} labelFormatter={value => `${value}年度 当初予算`} formatter={(value, name) => [`${number(Number(value))} ${name === "一般会計歳出比" ? "%" : "兆円"}`, name]} />
-                <Bar yAxisId="amount" dataKey="interest" name="利払費" fill="#fed7aa" maxBarSize={24} isAnimationActive={false} />
+                <Bar yAxisId="amount" dataKey="interest" name="利払費" fill="#fed7aa" maxBarSize={24} isAnimationActive={false}><LabelList dataKey="interest" {...barTotalLabel} /></Bar>
                 <Line yAxisId="share" dataKey="share" name="一般会計歳出比" stroke="#0f766e" strokeWidth={2} dot={false} connectNulls={false} isAnimationActive={false} />
               </ComposedChart>
             </ResponsiveContainer>
