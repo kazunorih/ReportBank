@@ -1,8 +1,7 @@
 "use client";
 
-import { Bar, LabelList, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import snapshot from "@/lib/reports/data/equity-valuations.json";
-import { barTotalLabel, barLabelScale } from "@/lib/reports/bar-totals";
 import { chartScale } from "@/lib/reports/chart-scale";
 import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "./fixed-axis-chart";
@@ -33,19 +32,19 @@ export default function ValuationChart({ years, topix }: { years: number; topix:
       const data: ({ period: string } & Record<string, string | number | null>)[] = panel.data;
       const series = panel.series.filter(series => data.some(row => row[series.id] != null));
       const values = (id: string) => data.map(row => typeof row[id] === "number" ? row[id] as number : null);
-      const scale = panel.id === "per" ? barLabelScale(values("topix")) : chartScale(series.flatMap(s => values(s.id)));
+      const scale = chartScale(panel.id === "per" ? values("topix") : series.flatMap(s => values(s.id)));
       const perScale = chartScale(series.filter(s => s.id !== "topix").flatMap(s => values(s.id)));
       return <div key={panel.id} role="group" aria-label={panel.title}>
         <h4 className="font-semibold text-slate-700">{panel.title}</h4>
         {!data.length && <p className="mt-3 text-sm text-slate-500">選択した表示期間には、公表値がありません。</p>}
-        <FixedAxisChart left={scale} right={panel.id === "per" ? perScale : undefined} leftUnit={panel.id === "per" ? "TOPIX（ポイント）" : "PBR（倍）"} rightUnit="PER（倍）" rightTickSuffix="" minWidth={Math.max(650, data.length * (panel.id === "per" ? 78 : 36))} height={280} label={`${panel.title}の推移`}>
+        <FixedAxisChart left={scale} right={panel.id === "per" ? perScale : undefined} leftUnit={panel.id === "per" ? "TOPIX（ポイント）" : "PBR（倍）"} rightUnit="PER（倍）" rightTickSuffix="" minWidth={Math.max(650, data.length * 36)} height={280} label={`${panel.title}の推移`}>
           <ResponsiveContainer width="100%" height="100%"><ComposedChart data={data} margin={plotMargin} accessibilityLayer>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
             <XAxis dataKey="period" height={xAxisHeight} angle={-45} textAnchor="end" interval="preserveStartEnd" minTickGap={35} tick={{ fontSize: 11 }} tickFormatter={monthLabel} />
             <YAxis yAxisId="left" hide domain={scale.domain} ticks={scale.ticks} />
             {panel.id === "per" && <YAxis yAxisId="right" hide orientation="right" domain={perScale.domain} ticks={perScale.ticks} />}
             <Tooltip isAnimationActive={false} reverseDirection={{ x: true, y: false }} itemSorter={tooltipOrder(series.map(s => s.id))} labelFormatter={value => monthLabel(String(value))} formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 2 })} ${series.find(s => s.label === name)?.unit ?? "倍"}`, name]} wrapperStyle={{ width: 200 }} contentStyle={{ fontSize: 12, borderRadius: 12 }} />
-            {series.filter(s => s.id === "topix").map(s => <Bar key={s.id} yAxisId="left" dataKey={s.id} name={s.label} fill={s.color} fillOpacity={0.65} maxBarSize={20} isAnimationActive={false}><LabelList dataKey={s.id} {...barTotalLabel} /></Bar>)}
+            {series.filter(s => s.id === "topix").map(s => <Bar key={s.id} yAxisId="left" dataKey={s.id} name={s.label} fill={s.color} fillOpacity={0.65} maxBarSize={20} isAnimationActive={false} />)}
             {series.filter(s => s.id !== "topix").map(s => <Line key={s.id} yAxisId={panel.id === "per" ? "right" : "left"} dataKey={s.id} name={s.label} stroke={s.color} dot={false} connectNulls={false} strokeWidth={2} isAnimationActive={false} />)}
           </ComposedChart></ResponsiveContainer>
         </FixedAxisChart>
