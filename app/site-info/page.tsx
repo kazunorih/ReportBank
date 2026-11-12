@@ -88,7 +88,7 @@ export default async function SiteInfoPage() {
             href="/articles/y-h276cxoelb"
             className="mt-4 inline-flex rounded text-sky-700 underline underline-offset-4 hover:text-sky-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-600"
           >
-            管理人のプロフィールを見る
+            管理人あいさつを見る
           </Link>
         </section>
 
