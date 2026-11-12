@@ -24,7 +24,6 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
   let marketChart: Awaited<ReturnType<typeof getMarketChart>> | undefined;
   try { marketChart = await getMarketChart(); }
   catch (error) { console.error("Market chart read failed", error); failed = true; }
-  const insight = marketChart?.insight;
   const chartData = marketChart ? withReportFigures(marketChart) : undefined;
 
   return (
@@ -39,13 +38,8 @@ export default async function WeeklyReportsPage({ searchParams }: { searchParams
           <div className="mt-5 flex flex-wrap gap-3 text-xs text-slate-600">
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">毎週金曜 23:00（日本時間）生成開始</span>
             <span className="rounded-full bg-white px-4 py-2 ring-1 ring-slate-200">生成・検証完了後に更新</span>
-            {insight && <span className="px-1 py-2">本文作成：{formatTime(insight.generatedAt)}</span>}
           </div>
         </header>
-        <section className="max-w-3xl text-sm leading-7 text-slate-600">
-          <h2>WEEKLY INSIGHT（資料からのAI推論）</h2>
-          <p className="mt-5 whitespace-pre-wrap">{insight?.summary || (failed ? "レポートを取得できませんでした。時間をおいて再度お試しください。" : "この図表のデータに基づく400字以内の整理を準備しています。")}</p>
-        </section>
         {marketChart && chartData ? <>
           <p className="text-sm leading-7 text-slate-600">TOPIXおよびFIGURE02～04の収集基準日：{marketChart.asOf}。PER・PBRの収録期間・取得日はFIGURE01に記載しています。貸出残高は日本銀行の提供CSVを使用（最新観測日：{chartData.series.find((series) => series.id === "otherLoans")?.latestDate}）。日本銀行の資産は財務諸表を使用（最新決算日：{chartData.series.find((series) => series.id === "bojStatementJgb")?.latestDate}）。</p>
           <ReportCharts report={chartData} />

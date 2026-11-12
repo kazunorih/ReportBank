@@ -60,7 +60,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
         const displayOrder = [...available.filter(item => !isBar(item)), ...(stacked ? [...bars].reverse() : bars)];
         const legendItems = displayOrder.map(item => ({ item, index: available.indexOf(item) }));
         const amountScale = chartScale(data.flatMap(row => stacked ? [amounts.reduce((sum, item) => sum + (row[item.id] ?? 0), 0)] : amounts.map(item => row[item.id])));
-        const rateScale = chartScale(data.flatMap(row => available.filter(item => item.unit === "%").map(item => row[item.id])));
+        const rateScale = chartScale(data.flatMap(row => available.filter(item => item.unit === "%").map(item => Math.max(0, row[item.id] ?? 0))));
         return (
           <section key={group.id} className="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8">
             <p className="text-xs font-semibold tracking-widest text-sky-700">FIGURE {String(groupIndex + 1).padStart(2, "0")}</p>
@@ -76,7 +76,7 @@ export default function ReportCharts({ report }: { report: ChartReport }) {
                       angle={-55} textAnchor="end" height={xAxisHeight} tickMargin={8}
                       tickFormatter={(value: string) => `${value.slice(0, 4)}年12月`} tick={{ fontSize: 11 }} />
                     <YAxis yAxisId="amount" hide domain={amountScale.domain} ticks={amountScale.ticks} />
-                    {hasRates && <YAxis yAxisId="rate" hide domain={rateScale.domain} ticks={rateScale.ticks} />}
+                    {hasRates && <YAxis yAxisId="rate" hide domain={rateScale.domain} ticks={rateScale.ticks} allowDataOverflow />}
                     <Tooltip itemSorter={tooltipOrder(displayOrder.map(item => item.id))} labelFormatter={(value) => `${value} 観測日`}
                       formatter={(value, name) => [`${Number(value).toLocaleString("ja-JP", { maximumFractionDigits: 4 })} ${series.find((s) => s.label === name)?.unit || ""}`, name]} />
                     {available.map((item, index) => item.unit !== "%" && (group.id === "lending" || group.id === "loanComparison" || group.id === "bojComparison" || group.id === "construction" || item.id === "topix")
