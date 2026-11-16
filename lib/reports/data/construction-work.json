@@ -10,7 +10,8 @@
       "maintenance": 127006,
       "total": 561819,
       "maintenanceRatio": 22.60621303302309,
-      "workers": 3659
+      "workers": 3659,
+      "completed": 912213
     },
     {
       "year": 2005,
@@ -18,7 +19,8 @@
       "maintenance": 127876,
       "total": 533677,
       "maintenanceRatio": 23.96130993091327,
-      "workers": 3524
+      "workers": 3524,
+      "completed": 901983
     },
     {
       "year": 2006,
@@ -26,7 +28,8 @@
       "maintenance": 131415,
       "total": 532765,
       "maintenanceRatio": 24.666597843326795,
-      "workers": 3297
+      "workers": 3297,
+      "completed": 882568
     },
     {
       "year": 2007,
@@ -34,7 +37,8 @@
       "maintenance": 129461,
       "total": 521763,
       "maintenanceRatio": 24.812223174123115,
-      "workers": 3078
+      "workers": 3078,
+      "completed": 856666
     },
     {
       "year": 2008,
@@ -42,7 +46,8 @@
       "maintenance": 132037,
       "total": 518130,
       "maintenanceRatio": 25.48337289869338,
-      "workers": 3191
+      "workers": 3191,
+      "completed": 848983
     },
     {
       "year": 2009,
@@ -50,7 +55,8 @@
       "maintenance": 124425,
       "total": 454767,
       "maintenanceRatio": 27.36016465574679,
-      "workers": 2893
+      "workers": 2893,
+      "completed": 737379
     },
     {
       "year": 2010,
@@ -58,7 +64,8 @@
       "maintenance": 124035,
       "total": 469966,
       "maintenanceRatio": 26.39233476464255,
-      "workers": 2880
+      "workers": 2880,
+      "completed": 724837
     },
     {
       "year": 2011,
@@ -66,7 +73,8 @@
       "maintenance": 138595,
       "total": 465242,
       "maintenanceRatio": 29.789872797382866,
-      "workers": 3124
+      "workers": 3124,
+      "completed": 728249
     },
     {
       "year": 2012,
@@ -74,7 +82,8 @@
       "maintenance": 142690,
       "total": 470860,
       "maintenanceRatio": 30.304124368177376,
-      "workers": 3179
+      "workers": 3179,
+      "completed": 744850
     },
     {
       "year": 2013,
@@ -82,7 +91,8 @@
       "maintenance": 148694,
       "total": 522742,
       "maintenanceRatio": 28.44500728849031,
-      "workers": 3200
+      "workers": 3200,
+      "completed": 821861
     },
     {
       "year": 2014,
@@ -90,7 +100,8 @@
       "maintenance": 153000,
       "total": 549256,
       "maintenanceRatio": 27.855863204043285,
-      "workers": 2847
+      "workers": 2847,
+      "completed": 854266
     },
     {
       "year": 2015,
@@ -98,7 +109,8 @@
       "maintenance": 158016,
       "total": 564137,
       "maintenanceRatio": 28.01021737627562,
-      "workers": 2788
+      "workers": 2788,
+      "completed": 882477
     },
     {
       "year": 2016,
@@ -106,7 +118,8 @@
       "maintenance": 155758,
       "total": 555486,
       "maintenanceRatio": 28.03995060181535,
-      "workers": 2859
+      "workers": 2859,
+      "completed": 865755
     },
     {
       "year": 2017,
@@ -114,7 +127,8 @@
       "maintenance": 164164,
       "total": 572065,
       "maintenanceRatio": 28.696739006931033,
-      "workers": 2808
+      "workers": 2808,
+      "completed": 878372
     },
     {
       "year": 2018,
@@ -122,7 +136,8 @@
       "maintenance": 167882,
       "total": 597512,
       "maintenanceRatio": 28.096841569709056,
-      "workers": 2943
+      "workers": 2943,
+      "completed": 910487
     },
     {
       "year": 2019,
@@ -130,7 +145,8 @@
       "maintenance": 173661,
       "total": 613185,
       "maintenanceRatio": 28.32114288509993,
-      "workers": 3012
+      "workers": 3012,
+      "completed": 947059
     },
     {
       "year": 2020,
@@ -138,7 +154,8 @@
       "maintenance": 223300,
       "total": 768368,
       "maintenanceRatio": 29.061595485496532,
-      "workers": 4180
+      "workers": 4180,
+      "completed": 1280893
     },
     {
       "year": 2021,
@@ -146,7 +163,8 @@
       "maintenance": 242336,
       "total": 784602,
       "maintenanceRatio": 30.886487671456358,
-      "workers": 4597
+      "workers": 4597,
+      "completed": 1286140
     },
     {
       "year": 2022,
@@ -154,7 +172,8 @@
       "maintenance": 252877,
       "total": 825167,
       "maintenanceRatio": 30.645554172670504,
-      "workers": 4780
+      "workers": 4780,
+      "completed": 1355213
     },
     {
       "year": 2023,
@@ -162,7 +181,8 @@
       "maintenance": 288324,
       "total": 899763,
       "maintenanceRatio": 32.04443836877044,
-      "workers": 4921
+      "workers": 4921,
+      "completed": 1485549
     },
     {
       "year": 2024,
@@ -170,7 +190,8 @@
       "maintenance": 281459,
       "total": 907638,
       "maintenanceRatio": 31.01005026232925,
-      "workers": 4884
+      "workers": 4884,
+      "completed": 1544953
     }
   ],
   "sources": [
@@ -180,7 +201,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20041&month=0",
       "sha256": "78e2274a6a9b93e2ec84ae5fff41c99ef80264fd52bde89c7d492867b027c173",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2005,
@@ -188,7 +210,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20051&month=0",
       "sha256": "7f53330c6594db29dfb54c4333ef193849c90b81f1b2cfa76933f2a2f101c379",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2006,
@@ -196,7 +219,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20061&month=0",
       "sha256": "0e4dd49fec87991cc7a4977363acfc4869de2d44edc41e4f643d3eec42f87f39",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2007,
@@ -204,7 +228,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20071&month=0",
       "sha256": "805e1f09069fe4be162471f22c1d15037243837646f122be493cd212eaf77cea",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2008,
@@ -212,7 +237,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20081&month=0",
       "sha256": "79b59e8f45c78542946eaf63a4d015dde0a5e415484a9fc1997ec281a55ed485",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2009,
@@ -220,7 +246,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20091&month=0",
       "sha256": "38b18ebcd9a6be134249b68725c736a7893e7f0364166908d6d8e8cb688b2c1d",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2010,
@@ -228,7 +255,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20101&month=0",
       "sha256": "d9e88b9e956f5ec240f224527e4d03f6c805e314d4e5764b1030477685271c8b",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2011,
@@ -236,7 +264,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20111&month=0",
       "sha256": "d4b7849a1b5b87af468f49a5eab03116bb1e3fd5b6c959a4fc93bce68bd20afc",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2012,
@@ -244,7 +273,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20121&month=0",
       "sha256": "f64dc4e175194b2b645972cd87fd33dd5ae3559efcc849e7615b867723088ee8",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2013,
@@ -252,7 +282,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20131&month=0",
       "sha256": "834c9538a07e3bf8979c634a893023539308d9bfb04092451f502ac386bbf5a1",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2014,
@@ -260,7 +291,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20141&month=0",
       "sha256": "495895eb3fc587e7be00ace1f6d9cb50d3f7bf54343c90558fb2d1231b4d27bb",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2015,
@@ -268,7 +300,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20151&month=0",
       "sha256": "6ddd66964f55a4d58ec5995fd10b8acfa1d4b6173dd082295f9adbeac1651c4b",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2016,
@@ -276,7 +309,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20161&month=0",
       "sha256": "43f8e80cc741d57bc192177ca0f9e1952ab5ac6dad4804594e2c21d90e3788d0",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2017,
@@ -284,7 +318,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20171&month=0",
       "sha256": "b5333fa0f3a6b12ed8cb74faf0fbe148ab4312b612200d4e70b9f7f720cc1cf7",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2018,
@@ -292,7 +327,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20181&month=0",
       "sha256": "09840caf063dc60d3a9c03550e7ea8c6aaaac592084c89fe58e4b736ab49e861",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2019,
@@ -300,7 +336,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20191&month=0",
       "sha256": "0fab669bbfef695b36acd42c7371da951147033fb515d04c70e1cb68c94d83a1",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2020,
@@ -308,7 +345,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20201&month=0",
       "sha256": "b8d184469cdb53128a75ba034d636b4522ee2cf02382b9863d64a0e5ed6dcc5e",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2021,
@@ -316,7 +354,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20211&month=0",
       "sha256": "e3d6114616b1a880643977af942eab13e044ec8828b89a467ace76bdbe983115",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2022,
@@ -324,7 +363,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20221&month=0",
       "sha256": "431f2a91e033dacb4effe1ae76d4437ad00568d653ff147f746f9bda49bbe8b9",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2023,
@@ -332,7 +372,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20231&month=0",
       "sha256": "d8f703e4517c4a8da618d8d18c7bc7d9718dd1efe32ec4ac0594642b9338a51d",
       "workPage": 4,
-      "employmentPage": 5
+      "employmentPage": 5,
+      "completedPage": 2
     },
     {
       "year": 2024,
@@ -340,7 +381,8 @@
       "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20241&month=0",
       "sha256": "bbdc66eded2903a558a7d84a3bf453c7a9899fef84ec483b1210a55e644d4a67",
       "workPage": 5,
-      "employmentPage": 6
+      "employmentPage": 6,
+      "completedPage": 3
     }
   ]
 }

@@ -33,14 +33,18 @@ def parse_report(text):
     new, maintenance = (int(x.replace(',', '')) for x in work.groups())
     preceding = compact[:work.start()].splitlines()
     total = int(re.search(r'[\d,]+', preceding[-1])[0].replace(',', ''))
+    completed_table = re.search(r'\(1\)完成工事高(.*?)\(2\)元請完成工事高', compact, re.S)
+    if not completed_table or '億円' not in completed_table[1]:
+        raise ValueError('Missing completed work table or unexpected units')
+    completed = int(re.search(r'合計([\d,]+)', completed_table[1])[1].replace(',', ''))
     employment = re.search(r'4\.就業者数[^\n]*\(第8表\)(.*?)(?:5\.|５)', compact, re.S)
     if not employment or '千人' not in employment[1]:
         raise ValueError('Missing employment table or unexpected units')
     workers = int(re.search(r'合計([\d,]+)', employment[1])[1].replace(',', ''))
-    if min(new, maintenance, total, workers) <= 0 or abs(new + maintenance - total) > 1:
+    if min(new, maintenance, total, workers) <= 0 or completed < total or abs(new + maintenance - total) > 1:
         raise ValueError(f'Invalid amounts or totals (allow 1 unit rounding): {new}, {maintenance}, {total}, {workers}')
     return dict(newConstruction=new, maintenance=maintenance, total=total,
-                maintenanceRatio=maintenance / total * 100, workers=workers)
+                maintenanceRatio=maintenance / total * 100, workers=workers, completed=completed)
 
 
 def main():
@@ -71,6 +75,7 @@ def main():
         source = dict(year=year, url=url, indexUrl=index, sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                       workPage=next(i + 1 for i, t in enumerate(texts) if re.search(r'新\s*設\s*工\s*事\s*[０-９\d]', t)),
                       employmentPage=next(i + 1 for i, t in enumerate(texts) if re.search(r'[４4][．.]\s*就業者数', t)))
+        source['completedPage'] = next(i + 1 for i, t in enumerate(texts) if re.search(r'[（(][１1][）)]\s*完成工事高', t))
         return point, source
 
     with ThreadPoolExecutor(max_workers=4) as pool:
