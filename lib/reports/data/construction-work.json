@@ -1,0 +1,346 @@
+{
+  "retrievedAt": "2026-11-16T13:37:43.889841+00:00",
+  "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0",
+  "amountUnit": "億円",
+  "employmentUnit": "千人",
+  "points": [
+    {
+      "year": 2004,
+      "newConstruction": 434813,
+      "maintenance": 127006,
+      "total": 561819,
+      "maintenanceRatio": 22.60621303302309,
+      "workers": 3659
+    },
+    {
+      "year": 2005,
+      "newConstruction": 405801,
+      "maintenance": 127876,
+      "total": 533677,
+      "maintenanceRatio": 23.96130993091327,
+      "workers": 3524
+    },
+    {
+      "year": 2006,
+      "newConstruction": 401351,
+      "maintenance": 131415,
+      "total": 532765,
+      "maintenanceRatio": 24.666597843326795,
+      "workers": 3297
+    },
+    {
+      "year": 2007,
+      "newConstruction": 392302,
+      "maintenance": 129461,
+      "total": 521763,
+      "maintenanceRatio": 24.812223174123115,
+      "workers": 3078
+    },
+    {
+      "year": 2008,
+      "newConstruction": 386093,
+      "maintenance": 132037,
+      "total": 518130,
+      "maintenanceRatio": 25.48337289869338,
+      "workers": 3191
+    },
+    {
+      "year": 2009,
+      "newConstruction": 330342,
+      "maintenance": 124425,
+      "total": 454767,
+      "maintenanceRatio": 27.36016465574679,
+      "workers": 2893
+    },
+    {
+      "year": 2010,
+      "newConstruction": 345931,
+      "maintenance": 124035,
+      "total": 469966,
+      "maintenanceRatio": 26.39233476464255,
+      "workers": 2880
+    },
+    {
+      "year": 2011,
+      "newConstruction": 326646,
+      "maintenance": 138595,
+      "total": 465242,
+      "maintenanceRatio": 29.789872797382866,
+      "workers": 3124
+    },
+    {
+      "year": 2012,
+      "newConstruction": 328170,
+      "maintenance": 142690,
+      "total": 470860,
+      "maintenanceRatio": 30.304124368177376,
+      "workers": 3179
+    },
+    {
+      "year": 2013,
+      "newConstruction": 374048,
+      "maintenance": 148694,
+      "total": 522742,
+      "maintenanceRatio": 28.44500728849031,
+      "workers": 3200
+    },
+    {
+      "year": 2014,
+      "newConstruction": 396256,
+      "maintenance": 153000,
+      "total": 549256,
+      "maintenanceRatio": 27.855863204043285,
+      "workers": 2847
+    },
+    {
+      "year": 2015,
+      "newConstruction": 406121,
+      "maintenance": 158016,
+      "total": 564137,
+      "maintenanceRatio": 28.01021737627562,
+      "workers": 2788
+    },
+    {
+      "year": 2016,
+      "newConstruction": 399728,
+      "maintenance": 155758,
+      "total": 555486,
+      "maintenanceRatio": 28.03995060181535,
+      "workers": 2859
+    },
+    {
+      "year": 2017,
+      "newConstruction": 407901,
+      "maintenance": 164164,
+      "total": 572065,
+      "maintenanceRatio": 28.696739006931033,
+      "workers": 2808
+    },
+    {
+      "year": 2018,
+      "newConstruction": 429630,
+      "maintenance": 167882,
+      "total": 597512,
+      "maintenanceRatio": 28.096841569709056,
+      "workers": 2943
+    },
+    {
+      "year": 2019,
+      "newConstruction": 439525,
+      "maintenance": 173661,
+      "total": 613185,
+      "maintenanceRatio": 28.32114288509993,
+      "workers": 3012
+    },
+    {
+      "year": 2020,
+      "newConstruction": 545069,
+      "maintenance": 223300,
+      "total": 768368,
+      "maintenanceRatio": 29.061595485496532,
+      "workers": 4180
+    },
+    {
+      "year": 2021,
+      "newConstruction": 542267,
+      "maintenance": 242336,
+      "total": 784602,
+      "maintenanceRatio": 30.886487671456358,
+      "workers": 4597
+    },
+    {
+      "year": 2022,
+      "newConstruction": 572290,
+      "maintenance": 252877,
+      "total": 825167,
+      "maintenanceRatio": 30.645554172670504,
+      "workers": 4780
+    },
+    {
+      "year": 2023,
+      "newConstruction": 611439,
+      "maintenance": 288324,
+      "total": 899763,
+      "maintenanceRatio": 32.04443836877044,
+      "workers": 4921
+    },
+    {
+      "year": 2024,
+      "newConstruction": 626178,
+      "maintenance": 281459,
+      "total": 907638,
+      "maintenanceRatio": 31.01005026232925,
+      "workers": 4884
+    }
+  ],
+  "sources": [
+    {
+      "year": 2004,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000001189665&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20041&month=0",
+      "sha256": "78e2274a6a9b93e2ec84ae5fff41c99ef80264fd52bde89c7d492867b027c173",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2005,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000001189668&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20051&month=0",
+      "sha256": "7f53330c6594db29dfb54c4333ef193849c90b81f1b2cfa76933f2a2f101c379",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2006,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000001189692&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20061&month=0",
+      "sha256": "0e4dd49fec87991cc7a4977363acfc4869de2d44edc41e4f643d3eec42f87f39",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2007,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000002617618&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20071&month=0",
+      "sha256": "805e1f09069fe4be162471f22c1d15037243837646f122be493cd212eaf77cea",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2008,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000007531983&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20081&month=0",
+      "sha256": "79b59e8f45c78542946eaf63a4d015dde0a5e415484a9fc1997ec281a55ed485",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2009,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000008955831&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20091&month=0",
+      "sha256": "38b18ebcd9a6be134249b68725c736a7893e7f0364166908d6d8e8cb688b2c1d",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2010,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000012903078&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20101&month=0",
+      "sha256": "d9e88b9e956f5ec240f224527e4d03f6c805e314d4e5764b1030477685271c8b",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2011,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000020398651&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20111&month=0",
+      "sha256": "d4b7849a1b5b87af468f49a5eab03116bb1e3fd5b6c959a4fc93bce68bd20afc",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2012,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000024077290&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20121&month=0",
+      "sha256": "f64dc4e175194b2b645972cd87fd33dd5ae3559efcc849e7615b867723088ee8",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2013,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000028980203&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20131&month=0",
+      "sha256": "834c9538a07e3bf8979c634a893023539308d9bfb04092451f502ac386bbf5a1",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2014,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031401175&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20141&month=0",
+      "sha256": "495895eb3fc587e7be00ace1f6d9cb50d3f7bf54343c90558fb2d1231b4d27bb",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2015,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031557530&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20151&month=0",
+      "sha256": "6ddd66964f55a4d58ec5995fd10b8acfa1d4b6173dd082295f9adbeac1651c4b",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2016,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031688350&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20161&month=0",
+      "sha256": "43f8e80cc741d57bc192177ca0f9e1952ab5ac6dad4804594e2c21d90e3788d0",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2017,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031817342&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20171&month=0",
+      "sha256": "b5333fa0f3a6b12ed8cb74faf0fbe148ab4312b612200d4e70b9f7f720cc1cf7",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2018,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000031927314&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20181&month=0",
+      "sha256": "09840caf063dc60d3a9c03550e7ea8c6aaaac592084c89fe58e4b736ab49e861",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2019,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032074225&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20191&month=0",
+      "sha256": "0fab669bbfef695b36acd42c7371da951147033fb515d04c70e1cb68c94d83a1",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2020,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040171862&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20201&month=0",
+      "sha256": "b8d184469cdb53128a75ba034d636b4522ee2cf02382b9863d64a0e5ed6dcc5e",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2021,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040171901&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20211&month=0",
+      "sha256": "e3d6114616b1a880643977af942eab13e044ec8828b89a467ace76bdbe983115",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2022,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040168226&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20221&month=0",
+      "sha256": "431f2a91e033dacb4effe1ae76d4437ad00568d653ff147f746f9bda49bbe8b9",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2023,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040265827&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20231&month=0",
+      "sha256": "d8f703e4517c4a8da618d8d18c7bc7d9718dd1efe32ec4ac0594642b9338a51d",
+      "workPage": 4,
+      "employmentPage": 5
+    },
+    {
+      "year": 2024,
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040441915&fileKind=2",
+      "indexUrl": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00600130&tstat=000001015810&cycle=8&tclass1val=0&year=20241&month=0",
+      "sha256": "bbdc66eded2903a558a7d84a3bf453c7a9899fef84ec483b1210a55e644d4a67",
+      "workPage": 5,
+      "employmentPage": 6
+    }
+  ]
+}

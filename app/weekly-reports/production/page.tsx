@@ -6,6 +6,7 @@ import orders from "@/lib/reports/data/machinery-orders.json";
 import gdpTotals from "@/lib/reports/data/gdp-totals.json";
 import constructionMachinery from "@/lib/reports/data/construction-machinery.json";
 import productProduction from "@/lib/reports/data/product-production.json";
+import constructionWork from "@/lib/reports/data/construction-work.json";
 
 export const metadata: Metadata = {
   title: "生産統計 | 定点観測 | ReportBank",
@@ -18,6 +19,7 @@ export default function ProductionPage() {
   const gdpRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(gdpTotals.retrievedAt));
   const constructionRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(constructionMachinery.retrievedAt));
   const productRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(productProduction.retrievedAt));
+  const workRetrieved = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", dateStyle: "long" }).format(new Date(constructionWork.retrievedAt));
   return <main className="min-h-screen bg-[#f5f5f7] text-slate-950">
     <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
       <ObservationTabs current="production" />
@@ -31,6 +33,7 @@ export default function ProductionPage() {
       <section className="rounded-2xl bg-white p-6">
         <h2 className="text-xl font-semibold">出典・取得日</h2>
         <ul className="mt-4 space-y-4 text-sm">{productionData.sources.map(source => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">{source.name}（Excel）</a><p className="mt-1 text-xs text-slate-500">取得：{retrieved}</p></li>)}
+          <li><a href={constructionWork.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">国土交通省・建設工事施工統計調査（e-Stat）</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE03-4・03-5：2004～{constructionWork.points.at(-1)?.year}年度の各年度PDF「調査結果の概要」。新設・維持修繕別の元請完成工事高（第6表）と建設業者全体の就業者数（第8表）。取得：{workRetrieved}。各年度のPDFと掲載ページはそれぞれの数値表から確認できます。</p></li>
           <li><a href={productProduction.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">経済産業省生産動態統計年報</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE03-3：2007～2025年の生産金額。経済産業省の公式年報をe-Stat配布ファイルから取得。原単位は百万円・千円、表示は兆円。取得：{productRetrieved}。各年の採用ファイルは数値表から確認できます。</p></li>
           <li><a href={gdpTotals.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">内閣府・{gdpTotals.releaseName}（{gdpTotals.releaseDate}公表）</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE01の2025年名目GDP総額・1994～2025年実質GDP総額。取得：{gdpRetrieved}。</p><p className="mt-1 flex gap-4 text-xs">{gdpTotals.sources.map(source => <a key={source.id} href={source.url} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">{source.id === "nominal" ? "名目暦年CSV" : "実質暦年CSV"}</a>)}</p></li>
           <li><a href={orders.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">日本産業機械工業会・産業機械受注状況（月次PDF）</a><p className="mt-1 text-xs leading-6 text-slate-500">FIGURE03-1：表1「産業機械 需要部門別受注状況」。取得：{ordersRetrieved}。2020～2025年の各年1～12月と、2026年1～8月をそれぞれ合計。原単位は百万円、表示は億円に換算。年別の数値表から採用資料を確認できます。</p></li>
