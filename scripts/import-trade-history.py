@@ -10,11 +10,12 @@ from pathlib import Path
 from urllib.request import urlopen, Request
 from urllib.parse import urljoin
 import json
+import os
 import re
 import unicodedata
 import xml.etree.ElementTree as ET
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get('REPORTBANK_DATA_ROOT', Path(__file__).resolve().parents[1]))
 FIRST_MONTH = "2000-01"
 ARCHIVE = "https://www.customs.go.jp/toukei/shinbun/happyou.htm"
 

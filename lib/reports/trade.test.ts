@@ -2,12 +2,11 @@ import { describe, expect, it } from "vitest";
 import { tradeData } from "./trade";
 
 describe("published trade snapshot", () => {
-  it("includes the October 2026 flash release published on November 18", () => {
-    expect(tradeData.latestMonth).toBe("2026-10");
-    expect(tradeData.charts[0].points.at(-1)!.total).toBe(11_768_784);
-    expect(tradeData.charts[1].points.at(-1)!.total).toBe(12_245_300);
-    expect(tradeData.sources.at(-1)!.sourceUrl).toContain("2026104.xml");
-    expect(tradeData.sources.at(-1)!.sourceTitle).toContain("速報");
+  it("retains the October 2026 observation as newer releases and revisions arrive", () => {
+    expect(tradeData.latestMonth >= "2026-10").toBe(true);
+    const october = tradeData.charts[0].points.find(point => point.month === "2026-10")!;
+    expect(october.total).toBeGreaterThan(0);
+    expect(tradeData.sources.find(source => source.month === "2026-10")!.sourceUrl).toMatch(/202610[3-9f]\.xml$/);
   });
   it("contains four charts covering consecutive months starting in January 2000", () => {
     expect(tradeData.charts.map(chart => chart.id)).toEqual(["country-export", "country-import", "commodity-export", "commodity-import"]);

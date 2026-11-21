@@ -20,7 +20,7 @@
 
 2026年11月21日更新：国別・品目別は2026年10月速報（11月18日公表）までの322か月を再取得し、過去月の改訂と最新月ランキングを反映。港別は2026年9月まで。10月の税関別詳細は11月27日公表予定のため、速報と詳細の対象期間をページ上で区別する。年次のJETRO対外直接投資残高は今回の月次更新の対象外。
 
-このページは保存済みデータを表示します。月次のAWS自動実行は今回の変更には含めていません。
+このページは保存済みデータを表示します。月次自動更新は `.github/workflows/monthly-trade.yml` のGitHub Actionsで実行します。
 新しい月の追加や過去値の改訂を反映するには、ローカルPowerShellでプロジェクトのフォルダーから実行します。
 AWS権限やAPIキーは不要です。Python 3.13以降とインターネット接続を使用します。
 
@@ -33,6 +33,27 @@ npm.cmd test -- lib/reports/trade.test.ts
 
 取得に失敗した場合は、前回のJSONを保持します。成功後、JSONの差分を確認し、通常のサイト公開手順で反映します。
 最新月に合わせて国別上位8・品目別上位5も自動的に再選定されます。
+
+## 毎月28日12時（日本時間）の自動更新
+
+GitHub Actionsの `Monthly trade statistics` は `0 3 28 * *`（UTC、東京時間12時）に既定ブランチで実行する。GitHubの混雑により開始が遅れる場合がある。`workflow_dispatch` により手動再実行も可能。
+
+1. `.nvmrc` のNode.jsとPython 3.13を準備し、依存ライブラリをインストール。
+2. `python scripts/refresh-monthly-trade.py` が一時ディレクトリで国別・品目別と港別を取得。直近2年の港別一覧・CSVはキャッシュを使わず再取得して改訂を反映する。古い分割ファイルはActionsキャッシュを再利用。
+3. 日本時間で前月に当たる月まで両データが公表済みであること、2000年からの月連続性、非負の金額、内訳合計、ランキングを検証。取得失敗・未公表の場合は処理を失敗させ、リポジトリの既存データを維持。遅延公表後はActions画面から再実行する。
+4. 図表の数値・分類が変わったときだけ、400字以内の統計要約を定型文で更新（`model: statistical-template`）。AIによる推論文は生成しない。年次JETRO統計は再取得しない。
+5. Pythonテスト・貿易関連Vitest・TypeScriptを実行。成功時だけ4つのJSONを既定ブランチにコミット・push。変更が取得日時だけの場合はコミットしない。
+6. GitHub連携済みAmplifyの当該ブランチで自動ビルドを有効にしておけば、そのpushでサイトを再ビルドする。
+
+有効化には、この変更をGitHubの既定ブランチに反映し、リポジトリのActionsが許可され、Actionsの `contents: write` と当該ブランチへのbotのpushが許可されていることが必要。保護ブランチが直接pushを禁止する場合は組織の運用に合わせて許可設定を用意する。初回はActions画面の `Run workflow` で実行ログとAmplifyのデプロイ成功を確認する。本実装だけではリモートへのpushやAmplify設定変更は行わない。実行失敗はGitHub Actionsのログ・通知で確認する。
+
+再現コマンド：
+
+```powershell
+python -m pip install -r scripts/requirements-trade.txt
+python scripts/refresh-monthly-trade.py
+python scripts/test_monthly_trade.py
+```
 
 ## 主なファイル
 

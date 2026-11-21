@@ -16,16 +16,18 @@ from urllib.request import urlopen, Request
 import csv
 import html
 import json
+import os
 import re
 import time
 import unicodedata
 from uuid import uuid4
 
-ROOT = Path(__file__).resolve().parents[1]
-CACHE = ROOT / "tmp/ports/cache"
+ROOT = Path(os.environ.get('REPORTBANK_DATA_ROOT', Path(__file__).resolve().parents[1]))
+CACHE = Path(os.environ.get('REPORTBANK_PORT_CACHE', ROOT / 'tmp/ports/cache'))
 BASE = "https://www.e-stat.go.jp"
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 NAMES = {"100": "東京港", "104": "成田空港", "200": "横浜港", "220": "千葉港", "300": "神戸港", "400": "大阪港", "404": "関西空港", "500": "名古屋港", "604": "博多港"}
+REFRESH_FROM_YEAR = None
 
 
 def fetch(url):
@@ -42,7 +44,7 @@ def fetch(url):
 def listing(year, month, direction, national=False):
     key = f"list-{year}-{month}-{direction}-{'national' if national else 'ports'}.json"
     path = CACHE / key
-    if path.exists():
+    if path.exists() and (REFRESH_FROM_YEAR is None or year < REFRESH_FROM_YEAR):
         return json.loads(path.read_text(encoding="utf-8"))
     quarter = (month - 1) // 3 + 1
     month_filter = f"2{quarter}{quarter * 3 - 2:02d}{quarter * 3:02d}{month:02d}"
@@ -87,7 +89,7 @@ def parse_detail(content, year, direction, national=False):
 
 def load_file(source, year, direction, national=False):
     path = CACHE / (source["id"] + ".json")
-    if path.exists():
+    if path.exists() and (REFRESH_FROM_YEAR is None or year < REFRESH_FROM_YEAR):
         return json.loads(path.read_text(encoding="utf-8"))
     content = fetch(source["url"])
     result = {"values": parse_detail(content, year, direction, national), "sha256": sha256(content).hexdigest()}
@@ -113,6 +115,7 @@ def collect(files, year, direction, national=False):
 
 
 def main():
+    global REFRESH_FROM_YEAR
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--latest-month', help='Latest published detailed month (YYYY-MM), if behind the monthly flash release')
     args = parser.parse_args()
@@ -123,6 +126,9 @@ def main():
     if not re.fullmatch(r'20\d{2}-(?:0[1-9]|1[0-2])', latest) or not '2000-01' <= latest <= trade['latestMonth']:
         raise ValueError('Detailed month must be valid and no later than the national release')
     latest_year, latest_month = map(int, latest.split("-"))
+    # Refresh the two revision-active years; reuse immutable older backfills.
+    if os.environ.get('REPORTBANK_REFRESH_RECENT') == '1':
+        REFRESH_FROM_YEAR = latest_year - 1
     latest_period = latest
     charts, evidence = [], []
     for direction, name in ((1, "輸出"), (2, "輸入")):

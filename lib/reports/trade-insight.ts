@@ -7,7 +7,7 @@ import snapshot from "./data/trade-insight.json";
 const schema = z.object({
   summary: z.string().min(1).refine(text => [...text].length <= 400),
   generatedAt: z.string().datetime(),
-  model: z.literal("initial"),
+  model: z.enum(["initial", "statistical-template"]),
   evidenceHash: z.string().regex(/^[a-f0-9]{64}$/),
 });
 
