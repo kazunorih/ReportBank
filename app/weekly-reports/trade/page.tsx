@@ -4,6 +4,7 @@ import ObservationTabs from "../observation-tabs";
 import TradeCharts from "./trade-charts";
 import FdiChart from "./fdi-chart";
 import PortCharts from "./port-charts";
+import { portTradeData } from "@/lib/reports/port-trade";
 
 export const metadata: Metadata = {
   title: "貿易統計 | 定点観測 | ReportBank",
@@ -19,7 +20,8 @@ export default function MonthlyTradePage() {
         <p className="text-sm font-semibold tracking-widest text-sky-700">REPORTBANK / MONTHLY TRADE</p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">貿易統計</h2>
         <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600">財務省・税関の貿易統計から、国・地域、品目、港（空港を含む）ごとの輸出入の推移を定点観測します。最新月の国別上位8か国・地域、品目別上位5品目、港別上位8港を全期間で固定し、貿易構造の変化を比較します。あわせて、JETROの対外直接投資残高を年次で掲載しています。</p>
-        <p className="mt-5 text-sm text-slate-600">輸出入の対象期間：{tradeMonth(tradeData.firstMonth)}～{tradeMonth(tradeData.latestMonth)}（{tradeData.sources.length}か月）。FIGURE05は年末の対外直接投資残高を掲載しています。</p>
+        <p className="mt-5 text-sm text-slate-600">国別・品目別輸出入の対象期間：{tradeMonth(tradeData.firstMonth)}～{tradeMonth(tradeData.latestMonth)}（{tradeData.sources.length}か月）。港別輸出入は{tradeMonth(portTradeData.latestMonth)}まで。FIGURE05は年末の対外直接投資残高を掲載しています。</p>
+        {portTradeData.latestMonth < tradeData.latestMonth && <p className="mt-2 text-xs leading-6 text-slate-500">港別の詳細統計は、国別・主要品目別の速報より後に公表されます。図ごとの最新月は公表済み資料に合わせています。<a className="ml-1 text-sky-700 underline" href="https://www.customs.go.jp/toukei/calendar/calend.htm" target="_blank" rel="noopener noreferrer">財務省の公表予定</a></p>}
         <p className="mt-3 text-xs leading-6 text-slate-500">品目分類の変更により現在の上位5区分を比較できない月は、品目別グラフを欠測とし、数値表に輸出入総額のみを掲載しています。</p>
       </header>
       <TradeCharts charts={tradeData.charts} latestMonth={tradeData.latestMonth} />

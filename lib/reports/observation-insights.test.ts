@@ -18,7 +18,7 @@ describe("published observation insights", () => {
       expect(insight.model).toBe("initial");
     }
     expect(macro.generatedAt).toBe("2026-10-25T12:00:21Z");
-    expect(trade.generatedAt).toBe("2026-10-20T13:56:53Z");
+    expect(trade.generatedAt.slice(0, 10)).toBe("2026-11-21");
     const exports = tradeData.charts[0].points.at(-1)!.total / 1_000_000;
     const imports = tradeData.charts[1].points.at(-1)!.total / 1_000_000;
     expect(trade.summary).toContain(`輸出は${exports.toFixed(2)}兆円`);

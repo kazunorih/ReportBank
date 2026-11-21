@@ -7,14 +7,14 @@ describe("ordinary trade by port/customs office", () => {
     expect(portTradeData.unit).toBe("千円");
     expect(portTradeData.basis).toBe("customs-clearance-three-digit-code");
     expect(portTradeData.firstMonth).toBe("2000-01");
-    expect(portTradeData.latestMonth).toBe(tradeData.latestMonth);
+    expect(portTradeData.latestMonth <= tradeData.latestMonth).toBe(true);
     expect(portTradeData.charts.map(chart => chart.id)).toEqual(["port-export", "port-import"]);
     for (const chart of portTradeData.charts) {
       expect(chart.categories).toHaveLength(9);
       expect(new Set(chart.categories).size).toBe(9);
       expect(chart.categories[8]).toBe("その他");
       expect(chart.portCodes).toHaveLength(8);
-      expect(chart.points.map(point => point.month)).toEqual(tradeData.sources.map(source => source.month));
+      expect(chart.points.map(point => point.month)).toEqual(tradeData.sources.filter(source => source.month <= portTradeData.latestMonth).map(source => source.month));
       for (const point of chart.points) {
         expect(point.values).toHaveLength(9);
         expect(point.values.every(value => Number.isSafeInteger(value) && value >= 0)).toBe(true);
@@ -30,10 +30,11 @@ describe("ordinary trade by port/customs office", () => {
     // 2000-12 e-Stat national-country PDF, both columns and country 701 included.
     expect(exports.points.find(row => row.month === "2000-12")!.total).toBe(4_631_555_840);
     // 2026-08 national-country CSV; source values are thousands, not millions.
-    expect(exports.points.at(-1)!.total).toBe(10_043_269_534);
-    expect(portTradeData.charts[1].points.at(-1)!.total).toBeGreaterThan(10_000_000_000);
+    expect(exports.points.find(row => row.month === "2026-08")!.total).toBe(10_043_269_534);
     for (let i = 0; i < 2; i++) {
-      expect(Math.abs(portTradeData.charts[i].points.at(-1)!.total / 1000 - tradeData.charts[i].points.at(-1)!.total)).toBeLessThan(1);
+      const national = tradeData.charts[i].points.find(point => point.month === portTradeData.latestMonth)!;
+      // Compare their shared month, allowing only the million-yen rounding difference.
+      expect(Math.abs(portTradeData.charts[i].points.at(-1)!.total / 1000 - national.total)).toBeLessThan(1);
     }
   });
 

@@ -6,6 +6,7 @@ row's monthly value, never annual values or commodity subtotals. Cache parsed
 source files under tmp/ports/cache so interrupted backfills can resume.
 """
 from collections import defaultdict
+import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from hashlib import sha256
@@ -112,10 +113,17 @@ def collect(files, year, direction, national=False):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--latest-month', help='Latest published detailed month (YYYY-MM), if behind the monthly flash release')
+    args = parser.parse_args()
     CACHE.mkdir(parents=True, exist_ok=True)
-    # Match the published monthly charts; do not mix incomplete newer months.
+    # Detailed customs-office releases can lag the national flash release.
     trade = json.loads((ROOT / "lib/reports/data/trade.json").read_text(encoding="utf-8"))
-    latest_year, latest_month = map(int, trade["latestMonth"].split("-"))
+    latest = args.latest_month or trade['latestMonth']
+    if not re.fullmatch(r'20\d{2}-(?:0[1-9]|1[0-2])', latest) or not '2000-01' <= latest <= trade['latestMonth']:
+        raise ValueError('Detailed month must be valid and no later than the national release')
+    latest_year, latest_month = map(int, latest.split("-"))
+    latest_period = latest
     charts, evidence = [], []
     for direction, name in ((1, "輸出"), (2, "輸入")):
         latest = listing(latest_year, latest_month, direction)
@@ -152,7 +160,7 @@ def main():
             print(f"Completed {year} {name}: {month} months", flush=True)
         charts.append({"id": "port-export" if direction == 1 else "port-import", "title": f"月次港別{name}統計（空港を含む）",
                        "categories": [NAMES[code] for code in ranking] + ["その他"], "portCodes": ranking, "points": points})
-    snapshot = {"firstMonth": "2000-01", "latestMonth": trade["latestMonth"], "unit": "千円", "basis": "customs-clearance-three-digit-code",
+    snapshot = {"firstMonth": "2000-01", "latestMonth": latest_period, "unit": "千円", "basis": "customs-clearance-three-digit-code",
                 "retrievedAt": datetime.now(timezone.utc).isoformat(), "charts": charts,
                 "sources": [{"year": row["year"], "direction": row["direction"], "page": row["page"], "fileCount": len(row["sources"])} for row in evidence]}
     audit = ROOT / "lib/reports/data/port-trade-sources.json"
