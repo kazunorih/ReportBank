@@ -7,10 +7,11 @@ import gdpTotals from "@/lib/reports/data/gdp-totals.json";
 import constructionMachinery from "@/lib/reports/data/construction-machinery.json";
 import productProduction from "@/lib/reports/data/product-production.json";
 import constructionWork from "@/lib/reports/data/construction-work.json";
+import gdpExchange from "@/lib/reports/data/gdp-usd-exchange.json";
 
 export const metadata: Metadata = {
   title: "生産統計 | 定点観測 | ReportBank",
-  description: "日本のGDP、農業・工業生産、産業機械の受注、建設機械の出荷、品目別生産金額を公表統計で確認します。",
+  description: "日本の円・米ドル建てGDP、農業・工業生産、産業機械の受注、建設機械の出荷、品目別生産金額を公表統計で確認します。",
 };
 
 export default function ProductionPage() {
@@ -30,6 +31,7 @@ export default function ProductionPage() {
         <p className="mt-4 text-xs text-slate-500">資料取得日：FIGURE02・03とFIGURE01の産業別内訳 {retrieved}／FIGURE03-1 {ordersRetrieved}／FIGURE03-2 {constructionRetrieved}／FIGURE03-3 {productRetrieved}／FIGURE01の2025年名目総額・実質総額 {gdpRetrieved}</p>
       </header>
       <ProductionCharts />
+      <p className="text-xs leading-6 text-slate-500">FIGURE01-2の年平均為替：<a href={gdpExchange.indexUrl} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">世界銀行・日本の公式為替レート（暦年平均、IMF出所）</a>。円建てGDPの出典はFIGURE01と共通です。</p>
       <section className="rounded-2xl bg-white p-6">
         <h2 className="text-xl font-semibold">出典・取得日</h2>
         <ul className="mt-4 space-y-4 text-sm">{productionData.sources.map(source => <li key={source.id}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sky-700 underline">{source.name}（Excel）</a><p className="mt-1 text-xs text-slate-500">取得：{retrieved}</p></li>)}

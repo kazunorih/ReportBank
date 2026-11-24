@@ -1,0 +1,142 @@
+{
+  "firstYear": 1994,
+  "latestYear": 2025,
+  "unit": "JPY per USD",
+  "method": "calendar-year period average",
+  "indexUrl": "https://data.worldbank.org/indicator/PA.NUS.FCRF?locations=JP",
+  "sourceUrl": "https://api.worldbank.org/v2/country/JPN/indicator/PA.NUS.FCRF?format=json&date=1994:2025&per_page=100",
+  "provider": "World Bank / IMF International Financial Statistics",
+  "sourceUpdatedAt": "2026-11-11",
+  "retrievedAt": "2026-11-24T14:37:24.512526+00:00",
+  "sha256": "6d312b5978f57427aed8ce62330c327f4cc8a9ba8a484ca9f9516590032470ca",
+  "points": [
+    {
+      "year": 1994,
+      "yenPerUsd": 102.207805833333
+    },
+    {
+      "year": 1995,
+      "yenPerUsd": 94.0595791666666
+    },
+    {
+      "year": 1996,
+      "yenPerUsd": 108.779056666666
+    },
+    {
+      "year": 1997,
+      "yenPerUsd": 120.9908625
+    },
+    {
+      "year": 1998,
+      "yenPerUsd": 130.905300666666
+    },
+    {
+      "year": 1999,
+      "yenPerUsd": 113.906805
+    },
+    {
+      "year": 2000,
+      "yenPerUsd": 107.765498333333
+    },
+    {
+      "year": 2001,
+      "yenPerUsd": 121.5289475
+    },
+    {
+      "year": 2002,
+      "yenPerUsd": 125.388019166666
+    },
+    {
+      "year": 2003,
+      "yenPerUsd": 115.933464166666
+    },
+    {
+      "year": 2004,
+      "yenPerUsd": 108.192569166666
+    },
+    {
+      "year": 2005,
+      "yenPerUsd": 110.218211666666
+    },
+    {
+      "year": 2006,
+      "yenPerUsd": 116.299311666666
+    },
+    {
+      "year": 2007,
+      "yenPerUsd": 117.753529166666
+    },
+    {
+      "year": 2008,
+      "yenPerUsd": 103.359493968254
+    },
+    {
+      "year": 2009,
+      "yenPerUsd": 93.5700890870456
+    },
+    {
+      "year": 2010,
+      "yenPerUsd": 87.779875
+    },
+    {
+      "year": 2011,
+      "yenPerUsd": 79.8070198321891
+    },
+    {
+      "year": 2012,
+      "yenPerUsd": 79.7904554170065
+    },
+    {
+      "year": 2013,
+      "yenPerUsd": 97.5956582776385
+    },
+    {
+      "year": 2014,
+      "yenPerUsd": 105.944781034024
+    },
+    {
+      "year": 2015,
+      "yenPerUsd": 121.044025684011
+    },
+    {
+      "year": 2016,
+      "yenPerUsd": 108.792900046834
+    },
+    {
+      "year": 2017,
+      "yenPerUsd": 112.166141081871
+    },
+    {
+      "year": 2018,
+      "yenPerUsd": 110.42317934106
+    },
+    {
+      "year": 2019,
+      "yenPerUsd": 109.009665900863
+    },
+    {
+      "year": 2020,
+      "yenPerUsd": 106.774582262437
+    },
+    {
+      "year": 2021,
+      "yenPerUsd": 109.754323839417
+    },
+    {
+      "year": 2022,
+      "yenPerUsd": 131.498140443763
+    },
+    {
+      "year": 2023,
+      "yenPerUsd": 140.49110006234
+    },
+    {
+      "year": 2024,
+      "yenPerUsd": 151.366291302751
+    },
+    {
+      "year": 2025,
+      "yenPerUsd": 149.657926890951
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import { tooltipOrder } from "@/lib/reports/tooltip-order";
 import FixedAxisChart, { plotMargin, xAxisHeight } from "../fixed-axis-chart";
 import MachineryOrdersChart from "./machinery-orders-chart";
 import GdpChart from "./gdp-chart";
+import GdpUsdChart from "./gdp-usd-chart";
 import ConstructionMachineryChart from "./construction-machinery-chart";
 import ProductProductionChart from "./product-production-chart";
 import ConstructionWorkCharts from "./construction-work-charts";
@@ -82,5 +83,5 @@ function AnnualFigure({ agricultural }: { agricultural: boolean }) {
 }
 
 export default function ProductionCharts() {
-  return <div className="space-y-8"><GdpChart /><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /><ConstructionMachineryChart /><ProductProductionChart /><ConstructionWorkCharts /></div>;
+  return <div className="space-y-8"><GdpChart /><GdpUsdChart /><AnnualFigure agricultural /><AnnualFigure agricultural={false} /><MachineryOrdersChart /><ConstructionMachineryChart /><ProductProductionChart /><ConstructionWorkCharts /></div>;
 }
