@@ -1,0 +1,5284 @@
+{
+  "firstMonth": "2001-01",
+  "latestMonth": "2026-09",
+  "rankingMonth": "2026-09",
+  "categories": [
+    "製造業",
+    "卸売業，小売業",
+    "医療，福祉",
+    "サービス業（他に分類されないもの）",
+    "建設業"
+  ],
+  "points": [
+    {
+      "month": "2001-01",
+      "labourForce": 6677,
+      "employed": 6360,
+      "unemployed": 317,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6360,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-02",
+      "labourForce": 6670,
+      "employed": 6352,
+      "unemployed": 318,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6352,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-03",
+      "labourForce": 6722,
+      "employed": 6379,
+      "unemployed": 343,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6379,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-04",
+      "labourForce": 6776,
+      "employed": 6427,
+      "unemployed": 348,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6427,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-05",
+      "labourForce": 6821,
+      "employed": 6473,
+      "unemployed": 348,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6473,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-06",
+      "labourForce": 6804,
+      "employed": 6466,
+      "unemployed": 338,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6466,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-07",
+      "labourForce": 6783,
+      "employed": 6452,
+      "unemployed": 330,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6452,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-08",
+      "labourForce": 6780,
+      "employed": 6443,
+      "unemployed": 336,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6443,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-09",
+      "labourForce": 6753,
+      "employed": 6396,
+      "unemployed": 357,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6396,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-10",
+      "labourForce": 6757,
+      "employed": 6405,
+      "unemployed": 352,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6405,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-11",
+      "labourForce": 6780,
+      "employed": 6430,
+      "unemployed": 350,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6430,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2001-12",
+      "labourForce": 6699,
+      "employed": 6362,
+      "unemployed": 337,
+      "values": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "other": null,
+      "employedOnly": 6362,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-01",
+      "labourForce": 6611,
+      "employed": 6267,
+      "unemployed": 344,
+      "values": [
+        1210,
+        1131,
+        462,
+        373,
+        589
+      ],
+      "other": 2502,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-02",
+      "labourForce": 6604,
+      "employed": 6248,
+      "unemployed": 356,
+      "values": [
+        1201,
+        1075,
+        471,
+        374,
+        611
+      ],
+      "other": 2516,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-03",
+      "labourForce": 6676,
+      "employed": 6297,
+      "unemployed": 379,
+      "values": [
+        1238,
+        1081,
+        467,
+        375,
+        628
+      ],
+      "other": 2508,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-04",
+      "labourForce": 6708,
+      "employed": 6333,
+      "unemployed": 375,
+      "values": [
+        1213,
+        1121,
+        473,
+        383,
+        624
+      ],
+      "other": 2519,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-05",
+      "labourForce": 6731,
+      "employed": 6356,
+      "unemployed": 375,
+      "values": [
+        1194,
+        1134,
+        476,
+        375,
+        607
+      ],
+      "other": 2570,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-06",
+      "labourForce": 6741,
+      "employed": 6373,
+      "unemployed": 368,
+      "values": [
+        1223,
+        1115,
+        469,
+        368,
+        594
+      ],
+      "other": 2604,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-07",
+      "labourForce": 6725,
+      "employed": 6374,
+      "unemployed": 352,
+      "values": [
+        1199,
+        1116,
+        480,
+        363,
+        622
+      ],
+      "other": 2594,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-08",
+      "labourForce": 6732,
+      "employed": 6371,
+      "unemployed": 361,
+      "values": [
+        1207,
+        1085,
+        477,
+        372,
+        620
+      ],
+      "other": 2610,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-09",
+      "labourForce": 6717,
+      "employed": 6353,
+      "unemployed": 365,
+      "values": [
+        1183,
+        1081,
+        482,
+        368,
+        621
+      ],
+      "other": 2618,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-10",
+      "labourForce": 6717,
+      "employed": 6355,
+      "unemployed": 362,
+      "values": [
+        1176,
+        1116,
+        480,
+        372,
+        642
+      ],
+      "other": 2569,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-11",
+      "labourForce": 6684,
+      "employed": 6346,
+      "unemployed": 338,
+      "values": [
+        1189,
+        1130,
+        477,
+        380,
+        632
+      ],
+      "other": 2538,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2002-12",
+      "labourForce": 6622,
+      "employed": 6291,
+      "unemployed": 331,
+      "values": [
+        1188,
+        1110,
+        468,
+        383,
+        623
+      ],
+      "other": 2519,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-01",
+      "labourForce": 6560,
+      "employed": 6203,
+      "unemployed": 357,
+      "values": [
+        1185,
+        1067,
+        468,
+        378,
+        616
+      ],
+      "other": 2489,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-02",
+      "labourForce": 6542,
+      "employed": 6193,
+      "unemployed": 349,
+      "values": [
+        1187,
+        1062,
+        488,
+        357,
+        624
+      ],
+      "other": 2475,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-03",
+      "labourForce": 6649,
+      "employed": 6266,
+      "unemployed": 384,
+      "values": [
+        1173,
+        1084,
+        499,
+        373,
+        605
+      ],
+      "other": 2532,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-04",
+      "labourForce": 6691,
+      "employed": 6306,
+      "unemployed": 385,
+      "values": [
+        1154,
+        1093,
+        506,
+        386,
+        591
+      ],
+      "other": 2576,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-05",
+      "labourForce": 6735,
+      "employed": 6360,
+      "unemployed": 375,
+      "values": [
+        1171,
+        1113,
+        521,
+        371,
+        603
+      ],
+      "other": 2581,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-06",
+      "labourForce": 6771,
+      "employed": 6411,
+      "unemployed": 361,
+      "values": [
+        1182,
+        1119,
+        509,
+        383,
+        591
+      ],
+      "other": 2627,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-07",
+      "labourForce": 6722,
+      "employed": 6381,
+      "unemployed": 342,
+      "values": [
+        1192,
+        1115,
+        496,
+        373,
+        593
+      ],
+      "other": 2612,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-08",
+      "labourForce": 6693,
+      "employed": 6361,
+      "unemployed": 333,
+      "values": [
+        1193,
+        1102,
+        500,
+        376,
+        592
+      ],
+      "other": 2598,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-09",
+      "labourForce": 6692,
+      "employed": 6346,
+      "unemployed": 346,
+      "values": [
+        1176,
+        1080,
+        505,
+        389,
+        592
+      ],
+      "other": 2604,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-10",
+      "labourForce": 6680,
+      "employed": 6337,
+      "unemployed": 343,
+      "values": [
+        1170,
+        1092,
+        513,
+        393,
+        616
+      ],
+      "other": 2553,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-11",
+      "labourForce": 6654,
+      "employed": 6323,
+      "unemployed": 330,
+      "values": [
+        1173,
+        1106,
+        512,
+        383,
+        615
+      ],
+      "other": 2534,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2003-12",
+      "labourForce": 6607,
+      "employed": 6307,
+      "unemployed": 300,
+      "values": [
+        1182,
+        1112,
+        509,
+        385,
+        606
+      ],
+      "other": 2513,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-01",
+      "labourForce": 6545,
+      "employed": 6221,
+      "unemployed": 323,
+      "values": [
+        1156,
+        1090,
+        511,
+        395,
+        605
+      ],
+      "other": 2464,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-02",
+      "labourForce": 6539,
+      "employed": 6209,
+      "unemployed": 330,
+      "values": [
+        1148,
+        1064,
+        529,
+        390,
+        595
+      ],
+      "other": 2483,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-03",
+      "labourForce": 6612,
+      "employed": 6279,
+      "unemployed": 333,
+      "values": [
+        1137,
+        1072,
+        527,
+        415,
+        587
+      ],
+      "other": 2541,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-04",
+      "labourForce": 6688,
+      "employed": 6354,
+      "unemployed": 335,
+      "values": [
+        1123,
+        1083,
+        514,
+        434,
+        581
+      ],
+      "other": 2619,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-05",
+      "labourForce": 6708,
+      "employed": 6389,
+      "unemployed": 319,
+      "values": [
+        1139,
+        1080,
+        530,
+        418,
+        592
+      ],
+      "other": 2630,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-06",
+      "labourForce": 6683,
+      "employed": 6374,
+      "unemployed": 309,
+      "values": [
+        1156,
+        1085,
+        540,
+        410,
+        583
+      ],
+      "other": 2600,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-07",
+      "labourForce": 6691,
+      "employed": 6373,
+      "unemployed": 318,
+      "values": [
+        1178,
+        1097,
+        542,
+        401,
+        571
+      ],
+      "other": 2584,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-08",
+      "labourForce": 6710,
+      "employed": 6395,
+      "unemployed": 314,
+      "values": [
+        1173,
+        1105,
+        527,
+        404,
+        576
+      ],
+      "other": 2610,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-09",
+      "labourForce": 6679,
+      "employed": 6369,
+      "unemployed": 309,
+      "values": [
+        1158,
+        1068,
+        533,
+        421,
+        583
+      ],
+      "other": 2606,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-10",
+      "labourForce": 6663,
+      "employed": 6352,
+      "unemployed": 311,
+      "values": [
+        1145,
+        1077,
+        538,
+        418,
+        578
+      ],
+      "other": 2596,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-11",
+      "labourForce": 6611,
+      "employed": 6322,
+      "unemployed": 290,
+      "values": [
+        1139,
+        1102,
+        541,
+        420,
+        584
+      ],
+      "other": 2536,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2004-12",
+      "labourForce": 6576,
+      "employed": 6306,
+      "unemployed": 270,
+      "values": [
+        1147,
+        1097,
+        544,
+        431,
+        577
+      ],
+      "other": 2510,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-01",
+      "labourForce": 6557,
+      "employed": 6261,
+      "unemployed": 296,
+      "values": [
+        1137,
+        1081,
+        541,
+        426,
+        575
+      ],
+      "other": 2501,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-02",
+      "labourForce": 6532,
+      "employed": 6224,
+      "unemployed": 308,
+      "values": [
+        1127,
+        1077,
+        543,
+        434,
+        569
+      ],
+      "other": 2474,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-03",
+      "labourForce": 6573,
+      "employed": 6260,
+      "unemployed": 313,
+      "values": [
+        1114,
+        1086,
+        536,
+        435,
+        579
+      ],
+      "other": 2510,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-04",
+      "labourForce": 6662,
+      "employed": 6352,
+      "unemployed": 310,
+      "values": [
+        1105,
+        1089,
+        550,
+        432,
+        579
+      ],
+      "other": 2597,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-05",
+      "labourForce": 6742,
+      "employed": 6435,
+      "unemployed": 307,
+      "values": [
+        1135,
+        1069,
+        571,
+        445,
+        590
+      ],
+      "other": 2625,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-06",
+      "labourForce": 6698,
+      "employed": 6418,
+      "unemployed": 280,
+      "values": [
+        1150,
+        1066,
+        574,
+        451,
+        581
+      ],
+      "other": 2596,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-07",
+      "labourForce": 6699,
+      "employed": 6410,
+      "unemployed": 289,
+      "values": [
+        1151,
+        1092,
+        561,
+        453,
+        562
+      ],
+      "other": 2591,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-08",
+      "labourForce": 6689,
+      "employed": 6405,
+      "unemployed": 284,
+      "values": [
+        1173,
+        1091,
+        541,
+        451,
+        554
+      ],
+      "other": 2595,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-09",
+      "labourForce": 6722,
+      "employed": 6437,
+      "unemployed": 285,
+      "values": [
+        1163,
+        1083,
+        559,
+        453,
+        554
+      ],
+      "other": 2625,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-10",
+      "labourForce": 6714,
+      "employed": 6410,
+      "unemployed": 304,
+      "values": [
+        1155,
+        1086,
+        562,
+        457,
+        553
+      ],
+      "other": 2597,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-11",
+      "labourForce": 6637,
+      "employed": 6345,
+      "unemployed": 292,
+      "values": [
+        1149,
+        1087,
+        555,
+        465,
+        558
+      ],
+      "other": 2531,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2005-12",
+      "labourForce": 6582,
+      "employed": 6317,
+      "unemployed": 265,
+      "values": [
+        1150,
+        1098,
+        547,
+        460,
+        564
+      ],
+      "other": 2498,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-01",
+      "labourForce": 6564,
+      "employed": 6272,
+      "unemployed": 292,
+      "values": [
+        1147,
+        1086,
+        545,
+        450,
+        546
+      ],
+      "other": 2498,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-02",
+      "labourForce": 6553,
+      "employed": 6276,
+      "unemployed": 277,
+      "values": [
+        1164,
+        1068,
+        557,
+        449,
+        556
+      ],
+      "other": 2482,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-03",
+      "labourForce": 6601,
+      "employed": 6312,
+      "unemployed": 289,
+      "values": [
+        1156,
+        1074,
+        555,
+        462,
+        562
+      ],
+      "other": 2503,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-04",
+      "labourForce": 6657,
+      "employed": 6373,
+      "unemployed": 284,
+      "values": [
+        1148,
+        1073,
+        560,
+        464,
+        581
+      ],
+      "other": 2547,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-05",
+      "labourForce": 6731,
+      "employed": 6454,
+      "unemployed": 277,
+      "values": [
+        1150,
+        1077,
+        580,
+        471,
+        584
+      ],
+      "other": 2592,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-06",
+      "labourForce": 6723,
+      "employed": 6444,
+      "unemployed": 278,
+      "values": [
+        1146,
+        1073,
+        565,
+        484,
+        575
+      ],
+      "other": 2601,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-07",
+      "labourForce": 6695,
+      "employed": 6428,
+      "unemployed": 268,
+      "values": [
+        1162,
+        1066,
+        565,
+        474,
+        559
+      ],
+      "other": 2602,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-08",
+      "labourForce": 6707,
+      "employed": 6435,
+      "unemployed": 272,
+      "values": [
+        1175,
+        1077,
+        579,
+        465,
+        550
+      ],
+      "other": 2589,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-09",
+      "labourForce": 6720,
+      "employed": 6440,
+      "unemployed": 280,
+      "values": [
+        1189,
+        1081,
+        589,
+        462,
+        550
+      ],
+      "other": 2569,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-10",
+      "labourForce": 6727,
+      "employed": 6446,
+      "unemployed": 281,
+      "values": [
+        1175,
+        1082,
+        590,
+        475,
+        546
+      ],
+      "other": 2578,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-11",
+      "labourForce": 6679,
+      "employed": 6420,
+      "unemployed": 259,
+      "values": [
+        1168,
+        1083,
+        591,
+        472,
+        552
+      ],
+      "other": 2554,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2006-12",
+      "labourForce": 6609,
+      "employed": 6365,
+      "unemployed": 244,
+      "values": [
+        1170,
+        1067,
+        579,
+        475,
+        562
+      ],
+      "other": 2512,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-01",
+      "labourForce": 6554,
+      "employed": 6290,
+      "unemployed": 264,
+      "values": [
+        1172,
+        1056,
+        559,
+        459,
+        555
+      ],
+      "other": 2489,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-02",
+      "labourForce": 6584,
+      "employed": 6314,
+      "unemployed": 270,
+      "values": [
+        1157,
+        1065,
+        571,
+        458,
+        547
+      ],
+      "other": 2516,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-03",
+      "labourForce": 6645,
+      "employed": 6364,
+      "unemployed": 281,
+      "values": [
+        1141,
+        1089,
+        596,
+        467,
+        564
+      ],
+      "other": 2507,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-04",
+      "labourForce": 6726,
+      "employed": 6458,
+      "unemployed": 268,
+      "values": [
+        1161,
+        1092,
+        592,
+        473,
+        579
+      ],
+      "other": 2561,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-05",
+      "labourForce": 6771,
+      "employed": 6513,
+      "unemployed": 258,
+      "values": [
+        1177,
+        1094,
+        579,
+        474,
+        566
+      ],
+      "other": 2623,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-06",
+      "labourForce": 6748,
+      "employed": 6506,
+      "unemployed": 241,
+      "values": [
+        1170,
+        1087,
+        570,
+        488,
+        551
+      ],
+      "other": 2640,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-07",
+      "labourForce": 6707,
+      "employed": 6474,
+      "unemployed": 234,
+      "values": [
+        1182,
+        1077,
+        570,
+        481,
+        547
+      ],
+      "other": 2617,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-08",
+      "labourForce": 6712,
+      "employed": 6463,
+      "unemployed": 249,
+      "values": [
+        1176,
+        1084,
+        574,
+        476,
+        552
+      ],
+      "other": 2601,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-09",
+      "labourForce": 6708,
+      "employed": 6439,
+      "unemployed": 269,
+      "values": [
+        1181,
+        1081,
+        582,
+        488,
+        550
+      ],
+      "other": 2557,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-10",
+      "labourForce": 6713,
+      "employed": 6442,
+      "unemployed": 271,
+      "values": [
+        1187,
+        1054,
+        593,
+        495,
+        554
+      ],
+      "other": 2559,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-11",
+      "labourForce": 6698,
+      "employed": 6452,
+      "unemployed": 246,
+      "values": [
+        1161,
+        1078,
+        592,
+        499,
+        548
+      ],
+      "other": 2574,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2007-12",
+      "labourForce": 6646,
+      "employed": 6415,
+      "unemployed": 231,
+      "values": [
+        1171,
+        1085,
+        589,
+        489,
+        540
+      ],
+      "other": 2541,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-01",
+      "labourForce": 6597,
+      "employed": 6341,
+      "unemployed": 256,
+      "values": [
+        1147,
+        1055,
+        586,
+        469,
+        549
+      ],
+      "other": 2535,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-02",
+      "labourForce": 6579,
+      "employed": 6313,
+      "unemployed": 266,
+      "values": [
+        1131,
+        1060,
+        585,
+        465,
+        548
+      ],
+      "other": 2524,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-03",
+      "labourForce": 6626,
+      "employed": 6358,
+      "unemployed": 268,
+      "values": [
+        1137,
+        1091,
+        595,
+        459,
+        545
+      ],
+      "other": 2531,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-04",
+      "labourForce": 6726,
+      "employed": 6451,
+      "unemployed": 275,
+      "values": [
+        1166,
+        1082,
+        616,
+        478,
+        531
+      ],
+      "other": 2578,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-05",
+      "labourForce": 6771,
+      "employed": 6501,
+      "unemployed": 270,
+      "values": [
+        1173,
+        1068,
+        614,
+        501,
+        536
+      ],
+      "other": 2609,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-06",
+      "labourForce": 6740,
+      "employed": 6475,
+      "unemployed": 265,
+      "values": [
+        1149,
+        1087,
+        597,
+        492,
+        547
+      ],
+      "other": 2603,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-07",
+      "labourForce": 6686,
+      "employed": 6430,
+      "unemployed": 256,
+      "values": [
+        1152,
+        1068,
+        588,
+        491,
+        547
+      ],
+      "other": 2584,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-08",
+      "labourForce": 6702,
+      "employed": 6430,
+      "unemployed": 272,
+      "values": [
+        1168,
+        1066,
+        593,
+        488,
+        540
+      ],
+      "other": 2575,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-09",
+      "labourForce": 6689,
+      "employed": 6419,
+      "unemployed": 271,
+      "values": [
+        1149,
+        1070,
+        591,
+        499,
+        527
+      ],
+      "other": 2583,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-10",
+      "labourForce": 6670,
+      "employed": 6415,
+      "unemployed": 255,
+      "values": [
+        1146,
+        1064,
+        606,
+        504,
+        544
+      ],
+      "other": 2551,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-11",
+      "labourForce": 6673,
+      "employed": 6418,
+      "unemployed": 256,
+      "values": [
+        1145,
+        1071,
+        614,
+        499,
+        543
+      ],
+      "other": 2546,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2008-12",
+      "labourForce": 6629,
+      "employed": 6359,
+      "unemployed": 270,
+      "values": [
+        1147,
+        1060,
+        610,
+        483,
+        532
+      ],
+      "other": 2527,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-01",
+      "labourForce": 6598,
+      "employed": 6321,
+      "unemployed": 277,
+      "values": [
+        1136,
+        1064,
+        619,
+        466,
+        532
+      ],
+      "other": 2504,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-02",
+      "labourForce": 6594,
+      "employed": 6294,
+      "unemployed": 299,
+      "values": [
+        1111,
+        1058,
+        620,
+        462,
+        523
+      ],
+      "other": 2520,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-03",
+      "labourForce": 6610,
+      "employed": 6275,
+      "unemployed": 335,
+      "values": [
+        1098,
+        1056,
+        602,
+        443,
+        527
+      ],
+      "other": 2549,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-04",
+      "labourForce": 6699,
+      "employed": 6353,
+      "unemployed": 346,
+      "values": [
+        1106,
+        1078,
+        617,
+        451,
+        511
+      ],
+      "other": 2590,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-05",
+      "labourForce": 6721,
+      "employed": 6374,
+      "unemployed": 347,
+      "values": [
+        1087,
+        1076,
+        622,
+        461,
+        513
+      ],
+      "other": 2615,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-06",
+      "labourForce": 6680,
+      "employed": 6332,
+      "unemployed": 348,
+      "values": [
+        1060,
+        1084,
+        619,
+        455,
+        511
+      ],
+      "other": 2603,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-07",
+      "labourForce": 6661,
+      "employed": 6303,
+      "unemployed": 359,
+      "values": [
+        1048,
+        1069,
+        625,
+        462,
+        525
+      ],
+      "other": 2574,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-08",
+      "labourForce": 6691,
+      "employed": 6330,
+      "unemployed": 361,
+      "values": [
+        1059,
+        1052,
+        634,
+        476,
+        531
+      ],
+      "other": 2578,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-09",
+      "labourForce": 6693,
+      "employed": 6330,
+      "unemployed": 363,
+      "values": [
+        1071,
+        1056,
+        629,
+        480,
+        508
+      ],
+      "other": 2586,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-10",
+      "labourForce": 6650,
+      "employed": 6306,
+      "unemployed": 344,
+      "values": [
+        1060,
+        1050,
+        633,
+        471,
+        521
+      ],
+      "other": 2571,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-11",
+      "labourForce": 6627,
+      "employed": 6296,
+      "unemployed": 331,
+      "values": [
+        1073,
+        1027,
+        631,
+        476,
+        525
+      ],
+      "other": 2564,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2009-12",
+      "labourForce": 6576,
+      "employed": 6260,
+      "unemployed": 317,
+      "values": [
+        1074,
+        1038,
+        631,
+        470,
+        532
+      ],
+      "other": 2515,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-01",
+      "labourForce": 6572,
+      "employed": 6250,
+      "unemployed": 323,
+      "values": [
+        1064,
+        1058,
+        645,
+        467,
+        532
+      ],
+      "other": 2484,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-02",
+      "labourForce": 6547,
+      "employed": 6223,
+      "unemployed": 324,
+      "values": [
+        1060,
+        1052,
+        662,
+        461,
+        515
+      ],
+      "other": 2473,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-03",
+      "labourForce": 6599,
+      "employed": 6249,
+      "unemployed": 350,
+      "values": [
+        1069,
+        1064,
+        653,
+        445,
+        495
+      ],
+      "other": 2523,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-04",
+      "labourForce": 6665,
+      "employed": 6309,
+      "unemployed": 356,
+      "values": [
+        1077,
+        1088,
+        648,
+        444,
+        498
+      ],
+      "other": 2554,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-05",
+      "labourForce": 6682,
+      "employed": 6335,
+      "unemployed": 347,
+      "values": [
+        1067,
+        1070,
+        662,
+        449,
+        498
+      ],
+      "other": 2589,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-06",
+      "labourForce": 6665,
+      "employed": 6321,
+      "unemployed": 344,
+      "values": [
+        1047,
+        1064,
+        644,
+        455,
+        493
+      ],
+      "other": 2618,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-07",
+      "labourForce": 6644,
+      "employed": 6313,
+      "unemployed": 331,
+      "values": [
+        1041,
+        1064,
+        637,
+        465,
+        509
+      ],
+      "other": 2597,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-08",
+      "labourForce": 6657,
+      "employed": 6320,
+      "unemployed": 337,
+      "values": [
+        1043,
+        1045,
+        658,
+        455,
+        502
+      ],
+      "other": 2617,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-09",
+      "labourForce": 6692,
+      "employed": 6352,
+      "unemployed": 340,
+      "values": [
+        1078,
+        1046,
+        672,
+        454,
+        501
+      ],
+      "other": 2601,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-10",
+      "labourForce": 6665,
+      "employed": 6330,
+      "unemployed": 334,
+      "values": [
+        1069,
+        1060,
+        680,
+        471,
+        500
+      ],
+      "other": 2550,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-11",
+      "labourForce": 6616,
+      "employed": 6298,
+      "unemployed": 318,
+      "values": [
+        1062,
+        1060,
+        669,
+        459,
+        495
+      ],
+      "other": 2553,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2010-12",
+      "labourForce": 6577,
+      "employed": 6278,
+      "unemployed": 299,
+      "values": [
+        1047,
+        1069,
+        647,
+        455,
+        514
+      ],
+      "other": 2546,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2011-01",
+      "labourForce": 6571,
+      "employed": 6261,
+      "unemployed": 310,
+      "values": [
+        1042,
+        1073,
+        665,
+        462,
+        517
+      ],
+      "other": 2502,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2011-02",
+      "labourForce": 6572,
+      "employed": 6268,
+      "unemployed": 303,
+      "values": [
+        1047,
+        1073,
+        673,
+        459,
+        508
+      ],
+      "other": 2508,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2011-03",
+      "labourForce": 6563,
+      "employed": 6241,
+      "unemployed": 322,
+      "values": [
+        1045,
+        1071,
+        658,
+        452,
+        490
+      ],
+      "other": 2525,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": true
+    },
+    {
+      "month": "2011-04",
+      "labourForce": 6633,
+      "employed": 6305,
+      "unemployed": 329,
+      "values": [
+        1073,
+        1050,
+        670,
+        449,
+        485
+      ],
+      "other": 2578,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": true
+    },
+    {
+      "month": "2011-05",
+      "labourForce": 6645,
+      "employed": 6331,
+      "unemployed": 314,
+      "values": [
+        1071,
+        1037,
+        689,
+        453,
+        511
+      ],
+      "other": 2570,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": true
+    },
+    {
+      "month": "2011-06",
+      "labourForce": 6628,
+      "employed": 6314,
+      "unemployed": 314,
+      "values": [
+        1049,
+        1063,
+        673,
+        458,
+        505
+      ],
+      "other": 2566,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": true
+    },
+    {
+      "month": "2011-07",
+      "labourForce": 6605,
+      "employed": 6291,
+      "unemployed": 312,
+      "values": [
+        1043,
+        1070,
+        664,
+        452,
+        504
+      ],
+      "other": 2558,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": true
+    },
+    {
+      "month": "2011-08",
+      "labourForce": 6581,
+      "employed": 6288,
+      "unemployed": 295,
+      "values": [
+        1042,
+        1049,
+        675,
+        443,
+        511
+      ],
+      "other": 2568,
+      "employedOnly": null,
+      "reconciliationGap": -2,
+      "supplementaryEstimate": true
+    },
+    {
+      "month": "2011-09",
+      "labourForce": 6604,
+      "employed": 6326,
+      "unemployed": 277,
+      "values": [
+        1053,
+        1040,
+        695,
+        450,
+        498
+      ],
+      "other": 2590,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2011-10",
+      "labourForce": 6604,
+      "employed": 6314,
+      "unemployed": 289,
+      "values": [
+        1046,
+        1057,
+        703,
+        467,
+        488
+      ],
+      "other": 2553,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2011-11",
+      "labourForce": 6591,
+      "employed": 6309,
+      "unemployed": 281,
+      "values": [
+        1046,
+        1056,
+        692,
+        478,
+        498
+      ],
+      "other": 2539,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2011-12",
+      "labourForce": 6549,
+      "employed": 6273,
+      "unemployed": 276,
+      "values": [
+        1034,
+        1056,
+        684,
+        457,
+        505
+      ],
+      "other": 2537,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-01",
+      "labourForce": 6510,
+      "employed": 6218,
+      "unemployed": 291,
+      "values": [
+        1032,
+        1047,
+        703,
+        451,
+        497
+      ],
+      "other": 2488,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-02",
+      "labourForce": 6523,
+      "employed": 6234,
+      "unemployed": 289,
+      "values": [
+        1043,
+        1053,
+        704,
+        463,
+        487
+      ],
+      "other": 2484,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-03",
+      "labourForce": 6530,
+      "employed": 6223,
+      "unemployed": 307,
+      "values": [
+        1039,
+        1046,
+        693,
+        466,
+        494
+      ],
+      "other": 2485,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-04",
+      "labourForce": 6600,
+      "employed": 6284,
+      "unemployed": 315,
+      "values": [
+        1051,
+        1021,
+        706,
+        458,
+        506
+      ],
+      "other": 2542,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-05",
+      "labourForce": 6605,
+      "employed": 6306,
+      "unemployed": 297,
+      "values": [
+        1054,
+        1030,
+        707,
+        454,
+        513
+      ],
+      "other": 2548,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-06",
+      "labourForce": 6601,
+      "employed": 6313,
+      "unemployed": 288,
+      "values": [
+        1040,
+        1030,
+        704,
+        455,
+        513
+      ],
+      "other": 2571,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-07",
+      "labourForce": 6576,
+      "employed": 6287,
+      "unemployed": 288,
+      "values": [
+        1035,
+        1035,
+        714,
+        468,
+        502
+      ],
+      "other": 2533,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-08",
+      "labourForce": 6570,
+      "employed": 6291,
+      "unemployed": 277,
+      "values": [
+        1014,
+        1072,
+        708,
+        462,
+        508
+      ],
+      "other": 2527,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-09",
+      "labourForce": 6595,
+      "employed": 6319,
+      "unemployed": 275,
+      "values": [
+        1017,
+        1061,
+        715,
+        467,
+        508
+      ],
+      "other": 2551,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-10",
+      "labourForce": 6604,
+      "employed": 6332,
+      "unemployed": 271,
+      "values": [
+        1041,
+        1054,
+        710,
+        471,
+        513
+      ],
+      "other": 2543,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-11",
+      "labourForce": 6569,
+      "employed": 6309,
+      "unemployed": 260,
+      "values": [
+        1032,
+        1037,
+        705,
+        475,
+        513
+      ],
+      "other": 2547,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2012-12",
+      "labourForce": 6499,
+      "employed": 6240,
+      "unemployed": 259,
+      "values": [
+        1000,
+        1037,
+        725,
+        463,
+        491
+      ],
+      "other": 2524,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-01",
+      "labourForce": 6516,
+      "employed": 6241,
+      "unemployed": 273,
+      "values": [
+        1021,
+        1042,
+        748,
+        406,
+        499
+      ],
+      "other": 2525,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-02",
+      "labourForce": 6533,
+      "employed": 6255,
+      "unemployed": 277,
+      "values": [
+        1030,
+        1043,
+        749,
+        399,
+        509
+      ],
+      "other": 2525,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-03",
+      "labourForce": 6541,
+      "employed": 6260,
+      "unemployed": 280,
+      "values": [
+        1044,
+        1047,
+        729,
+        381,
+        506
+      ],
+      "other": 2553,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-04",
+      "labourForce": 6618,
+      "employed": 6326,
+      "unemployed": 291,
+      "values": [
+        1044,
+        1054,
+        718,
+        385,
+        507
+      ],
+      "other": 2618,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-05",
+      "labourForce": 6634,
+      "employed": 6354,
+      "unemployed": 279,
+      "values": [
+        1041,
+        1043,
+        729,
+        397,
+        504
+      ],
+      "other": 2640,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-06",
+      "labourForce": 6609,
+      "employed": 6348,
+      "unemployed": 260,
+      "values": [
+        1046,
+        1041,
+        735,
+        396,
+        501
+      ],
+      "other": 2629,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-07",
+      "labourForce": 6582,
+      "employed": 6326,
+      "unemployed": 255,
+      "values": [
+        1055,
+        1056,
+        743,
+        402,
+        473
+      ],
+      "other": 2597,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-08",
+      "labourForce": 6598,
+      "employed": 6326,
+      "unemployed": 271,
+      "values": [
+        1038,
+        1084,
+        738,
+        407,
+        485
+      ],
+      "other": 2574,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-09",
+      "labourForce": 6634,
+      "employed": 6375,
+      "unemployed": 258,
+      "values": [
+        1039,
+        1086,
+        733,
+        416,
+        506
+      ],
+      "other": 2595,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-10",
+      "labourForce": 6647,
+      "employed": 6383,
+      "unemployed": 263,
+      "values": [
+        1043,
+        1088,
+        733,
+        410,
+        511
+      ],
+      "other": 2598,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-11",
+      "labourForce": 6638,
+      "employed": 6388,
+      "unemployed": 249,
+      "values": [
+        1051,
+        1070,
+        747,
+        412,
+        510
+      ],
+      "other": 2598,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2013-12",
+      "labourForce": 6563,
+      "employed": 6337,
+      "unemployed": 225,
+      "values": [
+        1042,
+        1064,
+        748,
+        410,
+        493
+      ],
+      "other": 2580,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-01",
+      "labourForce": 6520,
+      "employed": 6280,
+      "unemployed": 238,
+      "values": [
+        1026,
+        1072,
+        748,
+        417,
+        492
+      ],
+      "other": 2525,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-02",
+      "labourForce": 6536,
+      "employed": 6301,
+      "unemployed": 232,
+      "values": [
+        1037,
+        1061,
+        773,
+        400,
+        499
+      ],
+      "other": 2531,
+      "employedOnly": null,
+      "reconciliationGap": 3,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-03",
+      "labourForce": 6564,
+      "employed": 6317,
+      "unemployed": 246,
+      "values": [
+        1064,
+        1040,
+        751,
+        380,
+        510
+      ],
+      "other": 2572,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-04",
+      "labourForce": 6613,
+      "employed": 6357,
+      "unemployed": 254,
+      "values": [
+        1083,
+        1041,
+        755,
+        379,
+        511
+      ],
+      "other": 2588,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-05",
+      "labourForce": 6661,
+      "employed": 6418,
+      "unemployed": 242,
+      "values": [
+        1049,
+        1055,
+        773,
+        390,
+        512
+      ],
+      "other": 2639,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-06",
+      "labourForce": 6656,
+      "employed": 6409,
+      "unemployed": 245,
+      "values": [
+        1040,
+        1058,
+        752,
+        398,
+        503
+      ],
+      "other": 2658,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-07",
+      "labourForce": 6626,
+      "employed": 6378,
+      "unemployed": 248,
+      "values": [
+        1061,
+        1040,
+        751,
+        387,
+        493
+      ],
+      "other": 2646,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-08",
+      "labourForce": 6618,
+      "employed": 6384,
+      "unemployed": 231,
+      "values": [
+        1039,
+        1063,
+        756,
+        404,
+        508
+      ],
+      "other": 2614,
+      "employedOnly": null,
+      "reconciliationGap": 3,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-09",
+      "labourForce": 6658,
+      "employed": 6424,
+      "unemployed": 233,
+      "values": [
+        1037,
+        1087,
+        755,
+        404,
+        507
+      ],
+      "other": 2634,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-10",
+      "labourForce": 6647,
+      "employed": 6412,
+      "unemployed": 233,
+      "values": [
+        1031,
+        1086,
+        756,
+        400,
+        526
+      ],
+      "other": 2613,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-11",
+      "labourForce": 6614,
+      "employed": 6394,
+      "unemployed": 219,
+      "values": [
+        1022,
+        1071,
+        782,
+        408,
+        518
+      ],
+      "other": 2593,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2014-12",
+      "labourForce": 6592,
+      "employed": 6380,
+      "unemployed": 210,
+      "values": [
+        1030,
+        1076,
+        764,
+        417,
+        505
+      ],
+      "other": 2588,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-01",
+      "labourForce": 6565,
+      "employed": 6332,
+      "unemployed": 231,
+      "values": [
+        1038,
+        1077,
+        749,
+        422,
+        491
+      ],
+      "other": 2555,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-02",
+      "labourForce": 6574,
+      "employed": 6346,
+      "unemployed": 226,
+      "values": [
+        1055,
+        1075,
+        775,
+        421,
+        481
+      ],
+      "other": 2539,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-03",
+      "labourForce": 6573,
+      "employed": 6343,
+      "unemployed": 228,
+      "values": [
+        1061,
+        1053,
+        784,
+        407,
+        500
+      ],
+      "other": 2538,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-04",
+      "labourForce": 6603,
+      "employed": 6367,
+      "unemployed": 234,
+      "values": [
+        1070,
+        1027,
+        786,
+        403,
+        512
+      ],
+      "other": 2569,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-05",
+      "labourForce": 6651,
+      "employed": 6425,
+      "unemployed": 224,
+      "values": [
+        1047,
+        1042,
+        809,
+        409,
+        507
+      ],
+      "other": 2611,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-06",
+      "labourForce": 6676,
+      "employed": 6451,
+      "unemployed": 224,
+      "values": [
+        1024,
+        1052,
+        803,
+        409,
+        512
+      ],
+      "other": 2651,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-07",
+      "labourForce": 6631,
+      "employed": 6407,
+      "unemployed": 222,
+      "values": [
+        1042,
+        1033,
+        781,
+        398,
+        500
+      ],
+      "other": 2653,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-08",
+      "labourForce": 6632,
+      "employed": 6406,
+      "unemployed": 225,
+      "values": [
+        1016,
+        1051,
+        793,
+        403,
+        493
+      ],
+      "other": 2650,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-09",
+      "labourForce": 6694,
+      "employed": 6466,
+      "unemployed": 227,
+      "values": [
+        996,
+        1087,
+        790,
+        404,
+        507
+      ],
+      "other": 2682,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-10",
+      "labourForce": 6669,
+      "employed": 6460,
+      "unemployed": 208,
+      "values": [
+        1029,
+        1070,
+        781,
+        411,
+        519
+      ],
+      "other": 2650,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-11",
+      "labourForce": 6616,
+      "employed": 6407,
+      "unemployed": 210,
+      "values": [
+        1041,
+        1056,
+        800,
+        406,
+        511
+      ],
+      "other": 2593,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2015-12",
+      "labourForce": 6617,
+      "employed": 6412,
+      "unemployed": 204,
+      "values": [
+        1054,
+        1077,
+        801,
+        412,
+        497
+      ],
+      "other": 2571,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-01",
+      "labourForce": 6637,
+      "employed": 6426,
+      "unemployed": 211,
+      "values": [
+        1077,
+        1079,
+        787,
+        435,
+        474
+      ],
+      "other": 2574,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-02",
+      "labourForce": 6592,
+      "employed": 6379,
+      "unemployed": 213,
+      "values": [
+        1049,
+        1075,
+        796,
+        425,
+        481
+      ],
+      "other": 2553,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-03",
+      "labourForce": 6583,
+      "employed": 6367,
+      "unemployed": 216,
+      "values": [
+        1039,
+        1059,
+        811,
+        408,
+        493
+      ],
+      "other": 2557,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-04",
+      "labourForce": 6649,
+      "employed": 6424,
+      "unemployed": 225,
+      "values": [
+        1060,
+        1056,
+        803,
+        401,
+        501
+      ],
+      "other": 2603,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-05",
+      "labourForce": 6692,
+      "employed": 6475,
+      "unemployed": 217,
+      "values": [
+        1045,
+        1048,
+        837,
+        405,
+        500
+      ],
+      "other": 2640,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-06",
+      "labourForce": 6738,
+      "employed": 6527,
+      "unemployed": 210,
+      "values": [
+        1031,
+        1044,
+        846,
+        420,
+        498
+      ],
+      "other": 2688,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-07",
+      "labourForce": 6714,
+      "employed": 6510,
+      "unemployed": 203,
+      "values": [
+        1043,
+        1047,
+        813,
+        410,
+        496
+      ],
+      "other": 2701,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-08",
+      "labourForce": 6708,
+      "employed": 6495,
+      "unemployed": 212,
+      "values": [
+        1033,
+        1065,
+        815,
+        399,
+        497
+      ],
+      "other": 2686,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-09",
+      "labourForce": 6733,
+      "employed": 6529,
+      "unemployed": 204,
+      "values": [
+        1038,
+        1071,
+        815,
+        425,
+        494
+      ],
+      "other": 2686,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-10",
+      "labourForce": 6722,
+      "employed": 6527,
+      "unemployed": 195,
+      "values": [
+        1051,
+        1065,
+        810,
+        415,
+        496
+      ],
+      "other": 2690,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-11",
+      "labourForce": 6682,
+      "employed": 6485,
+      "unemployed": 197,
+      "values": [
+        1037,
+        1072,
+        795,
+        406,
+        504
+      ],
+      "other": 2671,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2016-12",
+      "labourForce": 6692,
+      "employed": 6498,
+      "unemployed": 193,
+      "values": [
+        1045,
+        1086,
+        809,
+        434,
+        503
+      ],
+      "other": 2621,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-01",
+      "labourForce": 6676,
+      "employed": 6479,
+      "unemployed": 197,
+      "values": [
+        1048,
+        1102,
+        805,
+        432,
+        502
+      ],
+      "other": 2590,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-02",
+      "labourForce": 6625,
+      "employed": 6436,
+      "unemployed": 188,
+      "values": [
+        1058,
+        1093,
+        777,
+        426,
+        494
+      ],
+      "other": 2588,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-03",
+      "labourForce": 6631,
+      "employed": 6443,
+      "unemployed": 188,
+      "values": [
+        1068,
+        1056,
+        795,
+        418,
+        489
+      ],
+      "other": 2617,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-04",
+      "labourForce": 6708,
+      "employed": 6510,
+      "unemployed": 197,
+      "values": [
+        1055,
+        1068,
+        814,
+        409,
+        493
+      ],
+      "other": 2671,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-05",
+      "labourForce": 6768,
+      "employed": 6558,
+      "unemployed": 210,
+      "values": [
+        1059,
+        1070,
+        829,
+        420,
+        494
+      ],
+      "other": 2686,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-06",
+      "labourForce": 6787,
+      "employed": 6595,
+      "unemployed": 192,
+      "values": [
+        1041,
+        1048,
+        838,
+        447,
+        505
+      ],
+      "other": 2716,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-07",
+      "labourForce": 6766,
+      "employed": 6575,
+      "unemployed": 191,
+      "values": [
+        1049,
+        1076,
+        837,
+        425,
+        508
+      ],
+      "other": 2680,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-08",
+      "labourForce": 6775,
+      "employed": 6586,
+      "unemployed": 189,
+      "values": [
+        1047,
+        1102,
+        817,
+        430,
+        507
+      ],
+      "other": 2683,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-09",
+      "labourForce": 6800,
+      "employed": 6609,
+      "unemployed": 190,
+      "values": [
+        1065,
+        1094,
+        809,
+        444,
+        501
+      ],
+      "other": 2696,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-10",
+      "labourForce": 6776,
+      "employed": 6595,
+      "unemployed": 181,
+      "values": [
+        1063,
+        1082,
+        824,
+        434,
+        506
+      ],
+      "other": 2686,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-11",
+      "labourForce": 6745,
+      "employed": 6566,
+      "unemployed": 178,
+      "values": [
+        1052,
+        1073,
+        822,
+        431,
+        497
+      ],
+      "other": 2691,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2017-12",
+      "labourForce": 6731,
+      "employed": 6557,
+      "unemployed": 174,
+      "values": [
+        1043,
+        1069,
+        830,
+        445,
+        495
+      ],
+      "other": 2675,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-01",
+      "labourForce": 6738,
+      "employed": 6577,
+      "unemployed": 159,
+      "values": [
+        1051,
+        1073,
+        809,
+        443,
+        509
+      ],
+      "other": 2692,
+      "employedOnly": null,
+      "reconciliationGap": 2,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-02",
+      "labourForce": 6760,
+      "employed": 6594,
+      "unemployed": 166,
+      "values": [
+        1085,
+        1086,
+        788,
+        445,
+        498
+      ],
+      "other": 2692,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-03",
+      "labourForce": 6810,
+      "employed": 6637,
+      "unemployed": 174,
+      "values": [
+        1084,
+        1056,
+        802,
+        456,
+        502
+      ],
+      "other": 2737,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-04",
+      "labourForce": 6869,
+      "employed": 6688,
+      "unemployed": 181,
+      "values": [
+        1056,
+        1081,
+        828,
+        438,
+        505
+      ],
+      "other": 2780,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-05",
+      "labourForce": 6874,
+      "employed": 6716,
+      "unemployed": 159,
+      "values": [
+        1068,
+        1080,
+        844,
+        425,
+        495
+      ],
+      "other": 2804,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-06",
+      "labourForce": 6874,
+      "employed": 6705,
+      "unemployed": 169,
+      "values": [
+        1054,
+        1042,
+        847,
+        442,
+        514
+      ],
+      "other": 2806,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-07",
+      "labourForce": 6851,
+      "employed": 6679,
+      "unemployed": 173,
+      "values": [
+        1046,
+        1069,
+        862,
+        432,
+        509
+      ],
+      "other": 2761,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-08",
+      "labourForce": 6872,
+      "employed": 6701,
+      "unemployed": 171,
+      "values": [
+        1060,
+        1093,
+        849,
+        448,
+        518
+      ],
+      "other": 2733,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-09",
+      "labourForce": 6897,
+      "employed": 6735,
+      "unemployed": 163,
+      "values": [
+        1070,
+        1101,
+        830,
+        458,
+        519
+      ],
+      "other": 2757,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-10",
+      "labourForce": 6909,
+      "employed": 6745,
+      "unemployed": 164,
+      "values": [
+        1056,
+        1092,
+        840,
+        448,
+        498
+      ],
+      "other": 2811,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-11",
+      "labourForce": 6899,
+      "employed": 6730,
+      "unemployed": 169,
+      "values": [
+        1067,
+        1067,
+        861,
+        455,
+        503
+      ],
+      "other": 2777,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2018-12",
+      "labourForce": 6837,
+      "employed": 6677,
+      "unemployed": 160,
+      "values": [
+        1067,
+        1068,
+        845,
+        459,
+        483
+      ],
+      "other": 2755,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-01",
+      "labourForce": 6816,
+      "employed": 6650,
+      "unemployed": 167,
+      "values": [
+        1059,
+        1066,
+        820,
+        455,
+        474
+      ],
+      "other": 2776,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-02",
+      "labourForce": 6835,
+      "employed": 6679,
+      "unemployed": 157,
+      "values": [
+        1072,
+        1055,
+        838,
+        454,
+        497
+      ],
+      "other": 2763,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-03",
+      "labourForce": 6885,
+      "employed": 6710,
+      "unemployed": 175,
+      "values": [
+        1073,
+        1070,
+        842,
+        461,
+        510
+      ],
+      "other": 2754,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-04",
+      "labourForce": 6908,
+      "employed": 6732,
+      "unemployed": 177,
+      "values": [
+        1061,
+        1085,
+        844,
+        458,
+        504
+      ],
+      "other": 2780,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-05",
+      "labourForce": 6923,
+      "employed": 6756,
+      "unemployed": 166,
+      "values": [
+        1072,
+        1073,
+        836,
+        446,
+        500
+      ],
+      "other": 2829,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-06",
+      "labourForce": 6935,
+      "employed": 6772,
+      "unemployed": 163,
+      "values": [
+        1077,
+        1042,
+        855,
+        452,
+        506
+      ],
+      "other": 2840,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-07",
+      "labourForce": 6914,
+      "employed": 6756,
+      "unemployed": 157,
+      "values": [
+        1069,
+        1024,
+        872,
+        460,
+        497
+      ],
+      "other": 2834,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-08",
+      "labourForce": 6935,
+      "employed": 6777,
+      "unemployed": 158,
+      "values": [
+        1083,
+        1053,
+        855,
+        461,
+        510
+      ],
+      "other": 2815,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-09",
+      "labourForce": 6963,
+      "employed": 6794,
+      "unemployed": 169,
+      "values": [
+        1073,
+        1065,
+        853,
+        456,
+        504
+      ],
+      "other": 2843,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-10",
+      "labourForce": 6979,
+      "employed": 6814,
+      "unemployed": 165,
+      "values": [
+        1037,
+        1077,
+        857,
+        456,
+        496
+      ],
+      "other": 2891,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-11",
+      "labourForce": 6941,
+      "employed": 6790,
+      "unemployed": 152,
+      "values": [
+        1067,
+        1071,
+        849,
+        462,
+        515
+      ],
+      "other": 2826,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2019-12",
+      "labourForce": 6912,
+      "employed": 6765,
+      "unemployed": 146,
+      "values": [
+        1070,
+        1084,
+        843,
+        465,
+        490
+      ],
+      "other": 2813,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-01",
+      "labourForce": 6875,
+      "employed": 6716,
+      "unemployed": 160,
+      "values": [
+        1065,
+        1089,
+        852,
+        458,
+        461
+      ],
+      "other": 2791,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-02",
+      "labourForce": 6880,
+      "employed": 6720,
+      "unemployed": 160,
+      "values": [
+        1058,
+        1100,
+        864,
+        457,
+        505
+      ],
+      "other": 2736,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-03",
+      "labourForce": 6907,
+      "employed": 6730,
+      "unemployed": 177,
+      "values": [
+        1050,
+        1088,
+        883,
+        456,
+        514
+      ],
+      "other": 2739,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-04",
+      "labourForce": 6848,
+      "employed": 6658,
+      "unemployed": 190,
+      "values": [
+        1046,
+        1054,
+        860,
+        451,
+        493
+      ],
+      "other": 2754,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-05",
+      "labourForce": 6886,
+      "employed": 6687,
+      "unemployed": 199,
+      "values": [
+        1047,
+        1046,
+        846,
+        469,
+        488
+      ],
+      "other": 2791,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-06",
+      "labourForce": 6897,
+      "employed": 6701,
+      "unemployed": 196,
+      "values": [
+        1065,
+        1028,
+        864,
+        468,
+        475
+      ],
+      "other": 2801,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-07",
+      "labourForce": 6885,
+      "employed": 6687,
+      "unemployed": 198,
+      "values": [
+        1062,
+        1016,
+        868,
+        447,
+        477
+      ],
+      "other": 2817,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-08",
+      "labourForce": 6915,
+      "employed": 6708,
+      "unemployed": 207,
+      "values": [
+        1032,
+        1038,
+        866,
+        459,
+        499
+      ],
+      "other": 2814,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-09",
+      "labourForce": 6933,
+      "employed": 6722,
+      "unemployed": 211,
+      "values": [
+        1035,
+        1068,
+        872,
+        448,
+        506
+      ],
+      "other": 2793,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-10",
+      "labourForce": 6952,
+      "employed": 6736,
+      "unemployed": 217,
+      "values": [
+        1044,
+        1086,
+        873,
+        446,
+        503
+      ],
+      "other": 2784,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-11",
+      "labourForce": 6946,
+      "employed": 6750,
+      "unemployed": 196,
+      "values": [
+        1050,
+        1071,
+        878,
+        447,
+        508
+      ],
+      "other": 2796,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2020-12",
+      "labourForce": 6903,
+      "employed": 6708,
+      "unemployed": 195,
+      "values": [
+        1061,
+        1064,
+        878,
+        444,
+        500
+      ],
+      "other": 2761,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-01",
+      "labourForce": 6877,
+      "employed": 6678,
+      "unemployed": 199,
+      "values": [
+        1053,
+        1068,
+        884,
+        440,
+        483
+      ],
+      "other": 2750,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-02",
+      "labourForce": 6889,
+      "employed": 6693,
+      "unemployed": 195,
+      "values": [
+        1037,
+        1100,
+        891,
+        439,
+        491
+      ],
+      "other": 2735,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-03",
+      "labourForce": 6885,
+      "employed": 6695,
+      "unemployed": 189,
+      "values": [
+        1039,
+        1089,
+        906,
+        438,
+        502
+      ],
+      "other": 2721,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-04",
+      "labourForce": 6914,
+      "employed": 6703,
+      "unemployed": 211,
+      "values": [
+        1046,
+        1063,
+        899,
+        442,
+        501
+      ],
+      "other": 2752,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-05",
+      "labourForce": 6926,
+      "employed": 6713,
+      "unemployed": 213,
+      "values": [
+        1035,
+        1057,
+        899,
+        472,
+        487
+      ],
+      "other": 2763,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-06",
+      "labourForce": 6945,
+      "employed": 6738,
+      "unemployed": 207,
+      "values": [
+        1063,
+        1079,
+        872,
+        473,
+        468
+      ],
+      "other": 2783,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-07",
+      "labourForce": 6950,
+      "employed": 6757,
+      "unemployed": 193,
+      "values": [
+        1059,
+        1080,
+        871,
+        448,
+        472
+      ],
+      "other": 2827,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-08",
+      "labourForce": 6934,
+      "employed": 6739,
+      "unemployed": 194,
+      "values": [
+        1049,
+        1056,
+        898,
+        454,
+        488
+      ],
+      "other": 2794,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-09",
+      "labourForce": 6920,
+      "employed": 6726,
+      "unemployed": 194,
+      "values": [
+        1029,
+        1067,
+        894,
+        457,
+        498
+      ],
+      "other": 2781,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-10",
+      "labourForce": 6889,
+      "employed": 6705,
+      "unemployed": 184,
+      "values": [
+        1044,
+        1055,
+        889,
+        454,
+        490
+      ],
+      "other": 2773,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-11",
+      "labourForce": 6879,
+      "employed": 6696,
+      "unemployed": 183,
+      "values": [
+        1029,
+        1060,
+        897,
+        455,
+        474
+      ],
+      "other": 2781,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2021-12",
+      "labourForce": 6879,
+      "employed": 6706,
+      "unemployed": 173,
+      "values": [
+        1060,
+        1060,
+        894,
+        452,
+        465
+      ],
+      "other": 2775,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-01",
+      "labourForce": 6830,
+      "employed": 6646,
+      "unemployed": 185,
+      "values": [
+        1057,
+        1049,
+        892,
+        450,
+        475
+      ],
+      "other": 2723,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-02",
+      "labourForce": 6838,
+      "employed": 6658,
+      "unemployed": 180,
+      "values": [
+        1040,
+        1054,
+        900,
+        441,
+        500
+      ],
+      "other": 2723,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-03",
+      "labourForce": 6864,
+      "employed": 6684,
+      "unemployed": 180,
+      "values": [
+        1053,
+        1050,
+        904,
+        451,
+        492
+      ],
+      "other": 2734,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-04",
+      "labourForce": 6915,
+      "employed": 6727,
+      "unemployed": 188,
+      "values": [
+        1027,
+        1032,
+        946,
+        464,
+        478
+      ],
+      "other": 2780,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-05",
+      "labourForce": 6921,
+      "employed": 6730,
+      "unemployed": 191,
+      "values": [
+        1026,
+        1018,
+        945,
+        485,
+        462
+      ],
+      "other": 2794,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-06",
+      "labourForce": 6945,
+      "employed": 6759,
+      "unemployed": 186,
+      "values": [
+        1045,
+        1041,
+        902,
+        483,
+        464
+      ],
+      "other": 2824,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-07",
+      "labourForce": 6931,
+      "employed": 6755,
+      "unemployed": 176,
+      "values": [
+        1042,
+        1047,
+        883,
+        474,
+        458
+      ],
+      "other": 2851,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-08",
+      "labourForce": 6929,
+      "employed": 6751,
+      "unemployed": 177,
+      "values": [
+        1046,
+        1033,
+        906,
+        465,
+        473
+      ],
+      "other": 2828,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-09",
+      "labourForce": 6953,
+      "employed": 6766,
+      "unemployed": 187,
+      "values": [
+        1048,
+        1045,
+        914,
+        454,
+        492
+      ],
+      "other": 2813,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-10",
+      "labourForce": 6933,
+      "employed": 6755,
+      "unemployed": 178,
+      "values": [
+        1053,
+        1048,
+        910,
+        471,
+        495
+      ],
+      "other": 2778,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-11",
+      "labourForce": 6889,
+      "employed": 6724,
+      "unemployed": 165,
+      "values": [
+        1045,
+        1060,
+        898,
+        456,
+        484
+      ],
+      "other": 2781,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2022-12",
+      "labourForce": 6875,
+      "employed": 6716,
+      "unemployed": 158,
+      "values": [
+        1046,
+        1052,
+        892,
+        462,
+        473
+      ],
+      "other": 2791,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-01",
+      "labourForce": 6854,
+      "employed": 6689,
+      "unemployed": 164,
+      "values": [
+        1055,
+        1039,
+        909,
+        462,
+        483
+      ],
+      "other": 2741,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-02",
+      "labourForce": 6840,
+      "employed": 6667,
+      "unemployed": 174,
+      "values": [
+        1041,
+        1015,
+        900,
+        452,
+        511
+      ],
+      "other": 2748,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-03",
+      "labourForce": 6892,
+      "employed": 6699,
+      "unemployed": 193,
+      "values": [
+        1067,
+        1018,
+        886,
+        442,
+        485
+      ],
+      "other": 2801,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-04",
+      "labourForce": 6930,
+      "employed": 6741,
+      "unemployed": 190,
+      "values": [
+        1065,
+        1030,
+        917,
+        462,
+        468
+      ],
+      "other": 2799,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-05",
+      "labourForce": 6932,
+      "employed": 6745,
+      "unemployed": 188,
+      "values": [
+        1046,
+        1024,
+        926,
+        468,
+        476
+      ],
+      "other": 2805,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-06",
+      "labourForce": 6964,
+      "employed": 6785,
+      "unemployed": 179,
+      "values": [
+        1059,
+        1043,
+        935,
+        455,
+        481
+      ],
+      "other": 2812,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-07",
+      "labourForce": 6955,
+      "employed": 6772,
+      "unemployed": 183,
+      "values": [
+        1054,
+        1063,
+        914,
+        466,
+        474
+      ],
+      "other": 2801,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-08",
+      "labourForce": 6960,
+      "employed": 6773,
+      "unemployed": 186,
+      "values": [
+        1043,
+        1055,
+        912,
+        466,
+        479
+      ],
+      "other": 2818,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-09",
+      "labourForce": 6969,
+      "employed": 6787,
+      "unemployed": 182,
+      "values": [
+        1027,
+        1050,
+        907,
+        454,
+        503
+      ],
+      "other": 2846,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-10",
+      "labourForce": 6947,
+      "employed": 6771,
+      "unemployed": 175,
+      "values": [
+        1053,
+        1052,
+        906,
+        473,
+        489
+      ],
+      "other": 2798,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-11",
+      "labourForce": 6949,
+      "employed": 6780,
+      "unemployed": 169,
+      "values": [
+        1078,
+        1053,
+        920,
+        452,
+        469
+      ],
+      "other": 2808,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2023-12",
+      "labourForce": 6910,
+      "employed": 6754,
+      "unemployed": 156,
+      "values": [
+        1074,
+        1049,
+        894,
+        448,
+        481
+      ],
+      "other": 2808,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-01",
+      "labourForce": 6877,
+      "employed": 6714,
+      "unemployed": 163,
+      "values": [
+        1071,
+        1028,
+        891,
+        450,
+        482
+      ],
+      "other": 2792,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-02",
+      "labourForce": 6905,
+      "employed": 6728,
+      "unemployed": 177,
+      "values": [
+        1066,
+        1021,
+        915,
+        467,
+        480
+      ],
+      "other": 2779,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-03",
+      "labourForce": 6911,
+      "employed": 6726,
+      "unemployed": 185,
+      "values": [
+        1010,
+        1017,
+        930,
+        474,
+        482
+      ],
+      "other": 2813,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-04",
+      "labourForce": 6943,
+      "employed": 6750,
+      "unemployed": 193,
+      "values": [
+        1038,
+        1035,
+        925,
+        460,
+        470
+      ],
+      "other": 2822,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-05",
+      "labourForce": 6959,
+      "employed": 6766,
+      "unemployed": 193,
+      "values": [
+        1039,
+        1040,
+        922,
+        466,
+        481
+      ],
+      "other": 2818,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-06",
+      "labourForce": 7003,
+      "employed": 6822,
+      "unemployed": 181,
+      "values": [
+        1051,
+        1074,
+        942,
+        456,
+        481
+      ],
+      "other": 2818,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-07",
+      "labourForce": 6983,
+      "employed": 6795,
+      "unemployed": 188,
+      "values": [
+        1045,
+        1072,
+        933,
+        458,
+        485
+      ],
+      "other": 2802,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-08",
+      "labourForce": 6990,
+      "employed": 6815,
+      "unemployed": 175,
+      "values": [
+        1049,
+        1065,
+        910,
+        457,
+        481
+      ],
+      "other": 2853,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-09",
+      "labourForce": 6987,
+      "employed": 6814,
+      "unemployed": 173,
+      "values": [
+        1046,
+        1048,
+        910,
+        465,
+        482
+      ],
+      "other": 2863,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-10",
+      "labourForce": 6984,
+      "employed": 6813,
+      "unemployed": 170,
+      "values": [
+        1036,
+        1056,
+        918,
+        475,
+        474
+      ],
+      "other": 2854,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-11",
+      "labourForce": 6978,
+      "employed": 6814,
+      "unemployed": 164,
+      "values": [
+        1042,
+        1049,
+        938,
+        486,
+        459
+      ],
+      "other": 2840,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2024-12",
+      "labourForce": 6965,
+      "employed": 6811,
+      "unemployed": 154,
+      "values": [
+        1053,
+        1040,
+        928,
+        473,
+        465
+      ],
+      "other": 2852,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-01",
+      "labourForce": 6942,
+      "employed": 6779,
+      "unemployed": 163,
+      "values": [
+        1057,
+        1038,
+        923,
+        467,
+        457
+      ],
+      "other": 2837,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-02",
+      "labourForce": 6933,
+      "employed": 6768,
+      "unemployed": 165,
+      "values": [
+        1054,
+        1005,
+        938,
+        482,
+        476
+      ],
+      "other": 2813,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-03",
+      "labourForce": 6949,
+      "employed": 6770,
+      "unemployed": 180,
+      "values": [
+        1016,
+        1017,
+        937,
+        488,
+        474
+      ],
+      "other": 2838,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-04",
+      "labourForce": 6984,
+      "employed": 6796,
+      "unemployed": 188,
+      "values": [
+        1021,
+        1026,
+        952,
+        484,
+        452
+      ],
+      "other": 2861,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-05",
+      "labourForce": 7021,
+      "employed": 6838,
+      "unemployed": 183,
+      "values": [
+        1028,
+        1017,
+        959,
+        482,
+        470
+      ],
+      "other": 2882,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-06",
+      "labourForce": 7049,
+      "employed": 6873,
+      "unemployed": 176,
+      "values": [
+        1020,
+        1012,
+        960,
+        483,
+        498
+      ],
+      "other": 2900,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-07",
+      "labourForce": 7019,
+      "employed": 6850,
+      "unemployed": 169,
+      "values": [
+        1029,
+        1043,
+        955,
+        477,
+        486
+      ],
+      "other": 2860,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-08",
+      "labourForce": 7017,
+      "employed": 6835,
+      "unemployed": 182,
+      "values": [
+        1039,
+        1045,
+        927,
+        486,
+        475
+      ],
+      "other": 2863,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-09",
+      "labourForce": 7046,
+      "employed": 6863,
+      "unemployed": 184,
+      "values": [
+        1030,
+        1035,
+        938,
+        483,
+        490
+      ],
+      "other": 2887,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-10",
+      "labourForce": 7047,
+      "employed": 6865,
+      "unemployed": 183,
+      "values": [
+        1023,
+        1049,
+        958,
+        488,
+        484
+      ],
+      "other": 2863,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-11",
+      "labourForce": 7033,
+      "employed": 6862,
+      "unemployed": 171,
+      "values": [
+        1041,
+        1031,
+        962,
+        490,
+        477
+      ],
+      "other": 2861,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2025-12",
+      "labourForce": 7007,
+      "employed": 6842,
+      "unemployed": 166,
+      "values": [
+        1033,
+        1025,
+        950,
+        476,
+        495
+      ],
+      "other": 2863,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-01",
+      "labourForce": 6955,
+      "employed": 6776,
+      "unemployed": 179,
+      "values": [
+        1024,
+        1040,
+        930,
+        478,
+        487
+      ],
+      "other": 2817,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-02",
+      "labourForce": 6959,
+      "employed": 6779,
+      "unemployed": 180,
+      "values": [
+        1027,
+        1035,
+        923,
+        484,
+        475
+      ],
+      "other": 2835,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-03",
+      "labourForce": 6967,
+      "employed": 6773,
+      "unemployed": 194,
+      "values": [
+        1004,
+        1011,
+        920,
+        483,
+        473
+      ],
+      "other": 2882,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-04",
+      "labourForce": 7053,
+      "employed": 6860,
+      "unemployed": 193,
+      "values": [
+        1013,
+        1029,
+        952,
+        491,
+        462
+      ],
+      "other": 2913,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-05",
+      "labourForce": 7075,
+      "employed": 6890,
+      "unemployed": 185,
+      "values": [
+        1035,
+        1019,
+        977,
+        493,
+        477
+      ],
+      "other": 2889,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-06",
+      "labourForce": 7069,
+      "employed": 6890,
+      "unemployed": 178,
+      "values": [
+        1059,
+        1007,
+        976,
+        481,
+        497
+      ],
+      "other": 2870,
+      "employedOnly": null,
+      "reconciliationGap": 1,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-07",
+      "labourForce": 7019,
+      "employed": 6850,
+      "unemployed": 169,
+      "values": [
+        1026,
+        1028,
+        964,
+        483,
+        486
+      ],
+      "other": 2863,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-08",
+      "labourForce": 7029,
+      "employed": 6849,
+      "unemployed": 180,
+      "values": [
+        1018,
+        1035,
+        950,
+        490,
+        473
+      ],
+      "other": 2883,
+      "employedOnly": null,
+      "reconciliationGap": 0,
+      "supplementaryEstimate": false
+    },
+    {
+      "month": "2026-09",
+      "labourForce": 7064,
+      "employed": 6896,
+      "unemployed": 169,
+      "values": [
+        1036,
+        1032,
+        967,
+        497,
+        475
+      ],
+      "other": 2889,
+      "employedOnly": null,
+      "reconciliationGap": -1,
+      "supplementaryEstimate": false
+    }
+  ],
+  "unit": "万人",
+  "indexUrl": "https://www.stat.go.jp/data/roudou/sokuhou/tsuki/index.html",
+  "retrievedAt": "2026-11-25T13:49:01.965567+00:00",
+  "sources": [
+    {
+      "id": "main",
+      "table": "1-a-1",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000031831358",
+      "sha256": "c20cdc21e0527b705a47cde516a2a86bfeca3bdadf1fc924fb50d491633377dc"
+    },
+    {
+      "id": "industry",
+      "table": "1-c-3",
+      "url": "https://www.e-stat.go.jp/stat-search/file-download?fileKind=0&statInfId=000031831374",
+      "sha256": "0c0dad70d92dd9775cd6efaa7f88ce81cd402ff16487e2f5e4aa181e7a410ba2"
+    }
+  ]
+}
