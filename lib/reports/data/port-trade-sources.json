@@ -21990,227 +21990,227 @@
     "page": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&cycle=1&year=20250&month=24101212&tstat=000001013143&tclass1=000001013229&tclass2=000001013230",
     "sources": [
       {
-        "id": "000040425205",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 東京",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425205&fileKind=1",
-        "sha256": "449d06e6d9d55412d424a6478011f6e689f0676667139b3d24934cc8bf1a1f2f"
+        "id": "000040524977",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 東京",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524977&fileKind=1",
+        "sha256": "3eeb34d2112578ed9d84eed071f42f626908804f00de87e9df3bdce1dcb92cab"
       },
       {
-        "id": "000040425206",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 成田",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425206&fileKind=1",
-        "sha256": "b80e7447c4a3317ac623983f5a67e1c63fcbe97ccde8709a1857e2495f82f3fd"
+        "id": "000040524978",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 成田",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524978&fileKind=1",
+        "sha256": "e12ac8b4e7d3a56af78c2b5cd6c5d84607977b83ca59528abe3bbeed7e654459"
       },
       {
-        "id": "000040425207",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 東京税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425207&fileKind=1",
-        "sha256": "61c10dd9aea25056f3adce5a9bd4b84df33d8adcb53e025a0fbdce5bdadacc9f"
+        "id": "000040524979",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 東京税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524979&fileKind=1",
+        "sha256": "96cf28a7a35d6312df21a30011ced47a42a9b89ac8c93af2bf24fa6d57f26435"
       },
       {
-        "id": "000040425208",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 横浜",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425208&fileKind=1",
-        "sha256": "e53e4949626bc1b4001e75729e58690af851a0d58308905db6810dee48426fd7"
+        "id": "000040524980",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 横浜",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524980&fileKind=1",
+        "sha256": "a089d62fb37d85ea43a221229f6a82fe72676cad1c309e97cb5e951251c4e6fb"
       },
       {
-        "id": "000040425209",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 横浜税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425209&fileKind=1",
-        "sha256": "3d713606893ba20e330b6b89a66f3512aec382a787c1ac7044a4c36e066e9ba3"
+        "id": "000040524981",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 横浜税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524981&fileKind=1",
+        "sha256": "5a876a163d788cfa78ed8cefb4e63bd3273b53e3fa7bce1915df47242ed5e47c"
       },
       {
-        "id": "000040425210",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 神戸",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425210&fileKind=1",
-        "sha256": "238ed43529439b56452d8d73a00b8fe803ece64afc07cffcd8244d4417dc9bc1"
+        "id": "000040524982",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 神戸",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524982&fileKind=1",
+        "sha256": "c57a5d69a41d0707ac98ad8c99f0ed96cf8010bfc52def0f3c4aff08797a9cb7"
       },
       {
-        "id": "000040425211",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 神戸税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425211&fileKind=1",
-        "sha256": "c08daeb99e7b5ca40175853cb92822a3b1896ca016df75353b9472aa82f32873"
+        "id": "000040524983",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 神戸税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524983&fileKind=1",
+        "sha256": "d31e3faa24f39b3ebd109b2f9cad74c31937e1df8dfe5e8638203dc28e6f475f"
       },
       {
-        "id": "000040425212",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 大阪",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425212&fileKind=1",
+        "id": "000040524984",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 大阪",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524984&fileKind=1",
         "sha256": "e5a581a081ec9166d3db4e205d30030266081e9ece6e01e11aedfc0f3518447e"
       },
       {
-        "id": "000040425213",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 関西空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425213&fileKind=1",
-        "sha256": "0cdb7813fa886133700e1435eaa7efe8bf1e48f234195572f83b6efc706ec38b"
+        "id": "000040524985",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 関西空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524985&fileKind=1",
+        "sha256": "54346136d786deb371194683d44c88494e447c2915fb527a5dd39dfde2d0efc9"
       },
       {
-        "id": "000040425214",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 大阪税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425214&fileKind=1",
-        "sha256": "7681aa714c34b2d5d33785f4963ddec06967ff25fe62c04773ccae8ab5cec37a"
+        "id": "000040524986",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 大阪税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524986&fileKind=1",
+        "sha256": "349ed8ec0c7427b91bd8ba5c2721a4769281f4b3e44e2a139c5f457bc3a1f6a2"
       },
       {
-        "id": "000040425215",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 名古屋",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425215&fileKind=1",
-        "sha256": "81ecaec155a1b82b9c8f52dce6eb9c0b8b57d8e73801c000e1c45601d04e6f55"
+        "id": "000040524987",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 名古屋",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524987&fileKind=1",
+        "sha256": "ad8fff1961c67bda08093fb8ae95192efb8c77837f914af72f4789a626971e31"
       },
       {
-        "id": "000040425216",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 中部空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425216&fileKind=1",
+        "id": "000040524988",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 中部空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524988&fileKind=1",
         "sha256": "30c72cfadd33e1ee8f5ed9a3d7e80b606e4f0375199b52b21148eb3678114161"
       },
       {
-        "id": "000040425217",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 名古屋税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425217&fileKind=1",
-        "sha256": "fd4b3d7815f04799e7d23e3fc5b8e93be8428f70e3b755f9814a6d2513662ad2"
+        "id": "000040524989",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 名古屋税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524989&fileKind=1",
+        "sha256": "f6e6757472a906fe65c1f5d5b3fa6f4a2f1f0867f34035b33e0e6fce19fff68e"
       },
       {
-        "id": "000040425218",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 門司税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425218&fileKind=1",
-        "sha256": "5defa1c64d7132456a6e67777d27b16f1e75d54027bdb98eb511f57e63af1423"
+        "id": "000040524990",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 門司税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524990&fileKind=1",
+        "sha256": "dba712d515fdfcd0065092ec4f21db8f1571ccb00f115540f1f6572cafac6f5a"
       },
       {
-        "id": "000040425219",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 長崎税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425219&fileKind=1",
+        "id": "000040524991",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 長崎税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524991&fileKind=1",
         "sha256": "e27611bf707dbefffec0a8c82efab24c75df4f32c470d294f0e390582b5fde10"
       },
       {
-        "id": "000040425220",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 函館税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425220&fileKind=1",
-        "sha256": "5585eb045f3a4d8e9fe59ec8745eb17f39e49f254fe9fdf2797d888aa5c06dfb"
+        "id": "000040524992",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 函館税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524992&fileKind=1",
+        "sha256": "2092b73cc84902260a102c9b7778d94cfbed04b4184de6bf736ec9bfc8fb5333"
       },
       {
-        "id": "000040425221",
-        "title": "2025年 税関別品別国別表 (輸出 1-12月:確々報) 沖縄地区税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425221&fileKind=1",
+        "id": "000040524993",
+        "title": "2025年分 税関別品別国別表 (輸出 1-12月:確定) 沖縄地区税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524993&fileKind=1",
         "sha256": "687df29d7f6e81584c6373ac4cee89495c0b373bc48763d14218d6409bca225a"
       },
       {
-        "id": "000040424908",
-        "title": "2025年 国別総額表 (輸出 1-12月:確々報)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040424908&fileKind=1",
-        "sha256": "2cfd33e96a3d4aaa64e6835116bc7df4e7448addaf2b6b132562d2d551fbb1c2"
+        "id": "000040524680",
+        "title": "2025年分 国別総額表 (輸出 1-12月:確定)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524680&fileKind=1",
+        "sha256": "d5a80800b4eb463596e3733d687407dec6e22d5e9265d57b7e964864c70b95e4"
       }
     ]
   },
   {
     "year": 2026,
     "direction": 1,
-    "page": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&cycle=1&year=20260&month=23070909&tstat=000001013143&tclass1=000001013229&tclass2=000001013230",
+    "page": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&cycle=1&year=20260&month=24101210&tstat=000001013143&tclass1=000001013229&tclass2=000001013230",
     "sources": [
       {
-        "id": "000040519440",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 東京",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519440&fileKind=1",
-        "sha256": "823d5ef802a54b8d51be0bd2d6612f8f227c74ab687432f068b4f16a23b60cba"
+        "id": "000040532909",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 東京",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532909&fileKind=1",
+        "sha256": "12aa391a3397d215139d1d99c8067ca14593291649c2429fbc2a353fe33e9608"
       },
       {
-        "id": "000040519441",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 成田",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519441&fileKind=1",
-        "sha256": "302a92de96756d637e32715325117d4e4a86089ca75a4fc6bdd365b6b4e986ed"
+        "id": "000040532910",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 成田",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532910&fileKind=1",
+        "sha256": "4af20b8c4a448a55ae19710eb85ff53fa3979e021941c45b98d3a6737cf7ca12"
       },
       {
-        "id": "000040519442",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 東京税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519442&fileKind=1",
-        "sha256": "1c6467117506d573aec50d5234ce19281948644cdd8503f8d13fd4d882e35254"
+        "id": "000040532911",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 東京税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532911&fileKind=1",
+        "sha256": "24191a7c60db59aef292ed8ce7b61ee26badbd96d5b1602b0162079442a4ea76"
       },
       {
-        "id": "000040519443",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 横浜",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519443&fileKind=1",
-        "sha256": "f6a503abf9074bf76c1c69125c221343b75c96a95e99579b0a4f3e0a61187f12"
+        "id": "000040532912",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 横浜",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532912&fileKind=1",
+        "sha256": "3c6277106f8dfc3104b51b73cf5909ce3f70d529b259a4fe8ebc584deaf2b2c1"
       },
       {
-        "id": "000040519444",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 横浜税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519444&fileKind=1",
-        "sha256": "eb39489632c47240ad998207fff81b97f61e5c6d63fef866b69c95c967b69d82"
+        "id": "000040532913",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 横浜税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532913&fileKind=1",
+        "sha256": "8452b5c688b366e0ab629de194f1dc0268b772d6f1416260a45483171a76fbf2"
       },
       {
-        "id": "000040519445",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 神戸",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519445&fileKind=1",
-        "sha256": "251c9beac8405c19e3ddf92206d2a8610dac02256c2cfd91e41a28d36246d85f"
+        "id": "000040532914",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 神戸",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532914&fileKind=1",
+        "sha256": "6aabe77f52f45a2918208e70b02c1f8543c22c6ebd1b5b798a0be9e654c50a0f"
       },
       {
-        "id": "000040519446",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 神戸税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519446&fileKind=1",
-        "sha256": "e8e38be065fd2da37f71375d41841b358f4e0d1395cfde8df33d603ce484735f"
+        "id": "000040532915",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 神戸税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532915&fileKind=1",
+        "sha256": "340c266874f87f3fbdae0a656f435667757f9bc930bb27599f00358a478053b9"
       },
       {
-        "id": "000040519447",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 大阪",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519447&fileKind=1",
-        "sha256": "fa57dbfe4a3abb1605d3404c2ee99c84e6458fc27ef783ffd4ed88686bad14b7"
+        "id": "000040532916",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 大阪",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532916&fileKind=1",
+        "sha256": "bc88a0c44e02aa5c6435b2f22333c3731c3dd4b3ab554b52b214811efb89388f"
       },
       {
-        "id": "000040519448",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 関西空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519448&fileKind=1",
-        "sha256": "41a2bc3ed9e08706e1a5594b85b0b124840101fc35a90e71658ebdb2220c9706"
+        "id": "000040532917",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 関西空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532917&fileKind=1",
+        "sha256": "e9863a7ddda5f81aa98639a8e5be8c151316eb3360c2da6630692877b8456467"
       },
       {
-        "id": "000040519449",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 大阪税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519449&fileKind=1",
-        "sha256": "07cb20a6db8aee6e0391f410f3760d701ba15364d848ac29725921bf61ed8dc5"
+        "id": "000040532918",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 大阪税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532918&fileKind=1",
+        "sha256": "179a0b61b005c95dc7d73c5cd3e79eab008db4cf4605dd13fcd513a8700be5ca"
       },
       {
-        "id": "000040519450",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 名古屋",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519450&fileKind=1",
-        "sha256": "942d3635bfc3a613df1707687183ac5d7b6986309965ca04cd9854be2bfb6fb4"
+        "id": "000040532919",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 名古屋",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532919&fileKind=1",
+        "sha256": "d9d9c9473d7916df07ec0c17767ac1b1011d08d6bc620735102b59b5a330c14b"
       },
       {
-        "id": "000040519451",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 中部空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519451&fileKind=1",
-        "sha256": "f42df0517aedc81cc7a94453c241095a9743ba10724cfacc745a4621094b14a9"
+        "id": "000040532920",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 中部空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532920&fileKind=1",
+        "sha256": "2694a99bb9e92c5286da247d4e3767690dea335404e855400811f6bdde49d243"
       },
       {
-        "id": "000040519452",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 名古屋税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519452&fileKind=1",
-        "sha256": "f1f28e88ab5d28f9477d608d32bcc1140e84df1aa541290475e8b7b19e5e3152"
+        "id": "000040532921",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 名古屋税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532921&fileKind=1",
+        "sha256": "cb7ebf8d66a933870ba9aa49db3c22c651d1a29f373581b8c0d189618c267e7e"
       },
       {
-        "id": "000040519453",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 門司税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519453&fileKind=1",
-        "sha256": "9203ac261688975fbc46f14c4168e800d3635116476cca3a6f0a9a6745a61879"
+        "id": "000040532922",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 門司税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532922&fileKind=1",
+        "sha256": "ecff815a57ae186e6270febbb43866da3bb2778d7ee6a7c3f1f4774bb267dbff"
       },
       {
-        "id": "000040519454",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 長崎税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519454&fileKind=1",
-        "sha256": "89f4e65ca66cbd3f74071290f15bc69f4ac5ad213f4375a8b48cdde8a2720cf9"
+        "id": "000040532923",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 長崎税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532923&fileKind=1",
+        "sha256": "a5e59d9fdc92716fac9b8af22e966932f92286146d81a236238fc172d33dac6c"
       },
       {
-        "id": "000040519455",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 函館税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519455&fileKind=1",
-        "sha256": "d8736e47cf1c8dbbc32b67ae9d647586f11a9e60667b9f201bca326bc31980ff"
+        "id": "000040532924",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 函館税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532924&fileKind=1",
+        "sha256": "75424fdd2553b1625eb31a506c214a178fd53bfd4a567b371900c7138cd8f37f"
       },
       {
-        "id": "000040519456",
-        "title": "2026年9月分 税関別品別国別表 (輸出 1-9月:確報) 沖縄地区税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519456&fileKind=1",
-        "sha256": "f2f002c8035621feb6966161f2fa004bd0025ecebcb245bb9228170c45cbcdaf"
+        "id": "000040532925",
+        "title": "2026年10月分 税関別品別国別表 (輸出 1-10月:確報) 沖縄地区税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532925&fileKind=1",
+        "sha256": "27b568d1d962b86d8d0db34ac2b9d433d0653870b4013fbdf777ac97fe05b4d4"
       },
       {
-        "id": "000040519283",
-        "title": "2026年9月分 国別総額表 (輸出 1-9月:確報)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519283&fileKind=1",
-        "sha256": "ac30a7bbe4600d4a46ae3ef7b80e779754b07b636d12d1f9de00c4d173ff771c"
+        "id": "000040532752",
+        "title": "2026年10月分 国別総額表 (輸出 1-10月:確報)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532752&fileKind=1",
+        "sha256": "251ef6ea4535462f7aa921617148773a91d87e61caf6c336743863bbf2edf2c6"
       }
     ]
   },
@@ -38157,227 +38157,227 @@
     "page": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&cycle=1&year=20250&month=24101212&tstat=000001013143&tclass1=000001013229&tclass2=000001013231",
     "sources": [
       {
-        "id": "000040425222",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 東京",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425222&fileKind=1",
-        "sha256": "8f3570eb06418b15648a826d91820417258c44c5e7bba37fe91c037758fe14f3"
+        "id": "000040524994",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 東京",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524994&fileKind=1",
+        "sha256": "59f0a9893231ecb7d79ae44c6968b55dba1cc03e200be9f2243f289d37e38830"
       },
       {
-        "id": "000040425223",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 成田",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425223&fileKind=1",
-        "sha256": "61cb645039d177213618bc9576c7d4cbf4459c57e676271c429d9a9ac5f060fb"
+        "id": "000040524995",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 成田",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524995&fileKind=1",
+        "sha256": "9f98f092eaae6cb250ad97f4acd7bec7cd5617a76d967d6b71989fbc60f79a29"
       },
       {
-        "id": "000040425224",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 東京税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425224&fileKind=1",
-        "sha256": "445fd6b7c19a9f90403c5d4e6bbb3e0cebe3fa3afc54df3b431e70b672df5074"
+        "id": "000040524996",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 東京税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524996&fileKind=1",
+        "sha256": "da5235590c2061820b3b5e28047cca901f50d9cce5beb65313894dc8436880f9"
       },
       {
-        "id": "000040425225",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 横浜",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425225&fileKind=1",
-        "sha256": "0a9d8aac57336a835ef3d353c21ef042eb65fb8a31180b192aada97e5d36c130"
+        "id": "000040524997",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 横浜",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524997&fileKind=1",
+        "sha256": "71e3ace86f1de5ba633f6f55752a58d70b15947f80d30631efa0ec7788b27712"
       },
       {
-        "id": "000040425226",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 横浜税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425226&fileKind=1",
-        "sha256": "a7202671f4b6070860a92c2bfbd58e67272f20290e2ae459847323c87b2dae8c"
+        "id": "000040524998",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 横浜税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524998&fileKind=1",
+        "sha256": "bf63676b14a86f223f0e687146dd7a4c4219283a79f6829678fbefedbfca4dca"
       },
       {
-        "id": "000040425227",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 神戸",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425227&fileKind=1",
-        "sha256": "b6c6aa9ace6ef33159c175d5746ac23b66ea9cd5257cfc2e7ca2fda52c1ab628"
+        "id": "000040524999",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 神戸",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524999&fileKind=1",
+        "sha256": "7d50d3d924bb7b45d1ec9978e09a00904e3c7b9127feaafa7893bc8b7fe56f50"
       },
       {
-        "id": "000040425228",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 神戸税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425228&fileKind=1",
-        "sha256": "b2acd18104fa4370a90575d9e67ce45dc79a8f2a01131f94b4098ce27e615c0b"
+        "id": "000040525000",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 神戸税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525000&fileKind=1",
+        "sha256": "be90aeed01776b41e559b4215995fb587d5717502816ef670b98365661330096"
       },
       {
-        "id": "000040425229",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 大阪",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425229&fileKind=1",
-        "sha256": "470f5405de8bb6b0f279565fe9eae2e27ebf92868b88de3f4d9fbf3959060693"
+        "id": "000040525001",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 大阪",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525001&fileKind=1",
+        "sha256": "fc68b8d6f0ad9c92de8265299e8d555c3ed6e02139b15fd8e376bcf60d8679e7"
       },
       {
-        "id": "000040425230",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 関西空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425230&fileKind=1",
-        "sha256": "319e6241eea158d4d27cc919668b01995a1f115050b4b52256b08844db4058fe"
+        "id": "000040525002",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 関西空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525002&fileKind=1",
+        "sha256": "c34cb37ffb1d56952274e3e758a6695c19515a6c480de0dd4b35afceaaf65aa2"
       },
       {
-        "id": "000040425231",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 大阪税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425231&fileKind=1",
-        "sha256": "cd1b16b8998d956a8e4824603135c4d59c4d0cc885af063240115149b24f75b7"
+        "id": "000040525003",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 大阪税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525003&fileKind=1",
+        "sha256": "d7d3d62543ee148bff3d6c8f63e6cae980dee06e84d47e9277bebd0bf167e284"
       },
       {
-        "id": "000040425232",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 名古屋",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425232&fileKind=1",
-        "sha256": "380cc5817e0fc744df64b7d7df85f5baceb5dd83372febfbc0b3e3edbc95b771"
+        "id": "000040525004",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 名古屋",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525004&fileKind=1",
+        "sha256": "14a5312b33b48fc9c097be797d2bd1d918e0505f2689f72660b07af91a368b04"
       },
       {
-        "id": "000040425233",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 中部空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425233&fileKind=1",
-        "sha256": "aaa32bd6a1c5f54d60f19495669f95a558035e86134d25e299abe1b3895f543b"
+        "id": "000040525005",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 中部空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525005&fileKind=1",
+        "sha256": "60a326a4dc0a972479caa83cc07c0c1577978f9b859ab4753b6ed22ead2a5d13"
       },
       {
-        "id": "000040425234",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 名古屋税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425234&fileKind=1",
-        "sha256": "a8206df421c5f0ce6cf3e631f77070add6fd96f27ff84ce3a228f22119c9012f"
+        "id": "000040525006",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 名古屋税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525006&fileKind=1",
+        "sha256": "46c38f1d7f5aedf0bca2c5fb1273e39772b2d5a6cbbc1b6638ffd76b48e9b4df"
       },
       {
-        "id": "000040425235",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 門司税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425235&fileKind=1",
-        "sha256": "d2b14377dfa905d718b498c07f7e954ebdad7c6c3a99d025d1c2922179ef5dc6"
+        "id": "000040525007",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 門司税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525007&fileKind=1",
+        "sha256": "8154c90dfd846cacd95bb0ab83ee775412d8aac8dd22de8ac0a264a414f5bcb4"
       },
       {
-        "id": "000040425236",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 長崎税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425236&fileKind=1",
-        "sha256": "a368074026a83db31a311c07c64e29dfac27586065f3f3fcb124e118f4ffc602"
+        "id": "000040525008",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 長崎税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525008&fileKind=1",
+        "sha256": "40a7a5627924743fb5f6fc30ef9389460e5f92316954d286581d050e27f0b349"
       },
       {
-        "id": "000040425237",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 函館税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425237&fileKind=1",
-        "sha256": "97b2273d5f1fe70a0112aa39e9bf9a6198e278cd2d0fbd3315ef63d626194372"
+        "id": "000040525009",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 函館税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525009&fileKind=1",
+        "sha256": "e1418f81c3867d9474c5c42ed83e68885ed1e452a21a9afbd4e0eb3f4b1ca5b7"
       },
       {
-        "id": "000040425238",
-        "title": "2025年 税関別品別国別表 (輸入 1-12月:確々報) 沖縄地区税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040425238&fileKind=1",
-        "sha256": "9dc2d427bfae81412dba1803deec376bbe3affd3fdf97120694a80cd7730236a"
+        "id": "000040525010",
+        "title": "2025年分 税関別品別国別表 (輸入 1-12月:確定) 沖縄地区税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040525010&fileKind=1",
+        "sha256": "5703003c61da794b7f22a07626b51a509da99d3e43b35740fb9030fdc3fd80a3"
       },
       {
-        "id": "000040424909",
-        "title": "2025年 国別総額表 (輸入 1-12月:確々報)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040424909&fileKind=1",
-        "sha256": "cc325b19c229a925f30fa07ec121ccef6d377ef766f82319073acd573d736ac5"
+        "id": "000040524681",
+        "title": "2025年分 国別総額表 (輸入 1-12月:確定)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040524681&fileKind=1",
+        "sha256": "862a43c2aca612abd53c1794df725f40ac51d038f6dd63b3293569bc7ce76b8f"
       }
     ]
   },
   {
     "year": 2026,
     "direction": 2,
-    "page": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&cycle=1&year=20260&month=23070909&tstat=000001013143&tclass1=000001013229&tclass2=000001013231",
+    "page": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00350300&cycle=1&year=20260&month=24101210&tstat=000001013143&tclass1=000001013229&tclass2=000001013231",
     "sources": [
       {
-        "id": "000040519457",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 東京",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519457&fileKind=1",
-        "sha256": "854eee772dfd1b4dfcd8c2810d3b473ef88e0fb5c21ccf89effc3c6899bcaec7"
+        "id": "000040532926",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 東京",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532926&fileKind=1",
+        "sha256": "7f3c66c707fb01a9414acf4b2331bfadb5660dac1142aacab7a5d2e3b6da33a4"
       },
       {
-        "id": "000040519458",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 成田",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519458&fileKind=1",
-        "sha256": "77e8901563d0f5273393bcba252468fb5339787071b46a62b619c84adf790aae"
+        "id": "000040532927",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 成田",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532927&fileKind=1",
+        "sha256": "3a841d52bdb35cd9c4aef0ae29c6f6f0d5e1c8e8e0c30858cf43d48a6ff22c9c"
       },
       {
-        "id": "000040519459",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 東京税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519459&fileKind=1",
-        "sha256": "7c7e2fa917a321cde5a4ab7801cdef8667f1895216a76f170df76098255a8d9d"
+        "id": "000040532928",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 東京税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532928&fileKind=1",
+        "sha256": "078c274b0c3fad8243bc5f178364defd6f6ea5529cbe23a2df1d7f34b50f33b2"
       },
       {
-        "id": "000040519460",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 横浜",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519460&fileKind=1",
-        "sha256": "22ad92ca19c2877ed55d6848fd032615c192df58f6b60f3b657aed506fb71b03"
+        "id": "000040532929",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 横浜",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532929&fileKind=1",
+        "sha256": "6d0442a32d5e5a76683687686d6d3763c44bc7e0214a857ba5c3c872384632b9"
       },
       {
-        "id": "000040519461",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 横浜税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519461&fileKind=1",
-        "sha256": "4f95c52bd0926bcce310b16faf550b4c06163064c1348f535c11b5aa212b9527"
+        "id": "000040532930",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 横浜税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532930&fileKind=1",
+        "sha256": "474d6cd2ea0f892e9f051d0126a64cdd304ac5a969cefd3af0173c304e41fa4e"
       },
       {
-        "id": "000040519462",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 神戸",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519462&fileKind=1",
-        "sha256": "b673330998f24a2ffa370e0beb2ba24030cd79219f3799d15ce32d6d869b0c7a"
+        "id": "000040532931",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 神戸",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532931&fileKind=1",
+        "sha256": "16c45876db7619796f546d34375c71d11e39f83846a2933b9aaa7ee135a775eb"
       },
       {
-        "id": "000040519463",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 神戸税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519463&fileKind=1",
-        "sha256": "ed09828c77c8b8a2581b7cbe7e386a36e5492918e18f69ac1e1cc73cfa86d1c9"
+        "id": "000040532932",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 神戸税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532932&fileKind=1",
+        "sha256": "8a84d878ff849aa4db8bde0298083fc18405c3e09150923a3e8f5028b074c6ad"
       },
       {
-        "id": "000040519464",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 大阪",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519464&fileKind=1",
-        "sha256": "2216b3ebf18500522a31b0ae4693a315024dabbd48b35d27a8903594906fa0bf"
+        "id": "000040532933",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 大阪",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532933&fileKind=1",
+        "sha256": "894c81477a8ead474cfd132b85a94cda322534bea005c5d725c0a30aaa2f5ce0"
       },
       {
-        "id": "000040519465",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 関西空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519465&fileKind=1",
-        "sha256": "c7d755849c591a7ad947150f5057cf53ce7864621ee9ea981262989909f39f8e"
+        "id": "000040532934",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 関西空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532934&fileKind=1",
+        "sha256": "26781311bfadf36a61408f8c58b4201aa3921fde25b073b44cfddf7b2510ad79"
       },
       {
-        "id": "000040519466",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 大阪税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519466&fileKind=1",
-        "sha256": "798b8622d328a19981dc5ee8f3692228b48b08399897b34d175b4beeb25a67c8"
+        "id": "000040532935",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 大阪税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532935&fileKind=1",
+        "sha256": "077743e7275b58802fd997339d6565dba51a1df09a59fa4101125beb5dacd7da"
       },
       {
-        "id": "000040519467",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 名古屋",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519467&fileKind=1",
-        "sha256": "9b9bd1432f17e670983dec6352418b8a490b1a3b8998b344d6d252a266b66c6c"
+        "id": "000040532936",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 名古屋",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532936&fileKind=1",
+        "sha256": "ed2ff732d97c96844cc376bb4103f9b6a4c601aef0efc67a4d7489b7bfcb301b"
       },
       {
-        "id": "000040519468",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 中部空港",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519468&fileKind=1",
-        "sha256": "fc957c7e0f205516b1146f053e36a73dfacc853ac00465c0bac2cc7329cb6b6b"
+        "id": "000040532937",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 中部空港",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532937&fileKind=1",
+        "sha256": "113463400f67a9301ecd7efaad9668ff60d1bfb6dbd0c4d2c095e6081af31388"
       },
       {
-        "id": "000040519469",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 名古屋税関(その他)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519469&fileKind=1",
-        "sha256": "4e948717f8ec0b7d28fa66ae476d2f8f18fc5c518156aad5410c3a6f8c16994f"
+        "id": "000040532938",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 名古屋税関(その他)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532938&fileKind=1",
+        "sha256": "0b39fdc2b0a455de17184c113d447769aaadd96667452dc87f9a08436bdb75e6"
       },
       {
-        "id": "000040519470",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 門司税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519470&fileKind=1",
-        "sha256": "46f0e41a56a9aa92567bcb8971de01973db3f29387e81725f9835d2af49f187b"
+        "id": "000040532939",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 門司税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532939&fileKind=1",
+        "sha256": "907f843ddac0bf898878fc91755bc120a86285ecef6ee535aa1cbdaca0ba22c8"
       },
       {
-        "id": "000040519471",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 長崎税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519471&fileKind=1",
-        "sha256": "ef7c3b4aa7db80b606a609cb053480022c6fceab6db8f5f09c1db4a3efcf257d"
+        "id": "000040532940",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 長崎税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532940&fileKind=1",
+        "sha256": "8b871d0d8e9c4378232e3ecb8087277805c7c3fc40e0e671d2573eed1a9706e9"
       },
       {
-        "id": "000040519472",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 函館税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519472&fileKind=1",
-        "sha256": "b01264b5d4695f8a174b7d55f5d2f017f9d8e5ddb8dbb6a82d0562b063087462"
+        "id": "000040532941",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 函館税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532941&fileKind=1",
+        "sha256": "5c626116fb9fddb00f64b0a7eeb6a446a8754c9e3c89bf4e9ae6e63b37bd3187"
       },
       {
-        "id": "000040519473",
-        "title": "2026年9月分 税関別品別国別表 (輸入 1-8月:確報、9月:輸入9桁速報) 沖縄地区税関",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519473&fileKind=1",
-        "sha256": "7095a2080a811b882258e7b0ee1558fba07d6cb3eafc3025cf37eb7d28b036b0"
+        "id": "000040532942",
+        "title": "2026年10月分 税関別品別国別表 (輸入 1-9月:確報、10月:輸入9桁速報) 沖縄地区税関",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532942&fileKind=1",
+        "sha256": "c481bb3be0981116a191084ed5c147c04d35d8eb82e2c34bdab5f3a97c3d8dfd"
       },
       {
-        "id": "000040519284",
-        "title": "2026年9月分 国別総額表 (輸入 1-8月:確報、9月:輸入9桁速報)",
-        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040519284&fileKind=1",
-        "sha256": "ae275ae134ee0d014b09fb38fa6fa1b1a351b81877f1675facebf872f84afb3c"
+        "id": "000040532753",
+        "title": "2026年10月分 国別総額表 (輸入 1-9月:確報、10月:輸入9桁速報)",
+        "url": "https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040532753&fileKind=1",
+        "sha256": "5edb8ae31f2f87e29a71741253411bed72544e24b18b897e3b344585191e3ec7"
       }
     ]
   }
